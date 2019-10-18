@@ -1,0 +1,35 @@
+site_name: UBELIX Documentation
+#theme: mkdocs
+use_directory_urls: false
+nav:
+  - Home: index.md
+  - User Guide:
+    - Overview: user-guide/index.md
+  - Contributing: contributing.md
+
+# Copyright
+copyright: 'Copyright &copy; University of Bern, IT Service Office'
+# Social links at botoom right
+repo_name: 'ubelix/ubelix.github.io'
+repo_url: 'https://github.com/ubelix/ubelix.github.io'
+edit_uri: ''
+
+# Configuration
+theme:
+  name: null
+  custom_dir: 'mkdocs-material/material'
+  language: 'en'
+  palette:
+    primary: 'red'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo:
+    icon: 'cloud'
+  feature:
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/ubelix'
