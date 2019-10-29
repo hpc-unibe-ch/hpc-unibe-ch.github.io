@@ -472,31 +472,31 @@ If you don’t want a title, use a blank string "".
 
 rST suggests the following “types”: attention, caution, danger, error, hint, important, note, tip, and warning:  
 
-!!! note ""
+!!! note "Some title"
     This is type note
 
-!!! hint ""
+!!! hint "Some title"
     This is type hint
     
-!!! tip ""
+!!! tip "Some title"
     This is type tip
 
-!!! important ""
+!!! important "Some title"
     This is type important
 
-!!! attention ""
+!!! attention "Some title"
     This is type attention
     
-!!! caution ""
+!!! caution "Some title"
     This is type caution
 
-!!! warning ""
+!!! warning "Some title"
     This is type warning
 
-!!! danger ""
+!!! danger "Some title"
     This is type danger
 
-!!! error ""
+!!! error "Some title"
     This is type error
 
 <a name="abbr"/>
