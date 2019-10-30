@@ -2,9 +2,21 @@
     background-color: #d6002b;
 }
 
-/* .md-sidebar {
-    width: 320px;
-} */
+@media only screen and (max-width:76.1875em) {
+    html .md-nav--primary .md-nav__title--site {
+        background-color: #d6002b;
+    }
+}
+@media only screen and (max-width:59.9375em) {
+    .md-nav__source {
+        background-color: #9E0723;
+    }
+}
+@media only screen and (min-width:60em) {
+    .md-search__input:hover {
+        background-color: rgba(0, 0, 0, 0.452)
+    }
+}
 
 .md-typeset img {
     padding: 8px;
@@ -58,42 +70,6 @@ article > ol li::before {
     text-align: center;
 }
 */
-/* body { counter-reset : h2; }
-h2 { counter-reset : h3; }
-h3 { counter-reset : h4; }
-h4 { counter-reset : h5; }
-h5 { counter-reset : h6; }
-
-article h2:before {
-    content : counter(h2,decimal) ". ";
-    counter-increment : h2;
-}
-
-article h3:before {
-    content : counter(h2,decimal) "." counter(h3,decimal) ". ";
-    counter-increment : h3;
-}
-
-article h4:before {
-    content : counter(h2,decimal) "." counter(h3,decimal) "." counter(h4,decimal) ". ";
-    counter-increment : h4;
-}
-
-article h5:before {
-    content : counter(h2,decimal) "." counter(h3,decimal) "." counter(h4,decimal) "." counter(h5,decimal) ". ";
-    counter-increment : h5;
-}
-
-article h6:before {
-    content : counter(h2,decimal) "." counter(h3,decimal) "." counter(h4,decimal) "." counter(h5,decimal) "." counter(h6,decimal) ". ";
-    counter-increment : h6;
-}
-
-h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before {
-    content : "";
-    counter-increment : none;
-} */
-
 
 .md-typeset dl {
     padding: 0;
