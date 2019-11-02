@@ -6,24 +6,7 @@ This page outlines all stuff available by installing the base [Python-Markdown]
 [Python-Markdown]: https://python-markdown.github.io/
 [PyMdown Extensions]: https://github.com/facelessuser/pymdown-extensions
 
-#### Table of Contents
-[Headers](#headers)  
-[Emphasis](#emphasis)  
-[Lists](#lists)  
-[Links](#links)  
-[Images](#images)  
-[Code and Syntax Highlighting](#code)  
-[Tables](#tables)  
-[Blockquotes](#blockquotes)  
-[Inline HTML](#html)  
-[Horizontal Rule](#hr)  
-[Line Breaks](#lines)  
-[YouTube Videos](#videos)  
-[Adminitions](#adminition)  
-[Abbreviations](#abbr)  
-[Definition Lists](#definition)  
-
-<a name="headers"/>
+[TOC]
 
 ## Headings
 
@@ -65,8 +48,6 @@ This page outlines all stuff available by installing the base [Python-Markdown]
 
 ###### The 6th level <small>with secondary text</small>
 
-<a name="emphasis"/>
-
 ## Emphasis
 
 ```no-highlight
@@ -86,8 +67,6 @@ Strong emphasis, aka bold, with **asterisks** or __underscores__.
 Combined emphasis with **asterisks and _underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
-
-<a name="lists"/>
 
 ## Lists
 
@@ -143,8 +122,6 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 - Or minuses
 + Or pluses
 
-<a name="links"/>
-
 ## Links
 
 There are two ways to create links.
@@ -195,8 +172,6 @@ Some text to show that the reference links can follow later.
 [1]: http://slashdot.org
 [link text itself]: http://www.reddit.com
 
-<a name="images"/>
-
 ## Images
 
 ```no-highlight
@@ -220,8 +195,6 @@ Reference-style:
 ![alt text][logo]
 
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-<a name="code"/>
 
 ## Code and Syntax Highlighting
 
@@ -251,8 +224,6 @@ No language indicated, so no syntax highlighting in Markdown Here (varies on Git
 But let's throw in a <b>tag</b>.
 ```
 
-
-<a name="tables"/>
 
 ## Tables
 
@@ -291,8 +262,6 @@ Markdown | Less | Pretty
 --- | --- | ---
 *Still* | `renders` | **nicely**
 1 | 2 | 3
-
-<a name="blockquotes"/>
 
 ## Blockquotes
 
@@ -363,13 +332,9 @@ Other content blocks within a blockquote
       vel lacinia lacus. Suspendisse rhoncus nunc non nisi iaculis ultrices.
       Donec consectetur mauris non neque imperdiet, eget volutpat libero.
 
-<a name="html"/>
-
 ## Inline HTML
 
 You can also use raw HTML in your Markdown, and it'll mostly work pretty well. 
-
-<a name="hr"/>
 
 ## Horizontal Rule
 
@@ -403,8 +368,6 @@ ___
 
 Underscores
 
-<a name="lines"/>
-
 ## Line Breaks
 
 My basic recommendation for learning how line breaks work is to experiment and discover -- hit &lt;Enter&gt; once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You'll soon learn to get what you want. "Markdown Toggle" is your friend. 
@@ -427,8 +390,6 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 This line is also begins a separate paragraph, but...  
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 
-<a name="videos"/>
-
 ## YouTube Videos
 
 They can't be added directly but you can add an image with a link to the video like this:
@@ -446,8 +407,6 @@ Or, in pure Markdown, but losing the image sizing and border:
 ```
 
 Referencing a bug by #bugID in your git commit links it to the slip. For example #1. 
-
-<a name="admonition"/>
 
 ## Admonition
 
@@ -499,8 +458,6 @@ rST suggests the following “types”: attention, caution, danger, error, hint,
 !!! error "Some title"
     This is type error
 
-<a name="abbr"/>
-
 ## Abbreviations
 
 ```
@@ -516,8 +473,6 @@ is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language  
 *[W3C]:  World Wide Web Consortium
-
-<a href="#definition" />
 
 ## Definition Lists
 
