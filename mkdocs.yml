@@ -1,4 +1,4 @@
-site_name: UBELIX Documentation
+site_name: HPC Documentation
 #theme: mkdocs
 use_directory_urls: false
 nav:
@@ -10,8 +10,8 @@ nav:
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'
 # Social links at botoom right
-repo_name: 'ubelix/ubelix_documentation'
-repo_url: 'https://github.com/ubelix/ubelix_documentation'
+repo_name: 'hpc-unibe-ch/hpc-docs'
+repo_url: 'https://github.com/hpc-unibe-ch/hpc-docs'
 edit_uri: ''
 
 # Configuration

@@ -1,4 +1,4 @@
-# UBELIX documentation
+# HPC documentation
 
 This documentation project makes use of
 

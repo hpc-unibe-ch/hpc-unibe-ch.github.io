@@ -1,4 +1,4 @@
-# Welcome to the UBELIX cluster documentation
+# Welcome to the High Performance Computing (HPC) documentation of the University of Bern
 
 ## Introduction
 
