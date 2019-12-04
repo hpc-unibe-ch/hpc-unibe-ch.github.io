@@ -3,8 +3,7 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - Home: index.md
-  - User Guide:
-    - Overview: user-guide/index.md
+  - Overview: overview.md
   - Contributing: contributing.md
 
 # Copyright footer
