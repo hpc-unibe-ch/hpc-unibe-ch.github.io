@@ -4,6 +4,13 @@ use_directory_urls: false
 nav:
   - Home: index.md
   - Overview: overview.md
+  - Code of Conduct: code-of-conduct.md
+  - User Guide:
+    - Getting Started: user-guide/getting-started.md
+    - File Transfer: user-guide/file-transfer.md
+    - Job Management with Slurm:
+      - Job Submission: user-guide/job-management/job-submission.md
+    - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
 # Copyright footer
@@ -22,6 +29,7 @@ extra_css:
 
 # See https://python-markdown.github.io/extensions/ and
 # See https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions#Bundles
+#     https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
   - abbr
   - def_list
@@ -33,6 +41,7 @@ markdown_extensions:
   - sane_lists
   - smarty
   - toc
+  - pymdownx.superfences
 
 
 extra:
