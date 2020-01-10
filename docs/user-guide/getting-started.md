@@ -22,7 +22,7 @@ To connect to the cluster, you must log in to the submit host from inside the un
 
 ```bash
 ssh <username>@submit.unibe.ch
-# the following is equvalent
+# the following is equivalent
 ssh -l <username> submit.unibe.ch
 ```
 
