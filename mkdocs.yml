@@ -10,6 +10,7 @@ nav:
     - File Transfer: user-guide/file-transfer.md
     - Job Management with Slurm:
       - Job Submission: user-guide/job-management/job-submission.md
+      - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 

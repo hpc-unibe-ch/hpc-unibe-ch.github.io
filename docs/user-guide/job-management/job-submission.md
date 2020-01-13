@@ -402,7 +402,7 @@ For parallel jobs (shared memory, MPI, hybrid) requesting less cores than proces
 
 
 Related pages:
-:    [Deleting Jobs](deleting-jpbs.html)
+:    [Deleting Jobs](deleting-jobs.html)
 :    [Job Submission](job-submission.html)
-:    Monitoring Jobs
+:    [Monitoring Jobs](monitoring-jobs.html)
 
