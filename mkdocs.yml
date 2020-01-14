@@ -12,6 +12,7 @@ nav:
       - Job Submission: user-guide/job-management/job-submission.md
       - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
       - Deleting Jobs: user-guide/job-management/deleting-jobs.md
+      - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
