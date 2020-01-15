@@ -20,6 +20,7 @@ nav:
     - Software:
       - Pre-Installed Software: user-guide/software/pre-installed-software.md
       - Installing Custom Software: user-guide/software/installing-custom-software.md
+      - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
