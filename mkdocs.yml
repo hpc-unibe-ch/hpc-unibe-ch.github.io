@@ -19,6 +19,7 @@ nav:
       - Checkpointing: user-guide/job-management/checkpointing.md
     - Software:
       - Pre-Installed Software: user-guide/software/pre-installed-software.md
+      - Installing Custom Software: user-guide/software/installing-custom-software.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
