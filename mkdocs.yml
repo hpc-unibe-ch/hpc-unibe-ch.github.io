@@ -13,6 +13,7 @@ nav:
       - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
       - Deleting Jobs: user-guide/job-management/deleting-jobs.md
       - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
+      - GPUs: user-guide/job-management/gpus.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
