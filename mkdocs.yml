@@ -14,6 +14,9 @@ nav:
       - Deleting Jobs: user-guide/job-management/deleting-jobs.md
       - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
       - GPUs: user-guide/job-management/gpus.md
+      - Interactive Jobs: user-guide/job-management/interactive-jobs.md
+      - Investigating a Job Failure: user-guide/job-management/investigating-job-failure.md
+      - Checkpointing: user-guide/job-management/checkpointing.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
