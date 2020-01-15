@@ -17,6 +17,8 @@ nav:
       - Interactive Jobs: user-guide/job-management/interactive-jobs.md
       - Investigating a Job Failure: user-guide/job-management/investigating-job-failure.md
       - Checkpointing: user-guide/job-management/checkpointing.md
+    - Software:
+      - Pre-Installed Software: user-guide/software/pre-installed-software.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
