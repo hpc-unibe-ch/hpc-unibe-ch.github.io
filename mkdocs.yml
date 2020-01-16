@@ -22,6 +22,8 @@ nav:
       - Installing Custom Software: user-guide/software/installing-custom-software.md
       - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
       - Matlab: user-guide/software/matlab.md
+      - Python: user-guide/software/python.md
+      - R: user-guide/software/r.md
     - File System Quota: user-guide/file-system-quota.md
   - Contributing: contributing.md
 
