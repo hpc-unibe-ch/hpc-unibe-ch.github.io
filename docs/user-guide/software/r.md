@@ -195,4 +195,92 @@ sbatch Rbatch.sh
 
 ## Advanced Topics
 
+### Parallel R
 
+By default, R will not make use of multiple cores available on compute nodes to parallelize computations. Parallel processing functionality is provided by add-on packages. Consider the following contrived example to get you started. To follow the example, you need the following packages installed, and the corresponding libraries loaded:
+
+```Bash
+> library(doParallel)
+> library(foreach)
+```
+
+The foreach package provides a looping construct for executing R statements repeatedly, either sequentially (similar to a for loop) or in parallel. While the binary operator %do% is used for executing the statements sequentially, the %dopar% operator is used to execute code in parallel using the currently registered backend. The getDoParWorkers() function returns the number of execution workers (cores) available in the currently registered doPar backend, by default this corresponds to one worker:
+
+```Bash
+> getDoParWorkers()
+[1] 1
+```
+
+Hence, the following R code will execute on a single core (even with the %dopar% operator):
+
+```Bash
+> start.time <- Sys.time()
+> foreach(i=4:1, .combine='c', .inorder=FALSE) %dopar% {
++ Sys.sleep(3*i)
++ i
++ }
+end.time <- Sys.time()
+exec.time <- end.time - start.time
+[1] 4 3 2 1
+```
+
+Let's measure the runtime of the sequentiall execution:
+
+```Bash
+> start.time <- Sys.time(); foreach(i=4:1, .combine='c', .inorder=TRUE) %dopar% { Sys.sleep(3*i); i }; end.time <- Sys.time(); exec.time <- end.time - start.time; exec.time
+[1] 4 3 2 1
+Time difference of 30.04088 secs
+```
+
+Now, we will register a parallel backend to allow the %dopar% operator to execute in parallel. The doParallel package provides a parallel backend for the %dopar% operator. Let's find out the number of cores available on the current node
+
+```Bash
+> detectCores()
+[1] 24
+```
+
+To register the doPar backend call the function registerDoParallel(). With no arguments provided, the number of cores assigned to the backend matches the value of _options("cores")_, or if not set, to half of the cores detected by the parallel package. 
+
+```Bash
+ registerDoParallel()
+> getDoParWorkers()
+[1] 12
+```
+
+To assign 4 cores to the parallel backend:
+
+```Bash
+> registerDoParallel(cores=4)
+> getDoParWorkers()
+[1] 4
+```
+
+!!! types caution "Request the correct number of slots"
+    Because it is crucial to request the correct number of slots for a parallel job, we propose to set the number of cores for the doPar backend to the number of slots allocated to your job:
+    `registerDoParallel(cores=Sys.getenv("SLURM_CPUS_PER_TASK"))`
+
+Now, run the example again:
+
+```Bash
+> foreach(i=4:1, .combine='c', .inorder=FALSE) %dopar% {
++ Sys.sleep(3*i)
++ i
++ }
+[1] 4 3 2 1
+```
+
+Well, the output is basically the same (the results are combined in the same order!). Let's again measure the runtime of the parallel execution on 4 cores:
+
+!!! types caution "The binary operator %do% willl always execute a foreach-loop sequentially even if registerDoParallel was called before! To correctly run a foreach in parallel, two conditions must be met:"
+    * registerDoParallel() must be called with a certain number of cores
+    * The %dopar% operator must be used in the foreach-loop to have it run in parallel!
+
+### Installing DESeq2 from Bioconductor packages
+
+DESeq2[^1)] installed from Bioconductor[^2)] has many dependencies. Two odd facts are hindering a succesful build of DESeq2 in first place:
+
+* data.table is needed by Hmisc, which in turn is needed by DESeq2. While Hmisc is automatically installed prior to DESeq2, data.table is not and has to be installed manually first.
+
+[^1)]:[https://bioconductor.org/packages/release/bioc/html/DESeq2.html](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+
+[^2)]:[https://bioconductor.org/](https://bioconductor.org/)
