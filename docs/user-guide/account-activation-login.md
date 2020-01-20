@@ -126,7 +126,7 @@ At the password prompt enter your password:
 
 
 
-![login-putty](../images/putty-password_prompt.png "Password Promt")
+![login-putty](../images/putty-password_prompt.png "Password Prompt")
 
 !!! types note ""
     Usually there is no indication of typing when entering your password (not even asterisks or bullets). That's intended. Just enter your password and press 'enter'.
