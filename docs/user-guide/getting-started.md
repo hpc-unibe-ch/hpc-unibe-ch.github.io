@@ -4,7 +4,7 @@ This page is intended as a brief introduction into HPC and to get you up and run
 
 ## Request an Account
 
-Staff and students of the University of Bern must have their Campus Account (CA) unlocked for UBELIX. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See here for more information getting access to UBELIX.
+Staff and students of the University of Bern must have their Campus Account (CA) unlocked for UBELIX. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [here](account-activation-login.md) for more information getting access to UBELIX.
 
 ## Training Courses
 

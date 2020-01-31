@@ -33,10 +33,10 @@ Ubelix currently features three types of GPUs
 | Number of Cards    | GPU          |
 |--------------------|--------------|
 | 48                 | Nvidia Geforce GTX 1080 Ti |
-| 16                 | Nvidia Geforce RTX 2080 Ti |
-| 16                 | 16   Nvidia Tesla P100     |
+| 24                 | Nvidia Geforce RTX 2080 Ti |
+| 16                 | Nvidia Tesla P100     |
 
-You must request a GPU using the _--gres_ option:
+You must request a GPU using the `--gres` option:
 
 !!! types warning ""
     Currently you can specify only two GRES types when requesting GPU resources: gtx1080ti and teslaP100. Requesting type gtx1080ti will allocate GTX or RTX cards to your job. To request a specific Geforce card you must use the --constraint option (see below).
@@ -47,7 +47,7 @@ or
 --gres=gpu:teslaP100:<number_of_gpus>
 ```
 
-Use the --constraint option to differentiate between Geforce GTX and RTX cards:
+Use the `--constraint` option to differentiate between Geforce GTX and RTX cards:
 
 ```Bash
 To request Geforce GTX cards:
@@ -61,7 +61,7 @@ To request Geforce RTX cards:
 
 ## Job Submission
 
-Use the following options to submit a job to the 'gpu' partition using the default job QoS:
+Use the following options to submit a job to the gpu partition using the default job QoS:
 
 ```Bash
 #SBATCH --partition=gpu

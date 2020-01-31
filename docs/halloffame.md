@@ -40,7 +40,7 @@ Struchen R, Vial F, Andersson M. G. | Value of evidence from syndromic surveilla
 
 ## Posters
 
-![Poster Schwab et al, 2016](../images/hof_schwab_2016_ncsml.png "Schwab et al., Computational neuroscience: Validation and reliability of directed dynamic networks of the brain, 2016"){: style="max-width: 100%"}
+![Poster Schwab et al, 2016](images/hof_schwab_2016_ncsml.png "Schwab et al., Computational neuroscience: Validation and reliability of directed dynamic networks of the brain, 2016"){: style="max-width: 100%"}
 
 ## Newspapers
 

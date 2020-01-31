@@ -6,8 +6,8 @@ nav:
   - Overview: overview.md
   - Code of Conduct: code-of-conduct.md
   - User Guide:
-    - Account Activation and Login: user-guide/account-activation-login.md
     - Getting Started: user-guide/getting-started.md
+    - Account Activation and Login: user-guide/account-activation-login.md
     - File Transfer: user-guide/file-transfer.md
     - Job Management with Slurm:
       - Job Submission: user-guide/job-management/submission.md
