@@ -2,7 +2,7 @@
 
 ## Description
 
-This page provides information on how to delete job
+This page provides information on how to delete jobs.
 
 ## scancel
 
@@ -38,11 +38,3 @@ Delete all running jobs:
 scancel --state=R
 ```
 
-## Further Information
-
-<Put further references here>
-
-Related pages:
-:    [Deleting Jobs](deleting-jobs.html)
-:    [Job Submission](job-submission.html)
-:    [Monitoring Jobs](monitoring-jobs.html)

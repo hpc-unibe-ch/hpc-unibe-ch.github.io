@@ -196,7 +196,7 @@ The default partition is the 'all' partition. If you do not explicitly request a
 #SBATCH --partition=long
 ```
 
-See [here](../../overview.html#cluster-partitions-queues-and-their-compute-nodes)  for a list of availalble partitions.
+See [here](../../overview.md#cluster-partitions-queues-and-their-compute-nodes)  for a list of availalble partitions.
 
 
 ## Requesting an Account
@@ -399,10 +399,4 @@ Requesting too little memory will result in job abortion. Requesting too much me
 
 **It is crucial to request the correct amount of cores for your job.**  
 For parallel jobs (shared memory, MPI, hybrid) requesting less cores than processes/threads are spawned by the job will lead to potentially overbooked compute nodes. This is because your job will nevertheless spawn the required number of processes/threads (use a certain number of cores) while to the scheduler it appears that some of the utilized resources are still available, and thus the scheduler will allocate those resources to other jobs. Although under certain circumstances it might make sense to share cores among multiple processes/threads, the above reasoning should be considered as a general guideline, especially for unexperienced user.
-
-
-Related pages:
-:    [Deleting Jobs](deleting-jobs.html)
-:    [Job Submission](job-submission.html)
-:    [Monitoring Jobs](monitoring-jobs.html)
 

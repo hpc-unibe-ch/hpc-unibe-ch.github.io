@@ -17,7 +17,7 @@ You can use different protocols/programs for transferring files from/to the clus
 
 ## Secure Copy (SCP) - Mac/Linux
 Secure Copy is a program (also a protocol) that allows you to securely transfer files between local and remote hosts. SCP uses SSH for transferring data and managing authentication.
-SCP performs a plain linear copy of the specified files, while replacing already existing files with the same name. If you need more sophisticated control over your copy process, consider [Rsync](file-transfer.html#remote-sync-rsync).
+SCP performs a plain linear copy of the specified files, while replacing already existing files with the same name. If you need more sophisticated control over your copy process, consider [Rsync](file-transfer.md#remote-sync-rsync-maclinux).
 
 !!! types note "Syntax"
     scp [options] source destination
@@ -234,8 +234,4 @@ In the left field, double-click on your alias to open the connection, enter your
 Now you can move (drag and drop) files between your work station and the submit host using the two views:
 
 ![login-winscp](../images/winscp-open_connection.png "Open connection")  
-
-Realted pages: 
-:     [File System Quota](file-system-quota.html)
-
 

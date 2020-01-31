@@ -10,7 +10,7 @@ nav:
     - Getting Started: user-guide/getting-started.md
     - File Transfer: user-guide/file-transfer.md
     - Job Management with Slurm:
-      - Job Submission: user-guide/job-management/job-submission.md
+      - Job Submission: user-guide/job-management/submission.md
       - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
       - Deleting Jobs: user-guide/job-management/deleting-jobs.md
       - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
@@ -29,7 +29,8 @@ nav:
       - Singularity: user-guide/software/singularity.md
     - File System Quota: user-guide/file-system-quota.md
     - FAQ: user-guide/faq.md
-  - Contributing: contributing.md
+#  - Contributing: contributing.md
+  - Hall of Fame: halloffame.md
 
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'

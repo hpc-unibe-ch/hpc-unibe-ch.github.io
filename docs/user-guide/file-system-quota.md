@@ -52,10 +52,3 @@ gpfs       GRP               1         15         16          0     none |  2232
 !!! types info ""
     Make sure to clean up your home directory before requesting additional storage space
 
- You can request an increase of the block- and/or file quota by writing to [hpc-support@id.unibe.ch](mailto:hpc-support@id.unibe.ch)
-
- Related pages:
-:     [File Transfer from/to UBELIX](file-transfer.html)
-
-
-

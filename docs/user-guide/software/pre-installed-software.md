@@ -2,7 +2,7 @@
 
 ## Description
 
-This page contains a list of pre-installed software that is available for all UBELIX users. If you want to install custom software yourself, take a look [here](installing-custom-software.html). If you think that some missing software could be of general interest for the UBELIX community, you can ask us to install the software system wide. Since maintaining software is a lot of work, we will select carefully which software we will install globally.
+This page contains a list of pre-installed software that is available for all UBELIX users. If you want to install custom software yourself, take a look [here](installing-custom-software.md). If you think that some missing software could be of general interest for the UBELIX community, you can ask us to install the software system wide. Since maintaining software is a lot of work, we will select carefully which software we will install globally.
 
 ## Environment Modules
 
@@ -193,8 +193,3 @@ $ module rm OpenMPI/3.1.3-GCC-8.2.0-2.31.1
 $ module purge
 ```
 
-**_Realted pages:_**
-
-* [Installing Custom Software](installing-custom-software.html)
-* [Pre-Installed Software](pre-installed-software.html)
-* [R](r.html)

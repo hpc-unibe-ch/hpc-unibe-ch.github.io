@@ -2,7 +2,7 @@
 
 ## Description
 
-UBELIX comes with a plethora of software pre-installed. You can find a list of already available software [here](pre-installed-software.html). If needed, every user can install custom software within his home directory. You cannot use the packet management utility yum for this, since this command requires root privileges to install software system wide. Instead you have to compile and install the software yourself. If you think that some missing software could be of general interest for the UBELIX community, you can ask us to install the software system wide. Since maintaining software is a lot of work, we will select carefully which software we will install globally.
+UBELIX comes with a plethora of software pre-installed. You can find a list of already available software [here](pre-installed-software.md). If needed, every user can install custom software within his home directory. You cannot use the packet management utility yum for this, since this command requires root privileges to install software system wide. Instead you have to compile and install the software yourself. If you think that some missing software could be of general interest for the UBELIX community, you can ask us to install the software system wide. Since maintaining software is a lot of work, we will select carefully which software we will install globally.
 
 
 ## Compile and Install Custom Software
@@ -22,10 +22,4 @@ $ make clean
 ## Further Information
 
 GNU make documentation (advanced): [http://www.gnu.org/software/make/manual/make.html](http://www.gnu.org/software/make/manual/make.html)
-
-**_Realted pages:_**
-
-* [Installing Custom Software](installing-custom-software.html)
-* [Pre-Installed Software](pre-installed-software.html)
-* [R](r.html)
 

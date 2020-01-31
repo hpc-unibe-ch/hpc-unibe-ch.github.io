@@ -178,7 +178,3 @@ Common options
                               running jobs will be displayed.
 ```
 
-Related pages:
-:    [Deleting Jobs](deleting-jobs.html)
-:    [Job Submission](job-submission.html)
-:    [Monitoring Jobs](monitoring-jobs.html)

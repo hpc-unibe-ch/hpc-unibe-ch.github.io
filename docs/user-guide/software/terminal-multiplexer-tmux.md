@@ -41,6 +41,3 @@ $ tumb attach -t first_session
 
 A tmux primer: [https://danielmiessler.com/study/tmux](https://danielmiessler.com/study/tmux/)
 
-**_Realted pages:_**
-
-* [Installing Custom Software](installing-custom-software.html)

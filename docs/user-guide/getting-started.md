@@ -94,7 +94,7 @@ Finally, it's time for your first job. To do some work on the cluster, you requi
  
     # Put your code below this line
 
-The first line makes sure that the file is executed using the bash shell. The remaining lines are option flags used by the `sbatch` command. The page [Jobs Submission](job-management/job-submission.md) outlines the most important options of `sbatch`.
+The first line makes sure that the file is executed using the bash shell. The remaining lines are option flags used by the `sbatch` command. The page [Jobs Submission](job-management/submission.md) outlines the most important options of `sbatch`.
 
 Now, let's write a simple "hello, world"-task:
 
