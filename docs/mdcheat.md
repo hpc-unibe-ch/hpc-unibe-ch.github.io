@@ -224,6 +224,40 @@ No language indicated, so no syntax highlighting in Markdown Here (varies on Git
 But let's throw in a <b>tag</b>.
 ```
 
+Even tabbed code example for different language are possible:
+
+```Bash tab=
+#!/bin/bash
+STR="Hello World!"
+echo $STR
+```
+
+```C tab=
+#include
+
+int main(void) {
+  printf("hello, world\n");
+}
+```
+
+```C++ tab=
+#include <iostream>
+
+int main() {
+  std::cout << "Hello, world!\n";
+  return 0;
+}
+```
+
+```C# tab=
+using System;
+
+class Program {
+  static void Main(string[] args) {
+    Console.WriteLine("Hello, world!");
+  }
+}
+```
 
 ## Tables
 

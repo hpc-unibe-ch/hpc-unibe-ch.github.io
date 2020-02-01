@@ -10,7 +10,7 @@ Currently, the UBELIX cluster runs about 330 compute nodes featuring almost
 to all University personnel for their scientific work. The cluster can also be
 used by students within a scope of a thesis or a course.
 
-If your campus account is not yet activated for UBELIX, the [User Guide](user-guide/index.md)
+If your campus account is not yet activated for UBELIX, the [Getting Started Guide](user-guide/getting-started.md)
 might be a good place to get you started.
 
 UBELIX features a plethora of software and applications, which is outlined on
