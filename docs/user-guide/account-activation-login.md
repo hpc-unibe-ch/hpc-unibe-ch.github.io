@@ -15,7 +15,6 @@ To request the activation of your Campus Account, please send an email to [hpc@i
 
 Students must additionally provide:
 
-* Students must additionally provide:
 * the name of the institute (e.g. Mathematical Institute)
 * if available, the name of the research group (e.g. Numerical Analysis)
 
@@ -39,8 +38,7 @@ The official channel for informing the UBELIX community about upcoming events (e
 !!! types note "Before proceeding make sure that:"
     * you have your Campus Account activated for UBELIX (see above)
     * you have a working SSH client
-    * you are operating on a Linux/Mac environment. If you are running Microsoft Windows you can use PuTTY, but we strongly encourage you to familiarize with a Unix-based operating system, if necessary by installing a flavor of Linux using virtualization software (e.g VirtualBox)
-
+    * you are operating on a Linux/Mac environment. If you are running Microsoft Windows you can use PuTTY, MobaXterm, or the Linux subsystem. Alternatively, a flavor of Linux can be installed on Microsoft Windows using virtualization software (e.g VirtualBox). We strongly encourage you to familiarize with a Unix-based operating system. 
 
 !!! types caution ""
     Log in to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
@@ -52,6 +50,8 @@ Run the following commands in a terminal. Open an SSH connection to the submit h
 
 ```Bash
 $ ssh <username>@submit.unibe.ch
+OR
+$ ssh -l <username> submit.unibe.ch
 ```
 At the password prompt enter your Campus Account password:
 
@@ -228,7 +228,7 @@ Host <alias>
     IdentityFile ~/.ssh/id_rsa_ubelix
 ```
 
-Now, login to UBELIX and append your public key (content of id_rsa.pub) to the file ~/.ssh/authorized_keys. This step can also be done by simply issuing ssh-copy-id -i ~/.ssh/id_rsa_ubelix.pub <alias>. If everything was correct, you will now be able to login without providing you Campus Account password upon your next login attempt. However, if you have secured your key with a passphrase, you will get prompted for your passphrase instead. You can use ssh-agent to securely save your passphrase, so you do not have to re-enter it all the time.
+Now, log in to UBELIX and append your public key (content of id_rsa.pub) to the file ~/.ssh/authorized_keys. This step can also be done by simply issuing ssh-copy-id -i ~/.ssh/id_rsa_ubelix.pub <alias>. If everything was correct, you will now be able to login without providing you Campus Account password upon your next login attempt. However, if you have secured your key with a passphrase, you will get prompted for your passphrase instead. You can use ssh-agent to securely save your passphrase, so you do not have to re-enter it all the time.
 
 **Adding your Key to SSH-Agent**  
 The behavior of ssh-agent depends on the flavor and version of your operating system. On OS X Leopard or later your keys can be saved in the system's keychain. Most Linux installations will automatically start ssh-agent when you log in.
