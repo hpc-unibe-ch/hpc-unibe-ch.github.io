@@ -98,3 +98,23 @@ Therewith the Notebook and its containing tasks are performed on a compute node,
 import socket
 print(socket.gethostname())
 ```
+
+# Kernels
+
+The following JupyterLab kernel are installed:
+* Python3
+* R
+
+## R
+
+verify that the module *IRkernel* is loaded
+
+```
+module load IRkernel
+```
+
+## Packages
+
+There are a long list of default packages provided by Anaconda3 (list all using `!pip list`) and R (list using `installed.packages(.Library)`, note the list is shortened). 
+
+Furthermore, you can install additional packages in Python using `pip install --user` or in R using `install.packages("sampling")`. 
