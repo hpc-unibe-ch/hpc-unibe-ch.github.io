@@ -2,7 +2,7 @@
 
 ## Description
 
-Some useful information on using Jupyter Lab.  
+Some useful information on using Jupyter Lab on UBELIX compute nodes.  
 
 ## Overview
 
