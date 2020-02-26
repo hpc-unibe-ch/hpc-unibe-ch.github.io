@@ -4,6 +4,10 @@
 
 Some useful information on using Jupyter Lab on UBELIX compute nodes.  
 
+> **IMPORTANT:** in the following we show how to start the server on a compute node. 
+> Please keep in mind that these resources will be dedicated for you, thus and idle session will waste resources. 
+> **Please quit your session as soon as you don't use it anymore**, even for a lunch break. Your notebook will maintain all you input/output.
+
 ## Overview
 
 On UBELIX we provide Jupyter Lab for working with Jupyter Notebooks. 
@@ -100,6 +104,8 @@ Therewith the Notebook and its containing tasks are performed on a compute node,
 import socket
 print(socket.gethostname())
 ```
+
+> IMPORTANT: Please remember to stop your Jupyter Lab server and therewith your slurm job, when you do not need it anymore. Thus, the resource get available to other users again. 
 
 > Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
