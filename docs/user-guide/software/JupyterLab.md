@@ -102,6 +102,7 @@ print(socket.gethostname())
 # Kernels
 
 The following JupyterLab kernel are installed:
+
 * Python3
 * R
 
