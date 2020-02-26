@@ -31,7 +31,9 @@ The port needs to be specified while establishing the connection to UBELIX and w
 
 ## Setup SSH with port forwarding 
 
-First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal or using the MobaXterm GUI.
+First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
+
+> Note: MobaXterm has an internal terminal which acts like a linux terminal and can be configured as described in the Standard Terminal Setup. Therewith, the SSH command line approach above can be used.
 
 ## SSH with port forwarding
 
@@ -81,9 +83,9 @@ Where 5 cores are requested for threading and a total memory of 3GB.
 Please do not use multiprocessing.cpu_count() since this is returning the total amount of cores on the node. 
 Furthermore, if you use libraries, which implement threading: align the numbers of threads (often called jobs) to the selected number of cores (otherwise the performance will be affected).
 
-OR requesting GPU resources on a node with a TeslaP100
+OR requesting GPU resources on a node with a NVIDIA graphics card:
 ```
-srun --ntasks 1 -t 60 --partition=gpu --gres=gpu:teslaP100:1 jupyter-compute 15051
+srun --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1 jupyter-compute 15051
 ```
 
 ## JupyterLab in your local browser 
@@ -98,6 +100,8 @@ Therewith the Notebook and its containing tasks are performed on a compute node,
 import socket
 print(socket.gethostname())
 ```
+
+> Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
 # Kernels
 
