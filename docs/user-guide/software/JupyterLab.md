@@ -24,7 +24,7 @@ On this page we describe:
 * Kernels
 * Packages
 
-# Launch JupyterLab
+## Launch JupyterLab
 
 Since JupyterLab is a web based application, a port needs to be forwarded to your local machine, where your browser can connect to. 
 This port numbers need to be between 2000 and 65000 and need to be unique on the present machine. 
@@ -33,13 +33,13 @@ The default port for JupyterLab is 8888, but only one user can use this at a tim
 To avoid the need for modifying the following procedure again and again, we suggest to (once) select a unique number (between 2000 and 65000). And then following commands can be hopefully reused without modification.  
 The port needs to be specified while establishing the connection to UBELIX and while launching JupyterLab. In the following we use the port number 15051 (**please select another number**).
 
-## Setup SSH with port forwarding 
+### Setup SSH with port forwarding 
 
 First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
 
 > Note: MobaXterm has an internal terminal which acts like a linux terminal and can be configured as described in the Standard Terminal Setup. Therewith, the SSH command line approach above can be used.
 
-## SSH with port forwarding
+### SSH with port forwarding
 
 The ```ssh``` command need to be called with following arguments:
 
@@ -48,7 +48,7 @@ ssh -L 15051:localhost:15051 submit.unibe.ch
 ```
 If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX.
 
-## Launch the JupyterLab server 
+### Launch the JupyterLab server 
 
 On UBELIX, the required *Anaconda3* module needs to be loaded. If you want to use additional kernels (R) you need to load additional modules, e.g. IRkernel (for R kernels):
 
@@ -92,7 +92,7 @@ OR requesting GPU resources on a node with a NVIDIA graphics card:
 srun --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1 jupyter-compute 15051
 ```
 
-## JupyterLab in your local browser 
+### JupyterLab in your local browser 
 
 Finally, you need to open your local web browser and copy and paste the URL specified by the JupyterLab server into the address bar. After initializing Jupyter Lab you should see a page similar to:
 
@@ -109,14 +109,14 @@ print(socket.gethostname())
 
 > Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
-# Kernels
+## Kernels
 
 The following JupyterLab kernel are installed:
 
 * Python3
 * R
 
-## R
+### R
 
 verify that the module *IRkernel* is loaded
 
