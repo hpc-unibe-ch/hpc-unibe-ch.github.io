@@ -59,10 +59,13 @@ To use these package any user who has access to the space (e.g. project collabor
 
 ```Bash
 #SBATCH 
+export CUSTOM_REPO_PROJECT_ID=id_test    # only necessary for CustomRepo/project
 module load CustomRepo/project
 module load RELION/3.0_beta.2018.08.02
 #srun <executable>
 ```
+
+> Note: If you only have one project you can define the `$CUSTOM_REPO_PROJECT_ID` in your `~/.bashrc` to have it permanently defined.
 
 ## Manually compiling
 With Linux, you typically compile, link, and install a program like this:
