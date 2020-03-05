@@ -3,7 +3,7 @@
 ## Description
 
 UBELIX comes with a plethora of software pre-installed. 
-You can find a list of already available software using the command `module avail` or see the list [here](pre-installed-software.md). 
+You can find a list of already available software using the command `module avail`. The module environment is described [here](pre-installed-software.md). 
 If needed, every user can install custom software within his space, which is described in the following using Easybuild or the manual approach..
 
 > Note: You cannot use the packet management utility yum for this, since this command requires root privileges to install software system wide. 
