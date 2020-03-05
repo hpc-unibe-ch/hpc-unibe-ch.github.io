@@ -33,7 +33,7 @@ By loading the following module you can build and software packages in the follo
 |`CustomRepo/project`| `/storage/research/<projectID>/share` | project based, with collaborators |
 |`CustomRepo/institute`| `/home/ubelix/<instituteID>/share` | all institute members |
 
-> Note: The project module requires an environment variable `PROJECT_ID` to be set to the project ID.
+> Note: The project module requires an environment variable `CUSTOM_REPO_PROJECT_ID` to be set to the project ID.
 
 The prepared setup will handle installation directories for EasyBuild (for software package and module file), and provides easy access later on, for you and you collaborators.
 
@@ -44,7 +44,7 @@ As an example the package Relion can be build in group space `/storage/research/
 
 ```Bash
 # setup the environment
-export PROJECT_ID=id_test    # only necessary for CustomRepo/project
+export CUSTOM_REPO_PROJECT_ID=id_test    # only necessary for CustomRepo/project
 module load EasyBuild
 module load CustomRepo/project
 
