@@ -39,8 +39,10 @@ The prepared setup will handle installation directories for EasyBuild (for softw
 
 Furthermore, we provide an easybuils wrapper (called `eb-install-all`) to build for all available CPU architectures. Therewith you have always the correct version available. The `CustomRepo` module also takes care to use the correct version when launching on the compute node later on. 
 Additionally, we provide another wrapper (`eb-install-generic`) which installs architecture independent packages like python scripts into a separate location. This location is also available using the `CustomRepo` module.
+The synatax is: `eb_install_{all,generic} [options] [easybuild options] <easyconfig>.eb`
+You can provide additional slurm arguments to both wrappers, e.g. `--slurm_args='--account=xyz --time=00:10:00'` and if necessary, you can specify specific architectures to build on, e.g. `--arch='broadwell' if you only need the broadwell version. After this options, easybuild arguments can be provided like `--robot` (please use slurm arguments first). 
 
-As an example the package Relion can be build in group space `/storage/research/id_test/share` using:
+As an **example** the package Relion can be **build in group space** `/storage/research/id_test/share` using:
 
 ```Bash
 # setup the environment
@@ -51,11 +53,11 @@ module load CustomRepo/project
 # get the easyconfig; can aslo be downloaded differntly; can be addapted e.g. for a different version number
 wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/4.1.x/easybuild/easyconfigs/r/RELION/RELION-3.0_beta.2018.08.02-intel-2018a.eb
 # installation for all different CPU architectures
-eb-install-all --robot RELION-3.0_beta.2018.08.02-intel-2018a.eb
+eb-install-all --slurm_args='--time=00:10:00 --account=id_test' --robot RELION-3.0_beta.2018.08.02-intel-2018a.eb
 ```
 > Note: The `--robot` option advice EasyBuild to additionally install all required depencencies, if related easyconfigs can be found on the system.
 
-To use these package any user who has access to the space (e.g. project collaborators) can use in their batch scripts:
+To **use** these package **any user** who has access to the space (e.g. project collaborators) can use in their batch scripts:
 
 ```Bash
 #SBATCH 
