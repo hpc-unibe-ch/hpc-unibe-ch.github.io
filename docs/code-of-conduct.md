@@ -34,7 +34,7 @@ while others help to reduce the amount of support time needed to allocate.
 
 ## General Communication with the Cluster Administrators
   
-  * Use the support email address [grid-support@id.unibe.ch](mailto:grid-support@id.unibe.ch) for question regarding
+  * Use the support email address [hpc@id.unibe.ch](mailto:hpc@id.unibe.ch) for question regarding
   UBELIX. Do not use the personal email address of a cluster administrator. This
   is important because it keeps all administrators informed about the ongoing 
   problem-solving process, and if one administrator is on vacation, another
