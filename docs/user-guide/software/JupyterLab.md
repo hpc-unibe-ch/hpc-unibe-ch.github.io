@@ -57,12 +57,12 @@ module load Anaconda3
 ```
 
 A script is provided, taking care of enabling the port forwarding to the compute node and launching JupyterLab. 
-As an example a session with 60 min on 1 core can be launched using:
+As an example a session with 45 min on 2 core can be launched using:
 
 ```
-srun --ntasks 1 -t 60  jupyter-compute 15051  # please change port number
+jupyter-compute 15051 --ntasks 2 --time=00:45:00  # please change port number
 ```
-
+This tool will lauch the server on a compute node, and establish the port forwarding.
 After general output, JupyterLab prints a URL with a unique key and the network port number where the web-server is listening, this should look similar to:
 
 ```
@@ -81,7 +81,7 @@ The last line needs to be copied in your local browser.
 More resources can be requested, e.g. by using:
 
 ```
-srun --ntasks 1 -t 60 --cpus-per-task 5 --mem 512MB jupyter-compute 15051 
+jupyter-compute 15051 --ntasks 1 -t 60 --cpus-per-task 5 --mem 512MB
 ```
 Where 5 cores are requested for threading and a total memory of 3GB. 
 Please do not use multiprocessing.cpu_count() since this is returning the total amount of cores on the node. 
@@ -89,7 +89,7 @@ Furthermore, if you use libraries, which implement threading: align the numbers 
 
 OR requesting GPU resources on a node with a NVIDIA graphics card:
 ```
-srun --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1 jupyter-compute 15051
+jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
 ```
 
 ### JupyterLab in your local browser 
