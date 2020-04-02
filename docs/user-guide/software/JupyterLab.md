@@ -92,6 +92,8 @@ OR requesting GPU resources on a node with a NVIDIA graphics card:
 jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
 ```
 
+> **Note:** This tool can only be used in the *all* and *gpu* partition. 
+
 ### JupyterLab in your local browser 
 
 Finally, you need to open your local web browser and copy and paste the URL specified by the JupyterLab server into the address bar. After initializing Jupyter Lab you should see a page similar to:
