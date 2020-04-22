@@ -66,26 +66,14 @@ Password:
 After log in successfully you will see the welcome message and the command prompt:
 
 ```Bash
-Last login: Tue Dec  8 14:28:58 2015 from foo.unibe.ch
-###################################################################
-#                      Welcome on UBELIX!                         #
-#               Manual: http://www.ubelix.unibe.ch/               #
-#                                                                 #
-#     News and important information will be distributed          #
-#       exclusively over the following mailing list:              #
-#   http://www.lists.unibe.ch/mailman/listinfo/hpc-users/         #
-#                                                                 #
-#    You are connected to a system managed by the IT services     #
-#              departement of the University of Bern.             #
-#                   Login attempts are recorded!                  #
-#    Disconnect IMMEDIATELY if you are not an authorized user!    #
-###################################################################
-CentOS 6.7.x86_64
+Last login: Tue Apr 21 16:17:26 2020
+
+CentOS 7.7.1908.x86_64
+
 FQDN:      submit01.ubelix.unibe.ch (10.1.129.21)
 Processor: 24x Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz
-Kernel:    2.6.32-573.8.1.el6.x86_64
-Memory:    62.89 GB
--bash-4.1$
+Kernel:    3.10.0-1062.9.1.el7.x86_64
+Memory:    62.73 GiB
 ```
 
 Congratulations, you just logged in to the cluster! You can immediately start using UBELIX.

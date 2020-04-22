@@ -13,10 +13,6 @@ This page describes the job submission process with Slurm.
 !!! types caution ""
     For backfilling performance and hence to maximize job throughput it is crucial to submit array jobs (collection of similar jobs) instead of submitting the same job repeatedly.
 
-!!! types note ""
-    We provide a partition containing EL6 nodes called *el6legacy* until December 2018. This partition should only be used as a last resort. You should migrate your code to EL7 as quickly as possible. If you submit jobs to the *el6legacy* partition use the SLURM option **--export=NONE** (#SBATCH --export=NONE) to not propagate any environment variables to the launched application.
-
-
 ## Resource Allocation
 
 Every job submission starts with a resources allocation (nodes, cores, memory). An allocation is valid for a specific amount of time, and can be created using the salloc, sbatch or srun commands. Whereas salloc and sbatch only create resource allocations, srun launches parallel tasks within such a resource allocation, or implicitly creates an allocation if not started within one. **The usual procedure is to combine resource requests and task execution (job steps) in a single batch script (job script) and then submit the script using the sbatch command.**
@@ -77,7 +73,7 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 |--workdir    | Set the current working directory. All relative paths used in the job script are relative to this directory | |The directory from where the sbatch command was executed|
 |--output     | Redirect standard output. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
 |--error      | Redirect standard error. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
-|--partition  | **The "all" partition is the default partition. A different partition must be requested with the --partition option!** | --partition=long <br> --partition=el6legacy | Default partition: all |
+|--partition  | **The "all" partition is the default partition. A different partition must be requested with the --partition option!** | --partition=long <br> --partition=debug | Default partition: all |
 |--dependency | Defer the start of this job until the specified dependencies have been satisfied. See _man sbatch_ for a description of all valid dependency types | --dependency=afterany:11908 | |
 |--hold       | Submit job in hold state. Job is not allowed to run until explicitly released | | |
 |--immediate  | Only submit the job if all requested resources are immediately available | | |
