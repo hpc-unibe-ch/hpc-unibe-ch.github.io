@@ -44,7 +44,7 @@ First, the port forwarding needs to be enabled between your local machine and UB
 The ```ssh``` command need to be called with following arguments:
 
 ```
-ssh -L 15051:localhost:15051 submit.unibe.ch
+ssh -Y -L 15051:localhost:15051 submit.unibe.ch
 ```
 If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX.
 
