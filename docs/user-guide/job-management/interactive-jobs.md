@@ -52,15 +52,15 @@ knode02
 !!! types danger ""
     DO NOT reuse an existing SSH key for this purpose, i.e. do not copy an existing private key from your local machine to UBELIX.
 
-With all the requirements in place you can now submit a job and export an X11 display on the allocated compute node, e.g:
+With all the requirements in place you can now submit an interactive job and export an X11 display on the allocated compute node, e.g:
 
 ```Bash
-srun -n1 --pty --x11 xterm
+srun -n 1 --pty --x11 xterm
 ```
 
-With all the requirements in place you can now submit a job and export an X11 display on the allocated compute node, e.g:
-
+You can also use X11 forwarding with non interactive jobs adding the option 
 ```Bash
-srun -n1 --pty --x11 xterm
+#SBATCH --x11
 ```
+in your job script and using again `srun --x11` to launch your application. 
 
