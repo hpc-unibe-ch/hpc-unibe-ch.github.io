@@ -5,6 +5,8 @@ nav:
   - Home: index.md
   - Overview: overview.md
   - Code of Conduct: code-of-conduct.md
+  - HPC Projects:
+    - Overview: hpc-projects/overview.md
   - User Guide:
     - Getting Started: user-guide/getting-started.md
     - Account Activation and Login: user-guide/account-activation-login.md
