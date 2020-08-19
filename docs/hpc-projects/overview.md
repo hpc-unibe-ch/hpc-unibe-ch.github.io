@@ -48,11 +48,15 @@ Every project has **two lists of members**:
 The workspace is meant to host **all custom software and data** for the group related scope, e.g. for a research group. 
 
 A project can be applied for the following disk space sizes free of charge:
+
 - **1 TB**, default size
 - 5 TB for groups and
 - 10 TB for data intensive projects with justification
 
 - Additional space can be purchased for **50CHF per TB per year** 
+
+Projects by default are located under `/storage/projects`. 
+On special request and additional charges projects can ask for an independent fileset for elevated security requirements which also can enable backup on separated tapes.
 
 All projects are only accessible by the members of the above described user lists. Snapshots and backups provide possibility to recover accidentally modified or deleted data.
 
@@ -61,12 +65,17 @@ A project has a default live time of one year. A notification will be send befor
 [//]: # (TODO provide link to the ServicePortal)
 
 Responsible for a HPC project is a research group leader, who needs to apply for the project. Members could be research group members or any other combination of UniBE campus accounts. Project management responsibilities can be delegated to a person defined in the project application form, this includes:
+
 - adding new members to primary or secondary group
 - storage extension
 - project live time extension
 
 ### SCRATCH: 
-Every project will have an access to a short-term huge capacity space with high-speed access. This is meant as temporary working directory. The data live time will be restricted to an order of month. No data recovery mechanisms are implemented on SCRATCH.
+Every project will have an access to a short-term, huge capacity space (50TB, 5M files) with high-speed access. On special request this limits can be increased.
+SCRATCH is meant as a temporary working directory and is located under `/storage/scratch`. 
+Files older than 60 days are meant to be deleted automatically. 
+No data recovery mechanisms are implemented on SCRATCH.
+In case of reaching a of 60% occupancy of whole SCRATCH, short term actions are required, removing data even younger data, after notification of users. 
 
 [//]: # (TODO what is the data live time)
 
