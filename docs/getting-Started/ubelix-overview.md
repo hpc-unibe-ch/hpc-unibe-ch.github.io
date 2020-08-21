@@ -8,7 +8,7 @@ UBELIX (University of Bern Linux Cluster) is a HPC cluster that currently consis
 
 ## High-level system overview
 
-![Sysstem Overview Diagram](images/system_overview.jpg "System Overview Diagram")
+![System Overview Diagram](../images/system_overview.jpg "System Overview Diagram")
 
 ### Login Server AKA Submit Server
 

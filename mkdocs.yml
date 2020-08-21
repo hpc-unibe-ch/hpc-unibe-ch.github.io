@@ -3,42 +3,52 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - Getting Started:
-    - UniBE HPC system Ubelix: overview.md
     - Code of Conduct: code-of-conduct.md
-    - HPC Projects: hpc-projects/overview.md
-    - Account Activation and Login: user-guide/account-activation-login.md
-  - Scientific Computing:
-    - Pre-Installed Software: user-guide/software/pre-installed-software.md
-    - Installing Custom Software: user-guide/software/installing-custom-software.md
-    - Supported Applications:
-      - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
-      - Matlab: user-guide/software/matlab.md
-      - Python: user-guide/software/python.md
-      - JupyterLab: user-guide/software/JupyterLab.md
-      - R: user-guide/software/r.md
-      - Relion: user-guide/software/relion.md
-      - Singularity: user-guide/software/singularity.md
-  - Storage:
-    - File System Quota: user-guide/file-system-quota.md
-  - General:
-    - FAQ: user-guide/faq.md
-    - Hall of Fame: halloffame.md
-
-
-  - Home: index.md
-  - User Guide:
-    - Getting Started: user-guide/getting-started.md
-    - File Transfer: user-guide/file-transfer.md
-    - Job Management with Slurm:
-      - Job Submission: user-guide/job-management/submission.md
-      - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
-      - Deleting Jobs: user-guide/job-management/deleting-jobs.md
-      - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
-      - GPUs: user-guide/job-management/gpus.md
-      - Interactive Jobs: user-guide/job-management/interactive-jobs.md
-      - Investigating a Job Failure: user-guide/job-management/investigating-job-failure.md
-      - Checkpointing: user-guide/job-management/checkpointing.md
-#  - Contributing: contributing.md
+    - UniBE HPC system Ubelix: getting-Started/ubelix-overview.md
+    - Accounts and Workspaces: getting-Started/account-workspaces.md
+      #      - Activating your campus account:
+      #      - creating a HPC workspace:
+      #      - join an existing HPC workspace:
+      #      - workspace extension:
+    - Accessing the HPCs: getting-Started/login-ssh.md
+      #      - software for connecting to the HPCs:
+      #      - Port Forwarding:
+    - First Steps:
+      - Moving files to and from the HPCs: file-system/file-transfer.md
+      - Submitting your first job: slurm/submission.md
+      #      - Parallel execution:
+      - Monitoring Jobs: slurm/monitoring-jobs.md
+      - Deleting Jobs: slurm/deleting-jobs.md
+      - Array Jobs with Slurm: slurm/array-jobs.md
+      - GPUs: slurm/gpus.md
+      - Interactive Jobs: slurm/interactive-jobs.md
+      - Investigating a Job Failure: slurm/investigating-job-failure.md
+      - Checkpointing: slurm/checkpointing.md
+      #
+      #  - Scientific Computing:
+      #    - HPC software environment:
+      #    - Pre-Installed Software: user-guide/software/pre-installed-software.md
+      #    - Installing Custom Software: user-guide/software/installing-custom-software.md
+      #    - Supported Applications:
+      #      - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
+      #      - Matlab: user-guide/software/matlab.md
+      #      - Python: user-guide/software/python.md
+      #      - JupyterLab: user-guide/software/JupyterLab.md
+      #      - R: user-guide/software/r.md
+      #      - Relion: user-guide/software/relion.md
+      #      - Singularity: user-guide/software/singularity.md
+      #  - Storage:
+      #    - File System Quota: user-guide/file-system-quota.md
+      #  - General:
+      #    - FAQ: user-guide/faq.md
+      #    - Hall of Fame: halloffame.md
+      #
+      #
+      #  - Home: index.md
+      #  - User Guide:
+      #    - Getting Started: user-guide/getting-started.md
+      #    - File Transfer: user-guide/file-transfer.md
+      #    - Job Management with Slurm:
 
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'
