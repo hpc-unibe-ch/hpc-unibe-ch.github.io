@@ -25,23 +25,24 @@ nav:
       - Investigating a Job Failure: slurm/investigating-job-failure.md
       - Checkpointing: slurm/checkpointing.md
       #
-      #  - Scientific Computing:
-      #    - HPC software environment:
-      #    - Pre-Installed Software: user-guide/software/pre-installed-software.md
-      #    - Installing Custom Software: user-guide/software/installing-custom-software.md
-      #    - Supported Applications:
-      #      - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
-      #      - Matlab: user-guide/software/matlab.md
-      #      - Python: user-guide/software/python.md
-      #      - JupyterLab: user-guide/software/JupyterLab.md
-      #      - R: user-guide/software/r.md
-      #      - Relion: user-guide/software/relion.md
-      #      - Singularity: user-guide/software/singularity.md
-      #  - Storage:
-      #    - File System Quota: user-guide/file-system-quota.md
-      #  - General:
-      #    - FAQ: user-guide/faq.md
-      #    - Hall of Fame: halloffame.md
+  - Scientific Computing:
+    - HPC software environment: software/environment.md
+    - Pre-Installed Software: software/pre-installed-software.md
+    - Installing Custom Software: software/installing-custom-software.md
+    - Supported Applications:
+      - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+      - Matlab: software/matlab.md
+      - Python: software/python.md
+      - JupyterLab: software/JupyterLab.md
+      - R: software/r.md
+      - Relion: software/relion.md
+      - Singularity: software/singularity.md
+  - Storage:
+    - Overview: file-system/filesystem-overview.md
+    - File System Quota: user-guide/file-system-quota.md
+  - General:
+    - FAQ: general/faq.md
+  - Hall of Fame: halloffame.md
       #
       #
       #  - Home: index.md
