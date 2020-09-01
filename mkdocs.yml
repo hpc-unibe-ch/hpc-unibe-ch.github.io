@@ -2,10 +2,12 @@ site_name: HPC Documentation
 #theme: mkdocs
 use_directory_urls: false
 nav:
+  - Quick Start: quick-start.md
   - Getting Started:
     - Code of Conduct: code-of-conduct.md
-    - UniBE HPC system Ubelix: getting-Started/ubelix-overview.md
-    - Accounts and Workspaces: getting-Started/account-workspaces.md
+    - UniBE HPC system "UBELIX": getting-Started/ubelix-overview.md
+    - Accounts and Activation: getting-Started/account.md
+    - Workspaces: getting-Started/workspaces.md
       #      - Activating your campus account:
       #      - creating a HPC workspace:
       #      - join an existing HPC workspace:
@@ -13,19 +15,18 @@ nav:
     - Accessing the HPCs: getting-Started/login-ssh.md
       #      - software for connecting to the HPCs:
       #      - Port Forwarding:
-    - First Steps:
-      - Moving files to and from the HPCs: file-system/file-transfer.md
-      - Submitting your first job: slurm/submission.md
-      #      - Parallel execution:
-      - Monitoring Jobs: slurm/monitoring-jobs.md
-      - Deleting Jobs: slurm/deleting-jobs.md
-      - Array Jobs with Slurm: slurm/array-jobs.md
-      - GPUs: slurm/gpus.md
-      - Interactive Jobs: slurm/interactive-jobs.md
-      - Investigating a Job Failure: slurm/investigating-job-failure.md
-      - Checkpointing: slurm/checkpointing.md
-      #
-  - Scientific Computing:
+  - Job handling:
+    - Submitting your first job: slurm/submission.md
+    #      - Parallel execution:
+    - Monitoring Jobs: slurm/monitoring-jobs.md
+    - Deleting Jobs: slurm/deleting-jobs.md
+    - Array Jobs with Slurm: slurm/array-jobs.md
+    - GPUs: slurm/gpus.md
+    - Interactive Jobs: slurm/interactive-jobs.md
+    - Investigating a Job Failure: slurm/investigating-job-failure.md
+    - Checkpointing: slurm/checkpointing.md
+    #
+  - Software: 
     - HPC software environment: software/environment.md
     - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
@@ -39,8 +40,10 @@ nav:
       - Singularity: software/singularity.md
   - Storage:
     - Overview: file-system/filesystem-overview.md
-    - File System Quota: user-guide/file-system-quota.md
+    - File System Quota: file-system/file-system-quota.md
+    - Moving files to and from the HPCs: file-system/file-transfer.md
   - General:
+    - Code of Conduct: code-of-conduct.md
     - FAQ: general/faq.md
   - Hall of Fame: halloffame.md
       #

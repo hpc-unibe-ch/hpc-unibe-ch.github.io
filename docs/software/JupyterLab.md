@@ -98,7 +98,7 @@ jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
 
 Finally, you need to open your local web browser and copy and paste the URL specified by the JupyterLab server into the address bar. After initializing Jupyter Lab you should see a page similar to:
 
-![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
+![jupyterLab-example](../images/jupyterLab-example.png "JupyterLab Example")
 
 Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
 

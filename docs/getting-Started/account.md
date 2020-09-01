@@ -1,8 +1,10 @@
 # Account and Workspaces 
 
 ## Description
-UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. The cluster is meant to be used for research related to the University of Bern. 
+UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. 
+The cluster is meant to be used for research related to the University of Bern. 
 **Before you can use this service your CA need to be activated for UBELIX**. 
+**Please respect the [Code of Conduct](../code-of-conduct.md)**
 On this page you will find useful information regarding the activation of your CA and the login procedure. 
 Furthermore, the provided service structure is outlined.
 
@@ -39,3 +41,4 @@ The official channel for informing the UBELIX community about upcoming events (e
 By default every registered user gets access to UBELIX, a personal HOME directoy and temporary SCRATCH space. 
 
 [comment]: <> (TODO keep on describing here)
+[comment]: <> (TODO Slurm default account and selecting workspace accounts)
