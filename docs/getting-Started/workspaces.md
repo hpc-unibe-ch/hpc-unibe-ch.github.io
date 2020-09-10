@@ -63,7 +63,7 @@ Every Workspace has **two lists of members**:
 
 Thus, the **PROJECT** and **SCRATCH** space are accessible to all members of the both user lists above, but only the members of the primary list can write or modify data. 
 
-Members can be any user with an Campus Account. To be able to access the HPCs, the accounts need to be activated, see [Accounts and Activation](getting-Started/account.md).
+Members can be any user with an Campus Account. To be able to access the HPCs, the accounts need to be activated, see [Accounts and Activation](account.md).
 
 ## Workspace management
 
@@ -90,7 +90,7 @@ The project can be modified by the project owner (research group lead) and the s
 [//]: # (TODO provide link to the ServicePortal)
 
 ### Life time
-A workspace has a default live time of one year. A notification will be send before the project expires. A yearly extension can be requested in the service portal. 
+We want to prevent dead, hanging workspaces. Therefore, a workspace has a default live time of one year. A notification will be send before the project expires. An extension can be requested any time for another year with few clicks in the service portal:
 
 [//]: # (TODO provide link to the ServicePortal)
 

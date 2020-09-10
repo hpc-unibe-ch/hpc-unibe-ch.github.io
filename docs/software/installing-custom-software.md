@@ -3,18 +3,20 @@
 ## Description
 
 UBELIX comes with a plethora of software pre-installed. 
-You can find a list of already available software using the command `module avail`. The module environment is described [here](pre-installed-software.md). 
-If needed, every user can install custom software within his space, which is described in the following using Easybuild or the manual approach..
+And there are tools provided installing additional packages in the user/group space. The present **module** tool provide easy access even for multiple versions of the same Software package. 
+The module environment is described at [HPC software environment](pre-installed-software.md). 
+And the command `module avail` lists the available packages. 
+In this section the procedure of installing custom software in your user group space is provided using Easybuild or a manual approach.
 
 > Note: You cannot use the packet management utility yum for this, since this command requires root privileges to install software system wide. 
 > Instead you have to compile and install the software yourself. 
 
-If you think that some missing software could be of general interest for the UBELIX community, you can ask us to install the software system wide. 
-Since maintaining software is a lot of work, we will select carefully which software we will install globally.
+If you think that some missing software could be of general interest for a wide community on our machines, you can ask us to install the software system wide. 
 
 ### Modules
-On UBELIX we use the Lmod module system which allows users to enable software package by package. 
-The module system allows us to have multiple versions of the same software product installed as well as preventing unwanted influences between software packages.
+The Lmod module system allows to enable software package by package. Thus, influences between different packages can e minimized. It also allows to have multiple versions of the same software product installed side by side. 
+See [HPC software environment](software/environment.md).
+We beside software packages we provide modules for configuring for your workspaces and providing an setup for architecture dependent builds.
 
 ### EasyBuild
 When possible we use [EasyBuild](https://easybuild.readthedocs.io/en/latest/) to provision software packages. 
@@ -68,6 +70,8 @@ module load RELION/3.0_beta.2018.08.02
 ```
 
 > Note: If you only have one project you can define the `$CUSTOM_REPO_PROJECT_ID` in your `~/.bashrc` to have it permanently defined.
+
+[//]: # discuss architecture dependent builds
 
 ## Manually compiling
 With Linux, you typically compile, link, and install a program like this:

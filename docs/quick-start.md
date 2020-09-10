@@ -1,23 +1,20 @@
 # Quick Start
 
-This section is intended as a brief introduction into HPC, especially to the present setup on UBELIX. 
+This section is intended as a brief introduction into HPC, especially to the present system UBELIX. 
 This page is an summary, a hands-on introduction, which targets primarily users without prior knowledge in high-performance computing. However, basic Linux knowledge is a prerequisite. If you are not familiar with basic Linux commands, there are many beginner tutorials available online. 
 After reading this page you will have composed and submitted your first job successfully to the cluster. Links are provided throughout the text to point you to more in-depth information on the topic.
 
-## Request an Account
-
-Staff and students of the University of Bern must have their Campus Account (CA) unlocked for UBELIX. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
-
-## Workspace 
-[//]: # (TODO brief Workspace intro)
-
-## Training Courses
-
-[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details oultined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
-
 ## Cluster Rules
 
-As everywhere where people come together, rules are needed on Ubelix to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a shared system where your behavior could have a negative impact on the workflow of other users. Please find the list of the most important rules and guidelines in our [code of conduct](code-of-conduct.md).
+Before we start: as everywhere where people come together, a common sense is needed to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a shared system where your behavior could have a negative impact on the workflow of other users. Please find the list of the most important guidelines in our [code of conduct](code-of-conduct.md).
+
+## Request an Account
+
+Before you can start working on the HPCs, staff and students of the University of Bern must have their Campus Account (CA) unlocked for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
+
+## Workspace 
+
+Every user has a small Home directory for private data and configuration. And access to temporary SCRATCH space. We assume that every user is collaborating, e.g. with someone from his/her group. Permanent Workspaces provide a secure space where access permissions can be well defined by the user. See [Workspaces](getting-Started/workspaces.md)
 
 ## Login
 
@@ -41,10 +38,6 @@ pwd
 /home/ubelix/test/testuser
 ```
 
-## Workspace 
-[//]: <> (TODO brief workspace summary here)
-
-
 ## Copy Data
 
 At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file from your local computer running a UNIX-like OS use the secure copy command (scp) on your local workstation:
@@ -63,7 +56,7 @@ More information about file transfer can be found on the page [File Transfer to/
 
 ## Use Software
 
-On Ubelix you can make use of already preinstalled software or you can compile and install your own software. We use a module system to manage different versions of the same software. This allows you to focus on getting your work done instead of compilling software. E.g. to get a list of all provided versions of the GNU Compiler Collection (GCC), use:
+On our HPCs you can make use of already preinstalled software or you can compile and install your own software. We use a module system to manage software packages, even different versions of the same software. This allows you to focus on getting your work done instead of compilling software. E.g. to get a list of all provided versions of the GNU Compiler Collection (GCC), use:
 
 ```bash
 module avail
@@ -88,7 +81,9 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 !!! attention "Scope"
     The loaded version of a software is only active in your current session. If you open a new shell you are again using the default version of the software. Therefore, it is crucial to load the required modules from within your job script.
 
-The [Scientific Computing](software/environment.md) section is dedicated to this topic. More information can be found there.
+With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
+
+The [Software](software/environment.md) section is dedicated to this topic. More information can be found there.
 
 ## Hello World
 
@@ -198,4 +193,8 @@ squeue --user=testuser
 Further information on on job monitoring you find on page [Monitoring Jobs](slurm/monitoring-jobs.md). Furthermore, in the *Job handling* scetion you find additional information about [Investigating a Job Failure](slurm/investigating-job-failure.md) and [Checkpointing](slurm/checkpointing.md). 
 
 
+
+## Training Courses
+
+[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details oultined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
 
