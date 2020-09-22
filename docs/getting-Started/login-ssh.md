@@ -199,3 +199,13 @@ Add the key to ssh-agent:
 ```Bash
 $ ssh-add ~/.ssh/id_rsa_ubelix
 ```
+
+**Passwordless ssh within the HPCs**
+if you want to ssh passwordless to other nodes within the HPCs or want to use services like JupyterLab, you need to generate and register a new key within the HPC. Thus run the following commands on e.g. the submit node:
+```Bash
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 640 .ssh/authorized_keys
+```
+
+
