@@ -26,12 +26,13 @@ nav:
     - Investigating a Job Failure: slurm/investigating-job-failure.md
     - Checkpointing: slurm/checkpointing.md
     #
-  - Software: 
+  - Software:
     - HPC software environment: software/environment.md
     - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
     - Supported Applications:
       - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+      - CUDA: software/CUDA.md
       - Matlab: software/matlab.md
       - Python: software/python.md
       - JupyterLab: software/JupyterLab.md

@@ -8,6 +8,24 @@ This page contains a list of pre-installed software that is available for all UB
 
 To make certain versions of a software available, the user must first "load/add" the corresponding modulefile. Environment modules allow to maintain different versions of the same software by altering the shell environment variables (e.g. $PATH) accordingly. Each modulefile contains all information needed to configure the shell for a specific software.
 
+## Toolchains
+
+If you need to compile any application, we suggest to load a toolchain. There are various toolchains available, to list some:
+
+Toolchain | packacges
+--------- | ---------
+GCC       | GCC compiler
+gompi     | GCC, OpenMPI
+gompic    | GCC, OpenMPI, CUDA
+foss      | GCC, OpenMPI, OpenBLAS, FFTW, ScaLAPACK
+fosscuda  | GCC, OpenMPI, OpenBLAS, FFTW, ScaLAPACK, CUDA
+intel     | Intel compiler, (GCC required), MKL, Intel MPI
+iompi     | Intel compiler, OpenMPI
+iomkl     | Intel compiler, OpenMPI, MKL
+
+> Note: this list is not meant to be complete but to give an idea of high level toolchains. 
+>       you can list all available toolchains using `module avail` and see the containing packages using, e.g. `module show gompic`
+
 ### List all Available Modulefiles
 
 ```Bash
