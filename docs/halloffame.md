@@ -37,6 +37,8 @@ Mueller S, Fix M et al. | Simultaneous optimization of photons and electrons for
 Ninova S, Aschauer U | Surface structure and anion order of the oynitride LaTiO<sub><small><span>2</span></small></sub>N | Journal of Materials Chemistry A | [Details](http://dx.doi.org/10.7892/boris.101207) | [Direct Link](http://dx.doi.org/10.1039/C7TA01873H)
 Ninova S, Aschauer U et al. | <p class="pageTitle" style="text-align: left;">LaTiOxNy Thin Film Model Systems for Photocatalytic Water Splitting: Physicochemical Evolution of the Solid-Liquid Interface and the Role of the Crystallographic Orientation</p> | Advanced functional materials | [Details](http://dx.doi.org/10.7892/boris.99013) | [Direct Link](http://dx.doi.org/10.1002/adfm.201605690)
 Struchen R, Vial F, Andersson M. G. | Value of evidence from syndromic surveillance with cumulative evidence from multiple data stream with delayed reporting | Scientific Reports | <br> | [Direct Link](https://www.nature.com/articles/s41598-017-01259-5)
+__2013__
+Leichtle A, Fiedler G et al. | Pancreatic carcinoma, pancreatitis, and healthy controls: metabolite models in a three-class diagnostic dilemma | Metabolomics, Springer | [Details](http://dx.doi.org/10.7892/boris.16556) | [Direct Link](https://dx.doi.org/10.1007%2Fs11306-012-0476-7)
 
 ## Posters
 
