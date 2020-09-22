@@ -33,6 +33,19 @@ The default port for JupyterLab is 8888, but only one user can use this at a tim
 To avoid the need for modifying the following procedure again and again, we suggest to (once) select a unique number (between 2000 and 65000). And then following commands can be hopefully reused without modification.  
 The port needs to be specified while establishing the connection to UBELIX and while launching JupyterLab. In the following we use the port number 15051 (**please select another number**).
 
+### Passwordless SSH within the HPCs
+
+Please verify that you created and registered a SSH key within UBLEIX. If you can perform the following command without entering your password your are ready to go:
+```Bash
+ssh localhost
+```
+otherwise create and register a new key on a login node.
+```Bash
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 640 .ssh/authorized_keys
+```
+
 ### Setup SSH with port forwarding 
 
 First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
