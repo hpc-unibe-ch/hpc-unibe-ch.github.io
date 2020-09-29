@@ -54,12 +54,12 @@ First, the port forwarding needs to be enabled between your local machine and UB
 
 ### SSH with port forwarding
 
-The ```ssh``` command need to be called with following arguments:
+The ```ssh``` command from your **local machine** to the ubelix login node  needs to be called with following arguments:
 
 ```
-ssh -Y -L 15051:localhost:15051 submit.unibe.ch
+ssh -Y -L 15051:localhost:15051 <username>@submit.unibe.ch
 ```
-If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX.
+If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX. Where `<username>` is you campus account name.
 
 ### Launch the JupyterLab server 
 
@@ -70,10 +70,9 @@ module load Anaconda3
 ```
 
 A script is provided, taking care of enabling the port forwarding to the compute node and launching JupyterLab. 
-As an example a session with 45 min on 2 core can be launched using:
 
 ```
-jupyter-compute 15051 --ntasks 2 --time=00:45:00  # please change port number
+jupyter-compute 15051 --time=00:45:00  # please change port number
 ```
 This tool will lauch the server on a compute node, and establish the port forwarding.
 After general output, JupyterLab prints a URL with a unique key and the network port number where the web-server is listening, this should look similar to:
@@ -89,8 +88,9 @@ After general output, JupyterLab prints a URL with a unique key and the network 
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 
-The last line needs to be copied in your local browser.
+The last line (with the 127.0.0.0 adress and the token) needs to be copied in your local browser (see below). 
 
+### JupyterLab with multiple CPU cores
 More resources can be requested, e.g. by using:
 
 ```
