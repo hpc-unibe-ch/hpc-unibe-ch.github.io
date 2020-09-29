@@ -88,7 +88,22 @@ After general output, JupyterLab prints a URL with a unique key and the network 
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 
-The last line (with the 127.0.0.0 adress and the token) needs to be copied in your local browser (see below). 
+### JupyterLab in your local browser
+The full address on the last line (starting with the 127.0.0.1) including the token needs to be copied into your browser on your local machine. 
+After initializing Jupyter Lab you should see a page similar to:
+
+![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
+
+Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
+
+```
+import socket
+print(socket.gethostname())
+```
+
+> IMPORTANT: Please remember to stop your Jupyter Lab server and therewith your slurm job, when you do not need it anymore. Thus, the resource get available to other users again. 
+
+> Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
 ### JupyterLab with multiple CPU cores
 More resources can be requested, e.g. by using:
@@ -106,23 +121,6 @@ jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
 ```
 
 > **Note:** This tool can only be used in the *all* and *gpu* partition. 
-
-### JupyterLab in your local browser 
-
-Finally, you need to open your local web browser and copy and paste the URL specified by the JupyterLab server into the address bar. After initializing Jupyter Lab you should see a page similar to:
-
-![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
-
-Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
-
-```
-import socket
-print(socket.gethostname())
-```
-
-> IMPORTANT: Please remember to stop your Jupyter Lab server and therewith your slurm job, when you do not need it anymore. Thus, the resource get available to other users again. 
-
-> Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
 ## Kernels
 
