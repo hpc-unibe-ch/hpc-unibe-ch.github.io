@@ -14,7 +14,7 @@ Before you can start working on the HPCs, staff and students of the University o
 
 ## Workspace 
 
-Every user has a small Home directory for private data and configuration. And access to temporary SCRATCH space. We assume that every user is collaborating, e.g. with someone from his/her group. Permanent Workspaces provide a secure space where access permissions can be well defined by the user. See [Workspaces](getting-Started/workspaces.md)
+Every user gets a small Home directory for private data and configuration. And access to temporary SCRATCH space. We assume that every user is collaborating, e.g. with someone from his/her group. Permanent Workspaces provide a secure space where access permissions can be well defined by the user. See [Workspaces](getting-Started/workspaces.md)
 
 ## Login
 

@@ -15,6 +15,7 @@ nav:
     - Accessing the HPCs: getting-Started/login-ssh.md
       #      - software for connecting to the HPCs:
       #      - Port Forwarding:
+    - SSH customization: getting-Started/ssh-customization.md
   - Job handling:
     - Submitting your first job: slurm/submission.md
     #      - Parallel execution:

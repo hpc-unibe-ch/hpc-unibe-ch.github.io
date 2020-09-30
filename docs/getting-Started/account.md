@@ -38,7 +38,7 @@ The official channel for informing the UBELIX community about upcoming events (e
 [https://listserv.unibe.ch/mailman/listinfo/hpc-users](https://listserv.unibe.ch/mailman/listinfo/hpc-users) 
 
 ## HPC workspace
-By default every registered user gets access to UBELIX, a personal HOME directoy and temporary SCRATCH space. 
+By default every registered user gets access to UBELIX, a personal HOME directoy and a SCRATCH space for temporary data. 
 
 [comment]: <> (TODO keep on describing here)
 [comment]: <> (TODO Slurm default account and selecting workspace accounts)

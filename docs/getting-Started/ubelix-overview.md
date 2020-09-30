@@ -10,7 +10,7 @@ UBELIX (University of Bern Linux Cluster) is a HPC cluster that currently consis
 
 ![System Overview Diagram](../images/system_overview.jpg "System Overview Diagram")
 
-### Login Server AKA Submit Server
+### Login Server aka. Submit Server
 
 A user connects to the cluster by logging into the submit host via SSH. You can use this host for medium-performance tasks, e.g. to edit files or to compile programs. Resource-demanding/high-performance tasks must be submitted to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks could fit as a job on a compute instead of running it on the submit host
 
@@ -41,10 +41,11 @@ Partitions group nodes into logical sets. Nodes in a partition share the same li
 
 A modular, software-defined storage system (IBM Spectrum Scale) provides a shared, parallel file system that is mounted on all frontend servers and compute nodes. Ubelix also provides a limited amount of storage space on the Campus Storage. The different storage locations are summarized in the table below. For more information about the storage infrastructure see here.
 
-| Path | Connection | Availability | Backup | Quota |
-| --- | --- | --- | --- | --- |
-| /home/ubelix/<group>/<user> | Network | global | no | yes[^home] |
-| /home/storage/<group>/<user> | Network | submit host | yes | yes[^storage] |
+[//]: # (TODO verify correct paths)
 
-[^home]: Default: 3TB/user, 15TB/group
-[^storage]: Default: 50GB/user
+| Path | Connection | Availability | Backup | default Quota |
+| --- | --- | --- | --- | --- |
+| /home/`<user>` | Network | global | yes | 3TB/user, 15TB/group |
+| /scratch/ | Network | global | no | 50TB per space | 
+| /workspace/ | Network | global | yes | 1TB single user, 5TB group |
+| /home/storage/`<group>`/`<user>` | Network | submit host | yes | 50GB/user |

@@ -2,7 +2,7 @@
 
 ## Description
 
-This section describes the usage of Workspaces. In short: a Workspace provides group shared file spaces for temporary (SCRATCH) and persitent (project) data and applications. Permissions can be managed by the Workspace owner in a primary (read/write) and a secondary (read only) group. Furthermore, SLURM accounting will be based related to these Workspace. 
+This section describes the usage of Workspaces. In short: a Workspace provides group shared file spaces for temporary (SCRATCH) and persitent (PROJECT) data and applications. Permissions can be managed by the Workspace owner in a primary (read/write) and a secondary (read only) group. Furthermore, SLURM accounting will be based related to these Workspace. 
 A Workspace can be requested using the ServicePortal request form:
 
 [//]: # (TODO provide link to the application page)
@@ -89,7 +89,7 @@ The project can be modified by the project owner (research group lead) and the s
 
 [//]: # (TODO provide link to the ServicePortal)
 
-### Life time
+### Availablity
 We want to prevent dead, hanging workspaces. Therefore, a workspace has a default live time of one year. A notification will be send before the project expires. An extension can be requested any time for another year with few clicks in the service portal:
 
 [//]: # (TODO provide link to the ServicePortal)

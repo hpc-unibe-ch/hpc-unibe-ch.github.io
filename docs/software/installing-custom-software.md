@@ -15,7 +15,7 @@ If you think that some missing software could be of general interest for a wide 
 
 ### Modules
 The Lmod module system allows to enable software package by package. Thus, influences between different packages can e minimized. It also allows to have multiple versions of the same software product installed side by side. 
-See [HPC software environment](software/environment.md).
+See [HPC software environment](environment.md).
 We beside software packages we provide modules for configuring for your workspaces and providing an setup for architecture dependent builds.
 
 ### EasyBuild
