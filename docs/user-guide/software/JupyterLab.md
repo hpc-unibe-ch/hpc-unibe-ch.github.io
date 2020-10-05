@@ -48,11 +48,8 @@ chmod 640 .ssh/authorized_keys
 
 ### Setup SSH with port forwarding 
 
-First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
+First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. This ports are numbers between 2000 and 65000, which needs to be unique on the both sides. The default port for JupyterLab is 8888, but only one user can use this at a time. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
 
-> Note: MobaXterm has an internal terminal which acts like a linux terminal and can be configured as described in the Standard Terminal Setup. Therewith, the SSH command line approach above can be used.
-
-### SSH with port forwarding
 
 The ```ssh``` command from your **local machine** to the ubelix login node  needs to be called with following arguments:
 
@@ -60,6 +57,8 @@ The ```ssh``` command from your **local machine** to the ubelix login node  need
 ssh -Y -L 15051:localhost:15051 <username>@submit.unibe.ch
 ```
 If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX. Where `<username>` is you campus account name.
+
+> Note: MobaXterm has an internal terminal which acts like a linux terminal and can be configured as described in the Standard Terminal Setup. Therewith, the SSH command line approach above can be used.
 
 ### Launch the JupyterLab server 
 
