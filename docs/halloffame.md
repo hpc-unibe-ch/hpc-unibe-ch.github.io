@@ -12,6 +12,7 @@ you will find a text recommendation acknoowledging the use of our cluster.
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2020__
+Pfister J-P, Gontier C | Identifiability of a Binomial Synapse | Front. Comput. Neurosci. | [Details](http://dx.doi.org/10.7892/boris.146762) | [Direct Link](https://doi.org/10.3389/fncom.2020.558477)
 Riou J, Althaus C | Pattern of early human-to-human transmission of Wuhan 2019 novel coronavirus (2019-nCoV), December 2019 to January 2020 | Euro Surveillance | | [Direct Link](https://doi.org/10.2807/1560-7917.ES.2020.25.4.2000058)
 __2019__
 Counotte M, Althaus C et al. | Impact of age-specific immunity on the timing and burden of the next Zika virus outbreak | PLOS NeglectedTropical Diseases | [Details](http://dx.doi.org/10.7892/boris.137920) | [Direct Link](http://dx.doi.org/10.1371/journal.pntd.0007978)
