@@ -34,6 +34,7 @@ nav:
     - Installing Custom Software: software/installing-custom-software.md
     - Supported Applications:
       - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+      - CUDA: software/CUDA.md
       - Matlab: software/matlab.md
       - Python: software/python.md
       - JupyterLab: software/JupyterLab.md

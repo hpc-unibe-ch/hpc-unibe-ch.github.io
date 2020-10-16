@@ -33,6 +33,19 @@ The default port for JupyterLab is 8888, but only one user can use this at a tim
 To avoid the need for modifying the following procedure again and again, we suggest to (once) select a unique number (between 2000 and 65000). And then following commands can be hopefully reused without modification.  
 The port needs to be specified while establishing the connection to UBELIX and while launching JupyterLab. In the following we use the port number 15051 (**please select another number**).
 
+### Passwordless SSH within the HPCs
+
+Please verify that you created and registered a SSH key within UBLEIX. If you can perform the following command without entering your password your are ready to go:
+```Bash
+ssh localhost
+```
+otherwise create and register a new key on a login node.
+```Bash
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 640 .ssh/authorized_keys
+```
+
 ### Setup SSH with port forwarding 
 
 First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
@@ -41,12 +54,12 @@ First, the port forwarding needs to be enabled between your local machine and UB
 
 ### SSH with port forwarding
 
-The ```ssh``` command need to be called with following arguments:
+The ```ssh``` command from your **local machine** to the ubelix login node  needs to be called with following arguments:
 
 ```
-ssh -Y -L 15051:localhost:15051 submit.unibe.ch
+ssh -Y -L 15051:localhost:15051 <username>@submit.unibe.ch
 ```
-If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX.
+If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX. Where `<username>` is you campus account name.
 
 ### Launch the JupyterLab server 
 
@@ -57,10 +70,9 @@ module load Anaconda3
 ```
 
 A script is provided, taking care of enabling the port forwarding to the compute node and launching JupyterLab. 
-As an example a session with 45 min on 2 core can be launched using:
 
 ```
-jupyter-compute 15051 --ntasks 2 --time=00:45:00  # please change port number
+jupyter-compute 15051 --time=00:45:00  # please change port number
 ```
 This tool will lauch the server on a compute node, and establish the port forwarding.
 After general output, JupyterLab prints a URL with a unique key and the network port number where the web-server is listening, this should look similar to:
@@ -76,8 +88,24 @@ After general output, JupyterLab prints a URL with a unique key and the network 
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 
-The last line needs to be copied in your local browser.
+### JupyterLab in your local browser
+The full address on the last line (starting with the 127.0.0.1) including the token needs to be copied into your browser on your local machine. 
+After initializing Jupyter Lab you should see a page similar to:
 
+![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
+
+Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
+
+```
+import socket
+print(socket.gethostname())
+```
+
+> IMPORTANT: Please remember to stop your Jupyter Lab server and therewith your slurm job, when you do not need it anymore. Thus, the resource get available to other users again. 
+
+> Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
+
+### JupyterLab with multiple CPU cores
 More resources can be requested, e.g. by using:
 
 ```
@@ -93,23 +121,6 @@ jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
 ```
 
 > **Note:** This tool can only be used in the *all* and *gpu* partition. 
-
-### JupyterLab in your local browser 
-
-Finally, you need to open your local web browser and copy and paste the URL specified by the JupyterLab server into the address bar. After initializing Jupyter Lab you should see a page similar to:
-
-![jupyterLab-example](../images/jupyterLab-example.png "JupyterLab Example")
-
-Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
-
-```
-import socket
-print(socket.gethostname())
-```
-
-> IMPORTANT: Please remember to stop your Jupyter Lab server and therewith your slurm job, when you do not need it anymore. Thus, the resource get available to other users again. 
-
-> Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
 ## Kernels
 
