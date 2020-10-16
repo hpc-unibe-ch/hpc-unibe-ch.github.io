@@ -11,6 +11,10 @@ With Modules software packages can be enabled or disables one by one.
 !!! types note ""
     On the HPCs we provide multiple software stacks. Packages installed by us ar build for each architecture. Furthermore, VITAL-IT provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](pre-installed-software.md#BioinformaticsSoftware).
 
+## Basic commands
+in the following you find commands for listing, loading and unloading modules. 
+Later a more advanced view is presented.
+
 ### List available Modules
 There are various ways to search for a software package. You can list all currently available packages using:
 ```Bash
@@ -26,6 +30,7 @@ Furthermore, the following command list you all the modules containg a certain s
 ```Bash
 module spider Assambler
 ```
+In the example above all modules with the substring *Assambler* will be listed, in this case the ones from the Vital-It software stack. 
 
 ### Load/Add a Modules
 
@@ -95,3 +100,14 @@ $ module help OpenMPI
 $ module show OpenMPI
 ```
 
+## Modules background
+
+### Architectural software stacks
+
+On our HPCs we use LMOD (Lua modules) to provide access to different software packages and different versions. Beside different packages and versions, we provide software stacks build for the different CPU architectures. This enables us to have the packages build e.g. with AVX2 for Broadwell CPUs, but also a version with only SSE4 for Sandy bridge CPUs. These software stacks are completely transparent to the user and will be used automatically when loading a module on the related architecture. 
+
+If you want to build your own software build for specific Hardware, we provide tools which help you, see [Installing Custom Software](installing-custom-software.md)
+
+### Scientific Software Managment
+
+Our scientific software stack, available via module files are mainly build with Easybuild. This tool helps us to install and maintian software packages and recycle existing installation procedures. There are plenty of install instructions available [Easybuild/Easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs), which can be installed also in the user space with low effort, see [Installing Custom Software](installing-custom-software.md)

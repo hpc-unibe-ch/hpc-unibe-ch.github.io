@@ -15,7 +15,7 @@ If you think that some missing software could be of general interest for a wide 
 
 ### Modules
 The Lmod module system allows to enable software package by package. Thus, influences between different packages can e minimized. It also allows to have multiple versions of the same software product installed side by side. 
-See [HPC software environment](environment.md).
+See [HPC software environment](hpc-modules.md).
 We beside software packages we provide modules for configuring for your workspaces and providing an setup for architecture dependent builds.
 
 ### EasyBuild
@@ -26,16 +26,9 @@ These Easyconfigs are publicly available [here](https://github.com/easybuilders/
 Users mainly have two options, building the software package by performing all the steps manually (see example down below) or using the EasyBuild.
 
 ## Using EasyBuild
-For EasyBuild we provide a setup which lets you create an own software stack in private or group shared space. 
-By loading the following module you can build and software packages in the following spaces:
+For EasyBuild we provide a setup which lets you create own software stacks in your group shared workspace. 
 
-| module | software location | accessiblity |
-|--------|-------------------|--------------|
-|`CustomRepo/user`| `$HOME` | private to you |
-|`CustomRepo/project`| `/storage/research/<projectID>/share` | project based, with collaborators |
-|`CustomRepo/institute`| `/home/ubelix/<instituteID>/share` | all institute members |
 
-> Note: The project module requires an environment variable `CUSTOM_REPO_PROJECT_ID` to be set to the project ID.
 
 The prepared setup will handle installation directories for EasyBuild (for software package and module file), and provides easy access later on, for you and you collaborators.
 

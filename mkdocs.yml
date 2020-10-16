@@ -8,14 +8,15 @@ nav:
     - UniBE HPC system "UBELIX": getting-Started/ubelix-overview.md
     - Accounts and Activation: getting-Started/account.md
     - Workspaces: getting-Started/workspaces.md
-      #      - Activating your campus account:
-      #      - creating a HPC workspace:
-      #      - join an existing HPC workspace:
-      #      - workspace extension:
     - Accessing the HPCs: getting-Started/login-ssh.md
       #      - software for connecting to the HPCs:
       #      - Port Forwarding:
     - SSH customization: getting-Started/ssh-customization.md
+  - Workspaces: 
+    - Workspace management: hpc-workspaces/management.md
+    - Software environment: hpc-workspaces/environment.md
+    - Storage: hpc-workspaces/storage.md
+    - Monitoring: hpc-workspaces/monitoring.md
   - Job handling:
     - Submitting your first job: slurm/submission.md
     #      - Parallel execution:
@@ -28,7 +29,7 @@ nav:
     - Checkpointing: slurm/checkpointing.md
     #
   - Software: 
-    - HPC software environment: software/environment.md
+    - HPC software environment: software/hpc-modules.md
     - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
     - Supported Applications:

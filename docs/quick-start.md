@@ -83,7 +83,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
 
-The [Software](software/environment.md) section is dedicated to this topic. More information can be found there.
+The [Software](software/hpc-modules.md) section is dedicated to this topic. More information can be found there.
 
 ## Hello World
 
