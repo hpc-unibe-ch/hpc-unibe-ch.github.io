@@ -87,6 +87,11 @@ After general output, JupyterLab prints a URL with a unique key and the network 
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 
+!!! QOS
+    the `jupyter-compute` tool uses an special Slurm Quality of Service (QOS), which should reduce queuing times for interactive jobs. 
+    Since interactive jobs are considered to be finished within less than a working day, the walltime limit cannot exceed 8h. 
+    You can disable that qos using the option `--no-qos`, but please release the resources as soon as you are not actively working with the resources anymore.
+
 ### JupyterLab in your local browser
 The full address on the last line (starting with the 127.0.0.1) including the token needs to be copied into your browser on your local machine. 
 After initializing Jupyter Lab you should see a page similar to:
