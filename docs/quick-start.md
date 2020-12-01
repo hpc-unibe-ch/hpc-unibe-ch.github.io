@@ -12,9 +12,11 @@ Before we start: as everywhere where people come together, a common sense is nee
 
 Before you can start working on the HPCs, staff and students of the University of Bern must have their Campus Account (CA) unlocked for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
 
-## Workspace 
+## HPC Workspace 
 
-Every user gets a small Home directory for private data and configuration. And access to temporary SCRATCH space. We assume that every user is collaborating, e.g. with someone from his/her group. Permanent Workspaces provide a secure space where access permissions can be well defined by the user. See [Workspaces](getting-Started/workspaces.md)
+Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting. 
+Research group leaders need to apply for an workspace, see (Workspace Management)[hpc-workspaces/management.md]). 
+For an introduction to HPC Workspaces see (Workspace Overview)[hpc-workspaces/workspaces.md]
 
 ## Login
 
@@ -30,7 +32,7 @@ ssh -l <username> submit.unibe.ch
 [//]: <> (TODO update new HOME location and new Home setup)
 After successful login to the cluster, your will find yourself in the directory `/home/ubelix/<your_institute>/<your_campus_account>/`. This is your home directory and serves as the repository for your personal files, and configurations. 
 You can reference your home directory by `~` or `$HOME`. 
-Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. We provide no backup service for data in your home directory. It is your own responsibility to backup important data to a private location. Disk space is managed by [quotas](file-system/file-system-quota.md). By default, each user has 3TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
+Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. We provide no backup service for data in your home directory. It is your own responsibility to backup important data to a private location. Disk space is managed by [quotas](file-system/quota.md). By default, each user has 3TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
 
 You can always print the current working directory using the pwd (print working directory) command:
 ```bash

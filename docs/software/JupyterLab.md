@@ -92,7 +92,7 @@ After general output, JupyterLab prints a URL with a unique key and the network 
 The full address on the last line (starting with the 127.0.0.1) including the token needs to be copied into your browser on your local machine. 
 After initializing Jupyter Lab you should see a page similar to:
 
-![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
+![jupyterLab-example](../images/jupyterLab-example.png "JupyterLab Example")
 
 Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
 

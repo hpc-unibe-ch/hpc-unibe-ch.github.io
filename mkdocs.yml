@@ -7,18 +7,18 @@ nav:
     - Code of Conduct: code-of-conduct.md
     - UniBE HPC system "UBELIX": getting-Started/ubelix-overview.md
     - Accounts and Activation: getting-Started/account.md
-    - Workspaces: getting-Started/workspaces.md
     - Accessing the HPCs: getting-Started/login-ssh.md
       #      - software for connecting to the HPCs:
       #      - Port Forwarding:
+    - Workspaces: getting-Started/workspaces.md
     - SSH customization: getting-Started/ssh-customization.md
-  - Workspaces: 
+  - Workspaces:
+    - Overview: hpc-workspaces/workspaces.md
     - Workspace management: hpc-workspaces/management.md
     - Software environment: hpc-workspaces/environment.md
-    - Storage: hpc-workspaces/storage.md
     - Monitoring: hpc-workspaces/monitoring.md
   - Job handling:
-    - Submitting your first job: slurm/submission.md
+    - Submitting jobs: slurm/submission.md
     #      - Parallel execution:
     - Monitoring Jobs: slurm/monitoring-jobs.md
     - Deleting Jobs: slurm/deleting-jobs.md
@@ -27,11 +27,13 @@ nav:
     - Interactive Jobs: slurm/interactive-jobs.md
     - Investigating a Job Failure: slurm/investigating-job-failure.md
     - Checkpointing: slurm/checkpointing.md
+    - Fair Share: slurm/fair-share.md
     #
-  - Software: 
+  - Software:
     - HPC software environment: software/hpc-modules.md
     - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
+    - EasyBuild: software/EasyBuild.md
     - Supported Applications:
       - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
       - CUDA: software/CUDA.md
@@ -43,7 +45,7 @@ nav:
       - Singularity: software/singularity.md
   - Storage:
     - Overview: file-system/filesystem-overview.md
-    - File System Quota: file-system/file-system-quota.md
+    - File System Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
   - General:
     - Code of Conduct: code-of-conduct.md

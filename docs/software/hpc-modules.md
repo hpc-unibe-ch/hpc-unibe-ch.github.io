@@ -4,12 +4,11 @@
 ## Description
 
 On our HPCs we provide a Linux bash environment. 
-The Basic Linux commands are immediately available while more elevated software packages need to be loaded. 
-For managing the your environment and accessing software products we use the **module** tool Lmod. 
-With Modules software packages can be enabled or disables one by one. 
+Many basic Linux commands are available immediately. Other especially high level user applications and libraries need to be loaded using modules. 
+The present **Lmod module** system provides the possibility to have various packages side-by-side and even in different versions, while preventing unwanted influences. Furthermore, various software versions are build for the different CPU architectures. They are organized in different software stacks, which are loaded automatically on the related architecture. 
 
 !!! types note ""
-    On the HPCs we provide multiple software stacks. Packages installed by us ar build for each architecture. Furthermore, VITAL-IT provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](pre-installed-software.md#BioinformaticsSoftware).
+    Additionally to our software stack, VITAL-IT provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](pre-installed-software.md#BioinformaticsSoftware).
 
 ## Basic commands
 in the following you find commands for listing, loading and unloading modules. 
@@ -26,11 +25,11 @@ You can search for an packages starting with a specific string, e.g. all version
 module avail GCC
 ```
 
-Furthermore, the following command list you all the modules containg a certain substring in the name, even in other software stacks:
+Furthermore, the following command lists you all the modules containing a certain sub-string in the name, even in other software stacks, e.g.:
 ```Bash
 module spider Assambler
 ```
-In the example above all modules with the substring *Assambler* will be listed, in this case the ones from the Vital-It software stack. 
+In the example above all modules with the sub-string *Assambler* will be listed, in this case the ones from the Vital-It software stack. 
 
 ### Load/Add a Modules
 
@@ -108,6 +107,6 @@ On our HPCs we use LMOD (Lua modules) to provide access to different software pa
 
 If you want to build your own software build for specific Hardware, we provide tools which help you, see [Installing Custom Software](installing-custom-software.md)
 
-### Scientific Software Managment
+### Scientific Software Management
 
-Our scientific software stack, available via module files are mainly build with Easybuild. This tool helps us to install and maintian software packages and recycle existing installation procedures. There are plenty of install instructions available [Easybuild/Easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs), which can be installed also in the user space with low effort, see [Installing Custom Software](installing-custom-software.md)
+Our scientific software stack, available via module files are mainly build with EasyBuild. This tool helps us to install and maintain software packages and recycle existing installation procedures. There are plenty of install instructions available [EasyBuild/Easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs), which can be installed also in the user space with low effort, see [Installing Custom Software](installing-custom-software.md)
