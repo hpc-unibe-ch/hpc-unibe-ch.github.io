@@ -4,7 +4,39 @@
 
 This page provides a collection of frequently asked questions.
 
+## File System Restructure
+### Is my HOME already migrated?
+You can check using the command `pwd`. 
+The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
 
+## Where can I get a Workspace?
+You can join an existing Workspace by asking the Workspace managers. These will be your research group manager (and a deputy). New Workspaces can only be created by a research group manager, see (Application)[../hpc-workspaces/management.md#application]
+
+## How much will a Workspace cost?
+Workspaces are free of charge. Every research group has 10TB disk space free of charge, which can be used in multiple Workspaces. 
+If necessary, additional storage can be purchased per Workspace, where only the acctual usage will be charged. 
+
+## What if my HOME is full?
+We consider research data to be shared sooner or later. And we aim to support and enhance collaboration and therewith group shared spaces. 
+Ask your research group manager to add you to an existing Workspace or create a new one. 
+There will be no quota increase for HOME directories. 
+
+## What if our 10TB free of charge research group quota is full?
+Your Research group manager or a registered deputy can apply for an additional quota. Only actual used quota will be charged. 
+
+## Where should I put my data?
+We distinguish the folloing types of data:
+
+| data type | suggested target |
+| :--- | :--- |
+| private configurational data, e.g. SSH keys | HOME |
+| temporary (weeks to month) application input/output data | SCRATCH |
+| persistant application input/results, meant to be shared (somewhen) | Workspace |
+| applications, meant to be shared (somewhen) | Workspace |
+
+
+
+## SLURM
 ### Why is my job still pending?
 
 !!! types note ""

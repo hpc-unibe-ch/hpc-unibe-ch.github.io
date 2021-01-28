@@ -27,27 +27,21 @@ Furthermore, these data is usually processed with a set of custom software tools
 - research group based compute resource sharing
 - in-line with other HPC centres
 
-## Storage
+## Storage Access Permissions
 **HOME** is meant to be a private space, mainly for configurational data. 
-All **project driven data** is meant to be located in a **HPC Workspace** directories:
+All **group oriented data** is meant to be located in a **HPC Workspace** directories:
 
 - `/storage/workspaces/<researchGroupID>/<workspaceID>`  for permanent storage
 - `/storage/scratch/` for temporary storage, see [File Systems](../file-system/filesystem-overview.md)
 
-All files and directories in the group shared spaces are meant to stay with default permissions: 
+All files and directories in the group shared spaces are meant to stay with default permissions, like `-rw-rw-r--`: 
 
-- read and write for owner and group
-- read only for others (necessary for secondary group)
-
-The access for secondary group members is managed using ACLs on the top level Workspace directory.
-
-For default and actual **quota** information see [File System Quota](../file-system/quota.md).
-
-All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups
-
-[//]: # (TODO daily Snapshots? daily backups?)
+- read and write for owner and primary group members
+- read only access for others. Since the Workspace directory itself is limited to primary and secondary group members using ACLs, secondary group members get read permissions. 
 
 ## Members
+The Workspace owner can define a **deputy** who gets same permissions as owner, including booking at cost. 
+
 Workspace permissions are managed with **two lists of members**:
 
 - primary users, with **read and write** access to all data in the spaces, permission to account to that Workspace
@@ -55,7 +49,23 @@ Workspace permissions are managed with **two lists of members**:
 
 Thus, the **Workspace** and **SCRATCH** space are accessible to all members of the both lists of users, but only the members of the primary list can write or modify data. 
 
-Members need to have a UniBE Campus Account.
+Members can be anyone with an active UniBE Campus Account.
+
+The Workspace owner or its deputies can manage the lists using the Service Portal 
+
+[//]: # (TODO: add SNOW link)
+
+## Backup
+All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups
+
+[//]: # (TODO daily Snapshots? daily backups?)
+
+Scratch will not be protected. 
+
+## Quota
+
+For default and actual **quota** information see [File System Quota](../file-system/quota.md).
+
 
 ## SLURM: 
 Computational work is accounted to a Workspace account. Every workspace belongs to a research group. The freely available resources are shared between research groups. 

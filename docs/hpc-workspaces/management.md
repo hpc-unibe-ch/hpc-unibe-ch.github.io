@@ -29,8 +29,10 @@ Each Workspace has two member groups:
 
 Only members of the primary group can create and modify data, belonging to the Workspace, as well as submitting jobs to the Workspace account. The member lists are defined at Workspace application time and can be modified later. 
 
+Members can be anyone with an UniBE Campus Account.
+
 ### Free Of Charge Quota
-Every **research group** has **10TB** free of charge quota within one or more workspaces. The amount used per Workspace is set at application time and can be changed later within the limitation.s 
+Every **research group** has **10TB** free of charge quota. This can be used within one or more Workspaces. The amount used per Workspace is set at application time and can be changed later within the limitation. 
 
 ### Additional Storage
 Additional storage can be purchased for 50CHF per TB per year. 
@@ -43,37 +45,36 @@ Storage is a limited and expensive resource. Abandoned, unused workspaces should
 
 ## Application
 ### Prerequisite
-This research group need to be registered first, see
+The research group need to be registered first on the Service Portal once:
 
 [//]: # (TODO provide link to the ServicePortal)
 
-If the workspace 
-
-
+Only a research group lead can order a HPC Workspaces. 
 
 ### Application Form
-A HPC Workspace can be requested by a research group lead using the ServicePortal application form:
+A HPC Workspace can (only) be requested by a research group lead using the ServicePortal application form:
 
 [//]: # (TODO provide link to the ServicePortal)
 
 The following information are required:
+- Workspace ID (max. 20 characters)
+- Workspace Name
+- Workspace Description
 - registered research group (see prerequisites)
-- Workspace abbreviation, this will be used as code in the file system and SLURM
-- Workspace name
-- Workspace description
+- Deputy (permissions for managing the Workspace) (optional)
+- Free Quota (see above)
+- additional Storage (optional): an upper limit of quota, where the actual quota will be charged. When selected this requires a valid cost center for accounting. 
+- primary group members
+- secondary group members (optional)
+member lists can be selected one by one or as a comma seperated list of Campus accounts (see "Import Bulk User" in form)
 
-## Modification
-Responsible for a HPC project is a research group leader, who needs to apply for the project. Members could be research group members or any other combination of UniBE campus accounts. Project management responsibilities can be delegated to a person defined in the project application form, this includes:
+## Workspace modifications
 
-- adding new members to primary or secondary group
-- storage extension
-- project live time extension
-
-The project can be modified by the project owner (research group lead) and the specified deputy using the form on the portal:
+After creation, owners and deputies can modify Workspace properties using the Service Portal Form:
 
 [//]: # (TODO provide link to the ServicePortal)
 
-
-
-
-
+- adding/removing members to/from primary and secondary group
+- storage extension
+- Workspace live time extension
+- Workspace closure

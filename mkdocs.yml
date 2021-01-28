@@ -2,6 +2,7 @@ site_name: HPC Documentation
 #theme: mkdocs
 use_directory_urls: false
 nav:
+  - News:File system restructure: general/file_system_restructure.md
   - Quick Start: quick-start.md
   - Getting Started:
     - Code of Conduct: code-of-conduct.md
@@ -47,9 +48,8 @@ nav:
     - Overview: file-system/filesystem-overview.md
     - File System Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
-  - General:
-    - Code of Conduct: code-of-conduct.md
-    - FAQ: general/faq.md
+  - Code of Conduct: code-of-conduct.md
+  - FAQ: general/faq.md
   - Hall of Fame: halloffame.md
       #
       #

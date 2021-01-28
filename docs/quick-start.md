@@ -6,7 +6,7 @@ After reading this page you will have composed and submitted your first job succ
 
 ## Cluster Rules
 
-Before we start: as everywhere where people come together, a common sense is needed to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a shared system where your behavior could have a negative impact on the workflow of other users. Please find the list of the most important guidelines in our [code of conduct](code-of-conduct.md).
+Before we start: as everywhere where people come together, a common sense is needed to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a shared system where your behaviour could have a negative impact on the workflow of other users. Please find the list of the most important guidelines in our [code of conduct](code-of-conduct.md).
 
 ## Request an Account
 
@@ -15,8 +15,8 @@ Before you can start working on the HPCs, staff and students of the University o
 ## HPC Workspace 
 
 Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting. 
-Research group leaders need to apply for an workspace, see (Workspace Management)[hpc-workspaces/management.md]). 
-For an introduction to HPC Workspaces see (Workspace Overview)[hpc-workspaces/workspaces.md]
+Research group leaders need to apply for an workspace, see [Workspace Management](hpc-workspaces/management.md). 
+For an introduction to HPC Workspaces see [Workspace Overview](hpc-workspaces/workspaces.md)
 
 ## Login
 
@@ -34,7 +34,7 @@ After successful login to the cluster, your will find yourself in the directory 
 You can reference your home directory by `~` or `$HOME`. 
 Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. We provide no backup service for data in your home directory. It is your own responsibility to backup important data to a private location. Disk space is managed by [quotas](file-system/quota.md). By default, each user has 3TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
 
-You can always print the current working directory using the pwd (print working directory) command:
+You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
 pwd
 /home/ubelix/test/testuser
@@ -42,13 +42,13 @@ pwd
 
 ## Copy Data
 
-At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file from your local computer running a UNIX-like OS use the secure copy command (scp) on your local workstation:
+At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file from your local computer running a UNIX-like OS use the secure copy command `scp` on your local workstation:
 
 ```bash
 scp /path/to/file <username>@submit.unibe.ch:/path/to/target_dir/
 ```
 
-To copy a file from the cluster to your local computer running a UNIX-like OS also use the secure copy command (scp) on your local workstation:
+To copy a file from the cluster to your local computer running a UNIX-like OS also use the secure copy command `scp` on your local workstation:
 
 ```bash
 scp <username>@submit.unibe.ch:/path/to/file /path/to/target_dir/
@@ -58,7 +58,7 @@ More information about file transfer can be found on the page [File Transfer to/
 
 ## Use Software
 
-On our HPCs you can make use of already preinstalled software or you can compile and install your own software. We use a module system to manage software packages, even different versions of the same software. This allows you to focus on getting your work done instead of compilling software. E.g. to get a list of all provided versions of the GNU Compiler Collection (GCC), use:
+On our HPCs you can make use of already pre-installed software or you can compile and install your own software. We use a module system to manage software packages, even different versions of the same software. This allows you to focus on getting your work done instead of compiling software. E.g. to get a list of all provided versions of the GNU Compiler Collection (GCC), use:
 
 ```bash
 module avail
@@ -89,7 +89,7 @@ The [Software](software/hpc-modules.md) section is dedicated to this topic. More
 
 ## Hello World
 
-Finally, it's time for your first job. To do some work on the cluster, you require certain ressources (e.g. CPUs and memory) and a description of the computations to be done. A job consits of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
+Finally, it's time for your first job. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
 
     #!/bin/bash
     #SBATCH --mail-user=<your_email_address>
@@ -111,7 +111,7 @@ Now, let's write a simple "hello, world"-task:
     echo "Hello, Ubelix from node $(hostname)" > hello.txt
     sleep 120
 
-In the first line we create a new directory 'my_first_job' within our home directory. The variable **`$HOME`** expands to `/home/ubelix/<your_group>/<your_username>`. In the second line we change directory to the newly created directory. In the third line we print the line "Hello, Ubelix from node <hostname_of_the_executing_node>" and redirect the output to a file named `hello.txt`. The expression **`$(hostname)`** means, run the command hostname and put its output here. In the forth line we wait (do nothing) for 120 seconds. This gives us some time to monitor our job later on. Save the content to a file named first.sh.
+In the first line we create a new directory 'my_first_job' within our home directory. The variable **`$HOME`** expands to `/home/ubelix/<your_group>/<your_username>`. In the second line we change directory to the newly created directory. In the third line we print the line "Hello, Ubelix from node <hostname_of_the_executing_node>" and redirect the output to a file named `hello.txt`. The expression **`$(hostname)`** means, run the command hostname and put its output here. In the forth line we wait (do nothing) for 120 seconds. This gives us some time to monitor our job later on. Save the content to a file named `first.sh`.
 
 The complete job script looks like this:
 
@@ -159,7 +159,7 @@ squeue --job=32490640
 
 Here you can see that the job 'job01' with job-ID 32490640 is in state RUNNING (R).
 The job is running in the 'all' partition (default partition) on fnode23 for 22 seconds.
-It is also possible that the job can not start immediately after submitting it to Slurm
+It is also possible that the job can not start immediately after submitting it to SLURM
 because the requested resources are not yet available. In this case, the output could
 look like this:
 
@@ -172,8 +172,7 @@ squeue --job=32490640
 ```
 
 Here you can see that the job is in state PENDING (PD) and a reason why the job
-is pending. In this example, the job has to wait for at least one higher priorised
-job to run. See here for a list of other reasons why a job might be pending.
+is pending. In this example, the job has to wait for at least one other job with higher priority. See here for a list of other reasons why a job might be pending.
 
 You can always list all your active (pending or running) jobs with squeue:
 
@@ -192,11 +191,11 @@ squeue --user=testuser
    32633556       all fast.sh  testuser  R    4:36:10      1 jnode08
 ```
 
-Further information on on job monitoring you find on page [Monitoring Jobs](slurm/monitoring-jobs.md). Furthermore, in the *Job handling* scetion you find additional information about [Investigating a Job Failure](slurm/investigating-job-failure.md) and [Checkpointing](slurm/checkpointing.md). 
+Further information on on job monitoring you find on page [Monitoring Jobs](slurm/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](slurm/investigating-job-failure.md) and [Check-pointing](slurm/checkpointing.md). 
 
 
 
 ## Training Courses
 
-[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details oultined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
+[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
 

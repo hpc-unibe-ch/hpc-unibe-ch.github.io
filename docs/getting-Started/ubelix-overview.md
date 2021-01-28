@@ -34,6 +34,8 @@ Partitions group nodes into logical sets. Nodes in a partition share the same li
 [^long]: Due to the limited resources and the potentially long job runtime, access to the long partition must be requested explicitly once.
 [^gpu]:  The gpu partition is closed by definition. If you need GPU resources, you have request access to this partition. Write an email to [hpc@id.unibe.ch](mailto::hpc@id.unibe.ch) to do so.
 
+[//]: # (TODO partition limits, e.g. how many cores per job, per user,...)
+
 !!! note ""
     **The all partition is the default partition if you do not specify one explicitly.**
 

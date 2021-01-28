@@ -28,6 +28,10 @@ The workspace module provides the following variables:
 | SBATCH_ACCOUNT | sets the SLURM account to the Workspace account. Thus all submitted jobs with that module are accounted to the Workspace account automatically. No need to set it in the sbatch script |
 
 ### Software stacks
-With the Workspace module we provide a easy and reprducible way to install a custom software stack in your `$Workspace/Software` directory. Since we have different hardware (CPU) architectures, we provide tools for building software specifically for them using EasyBuild. 
-Load the Workspace module as describled above and follow the [Easybuild description](../software/installing-custom-software.md#using-easybuild)
+Beside, a set of software packages we provide for our different CPU architecture, the Workspace module provides tools to install custom software stacks within your Workspace. 
+Especially with easybuild shortcuts are provided to install and use custom software stacks easily build for all architectures. 
 
+For installing packages with EasyBuild, see [Easybuild description](../software/EasyBuild.md). 
+Manual package can also be installed in the similar manner. Adding a Modulefile provides the users to load packages as used to. Please see [Installing Custom Software](../software/installing-custom-software.md). 
+
+As a result all users of the Workspace can use the software packages by loading the Workspace module and the software product module. 
