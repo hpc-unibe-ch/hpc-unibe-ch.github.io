@@ -3,6 +3,7 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - Home: index.md
+  - IMPORTANT..Home Migration: HOME_migration.md 
   - Overview: overview.md
   - Code of Conduct: code-of-conduct.md
   - User Guide:
