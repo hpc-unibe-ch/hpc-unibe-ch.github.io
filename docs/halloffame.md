@@ -13,6 +13,8 @@ Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2020__
 Riou J, Hauser A et al. | Estimation of SARS-CoV-2 mortality during the early stages of an epidemic: A modeling study in Hubei, China, and six regions in Europe | PLOS Medicine | | [Direct Link](https://doi.org/10.1371/journal.pmed.1003189)
+Ricca C, Aschauer U | Local polarization in oxygen-deficient LaMnO<sub>3</sub> induced by charge localization in the Jahn-Teller distorted structure |  Phys. Rev. Res. | [Details](http://dx.doi.org/10.1103/PhysRevResearch.2.042040) | [Direct Link](https://boris.unibe.ch/149523/) | 
+Burns E, Lippert T et al.| LaTiO<sub>2</sub>N crystallographic orientation control significantly increases visible-light induced charge extraction | J. Mat. Chem. A | [Details](http://dx.doi.org/10.1039/D0TA08117E) | [Direct Link](https://boris.unibe.ch/148602/)
 Ninova S, Aschauer U, et al. | Suitability of Cu-substituted β-Mn<sub>2</sub>V<sub>2</sub>O<sub>7</sub> and Mn-substituted β-Cu<sub>2</sub>V<sub>2</sub>O<sub>7</sub> for photocatalytic water-splitting | J. Chem Phys. 153| [Details](https://doi.org/10.1063/5.0019306) | [Direct Link](https://boris.unibe.ch/id/eprint/146818)
 Vonrüti N, Aschauer U  | Catalysis on oxidized ferroelectric surfaces—Epitaxially strained LaTiO<sub>2</sub>N and BaTiO<sub>3</sub> for photocatalytic water splitting | Chem. Mater. | [Details](https://doi.org/10.1063/1.5135751) | [Direct Link](https://boris.unibe.ch/id/eprint/138888)
 Bouri M, Aschauer U | Suitability of Different Sr<sub>2</sub>TaO<sub>3</sub>N Surface Orientations for Photocatalytic Water Oxidation | Chem. Mater| [Details](https://doi.org/10.1021/acs.chemmater.9b02294) | [Direct Link](https://boris.unibe.ch/id/eprint/139278)
