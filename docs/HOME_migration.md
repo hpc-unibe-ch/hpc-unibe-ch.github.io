@@ -40,18 +40,18 @@ HPC Workspaces consists of:
  - group based **SLURM accounting**. 
 
 Workspaces will be created by a research group manager using the Service Portal, where also quotas, members, and more can be managed. 
-Each research group will have 10TB persitant disc space free of charge. Which can be used in one or more Workspaces. Additional storage can be purchased. 
+Each research group will have 10TB persistent disc space free of charge. Which can be used in one or more Workspaces. Additional storage can be purchased. 
 More detailed information will follow soon. 
 
 !!! types note "Beta tester welcome"
-    If you are interested in becomming a Beta tester for HPC Workspaces, write a notice in a Service Portal request or an [email](mailto:hpc@id.unibe.ch) 
+    Interested in becoming a Beta tester for a HPC Workspace? Get in touch with us using a Service Portal request or drop an [email](mailto:hpc@id.unibe.ch).
 
 ### SLURM accounting
-With the introduction of Workspaces we are changing our resource sharing scheme. The free of charge resources will then be shared between research groups not institutes anymore. 
+With the introduction of Workspaces we are changing our resource sharing scheme. The free of charge resources will then be shared between research groups not institutes any more. 
 More detailed information will follow soon. 
 
 ## Quota and permission changes
-At the end of the transition the HOME directories are closed to be a private space and the quota will be set to max 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
+At the end of the transition the HOME directories are closed to be a private space and the quota will be set to max. 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
 
 
 ## Temporary File Sharing
