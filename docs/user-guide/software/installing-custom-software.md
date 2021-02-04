@@ -50,12 +50,23 @@ export CUSTOM_REPO_PROJECT_ID=id_test    # only necessary for CustomRepo/project
 module load EasyBuild
 module load CustomRepo/project
 
-# get the easyconfig; can aslo be downloaded differntly; can be addapted e.g. for a different version number
-wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/4.1.x/easybuild/easyconfigs/r/RELION/RELION-3.0_beta.2018.08.02-intel-2018a.eb
+# check for existing Easyconfigs:
+eb -D -S petsc
+== found valid index for /storage/software/generic.el7/software/EasyBuild/4.3.2/easybuild/easyconfigs, so using it...
+CFGS1=/storage/software/generic.el7/software/EasyBuild/4.3.2/easybuild/easyconfigs
+...
+ * $CFGS1/p/PETSc/PETSc-3.12.4-foss-2020a-Python-3.8.2.eb
+...
+ * $CFGS1/p/PETSc/PETSc-3.12.4-intel-2020a-Python-3.8.2.eb
+...
+# then you can choose the version you prefer, e.g. foss toolchain with GNU compiler
 # installation for all different CPU architectures
-eb-install-all --slurm_args='--time=00:10:00 --account=id_test' --robot RELION-3.0_beta.2018.08.02-intel-2018a.eb
+eb-install-all --slurm_args='--time=00:10:00' --robot PETSc-3.12.4-foss-2020a-Python-3.8.2.eb
 ```
+
 > Note: The `--robot` option advice EasyBuild to additionally install all required depencencies, if related easyconfigs can be found on the system.
+
+> If you need, you can download the easyconfigs from specified location or the internet and modify them to your needs. 
 
 To **use** these package **any user** who has access to the space (e.g. project collaborators) can use in their batch scripts:
 
