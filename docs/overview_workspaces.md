@@ -5,8 +5,8 @@ The HPC Workspaces will provide a group shared environment, including shared sto
 
 Each HPC Workspace belongs to a research group and need to be requested by the research group leader using the Service Portal. There Workspace properties, like membership, quota and duration can be controlled. 
 
-!!! types note "Beta tester welcome"
-    Interested in becoming a Beta tester for a HPC Workspace? Get in touch with us using a Service Portal request or drop an [email](mailto:hpc@id.unibe.ch).
+!!! types note "EARLY ACCESS"
+    If you are interested and want to get early access as beta-tester, please get in touch with us using the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or write an [Email](mailto:hpc@id.unibe.ch)
 
 
 ## Properties
@@ -48,3 +48,5 @@ Furthermore, HPC data is usually processed with a set of custom software tools, 
 - research group based compute resource sharing
 - in-line with other HPC centres
 
+!!! types note "EARLY ACCESS"
+    If you are interested and want to get early access as beta-tester, please get in touch with us using the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or write an [Email](mailto:hpc@id.unibe.ch)

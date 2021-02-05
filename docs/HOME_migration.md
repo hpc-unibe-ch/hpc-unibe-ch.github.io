@@ -24,9 +24,17 @@ There will be following stages:
 HOME directories will be migrated to `/storage/homefs/$USER` in our newer and larger SpectrumScale file system. In future, these home directories are meant to be private only, without any sharing. 
 As you may noticed, there will be no institute directory in the structure anymore. See subsection [Temporary File Sharing](#temporary_file_sharing).
 
-The migration will be performed one-by-one institute. Users are notified before actual migration. When migration is finished `$HOME` points to `/storage/homefs/$USER` and there will be a file `MIGRATED` in your HOME. 
+The migration will be performed one-by-one institute. Users are notified before actual migration and afterwards. When migration is finished `$HOME` points to `/storage/homefs/$USER`. 
 
 **IMPORTANT:** please also read section [Quota and permission changes](#quota_and_permission_changes) below.
+
+## Temporary space to share data
+In future HOMEs are meant to be private spaces. Data sharing will be enabled using flexible group based HPC Workspaces (see below). In the meantime time temporary institute based directories for sharing are created. To simplify later transition you already can access these temporary spaces using the same workflow you will do later:
+```
+module load institute
+cd $WORKSPACE
+```
+> Note: Later the module will need to be renamed, but the environment variable will point to your Workspace directory. Keep in mind the subdirectory structure in the sharing directories. 
 
 ## Introducing HPC Workspaces
 In a second step HPC Workspaces will be introduced, enabling collaborative work in group shared file spaces. Currently they are in Alpha testing stage. 
@@ -38,6 +46,8 @@ HPC Workspaces consists of:
  - a **primary group** with read/write access, 
  - a **secondary group** with read only access and 
  - group based **SLURM accounting**. 
+
+There will be tools for easy access the directories using `$WORKSPACE` and `$SCRATCH` variable as well as reporting quota and fair share. 
 
 Workspaces will be created by a research group manager using the Service Portal, where also quotas, members, and more can be managed. 
 Each research group will have 10TB persistent disc space free of charge. Which can be used in one or more Workspaces. Additional storage can be purchased. 
@@ -53,10 +63,5 @@ More detailed information will follow soon.
 ## Quota and permission changes
 At the end of the transition the HOME directories are closed to be a private space and the quota will be set to max. 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
 
-
-## Temporary File Sharing
-During this transition phase, data can be shared using a temporary institute share directory: `/storage/homefs/<institute>`. 
-With the upcoming Workspaces we provide access to the Workspaces using an environment variable which points to a selected Workspace. 
-
-For consistency you can already use the `$WORKSPACE` variable after loading `module load institute`. Which then points to the mentioned temporary insitute sharing directory. Keep in mind the subdirectory structure in the sharing directories. 
-
+## Backup and Snapshots
+In future, after the whole migration/Workspace introduction process, there will be Backup and Snapshot features on HOME and Workspaces. But this cannot be enables during the migration. 
