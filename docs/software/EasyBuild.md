@@ -1,7 +1,7 @@
 # EasyBuild
 
 ## Description
-EasyBuild can install software packages including the related modules. The location will be controlled using our modules, e.g. the `Workspace` module, see [Installing Custom Software](install-custom-software.md).
+EasyBuild can install software packages including the related modules. The location will be controlled using our modules, e.g. the `Workspace` module, see [Installing Custom Software](installing-custom-software.md).
 On top of the usual EasyBuild framework we added some extensions which allows you to build for specific architectures or a generic software stack in your user/group space. 
 Therefore, use the `eb` command to search and try and the `eb-install-all` or `eb-install-generic` command to install the package. 
 
