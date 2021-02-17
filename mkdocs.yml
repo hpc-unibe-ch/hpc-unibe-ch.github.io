@@ -3,6 +3,8 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - Home: index.md
+  - IMPORTANT..Home Migration: HOME_migration.md 
+  - PLAN..Workspaces: overview_workspaces.md
   - Overview: overview.md
   - Code of Conduct: code-of-conduct.md
   - User Guide:
@@ -30,7 +32,7 @@ nav:
       - Relion: user-guide/software/relion.md
       - Singularity: user-guide/software/singularity.md
     - File System Quota: user-guide/file-system-quota.md
-    - FAQ: user-guide/faq.md
+  - FAQ: user-guide/faq.md
 #  - Contributing: contributing.md
   - Hall of Fame: halloffame.md
 
