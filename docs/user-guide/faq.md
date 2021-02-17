@@ -9,13 +9,29 @@ You can check using the command `pwd`.
 The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
 
 ## What can I do, during migration of my HOME?
-You can still read your data in your HOME, but please prevent writing new data. There will be a rsync process running to migrate your and other HOME accounts to the new location. At the end, the new HOMEs will be activated and you get notified. 
-If your `$HOME` already points to `/storage/homefs/$USER`, the migration of your HOME is finished.
+You can still **read** your data in your HOME, but please **prevent writing** new data. There will be a rsync process running to migrate your and other users HOME accounts to the new location. At the end, the new HOMEs will be activated and you get notified. 
+If your `$HOME` already points to `/storage/homefs/$USER`, the migration of **your** HOME is finished. And you can continue working. 
+
+## I need to share data with my colleges. What can I do?
+Starting from May we officially introduce Workspaces. A group shared space. In the meantime you can:
+
+- Use the still existing institute shared directories `/home/ubelix/<instituteID>/shared`
+- Ask for becoming a Workspace Beta user (see [Workspaces Beta](../overview_workspaces.md#beta-testing-phase))
+
+<!-- ## Where should I put my data?
+A coarse classification may be: 
+
+| data type | suggested target |
+| :--- | :--- |
+| private configuration data, e.g. SSH keys | HOME |
+| temporary (weeks to month) application input/output data | SCRATCH |
+| persistent application input/results, meant to be shared (some-when) | Workspace |
+| applications, meant to be shared (some-when) | Workspace | -->
 
 ## I read: HOME quota will be 1TB, what now?
-Previously, HOME quota was mostly 3TB. Now we shift to group shared spaces, where each research group has 10TB in Workspaces free of charge and personal HOME 1TB. 
+Previously, HOME quota was mostly 3TB. Now we will shift to group shared spaces, where each research group has 10TB in Workspaces free of charge and personal HOME 1TB. 
 
-The HOME quota in the new location will be increased **temporarily** until the Workspaces are established in production. After the introduction of Workspaces there will be a transition period, where you/your research group manager can create a Workspace and you can migrate the data. Afterwards, the quota will be fixed to 1TB in HOMEs. 
+The HOME quota in the new location will be increased **temporarily** until the Workspaces are established in production (end of May). After the introduction of Workspaces there will be a transition period of one month, where you/your research group manager can create a Workspace and you can migrate the data. Afterwards, the quota will be fixed to 1TB in HOMEs. 
 
 ## What if my HOME is full?
 If you reached your quota, you will get strange warning about not being able to write temporary files etc. You can check your quota using the 
@@ -28,12 +44,12 @@ If you reached your quota, you will get strange warning about not being able to 
 
 2. Pack and archive: The HPC storage is a high performance parallel storage and not meant to be an archive. Data not used in the short to midterm should be packed and moved to an archive storage. 
 
-In general, we consider data on our HPC systems as research data. Further we consider research data to be shared sooner or later. And we aim to support and enhance collaborations. Therefore, we create(d) group shared spaces, called Workspaces.
+In general, we consider data on our HPC systems as research data. Further we consider research data to be shared sooner or later. And we aim to support and enhance collaborations. Therefore, we introduce group shared spaces, called HPC Workspaces.
 Ask your research group manager to add you to an existing Workspace or create a new one. 
 There will be no quota increase for HOME directories. 
 
 ## Where can I get a Workspace?
-Workspaces are still in **Alpha testing** phase. We will soon switch to Beta testing with users. If you are interested, get in touch with us using a Service Portal request or drop an [email](mailto:hpc@id.unibe.ch).
+Workspaces are still in **Alpha testing** phase. We will soon switch to Beta testing with users. If you are interested, get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
 
 A research group manager need to **create** the Workspace, since there are possibilities for charged extensions. 
 
@@ -45,19 +61,9 @@ If necessary, additional storage can be purchased per Workspace, where only the 
 
 
 ## What if our 10TB free of charge research group quota is full?
-Your Research group manager or a registered deputy can apply for an additional quota. Only actual used quota will be charged. 
+Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
-## Where should I put my data?
-A coarse classification may be: 
-
-| data type | suggested target |
-| :--- | :--- |
-| private configurational data, e.g. SSH keys | HOME |
-| temporary (weeks to month) application input/output data | SCRATCH |
-| persistent application input/results, meant to be shared (some-when) | Workspace |
-| applications, meant to be shared (some-when) | Workspace |
-
-
+## Job issues
 ### Why is my job still pending?
 
 !!! types note ""
@@ -85,8 +91,7 @@ dito.
 The job is not allowed to start because you have reached the maximum of allowed running jobs for your user in a specific partition. Wait for jobs to finish.
 
 **(ReqNodeNotAvail, UnavailableNodes:...)**  
-Some node required by the job is currently not available. The node may currently be in use, reserved for another job, in an advanced reservation, DOWN, DRAINED, or not responding.**Most probably there is an active reservation for all nodes due to an upcoming maintenance downtime (see output of** scontrol show reservation) **and your job is not able to finish before the start of the downtime. Another reason why you should specify the duration of a job (--time) as accurately as possible. Your job will start after the downtime has finished.** You can list all active reservations using _scontrol show reservation_.
-
+Some node required by the job is currently not available. The node may currently be in use, reserved for another job, in an advanced reservation, `DOWN`, `DRAINED`, or not responding.**Most probably there is an active reservation for all nodes due to an upcoming maintenance downtime (see output of** `scontrol show reservation`) **and your job is not able to finish before the start of the downtime. Another reason why you should specify the duration of a job (--time) as accurately as possible. Your job will start after the downtime has finished.** You can list all active reservations using `scontrol show reservation`.
 
 ### Why can't I submit further jobs?
 

@@ -32,7 +32,7 @@ nav:
       - Relion: user-guide/software/relion.md
       - Singularity: user-guide/software/singularity.md
     - File System Quota: user-guide/file-system-quota.md
-    - FAQ: user-guide/faq.md
+  - FAQ: user-guide/faq.md
 #  - Contributing: contributing.md
   - Hall of Fame: halloffame.md
 

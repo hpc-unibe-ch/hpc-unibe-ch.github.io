@@ -7,7 +7,7 @@ There will be following stages:
 2. introduction of **Workspaces**
 3. Permission changes and quota reduction of HOME directories
 
-!!! danger "DECLUTTERING"
+!!! attention "DECLUTTERING"
     Migration **performance** depends on the **file space**, but also on the **amount of files**. Therefore, please delete unnecessary data and pack files when possible:
 
     - Remove obsolete data: ```rm -r unnec_data```
@@ -19,22 +19,26 @@ There will be following stages:
 ## HOME migration
 
 !!! types note "new users"
-    HOMEs of recently added users are **already** in the new location. You can verify: `pwd` result starts with `/storage/homefs`.
+    HOMEs of recently added and new users are **already** in the new location. You can verify using `pwd`, result starts with `/storage/homefs`.
 
-HOME directories will be migrated to `/storage/homefs/$USER` in our newer and larger SpectrumScale file system. In future, these home directories are meant to be private only, without any sharing. 
+HOME directories will be migrated to `/storage/homefs/$USER` in our newer and larger SpectrumScale file system. In future, these HOME directories are meant to be private only, without any sharing opportunity. 
 As you may noticed, there will be no institute directory in the structure anymore. See subsection [Temporary File Sharing](#temporary_file_sharing).
 
-The migration will be performed one-by-one institute. Users are notified before actual migration and afterwards. When migration is finished `$HOME` points to `/storage/homefs/$USER`. 
+The migration will be performed institute by institute. Users are notified before and after actual migration. When migration is finished `$HOME` will point to `/storage/homefs/$USER`. 
 
 **IMPORTANT:** please also read section [Quota and permission changes](#quota_and_permission_changes) below.
 
 ## Temporary space to share data
-In future HOMEs are meant to be private spaces. Data sharing will be enabled using flexible group based HPC Workspaces (see below). In the meantime time temporary institute based directories for sharing are created. To simplify later transition you already can access these temporary spaces using the same workflow you will do later:
+In future HOMEs are meant to be private spaces. Data sharing will be enabled using flexible group based HPC Workspaces (see below). In the meantime time institute based directories `/home/ubelix/<instituteID>/shared` can be used for sharing. To simplify the upcoming transition to workspaces you can already access the institute spaces using the similar workflow you will do later:
 ```
-module load institute
+module load CustomRepo/ws_inst
 cd $WORKSPACE
 ```
-> Note: Later the module will need to be renamed, but the environment variable will point to your Workspace directory. Keep in mind the subdirectory structure in the sharing directories. 
+
+Later the module name will change, but the environment variable `WORKSPACE` will point to **your** Workspace directory. Keep in mind the subdirectory structure in the **shared** directories. 
+
+!!! attention "shared directory cleaning"
+    After the migration/ Workspace introduction the institute `shared` directories will be removed. You will have more than a month to migrate your data to a Workspace. 
 
 ## Introducing HPC Workspaces
 In a second step HPC Workspaces will be introduced, enabling collaborative work in group shared file spaces. Currently they are in Alpha testing stage. 
@@ -54,7 +58,7 @@ Each research group will have 10TB persistent disc space free of charge. Which c
 More detailed information will follow soon. 
 
 !!! types note "Beta tester welcome"
-    Interested in becoming a Beta tester for a HPC Workspace? Get in touch with us using a Service Portal request or drop an [email](mailto:hpc@id.unibe.ch).
+    Interested in becoming a Workspace Beta user? Get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
 
 ### SLURM accounting
 With the introduction of Workspaces we are changing our resource sharing scheme. The free of charge resources will then be shared between research groups not institutes any more. 
@@ -64,4 +68,5 @@ More detailed information will follow soon.
 At the end of the transition the HOME directories are closed to be a private space and the quota will be set to max. 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
 
 ## Backup and Snapshots
-In future, after the whole migration/Workspace introduction process, there will be Backup and Snapshot features on HOME and Workspaces. But this cannot be enables during the migration. 
+All Workspaces will have Snapshots and Backup enabled. 
+**HOME**s will get these features **after** the migration/ Workspace introduction period, due to performance reasons. 

@@ -38,7 +38,7 @@ HPC data is typically **shared data**. This could be sharing between:
 These data needs to be accessible even if people leave the team, without changing workflows. Additionally, data need to be shared in a read only fashion, e.g. to provide a database.
 Furthermore, HPC data is usually processed with a set of custom software tools, which need to be easy accessible and shared between all the collaborators. 
 
-## Advantages:
+## Advantages
 - group based storage access (data and software)
 - enhanced collaborations between researchers, even across institutes
 - user-friendly access control by Workspace managers on the UniBe Service Portal
@@ -48,5 +48,7 @@ Furthermore, HPC data is usually processed with a set of custom software tools, 
 - research group based compute resource sharing
 - in-line with other HPC centres
 
-!!! types note "EARLY ACCESS"
-    If you are interested and want to get early access as beta-tester, please get in touch with us using the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or write an [Email](mailto:hpc@id.unibe.ch)
+Detailed information will follow soon.
+
+## Beta Testing Phase
+If you are interested and want to get early access as Workspace Beta user, please get in touch with us using the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or write an [Email](mailto:hpc@id.unibe.ch)
