@@ -70,7 +70,6 @@ edit_uri: ''
 # Configuration
 theme:
   name: material
-  logo: HPC_UniBE_logo.png
 
 extra_css:
  - 'stylesheets/unibe.css'
