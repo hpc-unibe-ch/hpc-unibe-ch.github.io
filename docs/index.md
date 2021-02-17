@@ -48,5 +48,5 @@ acknowledgements:
 ## Press Kit
 Occasionally we are asked for images like diagrams illustrating the structure of UBELIX or even pictures of machines/storage or the like. Often this is due to the need to describe UBELIX within a research proposal. To support you with this, we provide a short text about UBELIX and some files to download. You can use all of this within your research proposal.
 
-COMING SOON IN 2020
+COMING SOON
 
