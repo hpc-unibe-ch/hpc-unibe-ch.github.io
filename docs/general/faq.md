@@ -4,7 +4,7 @@
 
 This page provides a collection of frequently asked questions.
 
-## Is my HOME already migrated?
+### Is my HOME already migrated?
 You can check using the command `pwd`. 
 The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
 

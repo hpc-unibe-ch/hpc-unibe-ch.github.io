@@ -50,7 +50,6 @@ chmod 640 .ssh/authorized_keys
 
 First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. This ports are numbers between 2000 and 65000, which needs to be unique on the both sides. The default port for JupyterLab is 8888, but only one user can use this at a time. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
 
-
 The ```ssh``` command from your **local machine** to the ubelix login node  needs to be called with following arguments:
 
 ```
@@ -87,16 +86,18 @@ After general output, JupyterLab prints a URL with a unique key and the network 
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 
-!!! QOS
+The last line needs to be copied in your local browser.
+
+!!! note "QOS"
     the `jupyter-compute` tool uses an special Slurm Quality of Service (QOS), which should reduce queuing times for interactive jobs. 
     Since interactive jobs are considered to be finished within less than a working day, the walltime limit cannot exceed 8h. 
     You can disable that qos using the option `--no-qos`, but please release the resources as soon as you are not actively working with the resources anymore.
 
 ### JupyterLab in your local browser
-The full address on the last line (starting with the 127.0.0.1) including the token needs to be copied into your browser on your local machine. 
+The full address on the last line (starting with the 127.0.0.1) of the Jupyter Server statement including the token needs to be copied into your browser on your local machine. 
 After initializing Jupyter Lab you should see a page similar to:
 
-![jupyterLab-example](../../images/jupyterLab-example.png "JupyterLab Example")
+![jupyterLab-example](../images/jupyterLab-example.png "JupyterLab Example")
 
 Therewith the Notebook and its containing tasks are performed on a compute node, which can double check e.g. using using the following in Python:
 
@@ -110,6 +111,7 @@ print(socket.gethostname())
 > Note: After stopping the JupyterLab server some sessions may get corrupted and do not take input correctly anymore. In this case just quit and re-establish your ssh session.
 
 ### JupyterLab with multiple CPU cores
+
 More resources can be requested, e.g. by using:
 
 ```

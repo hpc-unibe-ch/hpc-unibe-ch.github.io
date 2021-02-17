@@ -12,8 +12,21 @@ This page contains information about quota limits on the GPFS. Quotas are enable
 !!! types warning " Job abortion"
     Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded 
 
+!!! attention "under Construction"
+    detailed information will follow soon
+
+| | /home | /storage/workspace | /storage/scratch | 
+| --- | --- | --- | ---|
+| quota | max 10TB per research group | | |
+| file quota | | | |
+| Expiration | | | |
+| Data Backup | | | |
+
+[//]: <> (TODO fill table)
+
 You can display the user quota information with the mmlsquota command. It will inform you about quota limits (block quota and file quota) and the current usage on the filesystem:  
 
+[//]: <> (TODO describe new Quota tool move over from Workspace tools)
 
 ```Bash
 $ mmlsquota

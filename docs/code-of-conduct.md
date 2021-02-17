@@ -80,9 +80,8 @@ while others help to reduce the amount of support time needed to allocate.
 ## Cluster Performance
 
   * **DO NOT** run resource-intensive computations directly on the front-end server (submit
-  host). This will have a negative impact on the performance of the whole cluster.
+  hosts). This will have a negative impact on the performance of the whole cluster.
   Instead, submit such computations as a job to the cluster
   * **DO NOT** run server applications (PostgreSQL server, web server, ...) on the front-end 
-  server (submit host). Such a program usually run as a background process (daemon) rather
-  than being under the direct control of an interactive user. We will immediately kill
-  such processes
+  server (submit hosts). Such a program usually run as a background process (daemon) rather
+  than being under the direct control of an interactive user. We will immediately kill such processes.

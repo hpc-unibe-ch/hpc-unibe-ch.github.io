@@ -1,49 +1,22 @@
-# Account Activation and Login
+# Login
 
 ## Description
-UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. The cluster is meant to be used for research related to the University of Bern. **Before you can use this service we have to activate your CA for UBELIX**. On this page you will find useful information regarding the activation of your CA and the login procedure. Additionally, this page contains information on how to configure your SSH environment for a simplified login procedure and information regarding the application of a CA for external researchers.
 
-
-## Account activation
-
-**Request for activation**
-
-To request the activation of your Campus Account, please send an email to [hpc@id.unibe.ch](mailto:hpc@id.unibe.ch) including:
-
-* a brief description of what you want to use the cluster for
-* **your Campus Account username**
-
-Students must additionally provide:
-
-* Students must additionally provide:
-* the name of the institute (e.g. Mathematical Institute)
-* if available, the name of the research group (e.g. Numerical Analysis)
-
-If you possess multiple Campus Accounts (staff and student) use your staff account since this one is more specific. As soon as we get your email we will activate your account for UBELIX. Once activated, you will receive a confirmation email containing initial instructions
-
-You cannot choose a new username for UBELIX. The username/password combination will be the same as for your Campus Account that you also use to access other services provided by the University of Bern (e.g: email, Ilias).
-
-### Apply for a Campus Account for external coworkers
-
-If you do not have a Campus Account of the University of Bern, but you need access to the cluster for your cooperative scientific research with an UniBE institute, the account manager of the institute has to request a Campus Account from the IT department of the University of Bern. Please ask your coworker at the institute to arrange this for you. The responsible account manager at your institute can be found from the following link: [Account managers](http://www.unibe.ch/universitaet/campus__und__infrastruktur/rund_um_computer/campus_account/zustaendige_kontoverantwortliche_nach_abteilungen/index_ger.html)
-
-### Mailing List
-
-The official channel for informing the UBELIX community about upcoming events (e.g. maintenance) and other important news is our mailing list. **Sign up to receive information on what's going on on the cluster:**
-
-[https://listserv.unibe.ch/mailman/listinfo/hpc-users](https://listserv.unibe.ch/mailman/listinfo/hpc-users) 
-
+UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. The cluster is meant to be used for research related to the University of Bern. 
+**Before you can use this service we have to activate your CA for UBELIX**, see [Accounts and Activation](account.md). 
+This page contains information on how to configure your SSH environment for a simplified login procedure and information regarding the application of a CA for external researchers.
 
 ## Log in to UBELIX
 
 !!! types note "Before proceeding make sure that:"
     * you have your Campus Account activated for UBELIX (see above)
     * you have a working SSH client
-    * you are operating on a Linux/Mac environment. If you are running Microsoft Windows you can use PuTTY, but we strongly encourage you to familiarize with a Unix-based operating system, if necessary by installing a flavor of Linux using virtualization software (e.g VirtualBox)
+        * you are operating on a Linux/Mac environment. If you are running Microsoft Windows you can use PuTTY MobaXterm or in Win10 the Subsystem Linux (WSL). 
+    * please familiarize with a Unix-based command line, e.g. by installing a flavor of Linux using virtualization software (e.g VirtualBox)
 
 
-!!! types caution ""
-    Log in to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
+!!! types caution "Requirement"
+    Login to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
 
 
 ### Mac/Linux/Unix
@@ -127,7 +100,8 @@ After log in successfully you will see the welcome message and the command promp
 Congratulations, you just logged in to the cluster! You can immediately start using UBELIX.
 
 
-## Customize your SSH environment
+## Customize your SSH session
+Useful feartures like SSH alias, X and port forwarding are described on our page [SSH customization](ssh-customization.md).
 
 ### Create a SSH alias
 
@@ -235,5 +209,4 @@ ssh-keygen -t rsa -b 4096
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 640 .ssh/authorized_keys
 ```
-
 

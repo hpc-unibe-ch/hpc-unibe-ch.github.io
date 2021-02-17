@@ -56,6 +56,8 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 
 ###<small>**Options**</small>
 
+[comment]: <> (TODO fix link)
+
 | Option      | Description        | Example       | Default Value       |
 |-------------|--------------------|---------------|---------------------|
 |--mail-user  | Mail address to contact job owner. **Must specify a valid email address!** | --mail-user=foo.bar@baz.unibe.ch |  |
@@ -192,7 +194,7 @@ The default partition is the 'all' partition. If you do not explicitly request a
 #SBATCH --partition=long
 ```
 
-See [here](../../overview.md#cluster-partitions-queues-and-their-compute-nodes)  for a list of availalble partitions.
+See [here](../getting-Started/ubelix-overview.md#cluster-partitions-queues-and-their-compute-nodes)  for a list of availalble partitions.
 
 
 ## Requesting an Account

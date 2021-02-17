@@ -2,39 +2,63 @@ site_name: HPC Documentation
 #theme: mkdocs
 use_directory_urls: false
 nav:
-  - Home: index.md
   - IMPORTANT..Home Migration: HOME_migration.md 
   - PLAN..Workspaces: overview_workspaces.md
-  - Overview: overview.md
+  - Quick Start: quick-start.md
+  - Getting Started:
+    - Code of Conduct: code-of-conduct.md
+    - UniBE HPC system "UBELIX": getting-Started/ubelix-overview.md
+    - Accounts and Activation: getting-Started/account.md
+    - Accessing the HPCs: getting-Started/login-ssh.md
+      #      - software for connecting to the HPCs:
+      #      - Port Forwarding:
+    - Workspaces: getting-Started/workspaces.md
+    - SSH customization: getting-Started/ssh-customization.md
+  - Workspaces:
+    - Overview: hpc-workspaces/workspaces.md
+    - Workspace management: hpc-workspaces/management.md
+    - Software environment: hpc-workspaces/environment.md
+    - Monitoring: hpc-workspaces/monitoring.md
+  - Job handling:
+    - Submitting jobs: slurm/submission.md
+    #      - Parallel execution:
+    - Monitoring Jobs: slurm/monitoring-jobs.md
+    - Deleting Jobs: slurm/deleting-jobs.md
+    - Array Jobs with Slurm: slurm/array-jobs.md
+    - GPUs: slurm/gpus.md
+    - Interactive Jobs: slurm/interactive-jobs.md
+    - Investigating a Job Failure: slurm/investigating-job-failure.md
+    - Checkpointing: slurm/checkpointing.md
+    - Fair Share: slurm/fair-share.md
+    #
+  - Software:
+    - HPC software environment: software/hpc-modules.md
+    - Pre-Installed Software: software/pre-installed-software.md
+    - Installing Custom Software: software/installing-custom-software.md
+    - EasyBuild: software/EasyBuild.md
+    - Supported Applications:
+      - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+      - CUDA: software/CUDA.md
+      - Matlab: software/matlab.md
+      - Python: software/python.md
+      - JupyterLab: software/JupyterLab.md
+      - R: software/r.md
+      - Relion: software/relion.md
+      - Singularity: software/singularity.md
+  - Storage:
+    - Overview: file-system/filesystem-overview.md
+    - File System Quota: file-system/quota.md
+    - Moving files to and from the HPCs: file-system/file-transfer.md
   - Code of Conduct: code-of-conduct.md
-  - User Guide:
-    - Getting Started: user-guide/getting-started.md
-    - Account Activation and Login: user-guide/account-activation-login.md
-    - File Transfer: user-guide/file-transfer.md
-    - Job Management with Slurm:
-      - Job Submission: user-guide/job-management/submission.md
-      - Monitoring Jobs: user-guide/job-management/monitoring-jobs.md
-      - Deleting Jobs: user-guide/job-management/deleting-jobs.md
-      - Array Jobs with Slurm: user-guide/job-management/array-jobs.md
-      - GPUs: user-guide/job-management/gpus.md
-      - Interactive Jobs: user-guide/job-management/interactive-jobs.md
-      - Investigating a Job Failure: user-guide/job-management/investigating-job-failure.md
-      - Checkpointing: user-guide/job-management/checkpointing.md
-    - Software:
-      - Pre-Installed Software: user-guide/software/pre-installed-software.md
-      - Installing Custom Software: user-guide/software/installing-custom-software.md
-      - Terminal Multiplexer (tmux): user-guide/software/terminal-multiplexer-tmux.md
-      - CUDA: user-guide/software/CUDA.md
-      - Matlab: user-guide/software/matlab.md
-      - Python: user-guide/software/python.md
-      - JupyterLab: user-guide/software/JupyterLab.md
-      - R: user-guide/software/r.md
-      - Relion: user-guide/software/relion.md
-      - Singularity: user-guide/software/singularity.md
-    - File System Quota: user-guide/file-system-quota.md
-  - FAQ: user-guide/faq.md
-#  - Contributing: contributing.md
+  - FAQ: general/faq.md
   - Hall of Fame: halloffame.md
+      #
+      #
+      #  - Home: index.md
+      #  - User Guide:
+      #    - Getting Started: user-guide/getting-started.md
+      #    - File Transfer: user-guide/file-transfer.md
+      #    - Job Management with Slurm:
 
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'
@@ -46,6 +70,7 @@ edit_uri: ''
 # Configuration
 theme:
   name: material
+  logo: HPC_UniBE_logo.png
 
 extra_css:
  - 'stylesheets/unibe.css'
