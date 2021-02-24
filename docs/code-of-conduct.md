@@ -34,8 +34,9 @@ while others help to reduce the amount of support time needed to allocate.
 
 ## General Communication with the Cluster Administrators
   
-  * Use the support email address [hpc@id.unibe.ch](mailto:hpc@id.unibe.ch) for question regarding
-  UBELIX. Do not use the personal email address of a cluster administrator. This
+  * Use the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) 
+  for questions, issues or comments regarding UBELIX. 
+  * Do not use the personal email address of a cluster administrator. This
   is important because it keeps all administrators informed about the ongoing 
   problem-solving process, and if one administrator is on vacation, another
   administrator can help you with your question
@@ -44,10 +45,6 @@ while others help to reduce the amount of support time needed to allocate.
   from us or even worse by replying to mailing list email you received from us. The 
   point here is that though it looks like an ordinary email, you actually are opening
   a new ticket in our ticket system (or reopening an old ticket if replying to an old email).
-  * State your Campus Account username when communicating with the administrators. This helps
-  us to identify you on the cluster faster.
-  * Use your official UniBE email address for the communication with the cluster administrators,
-  not any *@hotmail.com addresses or the like.
 
 ## Problem-Solving Process
 
