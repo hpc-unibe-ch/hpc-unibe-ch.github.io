@@ -52,3 +52,13 @@ Detailed information will follow soon.
 
 ## Beta Testing Phase
 If you are interested and want to get early access as Workspace Beta user, please get in touch with us using the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or write an [Email](mailto:hpc@id.unibe.ch)
+
+### Beta Testing with Investor privileges
+With the Workspaces we are additionally restructure the SLURM accounting. During the Beta testing phase the previous institute accounts and the investor accounts and QOS still exists. 
+Additionally for each Workspace there will be a Workspace account which is hierarchical below a newly research group account. With the `Workspace` module this account will be used. If you want to use your investor privileges during the Beta Testing phase you can after loading the `Workspace` module:
+
+- GPU investors: 
+    + use your institute account for submitting (e.g. `sbatch --account <instituteID>` or `export SBATCH_ACCOUNT=<instituteID>`). But this will not not account on your Workspace account. 
+    + ask us to add your investor QOS to your Workspace(s), this may not persistent and may need to be re done after final reconfiguration
+- CPU investors (empi partition):
+    + use your investor account (e.g. `sbatch --account grp_<investor>` or `export SBATCH_ACCOUNT=grp_<investor>`)
