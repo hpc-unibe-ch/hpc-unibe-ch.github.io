@@ -11,9 +11,9 @@ This page contains information on how to configure your SSH environment for a si
 !!! types note "Before proceeding make sure that:"
     * you have your Campus Account activated for UBELIX (see above)
     * you have a working SSH client
-        * you are operating on a Linux/Mac environment. If you are running Microsoft Windows you can use PuTTY MobaXterm or in Win10 the Subsystem Linux (WSL). 
-    * please familiarize with a Unix-based command line, e.g. by installing a flavor of Linux using virtualization software (e.g VirtualBox)
-
+        * Linux/Mac: e.g ssh command in a terminal 
+        * Microsoft Windows: you can use PuTTY, MobaXterm, or the Linux subsystem. Alternatively, a flavor of Linux can be installed on Microsoft Windows using virtualization software (e.g VirtualBox). We strongly encourage you to familiarize with a Unix-based operating system. 
+    
 
 !!! types caution "Requirement"
     Login to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
@@ -25,6 +25,8 @@ Run the following commands in a terminal. Open an SSH connection to the submit h
 
 ```Bash
 $ ssh <username>@submit.unibe.ch
+OR
+$ ssh -l <username> submit.unibe.ch
 ```
 At the password prompt enter your Campus Account password:
 

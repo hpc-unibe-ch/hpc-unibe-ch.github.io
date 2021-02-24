@@ -19,7 +19,6 @@ To request the activation of your Campus Account, please send an email to [hpc@i
 
 Students must additionally provide:
 
-* Students must additionally provide:
 * the name of the institute (e.g. Mathematical Institute)
 * if available, the name of the research group (e.g. Numerical Analysis)
 
