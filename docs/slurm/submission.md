@@ -8,7 +8,7 @@ A cluster is a set of connected computers that work together to solve computatio
 This page describes the job submission process with Slurm.
 
 !!! types caution ""
-    It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the --error/–output option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
+    It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the `--error`/`-–output` option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
 
 !!! types caution ""
     For backfilling performance and hence to maximize job throughput it is crucial to submit array jobs (collection of similar jobs) instead of submitting the same job repeatedly.
@@ -18,20 +18,20 @@ This page describes the job submission process with Slurm.
 Every job submission starts with a resources allocation (nodes, cores, memory). An allocation is valid for a specific amount of time, and can be created using the salloc, sbatch or srun commands. Whereas salloc and sbatch only create resource allocations, srun launches parallel tasks within such a resource allocation, or implicitly creates an allocation if not started within one. **The usual procedure is to combine resource requests and task execution (job steps) in a single batch script (job script) and then submit the script using the sbatch command.**
 
 !!! types note ""
-    Most command options support a short form as well as a long form (e.g. -u <username>, and --user=<username>). Because few options only support the long form, we will consistently use the long form throughout this documentation.
+    Most command options support a short form as well as a long form (e.g. `-u <username>`, and `--user=<username>`). Because few options only support the long form, we will consistently use the long form throughout this documentation.
 
 !!! types note ""
-    Some options have default values if not specified: The *--time* option has partition-specific default values (see *scontrol show partition <partname>*). The *--mem-per-cpu* option has a global default value of 2048MB.
+    Some options have default values if not specified: The `--time` option has partition-specific default values (see `scontrol show partition <partname>`). The `--mem-per-cpu` option has a global default value of 2048MB.
 
 !!! types note ""
-    The default partition is the *all* partition. To select another partition one must use the *--partition* option, e.g. *--partition=long*.
+    The default partition is the *all* partition. To select another partition one must use the `--partition` option, e.g. `--partition=long`.
 
 !!! types caution "Important information for investors regarding account selection"
-    Investors have two different accounts for accounting purposes. The investor account (increased privileges) is used automatically when using the *empi* partition (--partition=empi). To use another partition, the user must explicitly select the group account (e.g --account=dcb). To display your accounts, use: *sacctmgr show assoc where user=<username> format=user,account%20,partition.*
+    Investors have two different accounts for accounting purposes. The investor account (increased privileges) is used automatically when using the `empi` partition (`--partition=empi`). To use another partition, the user must explicitly select the group account (e.g `--account=dcb`). To display your accounts, use: `sacctmgr show assoc where user=<username> format=user,account%20,partition`.
 
 
 ###sbatch
-The *sbatch* command is used to submit a job script for later execution. It is the most common way to submit a job to the cluster due to its reusability. Slurm options are usually embedded in a job script prefixed by '#SBATCH' directives. Slurm options specified as command line options overwrite corresponding options embedded in the job script
+The `sbatch` command is used to submit a job script for later execution. It is the most common way to submit a job to the cluster due to its reusability. Slurm options are usually embedded in a job script prefixed by '#SBATCH' directives. Slurm options specified as command line options overwrite corresponding options embedded in the job script
 
 Syntax
 
@@ -52,7 +52,7 @@ The job script acts as a wrapper for your actual job. Command-line options can s
     Although you can specify all Slurm options on the command-line, we encourage you, for clarity and reusability, to embed Slurm options in the job script
 
 !!! types note ""
-    You can find a template for a job script under /storage/software/workshop/slurm_template.sh. Copy the template to your home directory and adapt it to your needs: cp /gpfs/software/workshop/job_script_template.sh $HOME
+    You can find a template for a job script under `/storage/software/workshop/slurm_template.sh`. Copy the template to your home directory and adapt it to your needs: `cp /gpfs/software/workshop/job_script_template.sh $HOME`
 
 ###<small>**Options**</small>
 
@@ -60,29 +60,29 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 
 | Option      | Description        | Example       | Default Value       |
 |-------------|--------------------|---------------|---------------------|
-|--mail-user  | Mail address to contact job owner. **Must specify a valid email address!** | --mail-user=foo.bar@baz.unibe.ch |  |
-|--mail-type  | When to notify a job owner: _none, all, begin, end, fail, requeue, array_tasks_ | --mail-type=end,fail | |
-|--account    | Which account to charge. Regular users don't need to specify this option. For users with enhanced privileges on the _empi_ partition, see [here](https://docs.id.unibe.ch/ubelix/job-management-with-slurm/job-submission#JobSubmission-RequestinganAccount)| | The users default account. |
-|--job-name   | Specify a job name | --job-name="Simple Matlab" | |
-|--time       | Expected runtime of the job. Format: dd-hh:mm:ss | --time=12:00:00 <br> --time=2-06:00:00  | Partition-specific, see _scontrol show partition <partname>_ |
-|--mem-per-cpu| Minimum memory required per allocated CPU in megabytes. Different units can be specified using the suffix [K\|M\|G] | --mem-per-cpu=2G | 2048 MB |
-|--tmp        | Specify the amount of disk space that must be available on the compute node(s). The local scratch space for the job is referenced by the variable _TMPDIR_. Default units are megabytes. Different units can be specified using the suffix [K\|M\|G\|T]. | --tmp=8G <br>--tmp=2048 | |
-|--ntasks     | Number of tasks (processes). Used for MPI jobs that may run distributed on multiple compute nodes | --ntasks=4 | 1 or to match --nodes, --tasks-per-node if specified |
-|--nodes      | Request a certain number of nodes | --nodes=2 | 1 or to match --ntasks, --tasks-per-node if specified
-|--ntasks-per-node | Specifies how many tasks will run on each allocated node. Meant to be used with _--nodes_. If used with the _--ntasks_ option, the _--ntasks_ option will take precedence and the _--ntasks-per-node_ will be treated as a maximum count of tasks per node.| --ntasks-per-node=2 | |
-|--cpus-per-task | Number of CPUs per taks (threads). Used for shared memory jobs that run locally on a single compute node | --cpus-per-task=4 | 1 |
-|--array      | Submit an array job. Use "%" to specify the max number of tasks allowed to run concurrently. | --array=1,4,16-32:4 <br> --array=1-100%20 | |
-|--workdir    | Set the current working directory. All relative paths used in the job script are relative to this directory | |The directory from where the sbatch command was executed|
-|--output     | Redirect standard output. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
-|--error      | Redirect standard error. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
-|--partition  | **The "all" partition is the default partition. A different partition must be requested with the --partition option!** | --partition=long <br> --partition=debug | Default partition: all |
-|--dependency | Defer the start of this job until the specified dependencies have been satisfied. See _man sbatch_ for a description of all valid dependency types | --dependency=afterany:11908 | |
-|--hold       | Submit job in hold state. Job is not allowed to run until explicitly released | | |
-|--immediate  | Only submit the job if all requested resources are immediately available | | |
-|--exclusive  | Use the compute node(s) exclusively, i.e. do not share nodes with other jobs. **CAUTION: Only use this option if you are an experienced user, and you really understand the implications of this feature. If used improperly, the use of this option can lead to a massive waste of computational resources** | | |
-|--constraint | Request nodes with certain features. This option allows you to request a homogeneous pool of nodes for you MPI job | --constraint=ivy (all, long partition) <br> --constraint=sandy (all partition only) <br> --constraint=broadwell (all, empi partition) | |
-|--parsable   | Print the job id only | | Default output: "Submitted batch job <jobid>" |
-|--test-only  | Validate the batch script and return the estimated start time considering the current cluster state
+|`--mail-user`  | Mail address to contact job owner. **Must specify a valid email address!** | `--mail-user=foo.bar@baz.unibe.ch` |  |
+|`--mail-type`  | When to notify a job owner: _none, all, begin, end, fail, requeue, array_tasks_ | `--mail-type=end,fail` | |
+|`--account`    | Which account to charge. Regular users don't need to specify this option. For users with enhanced privileges on the _empi_ partition, see [here](https://docs.id.unibe.ch/ubelix/job-management-with-slurm/job-submission#JobSubmission-RequestinganAccount)| | The users default account. |
+|`--job-name`   | Specify a job name | `--job-name="Simple Matlab"` | |
+|`--time`       | Expected runtime of the job. Format: dd-hh:mm:ss | `--time=12:00:00` <br> `--time=2-06:00:00`  | Partition-specific, see `scontrol show partition <partname>` |
+|`--mem-per-cpu`| Minimum memory required per allocated CPU in megabytes. Different units can be specified using the suffix [K\|M\|G] | `--mem-per-cpu=2G` | 2048 MB |
+|`--tmp`        | Specify the amount of disk space that must be available on the compute node(s). The local scratch space for the job is referenced by the variable `$TMPDIR`. Default units are megabytes. Different units can be specified using the suffix [K\|M\|G\|T]. | `--tmp=8G` <br>`--tmp=2048` | |
+|`--ntasks`     | Number of tasks (processes). Used for MPI jobs that may run distributed on multiple compute nodes | `--ntasks=4` | 1 or to match `--nodes`, `--tasks-per-node` if specified |
+|`--nodes`      | Request a certain number of nodes | `--nodes=2` | 1 or to match `--ntasks`, `--tasks-per-node` if specified
+|`--ntasks-per-node` | Specifies how many tasks will run on each allocated node. Meant to be used with `--nodes`. If used with the `--ntasks` option, the `--ntasks` option will take precedence and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.| `--ntasks-per-node=2` | |
+|`--cpus-per-task` | Number of CPUs per taks (threads). Used for shared memory jobs that run locally on a single compute node | `--cpus-per-task=4` | 1 |
+|`--array`      | Submit an array job. Use "%" to specify the max number of tasks allowed to run concurrently. | `--array=1,4,16-32:4` <br> `--array=1-100%20` | |
+|`--workdir`    | Set the current working directory. All relative paths used in the job script are relative to this directory | |The directory from where the sbatch command was executed|
+|`--output`     | Redirect standard output. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
+|`--error`      | Redirect standard error. **All directories specified in the path must exist before the job starts!** | | By default stderr and stdout are connected to the same file slurm-%j.out, where '%j' is replaced with the job allocation number. |
+|`--partition`  | **The "all" partition is the default partition. A different partition must be requested with the `--partition` option!** | `--partition=long` <br> `--partition=debug` | Default partition: all |
+|`--dependency` | Defer the start of this job until the specified dependencies have been satisfied. See `man sbatch` for a description of all valid dependency types | `--dependency=afterany:11908` | |
+|`--hold`       | Submit job in hold state. Job is not allowed to run until explicitly released | | |
+|`--immediate`  | Only submit the job if all requested resources are immediately available | | |
+|`--exclusive`  | Use the compute node(s) exclusively, i.e. do not share nodes with other jobs. **CAUTION: Only use this option if you are an experienced user, and you really understand the implications of this feature. If used improperly, the use of this option can lead to a massive waste of computational resources** | | |
+|`--constraint` | Request nodes with certain features. This option allows you to request a homogeneous pool of nodes for you MPI job | `--constraint=ivy` (all, long partition) <br> `--constraint=sandy` (all partition only) <br> `--constraint=broadwell` (all, empi partition) | |
+|`--parsable`   | Print the job id only | | Default output: "`Submitted batch job <jobid>`" |
+|`--test-only`  | Validate the batch script and return the estimated start time considering the current cluster state
 
 ###<small>**Example**</small>
 
@@ -110,7 +110,7 @@ Submitted batch job 30215045
 
 ###<small>**salloc**</small>
 
-The _salloc_ command is used to allocate resources (e.g. nodes), possibly with a set of constraints (e.g. number of processor per node) for later utilization. It is typically used to allocate resources and spawn a shell, in which the _srun_ command is used to launch parallel tasks.
+The `salloc` command is used to allocate resources (e.g. nodes), possibly with a set of constraints (e.g. number of processor per node) for later utilization. It is typically used to allocate resources and spawn a shell, in which the `srun` command is used to launch parallel tasks.
 
 Syntax
 ```Bash
@@ -131,11 +131,11 @@ salloc: Relinquishing job allocation 247
 
 ###<small>**srun**</small>
 
-The _srun_ command creates job steps. One or multiple _srun_ invocations are usually used from within an existing resource allocation. Thereby, a job step can utilize all resources allocated to the job, or utilize only a subset of the resource allocation. Multiple job steps can run sequentially in the order defined in the batch script or run in parallel, but can together never utilize more resources than provided by the allocation.
+The `srun` command creates job steps. One or multiple `srun` invocations are usually used from within an existing resource allocation. Thereby, a job step can utilize all resources allocated to the job, or utilize only a subset of the resource allocation. Multiple job steps can run sequentially in the order defined in the batch script or run in parallel, but can together never utilize more resources than provided by the allocation.
 
 
 !!! types danger ""
-    Do not submit a job script using _srun_. Embedded Slurm options (#SBATCH) are not parsed by _srun_.
+    Do not submit a job script using `srun`. Embedded Slurm options (`#SBATCH`) are not parsed by `srun`.
 
 
 Syntax
@@ -145,7 +145,7 @@ srun [options] executable [args...]
 
 ###<small>**When do I use srun in my job script?**</small>
 
-Use _srun_ in your job script to
+Use `srun` in your job script to
 
 * start MPI tasks
 * run multiple jobs (serial or parallel jobs) simultaneously within an allocation
@@ -188,7 +188,7 @@ wait
 
 ## Requesting a Partition (Queue)
 
-The default partition is the 'all' partition. If you do not explicitly request a partition, your job will run in the default partition. To request a different partition, you must use the --partition option:
+The default partition is the 'all' partition. If you do not explicitly request a partition, your job will run in the default partition. To request a different partition, you must use the `--partition` option:
 
 ```Bash
 #SBATCH --partition=long
@@ -199,7 +199,7 @@ See [here](../getting-Started/ubelix-overview.md#cluster-partitions-queues-and-t
 
 ## Requesting an Account
 
-Accounts are used for accounting purposes. Every user has a default account that is used unless a different account is specified using the --account option. Regular users only have a single account and can thus not request a different account. The default account for regular user is named after their group (e.g. dcb):
+Accounts are used for accounting purposes. Every user has a default account that is used unless a different account is specified using the `--account` option. Regular users only have a single account and can thus not request a different account. The default account for regular user is named after their group (e.g. dcb):
 
 ```Bash
 $ sacctmgr show user foo
@@ -209,9 +209,9 @@ $ sacctmgr show user foo
 ```
 
 !!! type note ""
-    The remaining information provided in this section applies only to users with enhanced privileges on the _empi_ partition.
+    The remaining information provided in this section applies only to users with enhanced privileges on the `empi` partition.
 
-Users with enhanced privileges have an additional account for the _empi_ partition. This additional account is set as their default account, which means they don't have to specify an account when submitting to the _empi_ partition (--partition=_empi_), but must specify their "group account" (--account=<group>) for submitting to any other partition (e.g _all_). If a wrong account/partition combination is requested, you will experience the following error message:
+Users with enhanced privileges have an additional account for the `empi` partition. This additional account is set as their default account, which means they don't have to specify an account when submitting to the `empi` partition (`--partition=empi`), but must specify their "group account" (`--account=<group>`) for submitting to any other partition (e.g `all`). If a wrong account/partition combination is requested, you will experience the following error message:
 
 ```Bash
 sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
@@ -219,7 +219,7 @@ sbatch: error: Batch job submission failed: Invalid account or account/partition
 
 ###<small>**Example**</small>
 
-Here are some examples on the usage of the --account and --partition options.
+Here are some examples on the usage of the `--account` and `--partition` options.
 
 Regular users:
 
@@ -231,7 +231,7 @@ Submit to any other partition:
 --partition=<partname> e.g. --partition=empi
 ```
 
-Users with enhanced privileges on the _empi_ partition:
+Users with enhanced privileges on the `empi` partition:
 
 ```Bash
 Submit to the "all" partition:
@@ -261,10 +261,10 @@ A parallel job either runs on multiple CPU cores on a single compute node, or on
 ```
 
 !!! type danger ""
-    The requested node,task, and CPU resources must match! For example, you cannot request one node (--nodes=1) and more tasks (--ntasks-per-node) than CPU cores are available on a single node in the partition. In such a case you will experience an error message: **sbatch: error: Batch job submission failed: Requested node configuration is not available.**
+    The requested node,task, and CPU resources must match! For example, you cannot request one node (`--nodes=1`) and more tasks (`--ntasks-per-node`) than CPU cores are available on a single node in the partition. In such a case you will experience an error message: **sbatch: error: Batch job submission failed: Requested node configuration is not available.**
 
 ###<small>**Open MPI**</small>
-Open MPI was compiled with Slurm support, which means that you do not have to specify the number of processes and the execution hosts using the -np and the -hostfile options. Slurm will automatically provide this information to mpirun based on the allocated tasks:
+Open MPI was compiled with Slurm support, which means that you do not have to specify the number of processes and the execution hosts using the `-np` and the `-hostfile` options. Slurm will automatically provide this information to mpirun based on the allocated tasks:
 
 ```Bash
 #!/bin/bash
@@ -285,16 +285,16 @@ Slurm sets various environment variables available in the context of the job scr
 
 | Environment Variable   | Set By Option   | Description   |
 |------------------------|-----------------|---------------|
-|SLURM_JOB_NAME          | --job-name      | Name of the job |
-|SLURM_ARRAY_JOB_ID      |                 | ID of your job |
-|SLURM_ARRAY_TASK_ID     | --array         | ID of the current array task |
-|SLURM_ARRAY_TASK_MAX    | --array         | Job array's maximum ID (index) number |
-|SLURM_ARRAY_TASK_MIN    | --array         | Job array's minimum ID (index) number |
-|SLURM_ARRAY_TASK_STEP   | --array         | Job array's index step size |
-|SLURM_NTASKS            | --ntasks        | Same as -n, --ntasks |
-|SLURM_NTASKS_PER_NODE   | --ntasks-per-node	| Number of tasks requested per node.  Only set if the --ntasks-per-node option is specified |
-|SLURM_CPUS_PER_TASK     | --cpus-per-task | Number of cpus requested per task.  Only set if the --cpus-per-task option is specified |
-|TMPDIR                  |                 | References the disk space for the job on the local scratch
+|`SLURM_JOB_NAME`          | `--job-name`      | Name of the job |
+|`SLURM_ARRAY_JOB_ID`      |                 | ID of your job |
+|`SLURM_ARRAY_TASK_ID`     | `--array`         | ID of the current array task |
+|`SLURM_ARRAY_TASK_MAX`    | `--array`         | Job array's maximum ID (index) number |
+|`SLURM_ARRAY_TASK_MIN`    | `--array`         | Job array's minimum ID (index) number |
+|`SLURM_ARRAY_TASK_STEP`   | `--array`         | Job array's index step size |
+|`SLURM_NTASKS`            | `--ntasks`        | Same as `-n`, `--ntasks` |
+|`SLURM_NTASKS_PER_NODE`   | `--ntasks-per-node`	| Number of tasks requested per node.  Only set if the `--ntasks-per-node` option is specified |
+|`SLURM_CPUS_PER_TASK`     | `--cpus-per-task` | Number of cpus requested per task.  Only set if the `--cpus-per-task` option is specified |
+|`TMPDIR`                  |                 | References the disk space for the job on the local scratch
 
 
 ## Job Examples
@@ -321,7 +321,7 @@ env
 
 **Shared Memory Jobs (e.g. OpenMP)**
 
-SMP parallelization is based upon dynamically created threads (fork and join) that share memory on a single node. The key request is "--cpus-per-task". To run N threads in parallel, we request N CPUs on the node (--cpus-per-task=N). OpenMP is not slurm-aware, you need to specify "export OMP_NUM_THREADS=..." in your submission script! Thereby OMP_NUM_THREADS (max number of thread spawned by your program) must correspond the number of cores requested. As an example, consider the following job script:
+SMP parallelization is based upon dynamically created threads (fork and join) that share memory on a single node. The key request is `--cpus-per-task`. To run N threads in parallel, we request N CPUs on the node (`--cpus-per-task=N`). OpenMP is not slurm-aware, you need to specify `export OMP_NUM_THREADS=...` in your submission script! Thereby OMP_NUM_THREADS (max number of thread spawned by your program) must correspond the number of cores requested. As an example, consider the following job script:
 
 ```Bash
 #!/bin/bash
@@ -339,12 +339,12 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ```
 
 !!! type danger ""
-    For optimal resource management, notably to prevent oversubscribing the compute node, setting the correct number of threads is crucial. The assignment OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK will ensure that your program does not spawn more threads than requested.
+    For optimal resource management, notably to prevent oversubscribing the compute node, setting the correct number of threads is crucial. The assignment `OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK` will ensure that your program does not spawn more threads than requested.
 
 **MPI Jobs (e.g. Open MPI)**
 
 MPI parallelization is based upon processes (local or distributed) that communicate by passing messages. Since they don't rely on shared memory those processes can be distributed among several compute nodes.
-Use the option --ntasks to request a certain number of tasks (processes) that can be distributed over multiple nodes:
+Use the option `--ntasks` to request a certain number of tasks (processes) that can be distributed over multiple nodes:
 
 ```Bash
 #!/bin/bash
