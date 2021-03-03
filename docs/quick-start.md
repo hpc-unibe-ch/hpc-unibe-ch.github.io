@@ -6,11 +6,11 @@ After reading this page you will have composed and submitted your first job succ
 
 ## Cluster Rules
 
-Before we start: as everywhere where people come together, a common sense is needed to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a shared system where your behaviour could have a negative impact on the workflow of other users. Please find the list of the most important guidelines in our [code of conduct](code-of-conduct.md).
+Before we start: as everywhere where people come together, a **common sense** is needed to allow for a good cooperation and to enable a positive HPC experience. Be always aware that you are working on a **shared system** where your behaviour could have a negative impact on the workflow of other users. Please find the list of the most important guidelines in our [**code of conduct**](code-of-conduct.md).
 
 ## Request an Account
 
-Before you can start working on the HPCs, staff and students of the University of Bern must have their Campus Account (CA) unlocked for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
+Before you can start working on the HPCs, staff and students of the University of Bern must have their **Campus Account (CA)** registered for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
 
 ## HPC Workspace 
 
@@ -20,7 +20,7 @@ For an introduction to HPC Workspaces see [Workspace Overview](hpc-workspaces/wo
 
 ## Login
 
-To connect to the cluster, you must log in to the submit host from inside the university network (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a VPN connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) simply use a secure shell (SSH) to log in to the submit host:
+To connect to the cluster, you must log in to the **submit host** from **inside the university network** (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a **VPN** connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) simply use a secure shell (SSH) to log in to the submit host:
 
 ```bash
 ssh <username>@submit.unibe.ch
@@ -30,25 +30,28 @@ ssh -l <username> submit.unibe.ch
 
 ## Welcome `$HOME`
 
-After successful login to the cluster, your will find yourself in the directory `/storage/homefs/$USER`, where `$USER` is your Campus Account ID.
+After successful login to the cluster, your will find yourself in the directory `/storage/homefs/$USER`, where `$USER` is your Campus Account username.
 This is your home directory and serves as the repository for your personal files, and configurations. 
 You can reference your home directory by `~` or `$HOME`. 
 
-[//]: <> (TODO remove old HOME location)
-!!! note "migration change"
-   Home directories created before 2021, may still be located at `/home/ubelix/<your_institute>/<your_campus_account>/`. 
+Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. HOME directories have a daily snapshot and backup procedures.
+Disk space is managed by [quotas](file-system/quota.md). By default, each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
 
-Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. We provide no backup service for data in your home directory. It is your own responsibility to backup important data to a private location. Disk space is managed by [quotas](file-system/quota.md). By default, each user has 3TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
+[//]: <> (TODO remove old HOME location)
+!!! type info "migration change"
+    - **No backup** service for data in your home directory will be provided until the migration and Workspace introduction phase is finished. It is your own responsibility to backup important data to a private location. 
+    - Home directories created before 2021, may still be located at `/home/ubelix/<your_institute>/<your_campus_account>/`. 
+    - Previous extended HOME quota will be kept until the Workspace introduction phase is finished. 
 
 You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
 pwd
-/storage/homefs/testuser
+/storage/homefs/<username>
 ```
 
 ## Copy Data
 
-At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file from your local computer running a UNIX-like OS use the secure copy command `scp` on your local workstation:
+At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file **from your local computer** running a UNIX-like OS use the secure copy command `scp` on your local workstation:
 
 ```bash
 scp /path/to/file <username>@submit.unibe.ch:/path/to/target_dir/
@@ -64,30 +67,42 @@ More information about file transfer can be found on the page [File Transfer to/
 
 ## Use Software
 
-On our HPCs you can make use of already pre-installed software or you can compile and install your own software. We use a module system to manage software packages, even different versions of the same software. This allows you to focus on getting your work done instead of compiling software. E.g. to get a list of all provided versions of the GNU Compiler Collection (GCC), use:
+On our HPCs you can make use of already pre-installed software or you can compile and install your own software. We use a module system to manage software packages, even different versions of the same software. This allows you to focus on getting your work done instead of compiling software. E.g. to get a list of all provided packages:
 
 ```bash
 module avail
 ```
 
-To load GCC version 4.9, use:
+A package name can be added to list all packages containing that string. 
+
+The `module spider` command encountering also results from the VitalIT software stack. 
+
+!!! type info "Workspace software stacks"
+    `module spider` or `module avail` will only find packages in a Workspace software stack if the `Workspace` module for that workspace is loaded
+
+Furthermore, we are suggesting to work with so called toolchains. These are collections of modules build on top of each other. 
+E.g. setting the environment for compiling an scientific application with math. libraries, OpenMPI and GCC, load:
 
 ```bash
-module load gcc/4.9
+$ module load foss
+$ module list 
+module list
+
+Currently Loaded Modules:
+  1) GCCcore/9.3.0                      4) GCC/9.3.0                          7) libxml2/.2.9.10-GCCcore-9.3.0    (H)  10) UCX/1.8.0-GCCcore-9.3.0   13) gompi/2020a                  16) foss/2020a
+  2) zlib/.1.2.11-GCCcore-9.3.0   (H)   5) numactl/2.0.13-GCCcore-9.3.0       8) libpciaccess/.0.16-GCCcore-9.3.0 (H)  11) OpenMPI/4.0.3-GCC-9.3.0   14) FFTW/3.3.8-gompi-2020a
+  3) binutils/.2.34-GCCcore-9.3.0 (H)   6) XZ/.5.2.5-GCCcore-9.3.0      (H)   9) hwloc/2.2.0-GCCcore-9.3.0             12) OpenBLAS/0.3.9-GCC-9.3.0  15) ScaLAPACK/2.1.0-gompi-2020a
+
+  Where:
+   H:  Hidden Module
 ```
 
-Now, you are using this specific version of GCC:
-
-```bash
-gcc --version
-gcc (GCC) 4.9.3
-Copyright (C) 2015 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-```
+You can also specify version numbers there. 
 
 !!! attention "Scope"
     The loaded version of a software is only active in your current session. If you open a new shell you are again using the default version of the software. Therefore, it is crucial to load the required modules from within your job script.
+
+    But also keep in mind that the current environment will get forwarded into a job submitted from it. This may lead to conflicting versions of loaded modules and modules loaded in the script. 
 
 With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
 
