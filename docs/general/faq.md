@@ -57,7 +57,7 @@ If you want to **join an existing** Workspace. Ask the Workspace manager or its 
 
 ## How much will a Workspace cost?
 Workspaces itself are free of charge. Every research group has 10TB disk space free of charge, which can be used in multiple Workspaces. 
-If necessary, additional storage can be purchased per Workspace, where only the actual usage will be charged. 
+If necessary, additional storage can be purchased per Workspace, where only the actual usage will be charged, see [Workspace Management](../hpc-workspaces/management.md#additional-storage)
 
 
 ## What if our 10TB free of charge research group quota is full?
