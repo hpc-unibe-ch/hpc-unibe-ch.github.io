@@ -25,18 +25,8 @@ Each Workspace provide:
 
 
 ## Application
-Prerequisite: The Research Group needs to be registered in the ServicePortal. 
 
-[//]: # (TODO provide link to the ServicePortal)
-!!! attention "under Construction"
-    Link will follow soon
-
-A workspace can be created by a research group lead at the ServicePortal.
-
-[//]: # (TODO provide link to the ServicePortal)
-
-!!! attention "under Construction"
-    Link will follow soon
+Workspaces need to be created by registered research group lead/managers, see [Workspace Application](../hpc-workspaces/management.md#application)
 
 ## More Details
 For more details see: 

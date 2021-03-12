@@ -9,7 +9,7 @@ This page provides a high-level system overview of a HPC cluster such as UBELIX.
 ## High-level system overview
 
 ![System Overview Diagram](../images/system_overview.jpg "System Overview Diagram")
-The HPCs can only be reached within the UniBE network. User landing point are the login nodes, where jobs can be prepared and submitted. 
+The HPCs can only be reached within the UniBE network. User landing point are the login nodes, where jobs can be prepared and submitted. Computational tasks are scheduled and managed on the compute nodes using SLURM. All compute nodes as well as the login nodes have access to the parallel file system.
 
 ### Login node aka. Submit node
 

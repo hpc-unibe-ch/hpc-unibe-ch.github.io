@@ -9,28 +9,38 @@
 The Workspace module provide support for userfriendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
 
 ## Workspace module
-The Workspace modules automatically detects available Workspaces. If you have access to just one, this one gets loaded. If you have access to multiple workspaces the following presents you the list of available Workspaces:
+The Workspace module adjust the environment to work in a spacific Workspace. 
 ```
 module load workspace
 ```
+sets the following environment variables ([Shortcuts](#shortcuts)) and [Software stacks](#software-stacks)
 
-If you are member of more than one workspace, you can directly select and load a workspace using
+There are the following possibilites:
 
-```
-export HPC_WORKSPACE=WorkspaceName; module load Workspace
-```
-
-!!! note "Note"
-    If you have **multiple Workspaces** and **prevent exporting** the environment to the compute node (`export SBATCH_EXPORT=NONE`), you need to **set `HPC_WORKSPACE`** also in you batch script together with the module load statement.
+- you belong to **no** Workspace: load `module load Workspace/home` to use your software stack in your HOME directory
+- you belong to **one** Workspace: this one gets loaded when `module load Workspace`
+- you belong to multiple Workspaces: you need to specify one. The module presents you the options, e.g.
+    ```
+    $ module load Workspace
+    Workspaces are available:
+        HPC_SW_test, hpc_training, 
+    Please select and load ONE of the following:
+        export HPC_WORKSPACE=HPC_SW_test; module load Workspace
+        export HPC_WORKSPACE=hpc_training; module load Workspace
+    ```
+    - Thus you load a specific Workspace using:
+    ```
+    export HPC_WORKSPACE=<WorkspaceName>; module load Workspace
+    ```
 
 ### Shortcuts
 The workspace module provides the following variables:
 
 | Variable | Function |
 | -------- | -------- |
-| WORKSPACE| full path to the Workspace. Thus, you can access the workspace using: `cd $WORKSPACE` |
-| SCRATCH  | full path to the Workspace SCRATCH diretory. Thus you can access it using: `cd $SCRATCH` |
-| SBATCH_ACCOUNT | sets the SLURM account to the Workspace account. Thus all submitted jobs with that module are accounted to the Workspace account automatically. No need to set it in the sbatch script |
+| `$WORKSPACE` | full path to the Workspace. Thus, you can access the workspace using: `cd $WORKSPACE` |
+| `$SCRATCH`  | full path to the Workspace SCRATCH diretory. Thus you can access it using: `cd $SCRATCH` |
+| `$SBATCH_ACCOUNT` | sets the SLURM account to the Workspace account. Thus all submitted jobs with that module are accounted to the Workspace account automatically. No need to set it in the sbatch script |
 
 ### Software stacks
 Beside, a set of software packages we provide for our different CPU architecture, the Workspace module provides tools to install custom software stacks within your Workspace. 

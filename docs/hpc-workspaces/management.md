@@ -50,16 +50,14 @@ Storage is a limited and expensive resource. Abandoned, unused workspaces should
 
 ## Application
 ### Prerequisite
-The research group need to be registered first on the Service Portal once:
+The research group need to be registered first on the Service Portal once: [Service Portal -> Register Research Group](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=3dd760551b0f145023a5dd318b4bcbe5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
-[//]: # (TODO provide link to the ServicePortal)
-
-Only a research group lead can order a HPC Workspaces. 
+The request need to be verified manually. This may take some time. 
 
 ### Application Form
-A HPC Workspace can (only) be requested by a research group lead using the ServicePortal application form:
+A HPC Workspace can (only) be requested by a registered research group lead/manager using the ServicePortal application form:
 
-[//]: # (TODO provide link to the ServicePortal)
+[Service Portal -> Create HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=259743301b8bd05023a5dd318b4bcba5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
 The following information are required:
 - Workspace ID (max. 20 characters)
@@ -69,16 +67,23 @@ The following information are required:
 - Deputy (permissions for managing the Workspace) (optional)
 - Free Quota (see above)
 - additional Storage (optional): an upper limit of quota, where the actual quota will be charged. When selected this requires a valid cost center for accounting. 
+- Cost Center (necessary when requesting Additional Storage)
 - primary group members
 - secondary group members (optional)
-member lists can be selected one by one or as a comma seperated list of Campus accounts (see "Import Bulk User" in form)
+member lists can be selected one by one or as a comma separated list of Campus accounts (see "Import Bulk User" in form)
+
+[//]: # (TODO remove note after changing to IAM-Tool)
+
+!!! type note "processing time"
+The Workspace creation for now relies on a automatic process which is running every 3h between 6:00 and 18:00. In future this will change and be instantaneous. 
 
 ## Workspace modifications
 
 After creation, owners and deputies can modify Workspace properties using the Service Portal Form:
 
-[//]: # (TODO provide link to the ServicePortal)
+[Service Portal -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
+Properties to change are:
 - adding/removing members to/from primary and secondary group
 - storage extension
 - Workspace live time extension
