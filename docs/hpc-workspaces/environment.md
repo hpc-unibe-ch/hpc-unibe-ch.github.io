@@ -50,3 +50,9 @@ For installing packages with EasyBuild, see [Easybuild description](../software/
 Manual package can also be installed in the similar manner. Adding a Modulefile provides the users to load packages as used to. Please see [Installing Custom Software](../software/installing-custom-software.md). 
 
 As a result all users of the Workspace can use the software packages by loading the Workspace module and the software product module. 
+
+### UMASK
+The Workspace module sets the umask to 002. Thus files and directories get group-writeable, e.g.:
+```Bash
+-rw-rw-r-- 1 user group 0 Mar 15 15:15 /path/to/file
+```

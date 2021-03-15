@@ -2,7 +2,7 @@
 
 !!! attention "under Construction"
     Workspaces are still in testing phase and not publicly available yet. 
-    This is prelimnary information.
+    This is preliminary information.
     Detailed information will follow soon.
 
 ## Description
@@ -60,6 +60,7 @@ A HPC Workspace can (only) be requested by a registered research group lead/mana
 [Service Portal -> Create HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=259743301b8bd05023a5dd318b4bcba5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
 The following information are required:
+
 - Workspace ID (max. 20 characters)
 - Workspace Name
 - Workspace Description

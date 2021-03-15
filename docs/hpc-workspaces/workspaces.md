@@ -8,7 +8,7 @@
 ## Description
 This article introduces HPC workspaces with the main aspects.
 
-A guidline for Workspace managers including **application** and modification can be found at [Workspace Managment](management.md). 
+A guideline for Workspace managers including **application** and modification can be found at [Workspace Management](management.md). 
 
 If you want to **join an existing Workspace**, please ask the Workspace owner or manager to add your account.
 
@@ -18,6 +18,11 @@ A HPC workspace consists of:
 - permanent and temporary storage
 - Slurm accounting
 - fair share on research group level
+
+!!! ATTENTION
+    Please always load the `Workspace` module, even if only just copying files into it. The module corrects the `umask` and therewith the created file and directory permissions. 
+
+    Furthermore, it is good practice to use `$WORKSPACE/file1` instead of absolute path `/path/to/Workspace/file1`
 
 ## Motivation
 HPC data typically is shared data. This could be between students and supervisors, between researchers of a research group, or even between researchers of different institutes. These data needs to be accessible even if people leave the team. 
