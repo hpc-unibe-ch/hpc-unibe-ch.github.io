@@ -73,6 +73,11 @@ The following information are required:
 - secondary group members (optional)
 member lists can be selected one by one or as a comma separated list of Campus accounts (see "Import Bulk User" in form)
 
+[//]: # (TODO remove when fixed)
+
+!!! type note "Notification"
+    After requesting the Workspace creation, a notification will be send. The content with "data point not found" may be confusing, but still your request is successfully submitted. 
+
 [//]: # (TODO remove note after changing to IAM-Tool)
 
 !!! type note "processing time"
@@ -88,4 +93,9 @@ Properties to change are:
 - adding/removing members to/from primary and secondary group
 - storage extension
 - Workspace live time extension
-- Workspace closure
+- Workspace closure (so far you need to "deactivate" AND THEN "delete" the workspace)
+
+!!! type "Note"
+    During the processing of a modification no other modification can be requested. The Workspace is even not visible in the ServicePortal for that time. 
+    Most modification will be processed within few minutes, but adding non-free-of-charge features like additional storage, need human approval, which may delay the process. 
+    The Workspace itself (file storage and Slurm, etc.) will not be interrupted by a change. 
