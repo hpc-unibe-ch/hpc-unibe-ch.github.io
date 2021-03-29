@@ -37,14 +37,15 @@ nav:
     - Installing Custom Software: software/installing-custom-software.md
     - EasyBuild: software/EasyBuild.md
     - Supported Applications:
-      - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+      - Anaconda: software/Anaconda.md
       - CUDA: software/CUDA.md
+      - JupyterLab: software/JupyterLab.md
       - Matlab: software/matlab.md
       - Python: software/python.md
-      - JupyterLab: software/JupyterLab.md
       - R: software/r.md
       - Relion: software/relion.md
       - Singularity: software/singularity.md
+      - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
   - Storage:
     - Overview: file-system/filesystem-overview.md
     - File System Quota: file-system/quota.md
