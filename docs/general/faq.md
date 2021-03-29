@@ -63,6 +63,24 @@ If necessary, additional storage can be purchased per Workspace, where only the 
 ## What if our 10TB free of charge research group quota is full?
 Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
+## Software issues
+### Why is my private conda installation broken after migration
+Unfortunately, Anaconda hard wires absolute paths into almost all files (including scripts and binary files). 
+A proper migration process may have included `conda pack`. 
+There is a way you may access your old environments and create new ones with the same specification:
+```
+export CONDA_ENVS_PATH=${HOME}/anaconda3/envs ## or where you had your old envs
+module load Anaconda3
+eval "$(conda shell.bash hook)"
+conda info --envs
+conda activate oldEnvName     ## choose your old environment name
+conda list --explicit > spec-list.txt
+unset CONDA_ENVS_PATH
+conda create --name myEnvName --file spec-list.txt  # select a name
+```
+Please, also note that there is a system wide Anaconda installation, so no need for your own separate one. 
+Finally, after recreating your environments please delete all old Anaconda installations and environments. These are not only big but also a ton of files. 
+
 ## Job issues
 ### Why is my job still pending?
 
