@@ -41,6 +41,7 @@ The workspace module provides the following variables:
 | `$WORKSPACE` | full path to the Workspace. Thus, you can access the workspace using: `cd $WORKSPACE` |
 | `$SCRATCH`  | full path to the Workspace SCRATCH diretory. Thus you can access it using: `cd $SCRATCH` |
 | `$SBATCH_ACCOUNT` | sets the SLURM account to the Workspace account. Thus all submitted jobs with that module are accounted to the Workspace account automatically. No need to set it in the sbatch script |
+| `SINGULARITY_BINDPATH` | using singularity, the Workspace directory will be bind into the container without manual specification. The WORKSPACE variable will also be ported into the container. Thus, you can specify locations with $WORKSPACE within the container. | 
 
 ### Software stacks
 Beside, a set of software packages we provide for our different CPU architecture, the Workspace module provides tools to install custom software stacks within your Workspace. 

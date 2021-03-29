@@ -34,6 +34,17 @@ e.g:
 singularity exec container.img cat /etc/os-release
 ```
 
+### Bind directories
+
+Per default the started application (e.g. `cat` in the last example) runs withing the container. The container works like a seperate machine with own operation system etc. Thus, per default you have no access to files and directories outside the container. This can be changed using binding paths. 
+
+If files are needed outside the container, e.g. in your HOME you can add the a path to `SINGULARITY_BINDPATH="src1[:dest1],src2[:dest2]`. All subdirectories and files will be accessible. Thus you could bind your HOME directory as:
+
+```Bash
+export SINGULARITY_BINDPATH="$HOME/:$HOME/"   
+# or simply 
+export SINGULARITY_BINDPATH="$HOME"
+```
 
 ## Further Information
 
