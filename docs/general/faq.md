@@ -8,9 +8,16 @@ This page provides a collection of frequently asked questions.
 You can check using the command `pwd`. 
 The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
 
-## What can I do, during migration of my HOME?
-You can still **read** your data in your HOME, but please **prevent writing** new data. There will be a rsync process running to migrate your and other users HOME accounts to the new location. At the end, the new HOMEs will be activated and you get notified. 
-If your `$HOME` already points to `/storage/homefs/$USER`, the migration of **your** HOME is finished. And you can continue working. 
+## How does the HOMEs migration work? What can I do during the migration?
+When the migration of your institute starts (T=0), you receive an email. You can still use your home directory then. Ideally, you already cleaned
+your home directory before that, if not, last chance to cleanup. **Anaconda installations need special treatment** see [this blog entry](https://www.anaconda.com/blog/moving-conda-environments)
+for a starting point.  
+On the 5th day after the initial mail (T=0+5d), the real migration takes place. You get another email upon starting your individual migration and
+We lock you out of the cluster. The final synchronization takes place. This phase lasts between several minutes up to a few hours depending on the
+amount of date you have in your home directory. All running jobs and processes that are running at that time, will be canceled or killed.
+Therefore please try to only start jobs that may finish before that time.  
+When we finished your home directory, you receive another email and you can log in again and check your home directroy and start to use UBELIX again.  
+Finally a last mail we reach you when the migration for your whole institute has been finished.
 
 ## I need to share data with my colleges. What can I do?
 Starting from May we officially introduce Workspaces. A group shared space. In the meantime you can:
