@@ -1,54 +1,31 @@
 # Python
 
 ## Description
+there are multiple versions of Pyhton available on our HPCs. 
+On the one hand there are `Python` modules for Python 2 and 3. Which already has a longer list of additional packages installed, including `pip`. 
+On the other hand there is Anaconda installed, which brings an even longer list of packages with it. 
 
-Some useful information on using Python.
+For Anaconda see [Anaconda page](Anaconda.md)
 
-## Advanced Topics
-
-### Managing Virtual Environments, Versions with Anaconda
-
-Anaconda is a high performance distribution of Python that includes the most popular packages for data science (numpy, scipy,...). It also features conda, a package, dependency and environment manager. With Anaconda you can run multiple versions of Python in isolated environments.
-
-#### Installing Anaconda
-
-1. Download the appropriate installer for the default Python environment. You can install other Python versions later by creating additional environments (see below):
-
-**Python 2.7**
+## Additional Packages
+If you need additional packages we suggest to install them using `pip` and the Workspace module, e.g. for installing a package `matplotlib`:
 
 ```Bash
-$ wget http://repo.continuum.io/archive/Anaconda2-5.3.1-Linux-x86_64.sh
+## load Python first, this can also be `module load Anaconda3`
+module load Python
+## maybe you need to specify the Workspace name first OR use `Workspace/home`
+module load Workspace  
+## pip install in the Workspace or HOME location
+##   the variable PYTHONPACKAGEPATH is set in the Workspace module
+pip install --prefix $PYTHONPACKAGEPATH matplotlib
 ```
 
-or
-
-
-**Python 3.7**
-
-```Bash
-$ wget http://repo.continuum.io/archive/Anaconda3-5.3.1-Linux-x86_64.sh
+Therewith the Python packages are automatically available when 
+```Bash 
+module load Python     ## OR module load Anaconda3
+module load Workspace  ## maybe you need to specify the Workspace name first
+python -c "import matplotlib"
 ```
+since `$PYTHONPATH` and `$PATH` are set to the above specified loaction. 
 
-2. Run the installer and follow the instructions:
 
-**Python 2.7**
-
-```Bash
-$ bash Anaconda2-5.3.1-Linux-x86_64.sh
-```
-
-or
-
-**Python 3.7**
-
-```Bash
-$ bash Anaconda3-5.3.1-Linux-x86_64.sh
-```
-
-This will create a default environment with the selected version of Python and adds numerous packages to the environment. After prepending the Anaconda bin directory to the path open a new terminal for the change to become active.
-
-3. Test the installation by listing all installed packages:
-
-```Bash
-$ conda list
-```

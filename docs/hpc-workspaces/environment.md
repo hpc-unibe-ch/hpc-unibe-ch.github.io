@@ -36,12 +36,21 @@ There are the following possibilites:
 ### Shortcuts
 The workspace module provides the following variables:
 
-| Variable | Function |
+|  <div style="width:180px">Variable</div> | Function |
 | -------- | -------- |
 | `$WORKSPACE` | full path to the Workspace. Thus, you can access the workspace using: `cd $WORKSPACE` |
 | `$SCRATCH`  | full path to the Workspace SCRATCH diretory. Thus you can access it using: `cd $SCRATCH` |
+
+
+### Additional Settings
+the module provides the following settings for a more user-friendly usage of applications. You may not need to use them directly, but tools like SLURM, Singularity and Python will use them. 
+
+|  <div style="width:180px">Variable</div> | Function |
+| -------- | -------- |
 | `$SBATCH_ACCOUNT` | sets the SLURM account to the Workspace account. Thus all submitted jobs with that module are accounted to the Workspace account automatically. No need to set it in the sbatch script |
-| `SINGULARITY_BINDPATH` | using singularity, the Workspace directory will be bind into the container without manual specification. The WORKSPACE variable will also be ported into the container. Thus, you can specify locations with $WORKSPACE within the container. | 
+| `$SINGULARITY_BINDPATH` | using singularity, the Workspace directory will be bind into the container without manual specification. The WORKSPACE variable will also be ported into the container. Thus, you can specify locations with $WORKSPACE within the container. | 
+| `$PYTHONPATH` | if `Python` or `Anaconda` is loaded beforehand, it is set to: `$WORKSPACE/PyPackages/lib/pythonXXX/site-packages` where `XXX` is the Python major and minor version. And also add the `bin` dorectory to `$PATH`. |
+| `$PYTHONPACKAGEPATH` | if `Python` or `Anaconda` is loaded beforehand, it is set to: `$WORKSPACE/PyPackages`. This can be used for e.g. `pip install --prefix $PYTHONPACKAGEPATH` |
 
 ### Software stacks
 Beside, a set of software packages we provide for our different CPU architecture, the Workspace module provides tools to install custom software stacks within your Workspace. 
@@ -51,6 +60,10 @@ For installing packages with EasyBuild, see [Easybuild description](../software/
 Manual package can also be installed in the similar manner. Adding a Modulefile provides the users to load packages as used to. Please see [Installing Custom Software](../software/installing-custom-software.md). 
 
 As a result all users of the Workspace can use the software packages by loading the Workspace module and the software product module. 
+
+### Python packages
+The Workspace module also provides support to install and use Python packages in a shared manner, by installing them into the Workspace. 
+Please see [Additional Packages](../software/python.md#additional-packages)
 
 ### UMASK
 The Workspace module sets the umask to 002. Thus files and directories get group-writeable, e.g.:
