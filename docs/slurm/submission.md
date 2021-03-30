@@ -58,7 +58,7 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 
 [comment]: <> (TODO fix link)
 
-| Option      | Description        | Example       | Default Value       |
+| <div style="width:120px">Option</div>      | Description        | Example       | Default Value       |
 |-------------|--------------------|---------------|---------------------|
 |`--mail-user`  | Mail address to contact job owner. **Must specify a valid email address!** | `--mail-user=foo.bar@baz.unibe.ch` |  |
 |`--mail-type`  | When to notify a job owner: _none, all, begin, end, fail, requeue, array_tasks_ | `--mail-type=end,fail` | |
