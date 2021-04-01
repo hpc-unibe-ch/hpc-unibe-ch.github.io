@@ -194,7 +194,7 @@ The default partition is the 'all' partition. If you do not explicitly request a
 #SBATCH --partition=long
 ```
 
-See [here](../getting-Started/ubelix-overview.md#cluster-partitions-queues-and-their-compute-nodes)  for a list of availalble partitions.
+See [here](../getting-Started/ubelix-overview.md#cluster-partitions-queues-and-their-compute-nodes)  for a list of available partitions.
 
 
 ## Requesting an Account
