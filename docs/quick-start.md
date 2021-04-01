@@ -110,7 +110,19 @@ The [Software](software/hpc-modules.md) section is dedicated to this topic. More
 
 ## Hello World
 
-Finally, it's time for your first job. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
+Doing useful computations consists of running commands that work on data and generate a result. These computations are resource-intensive. That is what
+the compute nodes are there for. These over 300 servers do the heavy lifting as soon as resources are free for you. Currently you are on a submit server
+also known as login server. This server is for preparing the computations, i.e. downloading data, writing a job script, prepare some data etc. But
+**you mustn't run computations on submit nodes** as the server is quite a weak machines that you are sharing with others. So, you have to bring the
+computations to the compute nodes - by generating a job script and sending it to the cluster.
+
+!!! hint "Working interactively on a compute node"
+    When developing stuff it's often useful to have short iterations of try-error. Therefore it's also possible to work
+    interactively on a compute node for a certain amount of time without having to send jobs to the cluster and wait until
+    they finish just to see it didn't work. See [Interactive Jobs](slurm/interactive-jobs.md) for more information about this topic.
+
+
+It's now time for your first job script. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
 
     #!/bin/bash
     #SBATCH --mail-user=<your_email_address>

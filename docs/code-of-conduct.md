@@ -76,9 +76,9 @@ while others help to reduce the amount of support time needed to allocate.
 
 ## Cluster Performance
 
-  * **DO NOT** run resource-intensive computations directly on the front-end server (submit
-  hosts). This will have a negative impact on the performance of the whole cluster.
-  Instead, submit such computations as a job to the cluster
+  * **DO NOT** run resource-intensive computations directly on the login node AKA submit node. This
+  will have a negative impact on the performance of the whole cluster. Instead, generate a job script
+  that carries out the computations and submit this job script to the cluster using sbatch.
   * **DO NOT** run server applications (PostgreSQL server, web server, ...) on the front-end 
   server (submit hosts). Such a program usually run as a background process (daemon) rather
   than being under the direct control of an interactive user. We will immediately kill such processes.
