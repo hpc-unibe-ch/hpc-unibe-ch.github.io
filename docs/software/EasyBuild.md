@@ -16,7 +16,7 @@ The following steps need are necessary:
 Depending if you want to install the package in user or a group space you need to load the related module and the `EasyBuild` module, e.g.:
 
 ```Bash
-module load Workspace
+module load Workspace  ### if you want to install into your HOME use Workspace/home
 module load EasyBuild
 ```
 
@@ -27,42 +27,53 @@ Therewith, our EasyBuild tools and EasyBuild itself are available.
 
 ## Package Specification
 EasyBuild has a large repository of available packages in different versions. 
-You can use these specifications as is or download and modify the EasyConfigs (see below).
+You can use these specifications as is or copy/download and modify the EasyConfigs (see below).
 
-Available packages can be searched using the following command using the dry-run option `-D`, here for the **git** package
+Available packages can be searched using the following command, here for the **gatk** package
 
 ```Bash
-eb -D --software=git
+eb --search gatk
 [...]
-ERROR: No toolchain name specified, and more than one available: ['GCC', 'GCCcore', 'foss'].
+eb --search gatk
+== found valid index for /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs, so using it...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-1.0.5083.eb
+...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.1.2-Java-1.8.eb
+...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.12.0-foss-2018b-Python-3.6.6.eb
+...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.4.0-intel-2018a-Python-3.6.4.eb
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.5.1-foss-2018a-Python-3.6.4.eb
+...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.8.1-foss-2018b-Python-2.7.15.eb
+...
+ * /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
 ```
 
-As shown above there are versions for different *toolchains* available. You can select one and and try again, e.g. with `--toolchain-name=GCC`: 
+As shown above there are different versions of GATK and for different *toolchains* available (`foss`, `intel`, `GCCcore`). 
+**Select one** 
+
+You can list all dependencies using:
 
 ```Bash
-eb -D --software-name=git --toolchain-name=GCC
-[...]
+eb -Dr /storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
+...
 Dry run: printing build status of easyconfigs and dependencies
-CFGS=/storage/software/generic.el7/software/EasyBuild/4.2.1/easybuild/easyconfigs
- * [ ] $CFGS/g/GCC/GCC-4.9.2.eb (module: GCC/4.9.2)
- * [ ] $CFGS/c/cURL/cURL-7.40.0-GCC-4.9.2.eb (module: cURL/7.40.0-GCC-4.9.2)
- * [ ] $CFGS/e/expat/expat-2.1.0-GCC-4.9.2.eb (module: expat/2.1.0-GCC-4.9.2)
- * [ ] $CFGS/g/gettext/gettext-0.19.4-GCC-4.9.2.eb (module: gettext/0.19.4-GCC-4.9.2)
- * [x] $CFGS/p/Perl/Perl-5.20.1-GCC-4.9.2-bare.eb (module: Perl/5.20.1-GCC-4.9.2-bare)
- * [ ] $CFGS/g/git/git-2.4.1-GCC-4.9.2.eb (module: git/2.4.1-GCC-4.9.2)
- [...]
+CFGS=/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs
+ * [ ] $CFGS/j/Java/Java-1.8.0_281.eb (module: Java/1.8.0_281)
+... 
+ * [x] $CFGS/p/Python/Python-2.7.18-GCCcore-9.3.0.eb (module: Python/2.7.18-GCCcore-9.3.0)
+ * [ ] $CFGS/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb (module: GATK/4.1.8.1-GCCcore-9.3.0-Java-1.8)
 ```
 
-As shown a list of dependencies is required, which may already be installed or need to be installed. 
-Therefore, you can later use the option `--robot`, which will automatically also install all required dependencies.
-Additional options, e.g. for selecting a specific software version can be found using `eb --help`.
+Dependencies marked with `x` are already installed, the other dependencies will be installed if using the robot option.
 
-!!! note "Note"
-    The spelling and notation need to be exactly as used in the EasyBuild repository, e.g. searching for `GIT` will not find the package, but `git` does and otherwise, `fftw` will fail, while `FFTW` succeed. 
+Additional options, e.g. for selecting a specific software version can be found using `eb --help`.
 
 ### Using EasyConfig files
 
-If you did not found your desired version or you want to modify it, e.g. for using a more recent software version than available in the EasyBuild repository, you can download and change EasyConfigs, e.g. from [EasyConfig repository](https://github.com/easybuilders/easybuild-easyconfigs). These are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
+You can use the directy selected easyconfig or if necessary copy and adapt it.
+easyconfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
 If you need more information see [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), and if necessary ask our support team for assistance.
 
 ## Selecting a software stack
@@ -70,7 +81,7 @@ Depending on the package and its target usage one or more software stacks should
 
 - all architectural software stacks: `eb-install-all `
 - a specific architectural software stack (e.g. only targeting Broadwell nodes): `eb-install-all --archs='broadwell' ` OR
-- generic software stack: `eb-install-generic `
+- generic software stack: `eb-install-generic `, CPU architecture independent, like `git`
 
 ## Installation
 After selecting the package installation recipe and the target software stack, the installation process can be submitted. 
