@@ -51,9 +51,10 @@ eval "$(conda shell.bash hook)"
 This should also be used in your batch submission scripts when working with conda environments.
 
 ## Move / Migration of conda environments
-If conda environments need to be transfered on the system, e.g. from `$HOME` to `$WORKSPACE` you can use the `conda pack` (see official [conda pack documentation](https://conda.github.io/conda-pack/). 
+If conda environments need to be transfered on the system, e.g. from `$HOME` to `$WORKSPACE` you can use the `conda pack` (see official [conda pack documentation](https://conda.github.io/conda-pack/)). 
 
-If your environment is already moved you can recreate the environment with the old specification using:
+If your environment is already moved file system locations, you can recreate a new environment with the specification of the old environment. Therefore, we specify the location of the old environment, load the Anaconda module, initialize conda, and get the specification of the old environment. Then **importantly** unset the CONDA_ENVS_PATH to install the new conda environment in the default location and create it. 
+
 ```
 export CONDA_ENVS_PATH=${HOME}/anaconda3/envs ## or where you had your old envs
 module load Anaconda3

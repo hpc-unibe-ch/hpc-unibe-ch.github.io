@@ -27,5 +27,3 @@ module load Workspace  ## maybe you need to specify the Workspace name first
 python -c "import matplotlib"
 ```
 since `$PYTHONPATH` and `$PATH` are set to the above specified loaction. 
-
-

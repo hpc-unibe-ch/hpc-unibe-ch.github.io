@@ -88,6 +88,9 @@ After general output, JupyterLab prints a URL with a unique key and the network 
 
 The last line needs to be copied in your local browser.
 
+!!! note "Attention"
+    do not use `Ctrl + C` for copying the link, this will abort the server process and kill your job. 
+
 !!! note "QOS"
     the `jupyter-compute` tool uses an special Slurm Quality of Service (QOS), which should reduce queuing times for interactive jobs. 
     Since interactive jobs are considered to be finished within less than a working day, the walltime limit cannot exceed 8h. 

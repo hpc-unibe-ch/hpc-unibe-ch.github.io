@@ -4,11 +4,12 @@
 
 This page provides a collection of frequently asked questions.
 
+## File system
 ### Is my HOME already migrated?
 You can check using the command `pwd`. 
 The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
 
-## How does the HOMEs migration work? What can I do during the migration?
+### How does the HOMEs migration work? What can I do during the migration?
 When the migration of your institute starts (T=0), you receive an email. You can still use your home directory then. Ideally, you already cleaned
 your home directory before that, if not, last chance to cleanup. **Anaconda installations need special treatment** see [this blog entry](https://www.anaconda.com/blog/moving-conda-environments)
 for a starting point.  
@@ -18,22 +19,6 @@ amount of date you have in your home directory. All running jobs and processes t
 Therefore please try to only start jobs that may finish before that time.  
 When we finished your home directory, you receive another email and you can log in again and check your home directroy and start to use UBELIX again.  
 Finally a last mail we reach you when the migration for your whole institute has been finished.
-
-## I need to share data with my colleges. What can I do?
-Starting from May we officially introduce Workspaces. A group shared space. In the meantime you can:
-
-- Use the still existing institute shared directories `/home/ubelix/<instituteID>/shared`
-- Ask for becoming a Workspace Beta user (see [Workspaces Beta](../overview_workspaces.md#beta-testing-phase))
-
-<!-- ## Where should I put my data?
-A coarse classification may be: 
-
-| data type | suggested target |
-| :--- | :--- |
-| private configuration data, e.g. SSH keys | HOME |
-| temporary (weeks to month) application input/output data | SCRATCH |
-| persistent application input/results, meant to be shared (some-when) | Workspace |
-| applications, meant to be shared (some-when) | Workspace | -->
 
 ## I read: HOME quota will be 1TB, what now?
 Previously, HOME quota was mostly 3TB. Now we will shift to group shared spaces, where each research group has 10TB in Workspaces free of charge and personal HOME 1TB. 
@@ -54,6 +39,23 @@ If you reached your quota, you will get strange warning about not being able to 
 In general, we consider data on our HPC systems as research data. Further we consider research data to be shared sooner or later. And we aim to support and enhance collaborations. Therefore, we introduce group shared spaces, called HPC Workspaces.
 Ask your research group manager to add you to an existing Workspace or create a new one. 
 There will be no quota increase for HOME directories. 
+
+## Workspaces
+### I need to share data with my colleges. What can I do?
+Starting from May we officially introduce Workspaces. A group shared space. In the meantime you can:
+
+- Use the still existing institute shared directories `/home/ubelix/<instituteID>/shared`
+- Ask for becoming a Workspace Beta user (see [Workspaces Beta](../overview_workspaces.md#beta-testing-phase))
+
+<!-- ## Where should I put my data?
+A coarse classification may be: 
+
+| data type | suggested target |
+| :--- | :--- |
+| private configuration data, e.g. SSH keys | HOME |
+| temporary (weeks to month) application input/output data | SCRATCH |
+| persistent application input/results, meant to be shared (some-when) | Workspace |
+| applications, meant to be shared (some-when) | Workspace | -->
 
 ## Where can I get a Workspace?
 Workspaces are still in **Alpha testing** phase. We will soon switch to Beta testing with users. If you are interested, get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
