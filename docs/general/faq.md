@@ -57,19 +57,19 @@ A coarse classification may be:
 | persistent application input/results, meant to be shared (some-when) | Workspace |
 | applications, meant to be shared (some-when) | Workspace | -->
 
-## Where can I get a Workspace?
+### Where can I get a Workspace?
 Workspaces are still in **Alpha testing** phase. We will soon switch to Beta testing with users. If you are interested, get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
 
 A research group manager need to **create** the Workspace, since there are possibilities for charged extensions. 
 
 If you want to **join an existing** Workspace. Ask the Workspace manager or its deputy to add you. 
 
-## How much will a Workspace cost?
+### How much will a Workspace cost?
 Workspaces itself are free of charge. Every research group has 10TB disk space free of charge, which can be used in multiple Workspaces. 
 If necessary, additional storage can be purchased per Workspace, where only the actual usage will be charged, see [Workspace Management](../hpc-workspaces/management.md#additional-storage)
 
 
-## What if our 10TB free of charge research group quota is full?
+### What if our 10TB free of charge research group quota is full?
 Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
 ## Software issues
@@ -89,6 +89,10 @@ conda create --name myEnvName --file spec-list.txt  # select a name
 ```
 Please, also note that there is a system wide Anaconda installation, so no need for your own separate one. 
 Finally, after recreating your environments please delete all old Anaconda installations and environments. These are not only big but also a ton of files. 
+
+## Environment issues
+### I am using zsh, but some commands and tools fail, what can I do?
+There are known caveates with LMOD (or module system) and Bash scripts in zsh environments. Bash scripts do not source any system or user files. To initialize the (module) environment properly, you need to set `export BASH_ENV=/etc/bashrc` in your zsh profile (`.zshrc`).
 
 ## Job issues
 ### Why is my job still pending?
