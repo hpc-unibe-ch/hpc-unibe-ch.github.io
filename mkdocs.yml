@@ -50,6 +50,7 @@ nav:
     - Overview: file-system/filesystem-overview.md
     - File System Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
+    - Scratch: file-system/scratch.md
   - Code of Conduct: code-of-conduct.md
   - FAQ: general/faq.md
   - Hall of Fame: halloffame.md

@@ -15,10 +15,6 @@ For more details see [Workspace management](../hpc-workspaces/management.md)
 SCRATCH is a temporary space with less restrictive limitations in size, but more restrictive limitation in time. 
 There is no snapshot or backup service implemented in that space.
 
-### Quota
-
-!!! attention "under Construction"
-    detailed information will follow soon
 
 [//]: <> (TODO fill)
 ### Cleaning Policy
@@ -26,3 +22,7 @@ There is no snapshot or backup service implemented in that space.
 !!! attention "under Construction"
     detailed information will follow soon
 [//]: <> (TODO fill)
+
+## Quota
+For `HOME` and `WORKSPACES` total storage size and amount of files are limited. The current used amount and limits can be displayed using the `quota` tool, see [File System Quota](quota.md)
+

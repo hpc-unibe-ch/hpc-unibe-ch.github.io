@@ -81,7 +81,7 @@ member lists can be selected one by one or as a comma separated list of Campus a
 [//]: # (TODO remove note after changing to IAM-Tool)
 
 !!! type note "processing time"
-The Workspace creation for now relies on a automatic process which is running every 3h between 6:00 and 18:00. In future this will change and be instantaneous. 
+The Workspace creation for now relies on a temporary automatic process which is running only once a day at 20:00. In future the process will be much faster. 
 
 ## Workspace modifications
 
