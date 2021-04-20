@@ -2,21 +2,13 @@
 
 ## Description
 
-UBELIX no longer features the R version from EPEL as this version gets automatically updated and therefore things are not reproducible. R isn now provided by an environment module and must be loaded explicitly:
+R is provided by an environment module and must be loaded explicitly:
 
 ```Bash
-module load R/3.4.4-foss-2018a-X11-20180131
-
--bash-4.1$ R --version
-R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
-Copyright (C) 2018 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under the terms of the
-GNU General Public License versions 2 or 3.
-For more information about these matters see
-http://www.gnu.org/licenses/.
+module load R ##OR## module load R/3.4.4-foss-2018a-X11-20180131
+R --version
+  R version 4.0.0 (2020-04-24) -- "Arbor Day"
+  ...
 ```
 
 The **Vital-IT project** is also providing some versions. The following commands will list the available versions:
@@ -40,7 +32,7 @@ module load R/3.4.2
 
 ## Basic Topics
 
-### Customizing the Workspace
+### Customizing the R Workspace
 
 At startup, unless --no-init-file, or --vanilla was given, R searches for a user profile in the current directory (from where R was started), or in the user's home directory (in that order). A different path of the user profile file can be specified by the R_PROFILE_USER environment variable. The found user profile is then sourced into the workspace. You can use this file to customize your workspace, i.e., to set specific options, define functions, load libraries, and so on. Consider the following example:
 
@@ -63,8 +55,8 @@ q <- function (save="no", ...) {
 mySeed <- function() set.seed(5450)
 
 
-# User-defined function for calculating L1/L2-norm, returns euclidian distance (L2-norm) by default
-myDistance <- function(x, y, type=c("Euclidian", "L2", "Manhattan", "L1")) {
+# User-defined function for calculating L1/L2-norm, returns euclidean distance (L2-norm) by default
+myDistance <- function(x, y, type=c("Euclidean", "L2", "Manhattan", "L1")) {
   type <- match.arg(type)
   if ((type == "Manhattan") | (type == "L1")) {
     d <- sum( abs(x - y) )
@@ -76,10 +68,49 @@ myDistance <- function(x, y, type=c("Euclidian", "L2", "Manhattan", "L1")) {
 ```
 
 ### Installing Packages
+R is installed as global Module in various versions. There are already a longer list of pre-installed packages available. If you need additional packages you can install them by yourself. The default location would be the R installation directory, which is not writeable for users. Nevertheless, in the following is shown how to install into a shared HPC Workspace or into your private HOME. 
 
-Run R interactively. To install additional R packages call the install.packages() function with the name of the package as argument. Upon installing the first package, you will receive a warning that you do not have sufficient permissions to write to "/usr/lib64/R/library". Type "y" to use a personal library instead:
+
+#### A) Into a shared Workspace
+With the Workspace tools we provide short-cuts to install R packages in the shared Workspace location. Therefore, the environment variable `$R_LIBS` is set to `$WORKSPACE/RPackages`. Initially this directory need to be created, using:
 
 ```Bash
+module load Workspace
+mkdir $R_LIBS
+```
+If you want to install into your $HOME
+
+Then R packages can be installed using the `install.packages()` routine in an interactive R shell, e.g. for **doParallel**:
+
+```
+module load R
+R
+...
+> install.packages("doParallel")
+```
+
+Then please follow the procedure as shown [below](#installation-routine).
+
+Then the installed packaged will be available to you and all other Workspace members by simply loading the `Workspace` module. 
+
+!!! type danger ""
+    Please remember to add the Workspace and the R module to your job scripts:
+    ```
+    module load Workspace
+    module load R
+    ```
+
+
+#### B) Into your HOME
+
+!!! note "Note"
+    you can also use procedure A) and load `Workspace/home` to install into your HOME directory.
+
+If you are not using a Workspace module and try to install a package, at the first time R tries to install the package into a global/generic location, which is not writeable by users. You can then select to install in a "personal library" into your HOME:
+
+```Bash
+module load R
+R
 > install.packages("doParallel")
 Installing package into ‘/usr/lib64/R/library’
 (as ‘lib’ is unspecified)
@@ -93,10 +124,12 @@ Next, type "y" to create your personal library at the default location within yo
 
 ```Bash
 Would you like to create a personal library
-~/R/x86_64-redhat-linux-gnu-library/3.4
+~/R/x86_64-redhat-linux-gnu-library/4.0
 ```
 
-Next, select a CRAN mirror to download from. The mirrorlist will be not the same as below. The mirrolist is constantly changing, but will look like it.
+#### Installation Routine
+
+Next, select a CRAN mirror to download from. The mirror list will be not the same as below. The mirror list is constantly changing, but will look like it.
 
 Pick any country nearby, i.e. Switzerland. If https makes problems, pick "(HTTP mirrors)" and then select something nearby as shown below
 
@@ -271,7 +304,7 @@ Now, run the example again:
 
 Well, the output is basically the same (the results are combined in the same order!). Let's again measure the runtime of the parallel execution on 4 cores:
 
-!!! types caution "The binary operator %do% willl always execute a foreach-loop sequentially even if registerDoParallel was called before! To correctly run a foreach in parallel, two conditions must be met:"
+!!! types caution "The binary operator %do% will always execute a foreach-loop sequentially even if registerDoParallel was called before! To correctly run a foreach in parallel, two conditions must be met:"
     * registerDoParallel() must be called with a certain number of cores
     * The %dopar% operator must be used in the foreach-loop to have it run in parallel!
 

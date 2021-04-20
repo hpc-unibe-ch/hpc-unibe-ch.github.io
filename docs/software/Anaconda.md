@@ -50,6 +50,9 @@ eval "$(conda shell.bash hook)"
 ```
 This should also be used in your batch submission scripts when working with conda environments.
 
+### conda environments
+By default conda environments are located into the `$HOME/.conda` directory. This can be changed using `$CONDA_ENVS_PATH`. This variable is set in the Workspace module. Which enables you to share conda environments. 
+
 ## Move / Migration of conda environments
 If conda environments need to be transfered on the system, e.g. from `$HOME` to `$WORKSPACE` you can use the `conda pack` (see official [conda pack documentation](https://conda.github.io/conda-pack/)). 
 
