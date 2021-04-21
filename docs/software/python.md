@@ -8,7 +8,8 @@ On the other hand there is Anaconda installed, which brings an even longer list 
 For Anaconda see [Anaconda page](Anaconda.md)
 
 ## Additional Packages
-If you need additional packages we suggest to install them using `pip` and the Workspace module, e.g. for installing a package `matplotlib`:
+If you need additional packages we suggest to install them using `pip`. 
+You can install into your private HOME using the `pip install --user` option or share the packages with your colleges using the Workspace module, e.g. for installing a package `matplotlib`:
 
 ```Bash
 ## load Python first, this can also be `module load Anaconda3`
@@ -26,4 +27,4 @@ module load Python     ## OR module load Anaconda3
 module load Workspace  ## maybe you need to specify the Workspace name first
 python -c "import matplotlib"
 ```
-since `$PYTHONPATH` and `$PATH` are set to the above specified loaction. 
+since `$PYTHONPATH` and `$PATH` are set to the above specified location. 
