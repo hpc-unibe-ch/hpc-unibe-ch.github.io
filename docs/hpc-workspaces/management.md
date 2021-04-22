@@ -71,7 +71,7 @@ The following information are required:
 - Cost Center (necessary when requesting Additional Storage)
 - primary group members
 - secondary group members (optional)
-member lists can be selected one by one or as a comma separated list of Campus accounts (see "Import Bulk User" in form)
+member lists can be selected one by one or as a comma separated list of Campus accounts (see [Import Bulk User](#import-bulk-user))
 
 [//]: # (TODO remove when fixed)
 
@@ -99,3 +99,8 @@ Properties to change are:
     During the processing of a modification no other modification can be requested. The Workspace is even not visible in the ServicePortal for that time. 
     Most modification will be processed within few minutes, but adding non-free-of-charge features like additional storage, need human approval, which may delay the process. 
     The Workspace itself (file storage and Slurm, etc.) will not be interrupted by a change. 
+
+## Import Bulk Users
+
+The "Import Bulk Users" field provides the possibility to list a larger set of members for primary or secondary group without selecting them one by one. There the members need to be specified as a comma seperated list of Campus Accounts (not full names). 
+Keep in mind: you need to specify the **full** list of members in these field. After leaving the field the upper primary/secondary member list will be replaced with this list.
