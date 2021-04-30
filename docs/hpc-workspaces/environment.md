@@ -11,7 +11,7 @@ The Workspace module provide support for user-friendly file system access, custo
 ## Workspace module
 The Workspace module adjust the environment to work in a specific Workspace. 
 ```
-module load workspace
+module load Workspace
 ```
 sets the following environment variables ([Shortcuts](#shortcuts)) and [Software stacks](#software-stacks)
 
