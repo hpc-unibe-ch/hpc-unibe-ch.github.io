@@ -95,7 +95,7 @@ Few examples:
 
 - for **FFTW** in **all architectural** software stacks:
 ```Bash
-eb-install-all --robot --software-name=git --toolchain-name=GCC
+eb-install-all --robot --software-name=FFTW --toolchain-name=GCC
 ```
 - for **git** in the **generic** software stack:
 ```Bash
