@@ -28,3 +28,10 @@ module load Workspace  ## maybe you need to specify the Workspace name first
 python -c "import matplotlib"
 ```
 since `$PYTHONPATH` and `$PATH` are set to the above specified location. 
+
+!!! type caution
+    if you get the error:
+    `ERROR: You must give at least one requirement to install (see "pip help install")`
+    you need to reload the Workspace module to properly set the variables. 
+    The Workspace module need to have Anaconda3/Python loaded first to read the proper Python Version. 
+    `module load Python ## OR module load Anaconda3`
