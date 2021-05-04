@@ -124,46 +124,45 @@ computations to the compute nodes - by generating a job script and sending it to
 
 It's now time for your first job script. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
 
-    #!/bin/bash
-    #SBATCH --mail-user=<your_email_address>
-    #SBATCH --mail-type=none
-    #SBATCH --partition=all
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=1
- 
-    # Put your code below this line
+```Bash
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1GB
+
+# Put your code below this line
+...
+```
 
 The first line makes sure that the file is executed using the bash shell. The remaining lines are option flags used by the `sbatch` command. The page [Jobs Submission](slurm/submission.md) outlines the most important options of `sbatch`.
 
 Now, let's write a simple "hello, world"-task:
 
-    #!bash
-    # Put your code below this line
-    mkdir -p $HOME/my_first_job
-    cd $HOME/my_first_job
-    echo "Hello, Ubelix from node $(hostname)" > hello.txt
-    sleep 120
+```Bash
+...
+# Put your code below this line
+module load Workspace/home
+mkdir -p $SCRATCH/my_first_job
+cd $SCRATCH/my_first_job
+echo "Hello, UBELIX from node $(hostname)" > hello.txt
+```
 
-In the first line we create a new directory 'my_first_job' within our home directory. The variable **`$HOME`** expands to `/home/ubelix/<your_group>/<your_username>`. In the second line we change directory to the newly created directory. In the third line we print the line "Hello, Ubelix from node <hostname_of_the_executing_node>" and redirect the output to a file named `hello.txt`. The expression **`$(hostname)`** means, run the command hostname and put its output here. In the forth line we wait (do nothing) for 120 seconds. This gives us some time to monitor our job later on. Save the content to a file named `first.sh`.
+After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<your_username>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, Ubelix from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
 
 The complete job script looks like this:
 
-    #!/bin/bash
-    #SBATCH --mail-user=<your_email_address>
-    #SBATCH --mail-type=end,fail
-    #SBATCH --job-name="job01"
-    #SBATCH --partition=all
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=1
-         
-    # Put your code below this line
-    mkdir -p $HOME/my_first_job
-    cd $HOME/my_first_job
-    echo "Hello, Ubelix from node $(hostname)" > hello.txt
-    sleep 120
+```Bash
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1GB
 
-!!! warning "Use Correct Email Addresss!"
-    When using a mail-type other than 'none', make sure that you use a valid email address with the --mail-user option! 
+# Put your code below this line
+module load Workspace/home
+mkdir -p $SCRATCH/my_first_job
+cd $SCRATCH/my_first_job
+echo "Hello, UBELIX from node $(hostname)" > hello.txt
+```
 
 ## Schedule Your Job
 
@@ -187,11 +186,11 @@ squeue --job=32490640
 ```
 ```no-highlight
       JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   32490640       all    job01 testuser  R       0:22      1 fnode23
+   32490640     epyc2    job01 testuser  R       0:22      1 bnode23
 ```
 
 Here you can see that the job 'job01' with job-ID 32490640 is in state RUNNING (R).
-The job is running in the 'all' partition (default partition) on fnode23 for 22 seconds.
+The job is running in the 'epyc2' partition (default partition) on bnode23 for 22 seconds.
 It is also possible that the job can not start immediately after submitting it to SLURM
 because the requested resources are not yet available. In this case, the output could
 look like this:
@@ -201,7 +200,7 @@ squeue --job=32490640
 ```
 ```no-highlight
        JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    32490640       all    job01 testuser PD       0:00      1 (Priority)
+    32490640     epyc2    job01 testuser PD       0:00      1 (Priority)
 ```
 
 Here you can see that the job is in state PENDING (PD) and a reason why the job
@@ -214,14 +213,14 @@ squeue --user=testuser
 ```
 ```no-highlight
       JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   34651451      all slurm.sh  testuser PD       0:00      2 (Priority)
-   34651453      all slurm.sh  testuser PD       0:00      2 (Priority)
-   29143227      empi    Rjob  testuser PD       0:00      4 (JobHeldUser)
-   37856328      empi  mpi.sh  testuser  R       4:38      2 anode[041-042]
-   32634559       all fast.sh  testuser  R    2:52:37      1 hnode12
-   32634558       all fast.sh  testuser  R    3:00:54      1 hnode14
-   32634554       all fast.sh  testuser  R    4:11:26      1 jnode08
-   32633556       all fast.sh  testuser  R    4:36:10      1 jnode08
+   34651451     epyc2 slurm.sh  testuser PD       0:00      2 (Priority)
+   34651453     epyc2 slurm.sh  testuser PD       0:00      2 (Priority)
+   29143227     epyc2     Rjob  testuser PD       0:00      4 (JobHeldUser)
+   37856328       bdw   mpi.sh  testuser  R       4:38      2 anode[012-014]
+   32634559       bdw  fast.sh  testuser  R    2:52:37      1 anode12
+   32634558       bdw  fast.sh  testuser  R    3:00:54      1 anode14
+   32634554       bdw  fast.sh  testuser  R    4:11:26      1 anode08
+   32633556       bdw  fast.sh  testuser  R    4:36:10      1 anode08
 ```
 
 Further information on on job monitoring you find on page [Monitoring Jobs](slurm/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](slurm/investigating-job-failure.md) and [Check-pointing](slurm/checkpointing.md). 

@@ -2,8 +2,8 @@ site_name: HPC Documentation
 #theme: mkdocs
 use_directory_urls: false
 nav:
+  - News: general/news.md
   - IMPORTANT..Home Migration: HOME_migration.md 
-  - PLAN..Workspaces: overview_workspaces.md
   - Quick Start: quick-start.md
   - Getting Started:
     - Code of Conduct: code-of-conduct.md
@@ -19,7 +19,8 @@ nav:
     - Workspace management: hpc-workspaces/management.md
     - Software environment: hpc-workspaces/environment.md
     - Monitoring: hpc-workspaces/monitoring.md
-  - Job handling:
+  - SLURM / Job handling:
+    - Partitions / QoS: slurm/partitions.md
     - Submitting jobs: slurm/submission.md
     #      - Parallel execution:
     - Monitoring Jobs: slurm/monitoring-jobs.md
@@ -48,12 +49,14 @@ nav:
       - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
   - Storage:
     - Overview: file-system/filesystem-overview.md
-    - File System Quota: file-system/quota.md
+    - Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
     - Scratch: file-system/scratch.md
-  - Code of Conduct: code-of-conduct.md
+  - Investment: general/investment.md
+  - Support: general/support.md
   - FAQ: general/faq.md
   - Hall of Fame: halloffame.md
+  - Code of Conduct: code-of-conduct.md
       #
       #
       #  - Home: index.md

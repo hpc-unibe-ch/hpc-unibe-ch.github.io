@@ -28,45 +28,23 @@ The migration will be performed institute by institute. Users are notified befor
 
 **IMPORTANT:** please also read section [Quota and permission changes](#quota_and_permission_changes) below.
 
+## Introducing HPC Workspaces
+HPC Workspaces are group shared places. See [HPC Workspace Documentation](hpc-workspaces/workspaces.md)
+
+
 ## Temporary space to share data
-In future HOMEs are meant to be private spaces. Data sharing will be enabled using flexible group based HPC Workspaces (see below). In the meantime time institute based directories `/home/ubelix/<instituteID>/shared` can be used for sharing. To simplify the upcoming transition to workspaces you can already access the institute spaces using the similar workflow you will do later:
+HOMEs are meant to be private spaces. Data sharing is enabled using flexible group based [HPC Workspaces](hpc-workspaces/workspaces.md). 
+The institute based directories `/home/ubelix/<instituteID>/shared` were provided using tools similar to Workspaces:
 ```
 module load CustomRepo/ws_inst
 cd $WORKSPACE
 ```
 
-Later the module name will change, but the environment variable `WORKSPACE` will point to **your** Workspace directory. Keep in mind the subdirectory structure in the **shared** directories. 
+With Workspace and migrated data your workflow can still use the environment variable `WORKSPACE`, which point to **your** Workspace directory. Keep in mind the subdirectory structure in the previous **shared** directories. 
 
 !!! attention "shared directory cleaning"
-    After the migration/ Workspace introduction the institute `shared` directories will be removed. You will have more than a month to migrate your data to a Workspace. 
-
-## Introducing HPC Workspaces
-In a second step HPC Workspaces will be introduced, enabling collaborative work in group shared file spaces. Currently they are in Alpha testing stage. 
-
-HPC Workspaces consists of:
-
- - persistent **WORKSPACE** storage (with Snapshots and Backup), 
- - temporary **SCRATCH** storage (no recovery features, but less restrictive), 
- - a **primary group** with read/write access, 
- - a **secondary group** with read only access and 
- - group based **SLURM accounting**. 
-
-There will be tools for easy access the directories using `$WORKSPACE` and `$SCRATCH` variable as well as reporting quota and fair share. 
-
-Workspaces will be created by a research group manager using the Service Portal, where also quotas, members, and more can be managed. 
-Each research group will have 10TB persistent disc space free of charge. Which can be used in one or more Workspaces. Additional storage can be purchased. 
-More detailed information will follow soon. 
-
-!!! types note "Beta tester welcome"
-    Interested in becoming a Workspace Beta user? Get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
-
-### SLURM accounting
-With the introduction of Workspaces we are changing our resource sharing scheme. The free of charge resources will then be shared between research groups not institutes any more. 
-More detailed information will follow soon. 
+    In June, the institute `shared` directories will be removed. **You** will have more than a month to migrate your data to a Workspace. 
 
 ## Quota and permission changes
-At the end of the transition the HOME directories are closed to be a private space and the quota will be set to max. 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
-
-## Backup and Snapshots
-All Workspaces will have Snapshots and Backup enabled. 
-**HOME**s will get these features **after** the migration/ Workspace introduction period, due to performance reasons. 
+Finally, beginning of June HOME directories will be restricted to be a private space and the quota will be set to max. 1TB and 1M files. Furthermore, the temporary institute sharing directories will be removed. 
+Starting with this change the HOME Snapshot and Backup will be activated and the `umask` will be by default 002. 

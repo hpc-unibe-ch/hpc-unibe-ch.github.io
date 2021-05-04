@@ -10,6 +10,20 @@ This page contains information about quota limits on the parallel file system. Q
 !!! types warning " Job abortion"
     Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded 
 
+## Quotas
+
+| space | quota | file quota | backup | expiration |
+| ----- | ----- | ---------- | ------ | ---------- |
+| HOME | 1TB[^mig] | 1M[^mig] | yes[^mig] | - |
+| WORKSPACE | free: up to 10TB per research group[^QpRG] | 1M per TB | yes | 1 year[^WSdur] |
+| SCRATCH | 50TB | 50M | no | 1 month |
+
+[//]: # (TODO remove warning)
+[^mig]: ATTENTION: there is no Backup or snapshot on HOME directories until the Workspace introduction phase is finished. Previous extended quota keep active until then. 
+[^QpRG]: Each research group can use up to 10TB of free disk storage in multiple Workspaces free of charge. Quota increase can be purchased, see [Workspace Management](../hpc-workspaces/management.md#additional-storage). 
+[^WSdur]: Workspaces are meant to be active directories and no archive. Workspace are active by default for one year. The duration can every time be extended to "current date plus one year". 
+
+
 ## Display quota information
 
 A quota tool is delivered with the Workspace module:
@@ -45,19 +59,6 @@ In the last example the workspace `Workspace1` has `5TB` of free quota, and a to
     - HOME: values presented are actual values directly from the file system
 
 Note: the coloring of the relative values is green (<70%), yellow (70% < x < 90%), red (>90%).
-
-
-## HOME Quota
-
-| space | quota | file quota | backup | expiration |
-| ----- | ----- | ---------- | ------ | ---------- |
-| HOME | 1TB[^mig] | 1M[^mig] | yes[^mig] | - |
-| WORKSPACE | 10TB per research group[^QpRG] | by default 1M per TB | yes | 1 year[^WSdur] |
-| SCRATCH | 50TB | 50M | no | 1 month |
-
-[^mig]: ATTENTION: there is no Backup or snapshot on HOME directories until the Workspace introduction phase is finished. Previous extended quota keep active until then. 
-[^QpRG]: Each research group can use up to 10TB of free disk storage in multiple Workspaces. 
-[^WSdur]: Workspaces are meant to be active directories and no archive. Workspace are active by default for one year. The duration can every time be extended to "current date plus one year". 
 
 ## advanced quota method
 

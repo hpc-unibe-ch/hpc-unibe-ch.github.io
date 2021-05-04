@@ -63,14 +63,9 @@ Instead of submitting 1000 individual jobs, submit a single array jobs with 1000
 
 ```Bash
 #!/bin/bash
-
-#SBATCH --mail-type=NONE
-#SBATCH --partition=all
 #SBATCH --time=00:30:00    	# Each task takes max 30 minutes
 #SBATCH --mem-per-cpu=2G   	# Each task uses max 2G of memory
-#SBATCH --array=1-1000  	# Submit 1000 tasks with task ID 1,2,...,1000.
-#SBATCH --output=/dev/null
-#SBATCH --error=/dev/null
+#SBATCH --array=1-1000    	# Submit 1000 tasks with task ID 1,2,...,1000.
 
 # The name of the input files must reflect the task ID!
 ./foo input_data_${SLURM_ARRAY_TASK_ID}.txt > output_${SLURM_ARRAY_TASK_ID}.txt
@@ -86,36 +81,26 @@ Submit an array job with 1000 tasks. Each task executes the program foo with dif
 
 ```Bash
 #!/bin/bash
-
-#SBATCH --mail-type=NONE
-#SBATCH --partition=all
 #SBATCH --time=00:30:00    # Each task takes max 30 minutes
 #SBATCH --mem-per-cpu=2G   # Each task uses max 2G of memory
-#SBATCH --array=1-1000%20  # Submit 1000 tasks with task ID 1,2,...,1000. Run max 20 tasks concurrently
-#SBATCH --output=/dev/null
-#SBATCH --error=/dev/null
+### Submit 1000 tasks with task ID 1,2,...,1000. Run max 20 tasks concurrently
+#SBATCH --array=1-1000%20  
 
-
-param_store=$HOME/projects/example/args.txt     # args.txt contains 1000 lines with 2 arguments per line.
-                                                  # Line <i> contains arguments for run <i>
-data_dir=$HOME/projects/example/input_data        # Input files are named input_run_0001.txt,...input_run_1000.txt
+data_dir=$HOME/projects/example/input_data        
 result_dir=$HOME/projects/example/results
 
+param_store=$HOME/projects/example/args.txt     
+### args.txt contains 1000 lines with 2 arguments per line.
+###    Line <i> contains arguments for run <i>
+# Get first argument
+param_a=$(cat $param_store | awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
+# Get second argument
+param_b=$(cat $param_store | awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
 
-param_a=$(cat $param_store | awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')    # Get first argument
-param_b=$(cat $param_store | awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')    # Get second argument
+### Input files are named input_run_0001.txt,...input_run_1000.txt
+###    Zero pad the task ID to match the numbering of the input files
+n=$(printf "%04d" $SLURM_ARRAY_TASK_ID)
 
 
-n=$(printf "%04d" $SLURM_ARRAY_TASK_ID)    # Zero pad the task ID to match the numbering of the input files
-
-
-./foo -c $param_a -p $param_b -i ${data_dir}/input_run_${n}.txt -o ${result_dir}/result_run_${n}.txt
-exit
+srun ./foo -c $param_a -p $param_b -i ${data_dir}/input_run_${n}.txt -o ${result_dir}/result_run_${n}.txt
 ```
-
-
-
-*_Related  pages:_*
-
-
-

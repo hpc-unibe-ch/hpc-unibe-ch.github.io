@@ -1,25 +1,21 @@
 # HPC Workspace Data and Software Tools
 
-!!! attention "under Construction"
-    Workspaces are still in testing phase and not publicly available yet.
-    This is preliminary information.
-    Detailed information will follow soon.
-
 ## Description
-The Workspace module provide support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
+HPC Workspace module provides support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
+The module can also be used to set up HOME for a custom software stack. 
 
 ## Workspace module
-The Workspace module adjust the environment to work in a specific Workspace. 
+The Workspace module adjust the environment to work in a specific HPC Workspace. 
 ```
-module load workspace
+module load Workspace
 ```
 sets the following environment variables ([Shortcuts](#shortcuts)) and [Software stacks](#software-stacks)
 
 There are the following possibilities:
 
 - you belong to **no** Workspace: load `module load Workspace/home` to use your software stack in your HOME directory
-- you belong to **one** Workspace: this one gets loaded when `module load Workspace`
-- you belong to multiple Workspaces: you need to specify one. The module presents you the options, e.g.
+- you belong to **one** Workspace: this Workspace gets loaded when `module load Workspace`
+- you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. The module presents the possible options, e.g.:
     ```
     $ module load Workspace
     Workspaces are available:
@@ -57,9 +53,9 @@ the module provides the following settings for a more user-friendly usage of app
 ### Software stacks
 
 Beside, a set of software packages we provide for our different CPU architecture, the Workspace module provides tools to install custom software stacks within your Workspace. 
-Especially with easybuild shortcuts are provided to install and use custom software stacks easily build for all architectures. 
+Especially with EasyBuild shortcuts are provided to install and use custom software stacks easily build for all architectures. 
 
-For installing packages with EasyBuild, see [Easybuild description](../software/EasyBuild.md). 
+For installing packages with EasyBuild, see [EasyBuild description](../software/EasyBuild.md). 
 Manual package can also be installed in the similar manner. Adding a Modulefile provides the users to load packages as used to. Please see [Installing Custom Software](../software/installing-custom-software.md). 
 
 As a result all users of the Workspace can use the software packages by loading the Workspace module and the software product module. 
@@ -67,6 +63,14 @@ As a result all users of the Workspace can use the software packages by loading 
 ### Python packages
 The Workspace module provides support to install and use Python packages in a shared manner, by installing them into the Workspace. 
 Please see [Python Additional Packages](../software/python.md#additional-packages)
+!!! note "First load Python/Anaconda3" 
+    Python or Anaconda3 module need to be loaded before loading the Workspace module, since variables to be set depend on Python version.
+    Workspace module can also be reloaded, e.g.:
+    ```
+    export HPC_WORKSPACE=HPC_SW_test; module load Workspace
+    module load Python
+    module load Workspace
+    ```
 
 ### Conda environments 
 The Workspace module provides support for creating and using conda environments in the shared Workspace. See [Anaconda Conda environments](../software/Anaconda.md#conda-environments).
