@@ -67,7 +67,7 @@ To utilize the invested resources, members need to specify one of the following 
 As an example, the members of an GPU investor, submit jobs with:
 ```Bash
 module load Workspace         # use the Workspace account
-sbatch --partition=gpu_invest job.sh
+sbatch --partition=gpu-invest job.sh
 ```
 
 !!! note ""
