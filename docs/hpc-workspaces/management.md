@@ -67,7 +67,7 @@ A HPC Workspace can (only) be requested by a registered research group lead/mana
 
 The following information are required:
 
-- Workspace ID (max. 20 characters)
+- Workspace ID (max. 20 characters), please choose a unique name
 - Workspace Name
 - Workspace Description
 - registered research group (see prerequisites)
