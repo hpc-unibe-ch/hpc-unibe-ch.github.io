@@ -42,10 +42,7 @@ There will be no quota increase for HOME directories.
 
 ## Workspaces
 ### I need to share data with my colleges. What can I do?
-Starting from May we officially introduce Workspaces. A group shared space. In the meantime you can:
-
-- Use the still existing institute shared directories `/home/ubelix/<instituteID>/shared`
-- Ask for becoming a Workspace Beta user (see [Workspaces Beta](../overview_workspaces.md#beta-testing-phase))
+HPC Workspaces are meant to host shared data. See [HPC Workspaces](../hpc-workspaces/workspaces.md)
 
 <!-- ## Where should I put my data?
 A coarse classification may be: 
@@ -58,13 +55,12 @@ A coarse classification may be:
 | applications, meant to be shared (some-when) | Workspace | -->
 
 ### Where can I get a Workspace?
-Workspaces are still in **Alpha testing** phase. We will soon switch to Beta testing with users. If you are interested, get in touch with us using a [Service Portal request](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) or drop an [email](mailto:hpc@id.unibe.ch).
-
 A research group manager need to **create** the Workspace, since there are possibilities for charged extensions. 
 
 If you want to **join an existing** Workspace. Ask the Workspace manager or its deputy to add you. 
+See [HPC Workspaces](../hpc-workspaces/workspaces.md)
 
-### How much will a Workspace cost?
+### How much does a Workspace cost?
 Workspaces itself are free of charge. Every research group has 10TB disk space free of charge, which can be used in multiple Workspaces. 
 If necessary, additional storage can be purchased per Workspace, where only the actual usage will be charged, see [Workspace Management](../hpc-workspaces/management.md#additional-storage)
 
