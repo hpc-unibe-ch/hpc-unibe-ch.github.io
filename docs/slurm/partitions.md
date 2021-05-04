@@ -55,4 +55,32 @@ sbatch --partition=gpu --qos=job_gpu_preempt --gres=gpu:rtx3090 myjob.sh
 Please see for more details: [GPUs](gpus.md)
 
 ## Investor QoS
-Investors get elvated priviledges on additional additional resources. These priviledges are managed using *investor QoS* in *investor partitions*. The membership to these is managed on basis of HPC Workspaces, see [Workspace Management](../hpc-workspaces/management.md#investor-qos).
+Investors get elvated priviledges on certain resources. 
+The membership to these investor priviledges will/are managed on basis of HPC Workspaces, see [Workspace Management](../hpc-workspaces/management.md#investor-qos).
+
+To utilize the invested resources, members need to specify one of the following investor partitions:
+
+- `epyc2-invest`, 
+- `bdw-invest`, 
+- `gpu-invest`
+
+As an example, the members of an GPU investor, submit jobs with:
+```Bash
+module load Workspace         # use the Workspace account
+sbatch --partition=gpu_invest job.sh
+```
+
+!!! note ""
+    previous `empi` investors now use `bdw-invest` partition and GPU investors use `gpu-invest`
+
+### Technical Details:
+Within the investor partition, *investor QoS* are specified. These have the format `job_<partitionBase>_<investorID>`, e.g. "job_bdw_aschauer". 
+These QoS will be default for the members in the investor partition. And therewith do not need to be specified. 
+You can check your investor QoS and the used partitions using:
+```Bash
+sacctmgr show assoc where user=$USER format=user%20,account%20,partition%16,qos%40,defaultqos%20
+```
+
+
+
+

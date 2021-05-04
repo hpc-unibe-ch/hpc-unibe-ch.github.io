@@ -46,9 +46,19 @@ Storage is a limited and expensive resource. Abandoned, unused workspaces should
 
 ## Application
 ### Prerequisite
-The research group need to be registered first on the Service Portal once: [Service Portal -> Register Research Group](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=3dd760551b0f145023a5dd318b4bcbe5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
+Since we are sharing the HPC resources on basis of research groups, a registration of these is required. Only official University of Bern research groups can register. These need to be officially represented within the unibe.ch sites.
+Required information:
 
-The request need to be verified manually. This may take some time. 
+- research group **name**
+- research group **head**/**lead**
+- **cost center** for location in organizational tree (a UniBE cost center)
+- official unibe.ch research group **URL**, where the research group name and research group head is mentioned
+- research **group ID** which is merged with the institute ID. This code is used in the UBELIX file system tree
+
+Registration Form: [Service Portal -> Register Research Group](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=3dd760551b0f145023a5dd318b4bcbe5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
+
+!!! note ""
+    The request need to be verified manually. This may take some time. 
 
 ### Application Form
 A HPC Workspace can (only) be requested by a registered research group lead/manager using the ServicePortal application form:
