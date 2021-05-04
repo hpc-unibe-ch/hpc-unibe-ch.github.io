@@ -1,10 +1,5 @@
 # Workspace management
 
-!!! attention "under Construction"
-    Workspaces are still in testing phase and not publicly available yet. 
-    This is preliminary information.
-    Detailed information will follow soon.
-
 ## Description
 This article targets Workspace managers. It covers applications, Workspace properties, up to modifications and suggested usage of Workspaces.
 
@@ -21,16 +16,18 @@ Workspaces are group shared resources. This group could be for example:
 HPC Workspaces manage compute and storage resources. Especially the freely available resources are meant to be shared between participating research groups. Therefore, the Workspaces belong to a beforehand registered research group.
 
 A HPC Workspace can be only requested by a **research group leader**, who responsible and accountable, since costly extensions can be added to the Workspace. 
-Additionally, a **deputy** can be nominated, who also can manage the Workspace (see [Workspace Modification](#modification)). 
-**Note:** Deputies have the same privileges than the owner and can also purchase costly resources without additional notification. Owners and deputies are called Workspace managers. 
+Additionally, a **deputy** can be nominated, who also can manage the Workspace (see [Workspace Modification](#modification)). Owners and deputies are called **Workspace managers**. 
+
+!!! type note "Deputies"
+    Deputies have the same privileges than the owner, up to purchasing costly resources without additional notification. 
 
 If the workspace is meant to be for a **collaboration of researchers** from different research groups, you need to agree to one research group which is responsibilities and gets accounted for the resources. This research group leader need to request the workspace. 
 
-### Members
+### Member groups
 Each Workspace has two member groups:
 
-- primary users with read and write access and
-- secondary users with read only access
+- primary users with **read and write** access and
+- secondary users with **read only** access
 
 Only members of the primary group can create and modify data, belonging to the Workspace, as well as submitting jobs to the Workspace account. The member lists are defined at Workspace application time and can be modified later. 
 
@@ -44,9 +41,8 @@ Additional storage can be purchased for 50CHF per TB per year.
 On the application or modification form an quota upper limit can be set. Accounted will be the actual usage. Therefore, the actual usage is monitored and twice a day. The average value of all data points is used for accounting. 
 
 ### Availability
-Storage is a limited and expensive resource. Abandoned, unused workspaces should be prevented by design. Therefore, a workspace has a default live time of one year. A notification will be send before the Workspace expiry. The Workspace expiry date can be changed at any time to any date within the next 365 days by any Workspace manager. 
-
-[//]: # (TODO provide link to the ServicePortal)
+Storage is a limited and expensive resource. Abandoned, unused workspaces should be prevented by design. Therefore, an HPC Workspace has a default live time of one year. A notification will be send before the Workspace expiry. The Workspace expiry date can be changed at any time to any date within the next 365 days by any Workspace manager. 
+[ServicePortal -> Shop -> HPC -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76) -> Workspace Duratio
 
 ## Application
 ### Prerequisite
@@ -81,7 +77,7 @@ member lists can be selected one by one or as a comma separated list of Campus a
 [//]: # (TODO remove note after changing to IAM-Tool)
 
 !!! type note "processing time"
-The Workspace creation for now relies on a temporary automatic process which is running only once a day at 20:00. In future the process will be much faster. 
+    The Workspace creation for now relies on a temporary automatic process which is running only once a day at 20:00. In future the process will be much faster. 
 
 ## Workspace modifications
 
@@ -99,6 +95,9 @@ Properties to change are:
     During the processing of a modification no other modification can be requested. The Workspace is even not visible in the ServicePortal for that time. 
     Most modification will be processed within few minutes, but adding non-free-of-charge features like additional storage, need human approval, which may delay the process. 
     The Workspace itself (file storage and Slurm, etc.) will not be interrupted by a change. 
+
+## Investor QoS
+Investors get elevated priviledges for specific queues. These are managed in so called Slurm QoS (Quality of Service). Where in the past the investors specified a list of users, who can use the QoS, now with Workspaces we are able to manage the QoS on Workspace level. Therefore, you need to open a request to add an existing QoS to a (list of) Workspace(s). The membership managment is done with the Workspace. 
 
 ## Import Bulk Users
 

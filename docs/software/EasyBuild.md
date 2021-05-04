@@ -109,6 +109,12 @@ eb-install-all --archs='ivy broadwell' --robot myApp.eb
 This will need time to get scheduled and processed. 
 The job output is presented in the `eb_out.*` files, one for each architecture. 
 
+If the build could not be finished in the default time of 1h, the walltime can be extended using:
+
+```Bash
+eb-install-all --robot --slurm-args='--time=05:00:00' ...
+```
+
 !!! note "Note"
     Please check the end of the out file for the **COMPLETED: Installation ended successfully** statement.
 

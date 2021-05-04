@@ -1,10 +1,5 @@
 # Workspaces Introduction
 
-!!! attention "under Construction"
-	Workspaces are still in testing phase and not publicly available yet.
-	This is preliminary information.
-	Detailed information will follow soon.
-
 ## Description
 This article introduces HPC workspaces with the main aspects.
 
@@ -74,7 +69,7 @@ Scratch will not be protected.
 
 ## Quota
 
-For default and actual **quota** information see [File System Quota](../file-system/quota.md).
+For default and actual **quota** information use `quota` tool. More details see [File System Quota](../file-system/quota.md).
 
 
 ## SLURM: 
