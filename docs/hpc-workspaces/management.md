@@ -31,7 +31,7 @@ Each Workspace has two member groups:
 
 Only members of the primary group can create and modify data, belonging to the Workspace, as well as submitting jobs to the Workspace account. The member lists are defined at Workspace application time and can be modified later. 
 
-Members can be anyone with an UniBE Campus Account.
+Members can be anyone with an UniBE Campus Account, but need to be registered for UBELIX usage, see [Account Activation](../getting-Started/account.md#account-activation).
 
 ### Free Of Charge Quota
 Every **research group** has **10TB** free of charge quota. This can be used within one or more Workspaces. The amount used per Workspace is set at application time and can be changed later within the limitation. 
@@ -78,6 +78,9 @@ The following information are required:
 - primary group members
 - secondary group members (optional)
 member lists can be selected one by one or as a comma separated list of Campus accounts (see [Import Bulk User](#import-bulk-user))
+
+!!! attention ""
+    All members need to have their account activated for UBELIX, otherwise the process will fail and need manual intervention. See [Account Activation](../getting-Started/account.md#account-activation)
 
 [//]: # (TODO remove when fixed)
 
