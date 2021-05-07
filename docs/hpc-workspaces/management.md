@@ -46,12 +46,15 @@ Storage is a limited and expensive resource. Abandoned, unused workspaces should
 
 ## Application
 ### Prerequisite
-Since we are sharing the HPC resources on basis of research groups, a registration of these is required. Only official University of Bern research groups can register. These need to be officially represented within the unibe.ch sites.
+Since we are sharing the HPC resources on basis of research groups, a registration of these is required. Only official University of Bern research groups can register. These need to be officially represented within the unibe.ch sites. Since research group definition are vague. In unclear situation please specify the responsible **professor**.
+
 Required information:
 
 - research group **name**
-- research group **head**/**lead**
+- research group **responsible**, in best case responsible **professor** 
+    - A long term responsible person, e.g. for data in case actual research group lead leaves university. Research group or topic need to be at least stated on the UniBE webpage.
 - **cost center** for location in organizational tree (a UniBE cost center)
+    - for determining the proper cost center, please ask YOUR UniBE secretary
 - official unibe.ch research group **URL**, where the research group name and research group head is mentioned
 - research **group ID** which is merged with the institute ID. This code is used in the UBELIX file system tree
 
