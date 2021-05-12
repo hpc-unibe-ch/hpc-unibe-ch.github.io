@@ -78,12 +78,14 @@ The following information are required:
 - Free Quota (see above)
 - additional Storage (optional): an upper limit of quota, where the actual quota will be charged. When selected this requires a valid cost center for accounting. 
 - Cost Center (necessary when requesting Additional Storage)
-- primary group members
-- secondary group members (optional)
+- primary group members (all accounts need UBELIX activation beforehand)
+- secondary group members (optional) (all accounts need UBELIX activation beforehand)
 member lists can be selected one by one or as a comma separated list of Campus accounts (see [Import Bulk User](#import-bulk-user))
 
 !!! attention ""
     All members need to have their account activated for UBELIX, otherwise the process will fail and need manual intervention. See [Account Activation](../getting-Started/account.md#account-activation)
+
+    If the requester only want to hold the managing position without UBELIX, the requester can remove his/her account from the primary member list. This can be changed any time.
 
 [//]: # (TODO remove when fixed)
 
