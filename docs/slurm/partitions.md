@@ -40,10 +40,12 @@ Within these partitions, **QoS** are used to distinguish different job limits. I
 | bdw | **job_bdw** | 24 h | 50 nodes | 300 |
 | | bdw_debug | 20 min | 2 nodes | 1 |
 | | bdw_short | 6 h | 2 nodes | 10 |
-| gpu | **job_gpu** | 24 h | 6x GTX 1080 Ti <br> 2x RTX 2080 Ti <br> 1x RTX 3090 <br> 1x Tesla P100 | 10 |
+| gpu | **job_gpu** | 24 h | 6x GTX 1080 Ti <br> 2x RTX 2080 Ti <br> 1x RTX 3090 <br> 1x Tesla P100 | 10 [^jobLim] |
 | | job_gpu_debug | 20 min | 1 GPU | 1 |
-| | job_gpu_preempt | 24 h | 12x GTX 1080 Ti <br> 4x RTX 2080 Ti <br> 4x RTX 3090 <br> 4x Tesla P100 | 24 |
+| | job_gpu_preempt | 24 h | 12x GTX 1080 Ti <br> 4x RTX 2080 Ti <br> 4x RTX 3090 <br> 4x Tesla P100 | 24 [^jobLim] |
  
+[^jobLim]: The gpu job limits are determined by the maximum of single GPU jobs on all architecture. But keep in mind, that jobs should be submitted to the best suited architecture.
+
 The QoS job_epyc2_short and job_gpu_preempt have access extended resources. In case of job_gpu_preempt, these jobs will be pre-empted if not enough resources for the investors. 
 
 Thus a job can be submitted to the gpu partition using a RTX3090 and allow pre-emption:
@@ -53,6 +55,10 @@ sbatch --partition=gpu --qos=job_gpu_preempt --gres=gpu:rtx3090 myjob.sh
 ```
 
 Please see for more details: [GPUs](gpus.md)
+
+## Default and Investor Partition
+All resources are tried to privide in a most accessible way, preventing idle time. Thus the resouces meant for investors can be used by non-investing users too. 
+Therefore, from the whole resources a certain amount of CPUs/GPUs are "reserved" in the investor partition. But if not used, jobs with `job_gpu_preempt` or `job_{bdw|epyc2}_short` can run on these resources. These are floating resources and do not bind to specific hardware, only certain amount per hardware type.
 
 ## Investor QoS
 Investors get elvated priviledges on certain resources. 
