@@ -87,6 +87,9 @@ member lists can be selected one by one or as a comma separated list of Campus a
 
     If the requester only want to hold the managing position without UBELIX, the requester can remove his/her account from the primary member list. This can be changed any time.
 
+!!! type attention "Workspace ID"
+    The Workspace ID need to be a **unique** string. Please avoid duplications with user IDs, Research Group IDs and other Workspace names. 
+
 [//]: # (TODO remove when fixed)
 
 !!! type note "Notification"
