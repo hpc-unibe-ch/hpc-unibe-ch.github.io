@@ -68,6 +68,15 @@ If necessary, additional storage can be purchased per Workspace, where only the 
 ### What if our 10TB free of charge research group quota is full?
 Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
+### Why can I not submit jobs anymore?
+The HPC resources including compute power should be distriuted between registered research groups. Therefore, users which belong to one or more Workspace need to submit to one of these Workspaces. This can be done by loading the Workspace module `module load Workspace`, see [Workspace environment](../hpc_workspaces/environment.md). 
+
+Otherwise Slurm will present the following error message:
+```Bash
+sbatch: error: AssocGrpSubmitJobsLimit
+sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
+```
+
 ## Software issues
 ### Why is my private conda installation broken after migration
 Unfortunately, Anaconda hard wires absolute paths into almost all files (including scripts and binary files). 
