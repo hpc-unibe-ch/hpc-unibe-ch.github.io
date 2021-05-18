@@ -42,6 +42,7 @@ nav:
       - CUDA: software/CUDA.md
       - JupyterLab: software/JupyterLab.md
       - Matlab: software/matlab.md
+      - Parallel BZIP2: software/bzip2.md
       - Python: software/python.md
       - R: software/r.md
       - Relion: software/relion.md
