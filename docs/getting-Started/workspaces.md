@@ -1,10 +1,5 @@
 # HPC Workspaces
 
-[//]: # (TODO remove construction warning)
-!!! attention "under Construction"
-		Workspaces are still in testing phase and not publicly available yet.
-    detailed information will follow soon
-
 ## Description
 The HPC Workspaces provide a group shared environment, including storage with user-defined access, SLURM accounting, and tools. 
 
