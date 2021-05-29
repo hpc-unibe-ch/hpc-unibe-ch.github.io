@@ -124,3 +124,32 @@ Investors get elevated priviledges for specific queues. These are managed in so 
 
 The "Import Bulk Users" field provides the possibility to list a larger set of members for primary or secondary group without selecting them one by one. There the members need to be specified as a comma seperated list of Campus Accounts (not full names). 
 Keep in mind: you need to specify the **full** list of members in these field. After leaving the field the upper primary/secondary member list will be replaced with this list.
+
+## Permission Background
+
+!!! type note ""
+    This sections provides more advanced information about the implementation of the permission handling for both permission groups. Nevertheless, we strongly suggest to keep default permissions. `-rw-rw-r--` for files and `drwxrwxr-x` for directories. 
+
+In Linux permissions are manged using: `user` (owner), `group` and `other`. `user` will always be the username creating the file/directory. In a Workspace the `group` will always be the Workspace primary group. This should (and this is default) get read/write permissions. The Workspace secondary group gets access to the Workspace main directory using ACLs. Then, within the Workspace these members acts as `other` and need to get read permissions. 
+
+Thus a file:
+
+``` Bash
+-rw-rw-r--  2 user ws_group  4096 Jan 01 09:11 filename
+```
+
+can be modified by all members of the `ws_group` and read by everyone else (with access to that location, which is grated for secondary Workspace group members). And a file
+
+```Bash
+-rw-rw----  2 user ws_group  4096 Jan 01 09:11 filename2
+```
+
+can be modified by all members of the `ws_group`, but NOT read by anyone else (even not secondary Workspace group members).
+
+Please, make sure that all your files and directories keep this permissions. In case of moving data from other locations, these could vary and can be corrected using:
+
+```Bash
+find /storage/workspace/<researchGroupID>/<workspaceID>/ \
+\( -type f -exec chmod 664 {} \; \) , \
+\( -type d -exec chmod 775 {} \; \)
+```
