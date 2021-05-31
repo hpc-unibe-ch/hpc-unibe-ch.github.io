@@ -1,7 +1,7 @@
 # Support
 
 ## UniBE HPC support
-In case of questions, comments or issues get in touch with us using the [Service Portal -> Ask a question -> Tech.Serv.: HPC](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7)
+In case of questions, comments or issues get in touch with us via [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc)
 
 ## Documentation
 If you found issues in this documentation or want to help improving it, open an issue or pull request on out Github repository:

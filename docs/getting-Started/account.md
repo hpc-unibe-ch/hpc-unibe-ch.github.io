@@ -12,7 +12,7 @@ Furthermore, the provided service structure is outlined.
 
 **Request for activation**
 
-To request the activation of your Campus Account, please send an email to [hpc@id.unibe.ch](mailto:hpc@id.unibe.ch) including:
+To request the activation of your Campus Account, please send a request via [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc) including:
 
 * a brief description of what you want to use the cluster for
 * **your Campus Account username**

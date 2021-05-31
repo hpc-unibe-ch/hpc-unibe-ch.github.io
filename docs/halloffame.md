@@ -1,8 +1,7 @@
 # Hall of Fame
 
 If you previously used UBELIX to do your computational work and you acknowledged this
-in your publication and want to your publication listed here, please drop us a note
-at hpc@id.unibe.ch.  
+in your publication and want to your publication listed here, please drop us a note via [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc).  
 If you are wondering how you can acknowledge the usage of UBELIX in your
 publication, have a look at the [homepage](index.md) of this documentation, where
 you will find a text recommendation acknoowledging the use of our cluster.

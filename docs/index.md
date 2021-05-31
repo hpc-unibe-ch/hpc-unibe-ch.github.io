@@ -1,9 +1,9 @@
 !!! danger "COVID-19 Pandemic: impact on UBELIX operations"
      The University of Bern switched to emergency operations (minimal presence). The HPC team put in all effort to slow the spread of COVID-19 by working remotly.
 
-     The UBELIX system stays in production and the HPC team do their best to continue the services, even if problems may take longer to solve. For any questions or issue please write to: [hpc@id.unibe.ch](mailto:hpc@id.unibe.ch)
+     The UBELIX system stays in production and the HPC team do their best to continue the services, even if problems may take longer to solve. For any questions or issue please submit a request at [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc)
 
-     The UniBE HPC team would like to contribute to the research in the fight against COVID-19. Any related studies may get special UBELIX priorities as well as special software support on request ([hpc@id.unibe.ch](mailto:hpc@id.unibe.ch)).
+     The UniBE HPC team would like to contribute to the research in the fight against COVID-19. Any related studies may get special UBELIX priorities as well as special software support on request. Please submit a request at [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc).
 
 # Welcome to the High Performance Computing (HPC) documentation of the University of Bern
 
