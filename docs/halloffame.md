@@ -10,6 +10,8 @@ you will find a text recommendation acknoowledging the use of our cluster.
 
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
+__2021__
+Bertone S, Jäggi A | Assessing reduced-dynamic parametrizations for GRAIL orbit determination and the recovery of independent lunar gravity field solutions | Earth and Space Science | | [Direct Link](https://doi.org/10.1029/2020EA001454) 
 __2020__
 Riou J, Hauser A et al. | Estimation of SARS-CoV-2 mortality during the early stages of an epidemic: A modeling study in Hubei, China, and six regions in Europe | PLOS Medicine | | [Direct Link](https://doi.org/10.1371/journal.pmed.1003189)
 Ricca C, Aschauer U | Local polarization in oxygen-deficient LaMnO<sub>3</sub> induced by charge localization in the Jahn-Teller distorted structure |  Phys. Rev. Res. | [Details](http://dx.doi.org/10.1103/PhysRevResearch.2.042040) | [Direct Link](https://boris.unibe.ch/149523/) | 
