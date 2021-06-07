@@ -249,7 +249,8 @@ Slurm sets various environment variables available in the context of the job scr
 |`SLURM_NTASKS`            | `--ntasks`        | Same as `-n`, `--ntasks` |
 |`SLURM_NTASKS_PER_NODE`   | `--ntasks-per-node`	| Number of tasks requested per node.  Only set if the `--ntasks-per-node` option is specified |
 |`SLURM_CPUS_PER_TASK`     | `--cpus-per-task` | Number of cpus requested per task.  Only set if the `--cpus-per-task` option is specified |
-|`TMPDIR`                  |                 | References the disk space for the job on the local scratch
+|`TMPDIR`                  |                 | References the disk space for the job on the local scratch |
+
 
 For the full list, see `man sbatch`
 
@@ -343,5 +344,22 @@ Requesting too little memory will result in job abortion. Requesting too much me
 ### Job Performance/Runtime
 
 **It is crucial to request the correct amount of cores for your job.**  
-For parallel jobs (shared memory, MPI, hybrid) requesting less cores than processes/threads are spawned by the job will lead to potentially overbooked compute nodes. This is because your job will nevertheless spawn the required number of processes/threads (use a certain number of cores) while to the scheduler it appears that some of the utilized resources are still available, and thus the scheduler will allocate those resources to other jobs. Although under certain circumstances it might make sense to share cores among multiple processes/threads, the above reasoning should be considered as a general guideline, especially for unexperienced user.
+For parallel jobs (shared memory, MPI, hybrid) requesting less cores than processes/threads are spawned by the job will lead to potentially overbooked compute nodes. This is because your job will nevertheless spawn the required number of processes/threads (use a certain number of cores) while to the scheduler it appears that some of the utilized resources are still available, and thus the scheduler will allocate those resources to other jobs. Although under certain circumstances it might make sense to share cores among multiple processes/threads, the above reasoning should be considered as a general guideline, especially for inexperienced user.
 
+## Advanced settings
+
+### EXPORT=NONE
+By default the environment from the session, where the job is submitted is forwarded into the job environment. As a result all loaded modules and environment variables present during submit time are also present during run time. 
+
+To start from a clean environment the environment forwarding can be prevented. Therefore, we have to keep in mind the 2 stages. First, after submission the job script is launched on a compute node. Second, the parallel tasks are launched using srun. We want to preserve the environment forwarding from within the job script to the parallel tasks. 
+Using just the option `sbatch --export=none` or the environment variable `SBATCH_EXPORT=NONE` will prevent the forwarding in both cases. 
+Therewith, issues may occur, like dynamically linked binaries do not find libraries (e.g. `executable.xyz: error while loading shared libraries: libgfortran.so.5: cannot open shared object file: No such file or directory`).
+
+Thus we suggest to set:
+
+```
+export SBATCH_EXPORT=NONE
+export SLURM_EXPORT_ENV=ALL
+```
+This will provide you with a clean environment during job launch and forward the environment set in the job script to the parallel tasks. 
+This is necessary to have e.g. LD_LIBRARY_PATH set correctly for dynamically linked binaries. 
