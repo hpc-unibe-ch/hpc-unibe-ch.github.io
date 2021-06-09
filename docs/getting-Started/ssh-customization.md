@@ -110,6 +110,19 @@ ssh -Y <alias>
 The success can be tested e.g. by calling `xterm` on the login node, which should open a new window. 
 Keep in mind your local operating system need to have a X server running. E.g. Xming on Windows or XQuartz for Mac.
 
+## Passwordless SSH within the HPCs
+Some application require passwordless SSH within the HPC machine, e.g. for establishing reverse port forwarding. 
+Please verify that you created and registered a SSH key within UBLEIX. If you can perform the following command without entering your password your are ready to go:
+```Bash
+ssh localhost
+```
+otherwise create and register a new key on a login node.
+```Bash
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 640 .ssh/authorized_keys
+```
+
 ## Port forwarding
 Some application like JupyterLab require port forwarding, where a port on the remote machine gets connected with a port on the local machine. 
 The ssh command need to be called with additional arguments:

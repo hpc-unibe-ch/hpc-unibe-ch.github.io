@@ -43,6 +43,7 @@ nav:
       - JupyterLab: software/JupyterLab.md
       - Matlab: software/matlab.md
       - Parallel BZIP2: software/bzip2.md
+      - ParaView: software/ParaView.md
       - Python: software/python.md
       - R: software/r.md
       - Relion: software/relion.md
