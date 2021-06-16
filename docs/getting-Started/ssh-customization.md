@@ -7,7 +7,7 @@ This page is listing useful tricks and features with SSH connections.
 
 **Mac/Linux/Unix**
 
-To simplify the login procedure you can define an alias for the user-/hostname combination. Add a host declaration to ~/.ssh/config (substitute your own alias and username):
+To simplify the login procedure you can define an alias for the user-/hostname combination. Add a host declaration to ~/.ssh/config on your local desktop/laptop (substitute your own alias and username):
 
 
 **~/.ssh/config**
@@ -48,10 +48,18 @@ Host <alias>
 
 **Mac/Linux/Unix**  
 SSH keys serve as a means of identifying a user to a SSH server. When using SSH keys your password will never be send over the network.
+Here SSH keys are created on your local desktop/laptop which are later used to authenticate during a SSH login into UBELIX. 
+Therefore, the following steps are reqiured:
+- Creation of key pair consiting of a private and a public key
+- Adding a public key to your UBELIX account
+- Adding the key to the SSH config
+
+### Creation of key pair
 
 !!! types caution ""
     Remember to always keep your private keys private! Share only public keys, never share your private key.
 
+!!! types info ""
 If you already have a valid private/public key pair that you also want to use for UBELIX, you can omit the rest of this section and continue with "Adding a public key to your UBELIX account". 
 
 First, generate a private/public key pair. You can substitute your own comment (-C).  To accept the default name/location simply press Enter, otherwise specify a different name/location:
@@ -72,14 +80,16 @@ Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ```
 
-**Adding a public key to your UBELIX account**  
-If you have specified a custom name/location for your SSH keys, you can tell your SSH client to use this key for connecting to UBELIX by specifying the private key on the command line:
+### Adding a public key to your UBELIX account
+
+Now, the public key need to be added to the `~/.ssh/authorized_keys` file in your UBELIX account. This step can be done by simply issuing:
 
 ```Bash
-$ ssh -i ~/.ssh/id_rsa_ubelix <alias>
+ssh-copy-id -i ~/.ssh/id_rsa_ubelix.pub `<alias>`
 ```
 
-or even better, add the key to your host declaration in your ssh configuration:
+### Adding the key to the SSH config
+Add the key to your host declaration in your local ssh configuration:
 
 **~/.ssh/config**
 ```Bash
@@ -90,11 +100,10 @@ Host <alias>
     IdentityFile ~/.ssh/id_rsa_ubelix
 ```
 
-Now, login to UBELIX and append your public key (content of id_rsa.pub) to the file ~/.ssh/authorized_keys. This step can also be done by simply issuing ssh-copy-id -i ~/.ssh/id_rsa_ubelix.pub `<alias>`. If everything was correct, you will now be able to login without providing you Campus Account password upon your next login attempt. However, if you have secured your key with a passphrase, you will get prompted for your passphrase instead. You can use ssh-agent to securely save your passphrase, so you do not have to re-enter it all the time.
+If everything was correct, you will now be able to login without providing you Campus Account password upon your next login attempt. However, if you have secured your key with a passphrase, you will get prompted for your passphrase instead. You can use ssh-agent to securely save your passphrase, so you do not have to re-enter it all the time.
 
-**Adding your Key to SSH-Agent**  
+### Adding your Key to SSH-Agent  
 The behavior of ssh-agent depends on the flavor and version of your operating system. On OS X Leopard or later your keys can be saved in the system's keychain. Most Linux installations will automatically start ssh-agent when you log in.
-
 
 Add the key to ssh-agent:
 
