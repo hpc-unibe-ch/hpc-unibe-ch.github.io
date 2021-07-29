@@ -31,9 +31,8 @@ The procedure look like:
 ### Cluster Partitions (Queues) and their Compute Nodes
 UBELIX is a heterogeneous machine, consisting of different architectures. There are CPU compute nodes with: 
 
-- Intel Ivybridge
-- Intel Broadwell
-- AMD Epyc2 
+- Intel Broadwell (20 cores per node; usage of full or multiple nodes)
+- AMD Epyc2 (128 cores per node)
 
 and GPU nodes with:
 
