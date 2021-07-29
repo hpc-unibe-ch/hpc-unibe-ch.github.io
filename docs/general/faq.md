@@ -69,7 +69,7 @@ If necessary, additional storage can be purchased per Workspace, where only the 
 Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
 ### Why can I not submit jobs anymore?
-The HPC resources including compute power should be distriuted between registered research groups. Furthermore, users without a Workspace use a private Slurm account. When getting member of a HPC Workspace, the private Slurm account gets deactivated and the Workspace account need to be selected.  This can be done by loading the Workspace module, see [Workspace environment](../hpc_workspaces/environment.md):
+The HPC resources including compute power should be distriuted between registered research groups. Furthermore, users without a Workspace use a private Slurm account. When getting member of a HPC Workspace, the private Slurm account gets deactivated and the Workspace account need to be selected.  This can be done by loading the Workspace module, see [Workspace environment](../hpc-workspaces/environment.md):
 
 ```Bash 
 module load Workspace
