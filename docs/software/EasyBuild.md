@@ -197,6 +197,12 @@ sanity_check_paths = {
 moduleclass = 'bio'
 ```
 
+- update the checksum (if package version is changed)
+The downloaded source packages are typically checked with SHA256 checksums. When we change to a different source code versio, the checksum changes too. And need to be updated.
+```
+$ eb --force --inject-checksums sha256 RELION-3.1.2-foss-2020b.eb
+```
+
 - build the new package as described in [Installation](#installation) above, e.g.
 ```
 $ eb-install-all --robot RELION-3.1.2-foss-2020b.eb
