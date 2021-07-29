@@ -7,7 +7,7 @@ This page is listing useful tricks and features with SSH connections.
 
 **Mac/Linux/Unix**
 
-To simplify the login procedure you can define an alias for the user-/hostname combination. Add a host declaration to ~/.ssh/config on your local desktop/laptop (substitute your own alias and username):
+To simplify the login procedure you can define an alias for the user-/hostname combination. Add a host declaration to ~/.ssh/config **on your local desktop/laptop** (substitute your own alias and username):
 
 
 **~/.ssh/config**
@@ -49,8 +49,9 @@ Host <alias>
 **Mac/Linux/Unix**  
 SSH keys serve as a means of identifying a user to a SSH server. When using SSH keys your password will never be send over the network.
 Here SSH keys are created on your local desktop/laptop which are later used to authenticate during a SSH login into UBELIX. 
-Therefore, the following steps are reqiured:
-- Creation of key pair consiting of a private and a public key
+Therefore, the following steps are required:
+
+- Creation of key pair consisting of a private and a public key
 - Adding a public key to your UBELIX account
 - Adding the key to the SSH config
 
@@ -60,14 +61,14 @@ Therefore, the following steps are reqiured:
     Remember to always keep your private keys private! Share only public keys, never share your private key.
 
 !!! types info ""
-If you already have a valid private/public key pair that you also want to use for UBELIX, you can omit the rest of this section and continue with "Adding a public key to your UBELIX account". 
+    If you already have a valid private/public key pair that you also want to use for UBELIX, you can omit the rest of this section and continue with "Adding a public key to your UBELIX account". 
 
 First, generate a private/public key pair. You can substitute your own comment (-C).  To accept the default name/location simply press Enter, otherwise specify a different name/location:
 
 ```Bash
 $ ssh-keygen -t rsa -b 4096 -C "ubelix"
 Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/faerber/.ssh/id_rsa):
+Enter file in which to save the key (/Users/<user>/.ssh/id_rsa):
 ```
 
 Enter and confirm a secure passphrase:
