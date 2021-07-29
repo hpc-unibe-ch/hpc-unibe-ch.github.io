@@ -23,7 +23,7 @@ module load EasyBuild
 Therewith, our EasyBuild tools and EasyBuild itself are available. 
 
 !!! Note "Note"
-    Specify the WorkspaceID when loading the Workspace module. See module instructions
+    Specify the WorkspaceID if necessary when loading the Workspace module. See module instructions
 
 ## Package Specification
 EasyBuild has a large repository of available packages in different versions. 
@@ -119,3 +119,85 @@ eb-install-all --robot --slurm-args='--time=05:00:00' ...
     Please check the end of the out file for the **COMPLETED: Installation ended successfully** statement.
 
 When finished you (and your collaborators) should be able to use use the software, by just loading the user/workspace related module and the module for the installed package. 
+
+## Meta module and Toolchains
+On the one hand a module may load/depend on other modules, which are automatically loaded with that module. As an example the toolchain module `foss` loads: the `GCC` compiler, the MPI libary OpenMPI, math libaries OpenBLAS, FFTW and ScaLAPACK. These libraries often have further dependencies. 
+
+When building new packages, version consitencies need to be respected. Targeting a build with `foss/2020b` libraries should be utilized, build with the same version of foss or it underlying packages/libaries, e.g. `GCC/10.2.0`.
+
+## Adapting Easyconfigs
+in the following description and example we update an existing old easyconfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
+
+- setup EasyBuild environment
+```
+module load EasyBuild
+module load Workspace   ### OR Workspace/home
+```
+
+- find a suitable easyconfig
+```
+$ eb --search Relion 
+```
+alternatively you may find easyconfigs online, e.g. [https://github.com/easybuilders/easybuild-easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs)
+
+- copy the easyconfig into a working directory (here `.`)
+```
+$ cp $EBROOTEASYBUILD/easybuild/easyconfigs/r/RELION/RELION-3.0.4-foss-2017b.eb .
+```
+
+- rename to the targeted versions (here newer relion, newer toolchain)
+```
+$ mv RELION-3.0.4-foss-2017b.eb RELION-3.1.2-foss-2020b.eb
+```
+
+- find the new versions of toolchain and libraries
+    - all installed version of a package can be listed using `module avail package`, e.g. `module avail foss`
+    - available easyconfigs of non-installed packages can be listed using `eb --search package`. If there is a targeted version available, you can just define that dependency version in the above easyconfig and EasyBuild will find and use it. 
+
+- update the versions settings in the file
+    - package version, the toolchain version, and all related libraries
+    - Keep in mind that toolchain versions need to match (see [toolchains](#meta-module-and-toolchains) above)
+```
+easyblock = 'CMakeMake'
+
+name = 'RELION'
+version = '3.1.2'                            #### The Relion version was '3.0.4' before
+
+homepage = 'http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page'
+description = """RELION (for REgularised LIkelihood OptimisatioN, pronounce rely-on) is a stand-alone computer
+ program that employs an empirical Bayesian approach to refinement of (multiple) 3D reconstructions or 2D class
+ averages in electron cryo-microscopy (cryo-EM)."""
+
+toolchain = {'name': 'foss', 'version': '2020b'}   ### the foss toolchain version was 2020b before
+toolchainopts = {'openmp': True}
+
+source_urls = ['https://github.com/3dem/relion/archive']
+sources = ['%(version)s.tar.gz']
+checksums = ['2580d66088923a644bc7d3b02efd154b775a3ec3d010426f382bb3be5db9c98b']
+
+builddependencies = [('CMake', '3.18.4')]    ### was 3.9.5
+
+dependencies = [
+    ('X11', '20201008'),                     ### was 20171023
+    ('FLTK', '1.3.5'),                       ### was 1.3.4
+    ('LibTIFF', '4.1.0'),                    ### 4.0.9
+    ('tbb', '2020.3'),                       ### 2018_U5
+]
+
+configopts = "-DCMAKE_SHARED_LINKER_FLAGS='-lpthread'  -DMPI_INCLUDE_PATH=$EBROOTOPENMPI/include "
+configopts += "-DMPI_C_COMPILER=$EBROOTOPENMPI/bin/mpicc -DMPI_CXX_COMPILER=$EBROOTOPENMPI/bin/mpicxx "
+configopts += "-DCUDA=OFF -DCudaTexture=OFF "
+configopts += "-DALTCPU=ON -DFORCE_OWN_TBB=OFF "
+
+sanity_check_paths = {
+    'files': ['bin/relion'],
+    'dirs': []
+}
+
+moduleclass = 'bio'
+```
+
+- build the new package as described in [Installation](#installation) above, e.g.
+```
+$ eb-install-all --robot RELION-3.1.2-foss-2020b.eb
+```
