@@ -23,7 +23,7 @@ A HPC workspace consists of:
 HPC data typically is shared data. This could be between students and supervisors, between researchers of a research group, or even between researchers of different institutes. These data needs to be accessible even if people leave the team. 
 Furthermore, these data is usually processed with a set of custom software tools, which need to be easy accessible, share, between the collaborators. 
 
-## Advantages:
+## Advantages
 - group based storage access (data and software)
 - enhanced collaborations between researchers, even across institutes
 - user-friendly access control by Workspace managers
@@ -72,7 +72,7 @@ Scratch will not be protected.
 For default and actual **quota** information use `quota` tool. More details see [File System Quota](../file-system/quota.md).
 
 
-## SLURM: 
+## SLURM
 Computational work is accounted to a Workspace account. Every workspace belongs to a research group. The freely available resources are shared between research groups. 
 
 [//]: # (TODO link to fairshare description)
