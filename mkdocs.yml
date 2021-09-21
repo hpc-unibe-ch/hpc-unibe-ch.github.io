@@ -26,6 +26,7 @@ nav:
     - Monitoring Jobs: slurm/monitoring-jobs.md
     - Deleting Jobs: slurm/deleting-jobs.md
     - Array Jobs with Slurm: slurm/array-jobs.md
+    - Job dependencies: slurm/dependencies.md
     - GPUs: slurm/gpus.md
     - Interactive Jobs: slurm/interactive-jobs.md
     - Investigating a Job Failure: slurm/investigating-job-failure.md
