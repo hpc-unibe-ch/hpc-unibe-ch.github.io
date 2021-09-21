@@ -21,6 +21,9 @@ module load Workspace
 pip install --prefix $PYTHONPACKAGEPATH matplotlib
 ```
 
+! types attention ""
+    Python module need to be loaded before loading Workspace, because some settings require the Python version information.
+
 Therewith the Python packages are automatically available when 
 ```Bash 
 module load Python     ## OR module load Anaconda3

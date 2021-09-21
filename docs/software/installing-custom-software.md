@@ -41,20 +41,26 @@ In general we consider:
 - Which software stack we want to build into, a specific CPU architecture, OR all CPU architectures, OR should it be a generic one (see [Software stacks](#software-stacks))
 
 ### Software stacks
-We provide for all **CPU architecture** a software stack, where applications are build on and for this specific architecture. 
-Therewith, application can use different optimizations, like instruction sets (e.g. using AVX2 on Broadwell) on the different architectures.
-Furthermore, we provide a **generic** software stack, where architecture independent applications are installed, e.g. Python packages. 
-Our generic software stack is build on Sandybridge nodes, which have the smallest instruction set, and thus we aim preventing conflicts. 
+![Software stacks](../images/UBELIX_SoftwareStack.png "UBELIX Software Stacks")
 
-For EasyBuild we provide tools which can automatically install in all architectural or the generic software stack, see below.
+On UBELIX a software stack for each **CPU architecture** is provided. Applications are build on and for this specific architecture. 
+Therewith, application can use different optimizations on different architectures, e.g. using AVX2 instruction set on Broadwell).
+Furthermore, a **generic** software stack is provided, where architecture independent applications are installed, e.g. Python scripts. 
+Our generic software stack is build on Ivybridge nodes, which have the lowest instruction set. Therewith runtime conflicts are prevented. 
 
-Additionally, we provide modules which provide access and assist building such software stacks in your user/group space.
+For EasyBuild additional tools are provided, which install automatically in all architectural or the generic software stack, see below.
+
+Additionally, with the `Workspace` and `Workspace/home` module such software stacks can be created in your user/group space.
 
 
 ## EasyBuild
 For detailed instructions read the [EasyBuild article](EasyBuild.md).
 
 If you are installing your own application you may want to consider to create an EasyConfig for it. Have a look in the [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), examples on the [EasyBuild github](https://github.com/easybuilders/easybuild-easyconfigs/tree/develop/easybuild/easyconfigs). And if necessary ask our support team for assistance. 
+
+## Python and R
+For many python and R packages EasyConfig exist. These can be used to install the package like all other EasyBuild packages. See [EasyBuild article](EasyBuild.md). 
+Alternatively, you can use the Python/R package manager and advice them to install into your HOME/Workspace directory. Please see the [Python](python.md) or [R](r.md) pages.
 
 ## Manually compiling
 There are very different ways of manually installing software packages, starting from just using a compiler, having a makefile, up to complex build systems. 

@@ -76,6 +76,17 @@ You can use the directy selected easyconfig or if necessary copy and adapt it.
 easyconfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
 If you need more information see [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), and if necessary ask our support team for assistance.
 
+## Meta module and Toolchains
+Modules specify related dependencies, which gets loaded with that module. These dependencies may have further dependencies.
+
+The chain of dependencies is called toolchain. For example:
+
+- `GCC` consits of `GCCcore` and `binutils`
+- `gompi` consits of `GCC` and `OpenMPI`
+- `foss` consits of `gompi`, `OpenBLAS`, `FFTW` and `ScaLAPACK`
+
+Within a toolchain the versions of the utilized libraries should be consistent. Thus, building a new package with `foss/2020b` and `PyTorch` should rely on a PyTorch version build with the same versions of the underlying libraries. Thus e.g. `PyTorch-1.9.0-foss-2020b.eb` is also build with `foss/2020b` as well as the `Python/3.8.6`. The latter one is build with `GCCcore/10.2.0` which is part of `foss/2020b`. 
+
 ## Selecting a software stack
 Depending on the package and its target usage one or more software stacks should be selected. Therefore, the installation command starts with one for the following command:
 
@@ -119,11 +130,6 @@ eb-install-all --robot --slurm-args='--time=05:00:00' ...
     Please check the end of the out file for the **COMPLETED: Installation ended successfully** statement.
 
 When finished you (and your collaborators) should be able to use use the software, by just loading the user/workspace related module and the module for the installed package. 
-
-## Meta module and Toolchains
-On the one hand a module may load/depend on other modules, which are automatically loaded with that module. As an example the toolchain module `foss` loads: the `GCC` compiler, the MPI libary OpenMPI, math libaries OpenBLAS, FFTW and ScaLAPACK. These libraries often have further dependencies. 
-
-When building new packages, version consitencies need to be respected. Targeting a build with `foss/2020b` libraries should be utilized, build with the same version of foss or it underlying packages/libaries, e.g. `GCC/10.2.0`.
 
 ## Adapting Easyconfigs
 in the following description and example we update an existing old easyconfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
