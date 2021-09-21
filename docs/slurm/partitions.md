@@ -38,8 +38,8 @@ Within these partitions, **QoS** are used to distinguish different job limits. I
 | | job_epyc2_long | 15 days | 64 cores | 50 |
 | | job_epyc2_short | 6h | 10 nodes | 50 | 
 | bdw | **job_bdw** | 24 h | 40 nodes | 300 |
-| | bdw_debug | 20 min | 2 nodes | 1 |
-| | bdw_short | 6 h | 2 nodes | 10 |
+| | job_bdw_debug | 20 min | 2 nodes | 1 |
+| | job_bdw_short | 6 h | 2 nodes | 10 |
 | gpu | **job_gpu** | 24 h | 6x GTX 1080 Ti <br> 2x RTX 2080 Ti <br> 1x RTX 3090 <br> 1x Tesla P100 | 10 [^jobLim] |
 | | job_gpu_debug | 20 min | 1 GPU | 1 |
 | | job_gpu_preempt | 24 h | 12x GTX 1080 Ti <br> 4x RTX 2080 Ti <br> 4x RTX 3090 <br> 4x Tesla P100 | 24 [^jobLim] |
