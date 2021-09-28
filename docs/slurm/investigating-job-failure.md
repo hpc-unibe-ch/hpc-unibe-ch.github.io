@@ -2,16 +2,30 @@
 
 ## Description
 
-This page provides some useful information on investigating a job failure.
+Not always jobs execute successfully. There are a list of reasons jobs or applications stop or crash. 
+The most common causes are:
+
+- exceeding resource limits and 
+- software-specific errors 
+
+Here, discussed are ways to gather information, aspects of avoiding misleading information and aspects of common issues. 
 
 !!! types caution ""
-    It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the --error/–output option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
+    It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the `--error`/`--output` option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
 
-A job may fail due to a hardware failure on a node involved in the computation, a failure of a Slurm daemon, exceeding a resource limit, or a software specific error. The most common causes are exceeding resource limits and software-specific errors which we will discuss here.
 
 ## Exceeding Resource Limits
 
-Each partition limits the maximal allowed runtime of a job and provides default values for the estimated job runtime and memory usage per core. A job should request appropriate values for those resources using the --time and --mem-per-core options. A job is killed if one of these limits is exceeded. In both cases, the error file provides appropriate information:
+Each partition defines maximum and default limits for runtime and memory usage. 
+Within the job specification the current limits can be defined within the ranges. 
+For better scheduling, the job requirements should be estimated and the limits should be adapted to the needs. The lower the limits the better SLURM can find a spot. 
+Furthermore, the less resource overhead is specified the less resources are wasted, e.g. for memory. 
+
+If a job exceeds the runtime or memory limit, it will get killed by SLURM. 
+
+## Error Information
+
+In both cases, the error file provides appropriate information:
 
 Time limit:
 
@@ -47,7 +61,7 @@ var<-sq(1,1000000000)
 ```Bash
 #!/bin/bash
 # Slurm options
-#SBATCH --mail-user=nico.faerber@id.unibe.ch
+#SBATCH --mail-user=mustermann@unibe.ch
 #SBATCH --mail-type=begin,end,fail
 #SBATCH --job-name="Simple Example"
 #SBATCH --time=00:05:00
