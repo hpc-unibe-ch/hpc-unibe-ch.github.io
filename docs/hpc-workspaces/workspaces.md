@@ -7,7 +7,7 @@ A guideline for Workspace managers including **application** and modification ca
 
 If you want to **join an existing Workspace**, please ask the Workspace owner or manager to add your account.
 
-A HPC workspace consists of:
+An HPC workspace consists of:
 
 - 2 access groups, *read/write* and *read only*
 - permanent and temporary storage

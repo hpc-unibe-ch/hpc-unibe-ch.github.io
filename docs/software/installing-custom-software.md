@@ -103,8 +103,6 @@ In general you find a structure like:
 
 ```
 /path/to/workspace/Software
-+-- sandybridge.el7
-|   +-- ...
 +-- ivybridge.el7
 |   +-- ...
 +-- broadwell.el7

@@ -69,7 +69,8 @@ If necessary, additional storage can be purchased per Workspace, where only the 
 Your Research group manager or a registered deputy can apply for an additional quota. Actual used quota will be charged. 
 
 ### Why can I not submit jobs anymore?
-The HPC resources including compute power should be distriuted between registered research groups. Furthermore, users without a Workspace use a private Slurm account. When getting member of a HPC Workspace, the private Slurm account gets deactivated and the Workspace account need to be selected.  This can be done by loading the Workspace module, see [Workspace environment](../hpc-workspaces/environment.md):
+After joining an HPC Workspace the private SLURM account gets deactivated and a Workspace account need to be specified. 
+This can be done by loading the Workspace module, see [Workspace environment](../hpc-workspaces/environment.md):
 
 ```Bash 
 module load Workspace
@@ -80,6 +81,9 @@ Otherwise Slurm will present the following error message:
 sbatch: error: AssocGrpSubmitJobsLimit
 sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
 ```
+
+With this method we aim to distribute our resources in a more fair manner. HPC resources including compute power should be distriuted between registered research groups. We can only relate users with research groups by utilizing Workspace information. 
+
 
 ## Software issues
 ### Why is my private conda installation broken after migration
