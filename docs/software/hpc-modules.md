@@ -9,7 +9,7 @@ Other software packages (libraries and applications) are available via the **LMO
 
 Furthermore, software stacks are provided one for each CPU architecture. These are loaded automatically on the related architecture, transparent to the user.
 
-Additionally to our software stack, **VITAL-IT** provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](pre-installed-software.md#BioinformaticsSoftware).
+Additionally to our software stack, **VITAL-IT** provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](#BioinformaticsSoftware).
 
 ## Basic concept
 
@@ -170,6 +170,20 @@ $ module help OpenMPI
 ```Bash
 $ module show OpenMPI
 ```
+
+## Bioinformatics Software
+
+In co-operation with the [Vital-IT Group](http://www.vital-it.ch/) of the [SIB Swiss Institute of Bioinformatics](http://www.isb-sib.ch/), a large set of [bioinformatics software tools and databases](https://www.vital-it.ch/services/software) is available to the life science community.
+
+To list all modulefiles provided by Vital-IT, you have to first load the `vital-it` module:
+
+!!! types note ""
+    Loading the vital-it modulefile automatically configures the environment to use specific versions of selected software, e.g. python v2.7.5, and gcc v4.9.1
+
+```Bash
+ $ module load vital-it && module avail
+```
+
 
 ## Modules background
 
