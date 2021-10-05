@@ -74,8 +74,6 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 
 #### Options
 
-[comment]: <> (TODO fix link)
-
 | <div style="width:120px">Option</div> | Description | <div style="width:180px">Example</div> |
 |-------------|--------------------|---------------|
 |`--job-name`   | Specify a job name | `--job-name="Simple Matlab"` | |

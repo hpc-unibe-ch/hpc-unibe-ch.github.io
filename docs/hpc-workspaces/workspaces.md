@@ -56,16 +56,12 @@ Thus, the **Workspace** and **SCRATCH** space are accessible to all members of t
 
 Members can be anyone with an active UniBE Campus Account.
 
-The Workspace owner or its deputies can manage the lists using the Service Portal 
-
-[//]: # (TODO: add SNOW link)
+The Workspace owner or its deputies can manage the lists using the Service Portal Workspace edit Form: [Service Portal -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
 ## Backup
-All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups
+All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups.
 
-[//]: # (TODO daily Snapshots? daily backups?)
-
-Scratch will not be protected. 
+Scratch will not be protected by snapshots or backups.
 
 ## Quota
 

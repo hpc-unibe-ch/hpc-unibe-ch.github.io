@@ -36,7 +36,6 @@ nav:
     #
   - Software:
     - HPC software environment: software/hpc-modules.md
-    - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
     - EasyBuild: software/EasyBuild.md
     - Supported Applications:

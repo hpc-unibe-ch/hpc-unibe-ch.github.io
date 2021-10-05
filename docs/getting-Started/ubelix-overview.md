@@ -45,7 +45,7 @@ Without explicit changes, jobs are scheduled in the AMD Epyc2 partition, running
 
 Partitions group nodes into logical sets, which share the same limits. Furthermore, specific limits and privileges are managed using Quality Of Service (QOS), like high priorities or node limitations for long running jobs.
 
-Different partitions and QOS are listed in the [SLURM Partition/QOS article](../slurm/partitions.md)
+Different partitions and QOS are listed in the [SLURM Partition/QOS](../slurm/partitions.md) article.
 
 
 ### Storage Infrastructure

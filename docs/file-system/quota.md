@@ -14,12 +14,10 @@ This page contains information about quota limits on the parallel file system. Q
 
 | space | quota | file quota | backup | expiration |
 | ----- | ----- | ---------- | ------ | ---------- |
-| HOME | 1TB[^mig] | 1M[^mig] | yes[^mig] | - |
+| HOME | 1TB | 1M | yes | - |
 | WORKSPACE | free: up to 10TB per research group[^QpRG] | 1M per TB | yes | 1 year[^WSdur] |
 | SCRATCH | 30TB[^user] | 10M[^user] | no | 1 month[^pol] |
 
-[//]: # (TODO remove warning)
-[^mig]: ATTENTION: there is no Backup or snapshot on HOME directories until the Workspace introduction phase is finished. Previous extended quota keep active until then. 
 [^QpRG]: Each research group can use up to 10TB of free disk storage in multiple Workspaces free of charge. Quota increase can be purchased, see [Workspace Management](../hpc-workspaces/management.md#additional-storage). 
 [^WSdur]: Workspaces are meant to be active directories and no archive. Workspace are active by default for one year. The duration can every time be extended to "current date plus one year". 
 [^user]: Scratch quota is currently implemented per user

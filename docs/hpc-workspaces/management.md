@@ -90,11 +90,6 @@ member lists can be selected one by one or as a comma separated list of Campus a
 !!! type attention "Workspace ID"
     The Workspace ID need to be a **unique** string. Please avoid duplications with user IDs, Research Group IDs and other Workspace names. 
 
-[//]: # (TODO remove when fixed)
-
-!!! type note "Notification"
-    After requesting the Workspace creation, a notification will be send. The content with "data point not found" may be confusing, but still your request is successfully submitted. 
-
 [//]: # (TODO remove note after changing to IAM-Tool)
 
 !!! type note "processing time"
