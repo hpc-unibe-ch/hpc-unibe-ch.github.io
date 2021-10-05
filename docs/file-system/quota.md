@@ -4,9 +4,6 @@
 
 This page contains information about quota limits on the parallel file system. Quotas are enabled to control the file system usage.
 
-!!! types info "migration change"
-    Previously HOME directories had limits of 3 TB per user, file quota limits of 2 million files. In some cases this was extended. The previous HOME quota will kept active until the Workspace introduction phase is finished. 
-
 !!! types warning " Job abortion"
     Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded 
 
@@ -71,10 +68,6 @@ $ mmlsquota --block-size=G -u $USER rs_gpfs:svc_homefs
 Filesystem Fileset    type             KB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
 rs_gpfs    svc_homefs USR       444181792 1073741824 1073741824    6072144     none |   815985 1000000  1000000     2462     none
 ```
-
-!!! types attention "migration change"
-    If your HOME is not yet migrated, you can check your quota on the old file system using: `$mmlsquota  gpfs`. The quota limits for the institute directories can be gathered using: `mmlsquota -g id --block-size T`, for the institute `id`.
-
 
 The `--block-size` option specify the unit {K , M, G, T} in which the numbers of blocks are displayed:
 

@@ -5,25 +5,6 @@
 This page provides a collection of frequently asked questions.
 
 ## File system
-### Is my HOME already migrated?
-You can check using the command `pwd`. 
-The location in the new file system is: `/storage/homefs/$USER`, where `$USER` is your user name. 
-
-### How does the HOMEs migration work? What can I do during the migration?
-When the migration of your institute starts (T=0), you receive an email. You can still use your home directory then. Ideally, you already cleaned
-your home directory before that, if not, last chance to cleanup. **Anaconda installations need special treatment** see [this blog entry](https://www.anaconda.com/blog/moving-conda-environments)
-for a starting point.  
-On the 5th day after the initial mail (T=0+5d), the real migration takes place. You get another email upon starting your individual migration and
-We lock you out of the cluster. The final synchronization takes place. This phase lasts between several minutes up to a few hours depending on the
-amount of date you have in your home directory. All running jobs and processes that are running at that time, will be canceled or killed.
-Therefore please try to only start jobs that may finish before that time.  
-When we finished your home directory, you receive another email and you can log in again and check your home directroy and start to use UBELIX again.  
-Finally a last mail we reach you when the migration for your whole institute has been finished.
-
-## I read: HOME quota will be 1TB, what now?
-Previously, HOME quota was mostly 3TB. Now we will shift to group shared spaces, where each research group has 10TB in Workspaces free of charge and personal HOME 1TB. 
-
-The HOME quota in the new location will be increased **temporarily** until the Workspaces are established in production (end of May). After the introduction of Workspaces there will be a transition period of one month, where you/your research group manager can create a Workspace and you can migrate the data. Afterwards, the quota will be fixed to 1TB in HOMEs. 
 
 ## What if my HOME is full?
 If you reached your quota, you will get strange warning about not being able to write temporary files etc. You can check your quota using the 
