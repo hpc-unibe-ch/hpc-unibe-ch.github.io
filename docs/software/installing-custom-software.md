@@ -4,7 +4,7 @@
 
 UBELIX comes with a plethora of software pre-installed. 
 And there are tools provided installing additional packages in the user/group space. The present **CustomRepo** and **Workspace modules** provide easy access even for multiple versions of the same Software package. 
-In general, the module environment is described at [HPC software environment](pre-installed-software.md). 
+
 The command `module avail` lists the available packages and `module spider FFTW` searches for all modules which have FFTW in their name. 
 This article describes a procedure for installing custom software stacks in your user/group space. An EasyBuild and a manual approach is presented.
 
@@ -66,7 +66,7 @@ Alternatively, you can use the Python/R package manager and advice them to insta
 There are very different ways of manually installing software packages, starting from just using a compiler, having a makefile, up to complex build systems. 
 A few considerations need to kept in mind while building for our systems:
 
-- Compilers: different compilers are available and can be loaded by modules. Toolchains bundle compiler with additionally libraries and tools, like MPI, FFTW, MKL, see [Toolchains](pre-installed-software.md#toolchains). Furthermore, complex algorithms are optimised differently in the compilers. It is worthwhile to try and compare multiple compilers. 
+- Compilers: different compilers are available and can be loaded by modules. Toolchains bundle compiler with additionally libraries and tools, like MPI, FFTW, MKL, see [Toolchains](hpc-modules.md#toolchains). Furthermore, complex algorithms are optimised differently in the compilers. It is worthwhile to try and compare multiple compilers. 
 - CPU architectures: since there are different CPU architectures available, applications should be build for the targeted architecture. Often significant performance improvements can be obtained compiling for the correct instruction sets. Therefore, launch your build processes on the targeted architecture.
 - Accessibility: On the one hand probably different versions, e.g. for compiler and CPU architecture should be provided. On the other hand the access to it should be as easy as possible for all users of that package. Therefore, modules provide a user-friendly. These modules can be organized e.g. in software stacks, one for each architecture. 
 
