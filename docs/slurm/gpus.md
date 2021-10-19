@@ -7,7 +7,9 @@ This page contains all information you need to submit GPU-jobs successfully on U
 ## Important Information on GPU Usage
 
 !!! types note ""
-    Code that runs on the CPU will not magically make use of GPUs by simply submitting a job to the 'gpu' partition! You have to explicitly adapt your code to run on the GPU. Also, code that runs on a GPU will not necessarily run faster than it runs on the CPU. For example, GPUs are not suited to handle tasks that are not highly parallelizable. In other words, you must understand the characteristics of your job, and make sure that you only submit jobs to the 'gpu' partition that can actually benefit from GPUs.
+    Code that runs on the CPU will **not** magically make use of GPUs by simply submitting a job to the 'gpu' partition! You have to explicitly adapt your code to run on the GPU, e.g. an CUDA or OpenACC implementation. Also, code that runs on a GPU will not necessarily run faster than it runs on the CPU. For example, GPUs require a huge amount of highly parallelizable tasks. In other words, you must understand the characteristics of your job, and make sure that you only submit jobs to the 'gpu' partition that can actually benefit from GPUs.
+
+When submitting to the GPU partition the GPU type specification is **required**. 
 
 ## GPU Type
 
@@ -48,9 +50,12 @@ Use the following option to ensure that the job, if preempted, won't be requeued
 #SBATCH --no-requeue
 ```
 
-## CUDA
+## Application adaptation
 
-CUDA versions are now managed through modules. Run _module avail_ to see which versions are available:
+Applications do only ran on GPUs if they are build specifically for GPUs. There are multiple ways to implement algorithms for GPU usage. The most common ones are low level languages like CUDA or pragma oriented implementations like OpenACC. 
+
+### CUDA
+To build and run CUDA applications, its compiler and libraries are provided managed via modules. Run _module avail_ to see which versions are available, for example:
 
 ```Bash
 module avail CUDA
@@ -66,14 +71,14 @@ module avail CUDA
    cuDNN/7.0.5-CUDA-9.1.85
 ```
 
-Run _module load <module>_ to load a specific version of CUDA:
+Run `module load <module>` to load a specific version of CUDA:
 
 ```Bash
 module load cuDNN/7.1.4-CUDA-9.2.88
 ```
 
 !!! types note ""
-    If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded as a dependency.
+    If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded automatically as a dependency.
 
 ## Further Information
 
