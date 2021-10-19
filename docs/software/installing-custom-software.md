@@ -141,7 +141,7 @@ The present Lmod system searches these Modulefiles in subdirectories of all dire
 
 There are, two types of modules, the default Linux modules, written in TCL (described below) and Lua modules (created by our EasyBuild). Lua modules are more powerful, but for simplicity we present TCL modules here. 
 
-Assuming we want to provide an application `ProdXY`. We could create a TCL module file $WORKSPACE/Software/generic.el7/modulefiles/ProdXY as the following:
+Assuming we want to provide an application `ProdXY`. We could create a TCL module file `$WORKSPACE/Software/generic.el7/modulefiles/ProdXY` as the following:
 
 ```
 #%module
