@@ -163,7 +163,7 @@ $ mv RELION-3.0.4-foss-2017b.eb RELION-3.1.2-foss-2020b.eb
 - update the versions settings in the file
     - package version, the toolchain version, and all related libraries
     - Keep in mind that toolchain versions need to match (see [toolchains](#meta-module-and-toolchains) above)
-```
+```Lua
 easyblock = 'CMakeMake'
 
 name = 'RELION'
@@ -205,11 +205,40 @@ moduleclass = 'bio'
 
 - update the checksum (if package version is changed)
 The downloaded source packages are typically checked with SHA256 checksums. When we change to a different source code versio, the checksum changes too. And need to be updated.
-```
+```Bash
 $ eb --force --inject-checksums sha256 RELION-3.1.2-foss-2020b.eb
 ```
 
 - build the new package as described in [Installation](#installation) above, e.g.
-```
+```Bash
 $ eb-install-all --robot RELION-3.1.2-foss-2020b.eb
+```
+
+## Tips and tricks
+
+Even if EasyBuild tries to simplify the installation process, not always EasyConfigs are Build without issues. There can be several types of issues. Starting form issues in finding exiting packages up to compilation issues. 
+
+### More information
+
+In the EasyBuild output in `the eb_out.*` files are the issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
+On the compute nodes they are deleted at the end of the job, but on the login node (ivy) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
+
+### Hidden Modules
+
+Sometimes packages are not defined consistently. On UBELIX many packages are provided as hidden modules. This keeps the list nice and tidy. Nevertheless, if a package (or worse one of its dependency) is looking for an existing packages, but it is not mentioned to be hidden, it will not find and need to rebuild again. 
+
+Hidden packages can be searched using `module --show-hidden avail <PackageXYZ>`. If existing as hidden and the target package or dependency does not define it as hidden, EasyBuild can be advised to treat it as hidden using the `--hide-deps` option. E.g. for binutils, gettext and Mesa, the command would look like:
+
+```Bash
+$ eb-install-all --hide-deps=binutils,gettext,Mesa <PackageXYZ>
+```
+
+### Directly on the compute node
+
+A possible influence of the job environment can be eliminated by directly running EasyBuild on the compute node. Therefor we establish an interactive session on the compute node and launch Easybuild there. For example building Relion in the `$HOME` on an epyc2 node using a local copy of the EasyConfig file:
+
+```Bash
+$ srun --pty --partition epyc2 bash
+$ module load Workspace/home EasyBuild
+$ eb --tmpdir=$TMPDIR --robot --hide-deps=binutils,gettext,Mesa RELION-3.1.3-fosscuda-2020b.eb
 ```
