@@ -26,7 +26,7 @@ Each Workspace has a `$SCRATCH` space with the same access permissions like the 
 
 Users without a Workspace can also use "personal" Scratch. This space does need to be created initially:
 ```BASH
-module load Workspace/home
+module load Workspace_Home
 mkdir $SCRATCH
 cd $SCRATCH
 ```

@@ -141,7 +141,7 @@ Now, let's write a simple "hello, world"-task:
 ```Bash
 ...
 # Put your code below this line
-module load Workspace/home
+module load Workspace_Home
 mkdir -p $SCRATCH/my_first_job
 cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt
@@ -158,7 +158,7 @@ The complete job script looks like this:
 #SBATCH --mem-per-cpu=1GB
 
 # Put your code below this line
-module load Workspace/home
+module load Workspace_Home
 mkdir -p $SCRATCH/my_first_job
 cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt

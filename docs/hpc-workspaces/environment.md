@@ -1,8 +1,10 @@
 # HPC Workspace Data and Software Tools
 
 ## Description
-HPC Workspace module provides support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
+HPC Workspace modules provides support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
 The module can also be used to set up HOME for a custom software stack. 
+
+Furthermore, there are modules provided to load a working Workspace and additionally a software stacks from another Workspace, see [Additional software stacks](#additional-software-stacks)
 
 ## Workspace module
 The Workspace module adjust the environment to work in a specific HPC Workspace. 
@@ -13,20 +15,20 @@ sets the following environment variables ([Shortcuts](#shortcuts)) and [Software
 
 There are the following possibilities:
 
-- you belong to **no** Workspace: load `module load Workspace/home` to use your software stack in your HOME directory
+- you belong to **no** Workspace: load `module load Workspace_Home` to use your software stack in your HOME directory
 - you belong to **one** Workspace: this Workspace gets loaded when `module load Workspace`
-- you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. The module presents the possible options, e.g.:
+- you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. If not specified, the module presents the possible options, e.g.:
     ```
     $ module load Workspace
     Workspaces are available:
         HPC_SW_test, hpc_training, 
     Please select and load ONE of the following:
-        export HPC_WORKSPACE=HPC_SW_test; module load Workspace
-        export HPC_WORKSPACE=hpc_training; module load Workspace
+        HPC_WORKSPACE=HPC_SW_test module load Workspace
+        HPC_WORKSPACE=hpc_training module load Workspace
     ```
     - Thus you load a specific Workspace using:
     ```
-    export HPC_WORKSPACE=<WorkspaceName>; module load Workspace
+    HPC_WORKSPACE=<WorkspaceName> module load Workspace
     ```
 
 ### Shortcuts
@@ -74,7 +76,7 @@ Please see [Python Additional Packages](../software/python.md#additional-package
     module load Workspace
     ```
 
-### Conda environments 
+### Conda environments
 The Workspace module provides support for creating and using conda environments in the shared Workspace. See [Anaconda Conda environments](../software/Anaconda.md#conda-environments).
 
 ### R packages
@@ -84,4 +86,15 @@ The Workspace module provides support for installing and using additional R pack
 The Workspace module sets the umask to 002. Thus files and directories get group-writeable, e.g.:
 ```Bash
 -rw-rw-r-- 1 user group 0 Mar 15 15:15 /path/to/file
+```
+
+### Additional Software Stacks
+
+The module `Workspace_SW_only` provide the access to the software stack of a Workspace `B` while working in Workspace `A`.
+
+As an example you could load:
+
+```Bash
+HPC_WORKSPACE=A module load Workspace
+HPC_WORKSPACE=B module load Workspace_SW_only
 ```

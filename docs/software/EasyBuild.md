@@ -16,7 +16,7 @@ The following steps need are necessary:
 Depending if you want to install the package in user or a group space you need to load the related module and the `EasyBuild` module, e.g.:
 
 ```Bash
-module load Workspace  ### if you want to install into your HOME use Workspace/home
+module load Workspace  ### if you want to install into your HOME use Workspace_Home
 module load EasyBuild
 ```
 
@@ -137,7 +137,7 @@ in the following description and example we update an existing old easyconfig fo
 - setup EasyBuild environment
 ```
 module load EasyBuild
-module load Workspace   ### OR Workspace/home
+module load Workspace   ### OR Workspace_Home
 ```
 
 - find a suitable easyconfig
@@ -239,6 +239,6 @@ A possible influence of the job environment can be eliminated by directly runnin
 
 ```Bash
 $ srun --pty --partition epyc2 bash
-$ module load Workspace/home EasyBuild
+$ module load Workspace_Home EasyBuild
 $ eb --tmpdir=$TMPDIR --robot --hide-deps=binutils,gettext,Mesa RELION-3.1.3-fosscuda-2020b.eb
 ```

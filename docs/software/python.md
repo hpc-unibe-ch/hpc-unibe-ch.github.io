@@ -14,14 +14,14 @@ You can install into your private HOME using the `pip install --user` option or 
 ```Bash
 ## load Python first, this can also be `module load Anaconda3`
 module load Python
-## maybe you need to specify the Workspace name first OR use `Workspace/home`
+## maybe you need to specify the Workspace name first OR use `Workspace_Home`
 module load Workspace  
 ## pip install in the Workspace or HOME location
 ##   the variable PYTHONPACKAGEPATH is set in the Workspace module
 pip install --prefix $PYTHONPACKAGEPATH matplotlib
 ```
 
-! types attention ""
+!!! types attention ""
     Python module need to be loaded before loading Workspace, because some settings require the Python version information.
 
 Therewith the Python packages are automatically available when 
