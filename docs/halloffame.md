@@ -11,6 +11,7 @@ you will find a text recommendation acknoowledging the use of our cluster.
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2021__
+Stober G., Weryk R. J. | Triple-frequency meteor radar full wave scattering - Measurements and comparison to theory | A&A 654 A108 | | [Direct Link](https://doi.org/10.1051/0004-6361/202141470)
 Bertone S, Jäggi A | Assessing reduced-dynamic parametrizations for GRAIL orbit determination and the recovery of independent lunar gravity field solutions | Earth and Space Science | | [Direct Link](https://doi.org/10.1029/2020EA001454) 
 __2020__
 Riou J, Hauser A et al. | Estimation of SARS-CoV-2 mortality during the early stages of an epidemic: A modeling study in Hubei, China, and six regions in Europe | PLOS Medicine | | [Direct Link](https://doi.org/10.1371/journal.pmed.1003189)
