@@ -47,7 +47,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 640 .ssh/authorized_keys
 ```
 
-### Setup SSH with port forwarding 
+### Setup SSH with port forwarding
 
 First, the port forwarding needs to be enabled between your local machine and UBELIX. Therewith a local port will be connected to the remote port on UBELIX. This ports are numbers between 2000 and 65000, which needs to be unique on the both sides. The default port for JupyterLab is 8888, but only one user can use this at a time. For simplicity, we kept both numbers the same (here 15051). This can be specified on the command line in the terminal.
 
@@ -60,7 +60,7 @@ If configured in your ```.ssh/config```, you can also use the alias instead of t
 
 > Note: MobaXterm has an internal terminal which acts like a linux terminal and can be configured as described in the Standard Terminal Setup. Therewith, the SSH command line approach above can be used.
 
-### Launch the JupyterLab server 
+### Launch the JupyterLab server
 
 On UBELIX, the required *Anaconda3* module needs to be loaded. If you want to use additional kernels (R) you need to load additional modules, e.g. IRkernel (for R kernels):
 
@@ -93,8 +93,8 @@ The last line needs to be copied in your local browser.
     do not use `Ctrl + C` for copying the link, this will abort the server process and kill your job. 
 
 !!! note "QOS"
-    the `jupyter-compute` tool uses an special Slurm Quality of Service (QOS), which should reduce queuing times for interactive jobs. 
-    Since interactive jobs are considered to be finished within less than a working day, the walltime limit cannot exceed 8h. 
+    the `jupyter-compute` tool uses an special Slurm Quality of Service (QoS), which should reduce queuing times for interactive jobs. 
+    Since interactive jobs are considered to be finished within less than a working day, the walltime limit cannot exceed 8h (default run time is 6h, afterwards you are expected to have a break ;) ). 
     You can disable that qos using the option `--no-qos`, but please release the resources as soon as you are not actively working with the resources anymore.
 
 ### JupyterLab in your local browser
@@ -119,7 +119,7 @@ print(socket.gethostname())
 More resources can be requested, e.g. by using:
 
 ```
-jupyter-compute 15051 --ntasks 1 -t 60 --cpus-per-task 5 --mem 512MB
+jupyter-compute 15051 --ntasks 1 --time=01:00:00 --cpus-per-task 5 --mem 512MB
 ```
 Where 5 cores are requested for threading and a total memory of 3GB. 
 Please do not use multiprocessing.cpu_count() since this is returning the total amount of cores on the node. 
@@ -127,10 +127,8 @@ Furthermore, if you use libraries, which implement threading: align the numbers 
 
 OR requesting GPU resources on a node with a NVIDIA graphics card:
 ```
-jupyter-compute 15051 --ntasks 1 -t 60 --partition=gpu --gres=gpu:gtx1080ti:1
+jupyter-compute 15051 --ntasks 1 --time=01:00:00 --partition=gpu --gres=gpu:gtx1080ti:1
 ```
-
-> **Note:** This tool can only be used in the *all* and *gpu* partition. 
 
 ## Kernels
 
