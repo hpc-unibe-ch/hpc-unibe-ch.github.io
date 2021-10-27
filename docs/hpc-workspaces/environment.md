@@ -15,7 +15,7 @@ sets the following environment variables ([Shortcuts](#shortcuts)) and [Software
 
 There are the following possibilities:
 
-- you belong to **no** Workspace: load `module load Workspace_Home` to use your software stack in your HOME directory
+- you belong to **no** Workspace: load `module load Workspace_Home` to use your software stack in your HOME directory and set `$WORKSPACE` and `$SCRATCH` variables to your private directories.
 - you belong to **one** Workspace: this Workspace gets loaded when `module load Workspace`
 - you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. If not specified, the module presents the possible options, e.g.:
     ```
@@ -30,6 +30,7 @@ There are the following possibilities:
     ```
     HPC_WORKSPACE=<WorkspaceName> module load Workspace
     ```
+There are also ways to load an additional Workspace for an additional software stack, see [Additional Software Stacks](#additional-software-stacks) below.
 
 ### Shortcuts
 The workspace module provides the following variables:
@@ -71,7 +72,7 @@ Please see [Python Additional Packages](../software/python.md#additional-package
     Python or Anaconda3 module need to be loaded before loading the Workspace module, since variables to be set depend on Python version.
     Workspace module can also be reloaded, e.g.:
     ```
-    export HPC_WORKSPACE=HPC_SW_test; module load Workspace
+    HPC_WORKSPACE=HPC_SW_test module load Workspace
     module load Python
     module load Workspace
     ```
@@ -90,11 +91,44 @@ The Workspace module sets the umask to 002. Thus files and directories get group
 
 ### Additional Software Stacks
 
-The module `Workspace_SW_only` provide the access to the software stack of a Workspace `B` while working in Workspace `A`.
+The module `Workspace_SW_only` provide the access to a software stack of an HPC Workspace `B` while working in an HPC Workspace `A`. 
+
+This could be that a common software stack is provided for multiple (data) Workspaces or that you are trying software packages in your `HOME`
 
 As an example you could load:
 
 ```Bash
 HPC_WORKSPACE=A module load Workspace
 HPC_WORKSPACE=B module load Workspace_SW_only
+```
+
+When you want to load packages from your `HOME` while working in `A`, you can 
+
+```Bash
+HPC_WORKSPACE=$HOME module load Workspace_SW_only
+HPC_WORKSPACE=A module load Workspace
+```
+
+!!! type note ""
+    Note that the variable `HPC_WORKSPACE` is cleared after each loading of a `Workspace*`module. The currently loaded Workspace names are stored in `$HPC_WORKSPACE_LOADED` for the Workspace module and `$HPC_WORKSPACE_SW_ONLY` for the Workspace_SW_only module. 
+
+### Reloading
+
+When you creating a new module there are cases where you need to reload a Workspace module, e.g. for a Python packages. This can be obtained using e.g. the following lua modulefile syntax:
+
+```lua
+if not ( isloaded("Python") ) then
+    load("Python")
+    if ( isloaded("Workspace") ) then
+        setenv("HPC_WORKSPACE",os.getenv("HPC_WORKSPACE_LOADED"))
+        load("Workspace")
+    end
+    if ( isloaded("Workspace_SW_only") ) then
+        setenv("HPC_WORKSPACE",os.getenv("HPC_WORKSPACE_SW_ONLY"))
+        load("Workspace_SW_only")
+    end
+    if ( isloaded("Workspace_HOME") ) then
+        load("Workspace_HOME")
+    end
+end
 ```
