@@ -74,3 +74,14 @@ Leichtle A, Fiedler G et al. | Pancreatic carcinoma, pancreatitis, and healthy c
 Title | Newspaper | Year of Publication | Link
 --- | --- | --- | ---
 Berner Forscher entdecken neue Klimazustände, in denen Leben möglich ist. | Der Bund | [Direct Link](https://webspecial.derbund.ch/longform/planet/planet/)
+
+## Create an Entry
+
+If you used UBELIX for your publication please let your entry added to the list.
+Open a ticket or create a pull request, see [Documentation Update](general/support.md). 
+The format of the entry would be markdown:
+
+```
+<first author>, <last author> | <title> | [Details](<Boris link>) | [Direct Link](<DOI link>)
+```
+where the authors are lastname and first letter of first name. Subscripts can be created using `<sub>2</sub> `. 

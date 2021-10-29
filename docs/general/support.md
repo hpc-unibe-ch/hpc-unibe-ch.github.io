@@ -16,3 +16,5 @@ If you found issues in this documentation or want to help improving it, open an 
 ## Investment
 The HPCs are mainly financed by the UniBE IT services. Furthermore, interested users can buy elevated access to resources. Additional resources are purchased with this additional budget. See [Investment Page](investment.md). 
 
+## Documentation update
+If you find issues in the documentation, want to add your publication to the Hall Of Fame or want to contribute in improving this documentation please create a pull request to [UBELIX hpc-docs github repository](https://github.com/hpc-unibe-ch/hpc-docs). 
