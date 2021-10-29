@@ -11,7 +11,7 @@ you will find a text recommendation acknoowledging the use of our cluster.
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2021__
-Deng S., Zhu J. | Critical Role of Sc Substitution in Modulating Ferroelectricity in Multiferroic LuFeO<sub>3</sub> | Nano Lett. 2021,21 | | [Direct Link](https://doi.org/10.1021/acs.nanolett.1c02123)
+Deng S., Zhu J., Aschauer U. | Critical Role of Sc Substitution in Modulating Ferroelectricity in Multiferroic LuFeO<sub>3</sub> | Nano Lett. 2021,21 | | [Direct Link](https://doi.org/10.1021/acs.nanolett.1c02123)
 Stober G., Weryk R. J. | Triple-frequency meteor radar full wave scattering - Measurements and comparison to theory | A&A 654 A108 | | [Direct Link](https://doi.org/10.1051/0004-6361/202141470)
 Bertone S, Jäggi A | Assessing reduced-dynamic parametrizations for GRAIL orbit determination and the recovery of independent lunar gravity field solutions | Earth and Space Science | | [Direct Link](https://doi.org/10.1029/2020EA001454) 
 __2020__
