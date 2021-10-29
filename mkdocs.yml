@@ -55,6 +55,8 @@ nav:
     - Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
     - Scratch: file-system/scratch.md
+  - Optimization:
+    - Scaling: optimization/scaling.md
   - Investment: general/investment.md
   - Support: general/support.md
   - FAQ: general/faq.md
