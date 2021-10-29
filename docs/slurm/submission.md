@@ -166,8 +166,8 @@ Run two jobs simultaneously:
 
 # Your code below this line
 # run 2 threaded applications side-by-side
-srun --tasks=1 --cpus-per-task=2 ./app1 inp1.dat &
-srun --tasks=1 --cpus-per-task=2 ./app2 inp2.dat &
+srun --tasks=1 --cpus-per-task=4 ./app1 inp1.dat &
+srun --tasks=1 --cpus-per-task=4 ./app2 inp2.dat &
 wait
 # wait: Wait for both background commands to finish. This is important when running bash commands in the background (using &)! Otherwise, the job ends immediately. 
 ```
