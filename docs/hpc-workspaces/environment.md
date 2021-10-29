@@ -117,7 +117,8 @@ HPC_WORKSPACE=A module load Workspace
 When you creating a new module there are cases where you need to reload a Workspace module, e.g. for a Python packages. This can be obtained using e.g. the following lua modulefile syntax:
 
 ```lua
-if not ( isloaded("Python") ) then
+if mode() == 'load' then
+  if not ( isloaded("Python") ) then
     load("Python")
     if ( isloaded("Workspace") ) then
         setenv("HPC_WORKSPACE",os.getenv("HPC_WORKSPACE_LOADED"))
@@ -130,5 +131,6 @@ if not ( isloaded("Python") ) then
     if ( isloaded("Workspace_HOME") ) then
         load("Workspace_HOME")
     end
+  end
 end
 ```
