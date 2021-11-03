@@ -61,7 +61,20 @@ The amount of utilized cores is specified during runtime by SLURM (using `--cpus
 
 OpenMP pragmas are comments in the code. The compiler only react on it, when using a specific compile option, e.g. `gcc -fopenmp ...`. Thus, the same code could be build with or without threading support. 
 
-When launching the application the threads are spawned on ***n*** CPU cores, when resources are requested with `--cpus-per-task`***`n`***. 
+When launching the application the threads are spawned on ***n*** CPU cores, when resources are requested with `--cpus-per-task=`***`n`***. 
+
+For all threads (of one task) one instance is launched. SLURM reserves the specified number of CPU cores for this instance. These CPU cores share memory and  When instructed in the application, threads are spawned and merged later. There can be also multiple parallel section during one run. 
+
+In ideal case, **one thread** runs on **one CPU core**[^hyperthreading]. 
+The actual amount of created threads depend on the implementation in the application. 
+Some applications by default create as many threads as CPU cores are on the node. Since typical jobs are using only a subset of CPU cores, this leads to an over-subscription, drastic loss in performance and probably influences the whole node performance including other users jobs. 
+Therewith the amount of threads should be limited to the requested resources. Therefore, the commonly used environment variable **`$OMP_NUM_THREADS`**[^OMP_NUM] exists. Alternatively, `$SLURM_CPUS_PER_TASK` can be used. 
+Developers may use them directly in the source code, or users specify the amount of threads with command line options, configuration/input files, or similar. 
+**Please verify that you specify the target amount of threads properly in your application**
+
+[^hyperthreading]: UBELIX has hyperthreading disabled. On other systems with different hardware settings hyperthreading may be enabled. Then 2 or more threads per core (depending on the hardware) are supported by the hardware. Even then hyperthreading is only be efficient for specific algorithms.
+
+[^OMP_NUM]: `$OMP_NUM_THREADS` is set automatically by SLURM to the selected cpus per task (`$SLURM_CPUS_PER_TASK`).
 
 
 ### Threading in libraries
