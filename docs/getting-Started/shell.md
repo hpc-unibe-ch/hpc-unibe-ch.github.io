@@ -44,7 +44,7 @@ Purple="$(tput setaf 5)"
 Pink="$(tput bold ; tput setaf 5)"
 Cyan="$(tput setaf 6)"
 LightCyan="$(tput bold ; tput setaf 6)"
-export PS1="\[$Green\]\h\[$Reset\] \[$Blue\]\w $(parse_git_branch)\[$Reset\]\[$Red\]\$\[$reset\] "
+export PS1="\[$Green\]\h\[$Reset\] \[$Blue\]\w $(parse_git_branch)\[$Reset\]\[$Red\]\$\[$Reset\] "
 
 # correct issues with tab completion of variables (\ added in front of them, preventing tab completion)
 shopt -s direxpand
