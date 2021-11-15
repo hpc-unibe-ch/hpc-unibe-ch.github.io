@@ -51,7 +51,14 @@ eb --search gatk
 ```
 
 As shown above there are different versions of GATK and for different *toolchains* available (`foss`, `intel`, `GCCcore`). 
-**Select one** 
+
+**Select one**, here `GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb` is chosen.
+
+Alternatively, the packages can be listed or selected using the package name and target toolchain and version:
+
+```Bash
+eb --software-name=GATK --toolchain-name=GCC --toolchain-version=9.3.0
+```
 
 You can list all dependencies using:
 
@@ -72,8 +79,8 @@ Additional options, e.g. for selecting a specific software version can be found 
 
 ### Using EasyConfig files
 
-You can use the directy selected easyconfig or if necessary copy and adapt it.
-easyconfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
+You can use the directly selected EasyConfig or if necessary copy and adapt it.
+EasyConfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
 If you need more information see [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), and if necessary ask our support team for assistance.
 
 ## Meta module and Toolchains
@@ -81,9 +88,9 @@ Modules specify related dependencies, which gets loaded with that module. These 
 
 The chain of dependencies is called toolchain. For example:
 
-- `GCC` consits of `GCCcore` and `binutils`
-- `gompi` consits of `GCC` and `OpenMPI`
-- `foss` consits of `gompi`, `OpenBLAS`, `FFTW` and `ScaLAPACK`
+- `GCC` consists of `GCCcore` and `binutils`
+- `gompi` consists of `GCC` and `OpenMPI`
+- `foss` consists of `gompi`, `OpenBLAS`, `FFTW` and `ScaLAPACK`
 
 Within a toolchain the versions of the utilized libraries should be consistent. Thus, building a new package with `foss/2020b` and `PyTorch` should rely on a PyTorch version build with the same versions of the underlying libraries. Thus e.g. `PyTorch-1.9.0-foss-2020b.eb` is also build with `foss/2020b` as well as the `Python/3.8.6`. The latter one is build with `GCCcore/10.2.0` which is part of `foss/2020b`. 
 
@@ -104,17 +111,17 @@ Additional SLURM arguments can be selected using the `--slurm-args` option, e.g.
 
 Few examples:
 
-- for **FFTW** in **all architectural** software stacks:
+- for a **selected** or **custom** EasyConfig and all missing dependencies in **all architectural** software stacks (here we go with the above selected GATK):
 ```Bash
-eb-install-all --robot --software-name=FFTW --toolchain-name=GCC
+eb-install-all --robot GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
 ```
-- for **git** in the **generic** software stack:
+- only in the **Broadwell and Login** software stack installing **FFTW** in GCC toolchain (newest version):
 ```Bash
-eb-install-generic --robot --software-name=git --toolchain-name=GCC
+eb-install-all --robot --archs='login broadwell' --software-name=FFTW --toolchain-name=GCC
 ```
-- for a custom EasyConfig **myApp.eb** only in the **Broadwell and Ivybridge** software stack:
+- for **git** in the **generic** software stack, with **GCC** toolchain of version 2021a:
 ```Bash
-eb-install-all --archs='ivy broadwell' --robot myApp.eb
+eb-install-generic --robot --software-name=git --toolchain-name=GCC --toolchain-version=2021a
 ```
 
 This will need time to get scheduled and processed. 
@@ -131,8 +138,8 @@ eb-install-all --robot --slurm-args='--time=05:00:00' ...
 
 When finished you (and your collaborators) should be able to use use the software, by just loading the user/workspace related module and the module for the installed package. 
 
-## Adapting Easyconfigs
-in the following description and example we update an existing old easyconfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
+## Adapting EasyConfigs
+in the following description and example we update an existing old EasyConfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
 
 - setup EasyBuild environment
 ```
@@ -220,7 +227,7 @@ Even if EasyBuild tries to simplify the installation process, not always EasyCon
 
 ### More information
 
-In the EasyBuild output in `the eb_out.*` files are the issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
+In the EasyBuild output `eb_out.*` files are issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
 On the compute nodes they are deleted at the end of the job, but on the login node (ivy) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
 
 ### Hidden Modules
@@ -235,10 +242,14 @@ $ eb-install-all --hide-deps=binutils,gettext,Mesa <PackageXYZ>
 
 ### Directly on the compute node
 
-A possible influence of the job environment can be eliminated by directly running EasyBuild on the compute node. Therefor we establish an interactive session on the compute node and launch Easybuild there. For example building Relion in the `$HOME` on an epyc2 node using a local copy of the EasyConfig file:
+The eb-install-all tool builds the packages directly on a compute node. The node type can be limited/specified by using the option `--archs=<type>` (see `eb-install-all --help`). 
+
+If this fails, an investigation step may be running directly on the node, without more control of the setup, e.g. build directories. Therefore, EasyBuild can be started directly in a session on the compute node. First, an interactive session is established on the compute node. For example building Relion in the `$HOME` on an epyc2 node using a local copy of the EasyConfig file:
 
 ```Bash
 $ srun --pty --partition epyc2 bash
 $ module load Workspace_Home EasyBuild
 $ eb --tmpdir=$TMPDIR --robot --hide-deps=binutils,gettext,Mesa RELION-3.1.3-fosscuda-2020b.eb
 ```
+
+This may also be used when compiling **on** a specific GPU architecture. 
