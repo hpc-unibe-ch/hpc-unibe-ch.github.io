@@ -8,6 +8,19 @@ On the other hand there is Anaconda installed, which brings an even longer list 
 For Anaconda see [Anaconda page](Anaconda.md)
 
 ## Additional Packages
+There are additional modules which build on top of Python and provide additional Python packages. E.g. the `SciPy-bundle` provides:
+
+- numpy
+- scipy
+- mpi4py
+- numexpr
+- Bottleneck
+- pandas
+- mpmath and
+- deap
+
+Another provided Python package is `TensorFlow`.
+
 If you need additional packages we suggest to install them using `pip`. 
 You can install into your private HOME using the `pip install --user` option or share the packages with your colleges using the Workspace module, e.g. for installing a package `matplotlib`:
 
