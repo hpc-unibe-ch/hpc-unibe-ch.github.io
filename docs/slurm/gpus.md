@@ -20,7 +20,7 @@ Ubelix currently features four types of GPUs. You have to choose an architecture
 | Nvidia Geforce GTX 1080 Ti | `--gres=gpu:gtx1080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 2080 Ti | `--gres=gpu:rtx2080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 3090 | `--gres=gpu:rtx3090:<number_of_gpus>` |
-| Nvidia Tesla P100 | `--gres=gpu:teslaP100:<number_of_gpus>` |
+| Nvidia Tesla P100 | `--gres=gpu:teslap100:<number_of_gpus>` |
 
 
 ## Job Submission
