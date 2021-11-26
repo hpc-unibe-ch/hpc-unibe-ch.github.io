@@ -39,13 +39,14 @@ Please verify that you created and registered a SSH key within UBLEIX. If you ca
 ```Bash
 ssh localhost
 ```
-otherwise create and register a new key on a login node.
+otherwise create and register a new key on a **login node**.
 ```Bash
 ssh-keygen -t rsa -b 4096
 # without passphrase
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 640 .ssh/authorized_keys
 ```
+This creates a ssh key pair on the login node, which than can be used for any ssh sessions within UBELIX. 
 
 ### Setup SSH with port forwarding
 
