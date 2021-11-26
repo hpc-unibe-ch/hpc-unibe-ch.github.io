@@ -230,6 +230,15 @@ Even if EasyBuild tries to simplify the installation process, not always EasyCon
 In the EasyBuild output `eb_out.*` files are issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
 On the compute nodes they are deleted at the end of the job, but on the login node (ivy) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
 
+### Lock directories
+
+EasyBuild has a procedure to prevent building the same package (same version, same software stack) using lock files. If `eb-install-*` crashes **due to time limit**, the lock files are not removed properly. Therewith the next time you start `eb-install-*` for that package a message like will be presented at the end of the output:
+
+```Bash
+ERROR: Build of /path/to/easyconfig.eb failed (err: 'build failed (first 300 chars): Lock /path/to/.locks/packageVersion.lock already exists, aborting!')
+```
+In that moment the lock file should be already removed and the process can finally be started successfully again. 
+
 ### Hidden Modules
 
 Sometimes packages are not defined consistently. On UBELIX many packages are provided as hidden modules. This keeps the list nice and tidy. Nevertheless, if a package (or worse one of its dependency) is looking for an existing packages, but it is not mentioned to be hidden, it will not find and need to rebuild again. 
