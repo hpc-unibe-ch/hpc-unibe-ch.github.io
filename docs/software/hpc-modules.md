@@ -184,7 +184,7 @@ To list all modulefiles provided by Vital-IT, you have to first load the `vital-
  $ module load vital-it && module avail
 ```
 
-## Custom Software environments
+## Module User Collections
 
 Working on different projects or with different types of task may require to load different sets of modules. These sets can be managed with the LMOD "user collection" feature. 
 
