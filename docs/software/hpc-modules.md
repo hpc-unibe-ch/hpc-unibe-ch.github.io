@@ -184,6 +184,32 @@ To list all modulefiles provided by Vital-IT, you have to first load the `vital-
  $ module load vital-it && module avail
 ```
 
+## Custom Software environments
+
+Working on different projects or with different types of task may require to load different sets of modules. These sets can be managed with the LMOD "user collection" feature. 
+
+As an example, a set of module for development consiting of SciPy-bundle and netCDF should be stored under the name ***devel***. Further module lists can be managed in the same way (here lists for ***test*** and ***prod*** already exist). 
+
+```Bash
+$ module load SciPy-bundle netCDF
+$ module save devel
+Saved current collection of modules to: "devel"
+$ module savelist
+Named collection list :
+  1) devel  2) test  3) prod
+```
+Therewith the set of modules can be loaded using:
+
+```Bash
+$ module restore devel
+```
+
+This will unload all other previously loaded modules beforehand. 
+
+!!! types note ""
+    This method is preferred against defining/loading a set of modules in Bash configuration like .bashrc.
+
+More information can be found in the [LMOD documentation](https://lmod.readthedocs.io/en/latest/010_user.html#user-collections)
 
 ## Modules background
 
