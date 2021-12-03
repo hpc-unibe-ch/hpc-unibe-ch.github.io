@@ -171,22 +171,48 @@ $ module help OpenMPI
 $ module show OpenMPI
 ```
 
-## Bioinformatics Software
+## Environment definitions
 
-In co-operation with the [Vital-IT Group](http://www.vital-it.ch/) of the [SIB Swiss Institute of Bioinformatics](http://www.isb-sib.ch/), a large set of [bioinformatics software tools and databases](https://www.vital-it.ch/services/software) is available to the life science community.
+Working on different projects or with different types of task may require to load different sets of modules. 
 
-To list all modulefiles provided by Vital-IT, you have to first load the `vital-it` module:
+There are two ways of providing a user environment setups, e.g. for development, production, post processing etc., a custom module (also for Workspaces) or a module user collections (per user). 
 
-!!! types note ""
-    Loading the vital-it modulefile automatically configures the environment to use specific versions of selected software, e.g. python v2.7.5, and gcc v4.9.1
+!!! type warning ""
+    Adding module load into `.bashrc` may lead to issues. If you diverge from this "default" environment and additionally load conflicting modules, e.g. form another toolchain. 
 
-```Bash
- $ module load vital-it && module avail
+
+### Custom Modules
+
+A so called "Meta Module" can be used to specify a set of modules. Additionally, environment variables can be defined. These custom modules can be placed in the custom software stack, e.g. in a Workspace. Thus default working environments could be defined for the users that workspace. You may want to decide if you want to specify the environment with all versions of the modules (advisable), or always the latest versions (no version specified). 
+
+The modules can be placed into `$WORKSPACE/modulefiles/$NAME/$VERSION.lua`.
+
+#### Example: Lua module for development environment
+Here an environment is defined using foss and netCDF of version 2021a. Additionally an environment variable `WS_ENV` is set to `devel`. 
+Therefore, a file `$WORKSPACE/modulefiles/WS_devel/2021a.lua` is created with the following content:
+
+```Lua
+whatis([==[Description: Workspace XXX development environment]==])
+if not ( isloaded("foss/2021a") ) then
+    load("foss/2021a")
+end
+if not ( isloaded("netCDF/4.8.0-gompi-2021a") ) then
+    load("netCDF/4.8.0-gompi-2021a")
+end
+setenv("WS_ENV", "devel")
+setenv("CFLAGS", "-DNDEBUG")
 ```
 
-## Module User Collections
+The all workspace members can load this environment using:
 
-Working on different projects or with different types of task may require to load different sets of modules. These sets can be managed with the LMOD "user collection" feature. 
+```Bash
+module purge   ### better start with a clean environment
+module load Workspace WS_devel
+```
+
+### Module User Collections
+
+Sets of modules can be stored and reloaded in LMOD using the "user collection" feature. 
 
 As an example, a set of module for development consiting of SciPy-bundle and netCDF should be stored under the name ***devel***. Further module lists can be managed in the same way (here lists for ***test*** and ***prod*** already exist). 
 
@@ -204,12 +230,25 @@ Therewith the set of modules can be loaded using:
 $ module restore devel
 ```
 
-This will unload all other previously loaded modules beforehand. 
+This will unload **all** other previously loaded modules beforehand and then load the set specified in the collection. 
 
 !!! types note ""
     This method is preferred against defining/loading a set of modules in Bash configuration like .bashrc.
 
 More information can be found in the [LMOD documentation](https://lmod.readthedocs.io/en/latest/010_user.html#user-collections)
+
+## Bioinformatics Software
+
+In co-operation with the [Vital-IT Group](http://www.vital-it.ch/) of the [SIB Swiss Institute of Bioinformatics](http://www.isb-sib.ch/), a large set of [bioinformatics software tools and databases](https://www.vital-it.ch/services/software) is available to the life science community.
+
+To list all modulefiles provided by Vital-IT, you have to first load the `vital-it` module:
+
+!!! types note ""
+    Loading the vital-it modulefile automatically configures the environment to use specific versions of selected software, e.g. python v2.7.5, and gcc v4.9.1
+
+```Bash
+ $ module load vital-it && module avail
+```
 
 ## Modules background
 
@@ -222,3 +261,11 @@ If you want to build your own software build for specific Hardware, we provide t
 ### Scientific Software Management
 
 Our scientific software stack, available via module files are mainly build with EasyBuild. This tool helps us to install and maintain software packages and recycle existing installation procedures. There are plenty of install instructions available [EasyBuild/Easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs), which can be installed also in the user space with low effort, see [Installing Custom Software](installing-custom-software.md)
+
+### Custom modules
+
+Modules are able to define the users environment. This includes accessibility to software packages, including settings for libraries and setting environment variables. 
+
+On UBELIX we use LMOD. Therewith, lua as well as TCL modules can be used. 
+
+
