@@ -103,14 +103,21 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 ## Signaling checkpoint creation without canceling the job
 
-You can use a UNIX signal to trigger the creation of a checkpoint of a running job. For example, consider a job that traps SIGUSR1 and saves intermediate results as soon as the signal occurs. You can then create a checkpoint by signaling SIGUSR1 to the job using _scancel_:
+Slurm distinguishes between the job script, its child processes and job steps. Job steps are launched using `srun`. 
+
+All applications which should reveive more signals than the default SIGERM at the end of the job, does need to be **started** using `srun`. Then signals (here `SIGUSR1`) can be send using:
 
 ```Bash
-scancel --signal=USR1 <jobid>
+scancel --signal=USR1 <jobID>
 ```
 
-!!! types note ""
-    Use _--batch_ option to signal the batch step (shell script), but not any other associated job step _(srun)_ or child processes of the shell script. Use _--full_ option to signal all steps associated with the job including the shell script and its child processes.
+If you need/want to handle signals with the batch script, add `--batch` (signals only to the batch script) or `--full` (signal to all steps and the batch script), e.g.
+
+```Bash
+scancel --full --signal=USR1 <jobid>
+```
+
+Therewith, you can use a UNIX signal to trigger the creation of a checkpoint of a running job. For example, consider a job that traps SIGUSR1 and saves intermediate results as soon as the signal occurs. You can then create a checkpoint by signaling SIGUSR1 to the job.
 
 !!! types note ""
     Using _scancel_ with the _--signal_ option won't terminate the job or job step.
