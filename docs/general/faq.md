@@ -22,6 +22,10 @@ Ask your research group manager to add you to an existing Workspace or create a 
 There will be no quota increase for HOME directories. 
 
 ## Workspaces
+### I need access to a HPC Workspace, whome I need to ask?
+
+HPC Workspaces are managed by the group manager/leader and if applicable a deputy. Therewith you need to ask them to add you to the primary or secondary group. See also [HPC Workspace members](../hpc-workspaces/workspaces.md#members).
+
 ### I need to share data with my colleges. What can I do?
 HPC Workspaces are meant to host shared data. See [HPC Workspaces](../hpc-workspaces/workspaces.md)
 
