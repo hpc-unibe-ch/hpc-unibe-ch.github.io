@@ -80,6 +80,35 @@ module load cuDNN/7.1.4-CUDA-9.2.88
 !!! types note ""
     If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded automatically as a dependency.
 
+## GPU usage monitoring
+
+To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be utilized. The tool need to be launched on the related nodes. After the job started running, a new job step gets created using `srun`. `nvidia-smi` will be launced to display the resource utilization. 
+
+```Bash
+$ sbatch job.sh
+Submitted batch job 123456
+$ squeue --me
+# job running
+$ srun --jobid 123456 nvidia-smi
+Fri Nov 11 11:11:11 2021
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:04:00.0 Off |                  N/A |
+| 23%   25C    P8     8W / 250W |      1MiB / 11178MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  On   | 00000000:08:00.0 Off |                  N/A |
+| 23%   24C    P8     8W / 250W |      1MiB / 11178MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+```
+Therewith the GPU core and memory usage can be displayed. 
+
 ## Further Information
 
 CUDA: [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone)  
