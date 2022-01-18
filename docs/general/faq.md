@@ -114,14 +114,22 @@ It is also possible your cache file is out-of-date; it may help to try:
 
 Also make sure that all modulefiles written in TCL start with the string #%Module
 ```
-The mentioned module `zlib/.1.2.11-GCCcore-10.2.0` is available. While loading foss/2021a 
-`zlib/.1.2.11-GCCcore-10.3.0` gets loaded, but LMOD then will not swar its version, but report the mentioned error. 
+The mentioned module `zlib/.1.2.11-GCCcore-10.2.0` is available in general. 
+When loading `foss/2021a`, the `zlib/.1.2.11-GCCcore-10.3.0` should get loaded, but LMOD will not swap its version, but report the mentioned error. 
 
-As noted before, the best practice would be anyways stay within the same toolchain and toolchain version. 
+Please take this as an indication that you accidentality mix different toolchains, and rethink your procedure, and stay within the same toolchain and toolchain version. 
 
 ## Environment issues
 ### I am using zsh, but some commands and tools fail, what can I do?
-There are known caveates with LMOD (or module system) and Bash scripts in zsh environments. Bash scripts do not source any system or user files. To initialize the (module) environment properly, you need to set `export BASH_ENV=/etc/bashrc` in your zsh profile (`.zshrc`).
+There are known caveats with LMOD (or module system) and Bash scripts in zsh environments. Bash scripts do not source any system or user files. To initialize the (module) environment properly, you need to set `export BASH_ENV=/etc/bashrc` in your zsh profile (`.zshrc`).
+
+### I modified my bashrc, but its not doing what I expect, how can I debug that bash script?
+The bashrc can be debugged as all other bash scripts, using 
+
+- `set -x` at the beginning of the script. This will print **all** commands executed on screen, including all subcommand also included in called scripts and tools
+- print statements, e.g. `echo "DEBUG: variable PATH=$PATH"`
+
+These should provide a good indication where the script diverge from your expectation. 
 
 ## Job issues
 ### Why is my job still pending?
