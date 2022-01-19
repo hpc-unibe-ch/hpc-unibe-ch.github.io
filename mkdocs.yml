@@ -3,7 +3,6 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - News: general/news.md
-  - IMPORTANT..Home Migration: HOME_migration.md 
   - Quick Start: quick-start.md
   - Getting Started:
     - Code of Conduct: code-of-conduct.md
