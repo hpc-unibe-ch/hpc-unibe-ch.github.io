@@ -82,14 +82,14 @@ module load cuDNN/7.1.4-CUDA-9.2.88
 
 ## GPU usage monitoring
 
-To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be utilized. The tool need to be launched on the related nodes. After the job started running, a new job step gets created using `srun`. `nvidia-smi` will be launced to display the resource utilization. 
+To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be utilized. The tool need to be launched on the related nodes. After the job started running, a new job step can be created using `srun` and call `nvidia-smi` to display the resource utilization. Here we attach the process to an job with the jobID `123456`. You need to replace the jobId with your gathered jobID, presented in the sbatch output. 
 
 ```Bash
 $ sbatch job.sh
 Submitted batch job 123456
 $ squeue --me
-# job running
-$ srun --jobid 123456 nvidia-smi
+# verify that job gets started
+$ srun --ntasks-per-node=1 --jobid 123456 nvidia-smi
 Fri Nov 11 11:11:11 2021
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
@@ -107,7 +107,9 @@ Fri Nov 11 11:11:11 2021
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 ```
-Therewith the GPU core and memory usage can be displayed. 
+Therewith the GPU core utilization and memory usage can be displayed for all GPU cards belonging to that job. 
+
+Note that this is a one off presentation of the usage and the called `nvidia-smi` command runs within your allocation. The required resources for this job step should be minimal and should not noticably influence your job performance. 
 
 ## Further Information
 
