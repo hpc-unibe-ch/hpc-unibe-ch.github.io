@@ -226,5 +226,5 @@ Further information on on job monitoring you find on page [Monitoring Jobs](slur
 
 ## Training Courses
 
-[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
+[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training).
 
