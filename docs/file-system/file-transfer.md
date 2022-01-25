@@ -207,8 +207,3 @@ In MobaXterm there are multiple ways to transfer files. After initializing/start
 Further the local terminal can be used to transfer files using commands described above. 
 ![MobaXterm local Terminal](../images/mobaXterm_05_local.png "local terminal")
 ![MobaXterm SCP local](../images/mobaXterm_05a_scp_local.png "local terminal scp")
-
-We use WinSCP to illustrate file transfers from Windows. There are of course other tools that serve the same purpose.
-
-!!! type note Download
-    You can download WinSCP from [https://winscp.net/eng/index.php](https://winscp.net/eng/index.php)
