@@ -200,38 +200,15 @@ $ rsync -av --prune-empty-dirs --delete-excluded --include "*/" --include "*.m" 
 ```
 
 
-## WinSCP - Windows
+## MobaXterm - Windows
+
+In MobaXterm there are multiple ways to transfer files. After initializing/starting a session to UBELIX copied by "drag and drop" in the File browser on the left hand side. ![MobaXterm File Browser](../images/mobaXterm_04_scp.png "SCP pane")
+
+Further the local terminal can be used to transfer files using commands described above. 
+![MobaXterm local Terminal](../images/mobaXterm_05_local.png "local terminal")
+![MobaXterm SCP local](../images/mobaXterm_05a_scp_local.png "local terminal scp")
 
 We use WinSCP to illustrate file transfers from Windows. There are of course other tools that serve the same purpose.
 
 !!! type note Download
     You can download WinSCP from [https://winscp.net/eng/index.php](https://winscp.net/eng/index.php)
-
-
-Open WinSCP and select "New Site" in the left field to define the session parameters:
-
-File protocol: SFTP  
-Host name: submit.unibe.ch  
-Port number: 22  
-User name: <username> (Enter your username here)    
-
-Click the "Save" button to save your site
-
-
-![login-winscp](../images/winscp-create_session.png "Login - WinSCP")
-
-Specify an alias for the site:  
-Site name: <alias> (Choose your own alias, e.g. ubelix)  
-
-Press the "OK" button to save the session as a site
-
-![login-winscp](../images/winscp-site.png "Save session as site")
-
-In the left field, double-click on your alias to open the connection, enter your Campus Account password and click "OK":
-
-![login-winscp](../images/winscp-password.png "Set password")
-
-Now you can move (drag and drop) files between your work station and the submit host using the two views:
-
-![login-winscp](../images/winscp-open_connection.png "Open connection")  
-
