@@ -91,7 +91,7 @@ The job script acts as a wrapper for your actual job. Command-line options can s
 |`--mail-user`  | Mail address to contact job owner. <br> **Must be a valid email address, if used!** | `--mail-user=foo.bar@unibe.ch` |
 |`--mail-type`  | When to notify a job owner: `none`, `all`, `begin`, `end`, `fail`, `requeue`, `array_tasks` | `--mail-type=end,fail` |
 |`--array`      | Submit an array job. Specify the used indices and use "%" to specify the max number of tasks allowed to run concurrently. | `--array=1,4,16-32:4` <br> `--array=1-100%20` |
-|`--workdir`    | Set the current working directory. All relative paths used in the job script are relative to this directory. Default: The directory from where the sbatch command was executed | |
+|`--chdir`      | Set the working directory of the batch script to directory before it is executed. The path can be specified as full path or relative path to the directory where the command is executed. Environment variables are not supported. | `--chdir=subdir1` |
 |`--dependency` | Defer the start of this job until the specified dependencies have been satisfied. See `man sbatch` for a description of all valid dependency types | `--dependency=afterok:11908` |
 |`--immediate`  | Only submit the job if all requested resources are immediately available | | |
 |`--exclusive`  | Use the compute node(s) exclusively, i.e. do not share nodes with other jobs. **CAUTION: Only use this option if you are an experienced user, and you really understand the implications of this feature. If used improperly, the use of this option can lead to a massive waste of computational resources** | | |
