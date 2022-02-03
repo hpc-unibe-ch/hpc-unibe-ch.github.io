@@ -1,0 +1,7 @@
+name: hpcdocs
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - mkdocs-material
+      - mkdocs-git-revision-date-plugin

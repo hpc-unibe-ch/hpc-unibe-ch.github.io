@@ -22,6 +22,10 @@ Ask your research group manager to add you to an existing Workspace or create a 
 There will be no quota increase for HOME directories. 
 
 ## Workspaces
+### I need access to a HPC Workspace, whome I need to ask?
+
+HPC Workspaces are managed by the group manager/leader and if applicable a deputy. Therewith you need to ask them to add you to the primary or secondary group. See also [HPC Workspace members](../hpc-workspaces/workspaces.md#members).
+
 ### I need to share data with my colleges. What can I do?
 HPC Workspaces are meant to host shared data. See [HPC Workspaces](../hpc-workspaces/workspaces.md)
 
@@ -84,9 +88,48 @@ conda create --name myEnvName --file spec-list.txt  # select a name
 Please, also note that there is a system wide Anaconda installation, so no need for your own separate one. 
 Finally, after recreating your environments please delete all old Anaconda installations and environments. These are not only big but also a ton of files. 
 
+### Why the system is complaining abount not finding an existing module?
+
+There are cases modules could not be found. This could be that the modules is not exiting in the target software stack, it could be hidden, or a version inconsitency. 
+
+#### hidden modules
+Some modules are provided as hidden modules to keep the presented software stack nice and clean. Hidden modules can be listed using `module --show-hidden avail`.
+
+#### software stacks
+On UBELIX there are multiple software stacks. There are software stacks for each architecture. There are custom software stacks in Workspaces (again architectural software stacks included) and the VitalIT software stack. 
+The targeted software stack need to be available. The different architectural software stacks are available on the related architecture, e.g. epyc2 in a job on the epyc2 partion. The Workspace and VitalIT software stack can be loaded using `module load Workspace` or module load vital-it. 
+
+#### software stack inconstency
+It is strongly suggested to not mix different toolchains like foss or intel. Additionally, it is advised to stay with one version of a toolchain, e.g. foss/2021a and its dependency versions, e.g. GCC/10.3.0 etc. 
+Further, LMOD has a confusing effect when loading inconsitent module combinations, e.g.
+
+```Bash
+$ module load foss/2021a
+$ module load intel/2020b
+Lmod has detected the following error:  The following module(s) are unknown: "zlib/.1.2.11-GCCcore-10.2.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "zlib/.1.2.11-GCCcore-10.2.0"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+```
+The mentioned module `zlib/.1.2.11-GCCcore-10.2.0` is available in general. 
+When loading `foss/2021a`, the `zlib/.1.2.11-GCCcore-10.3.0` should get loaded, but LMOD will not swap its version, but report the mentioned error. 
+
+Please take this as an indication that you accidentality mix different toolchains, and rethink your procedure, and stay within the same toolchain and toolchain version. 
+
 ## Environment issues
 ### I am using zsh, but some commands and tools fail, what can I do?
-There are known caveates with LMOD (or module system) and Bash scripts in zsh environments. Bash scripts do not source any system or user files. To initialize the (module) environment properly, you need to set `export BASH_ENV=/etc/bashrc` in your zsh profile (`.zshrc`).
+There are known caveats with LMOD (or module system) and Bash scripts in zsh environments. Bash scripts do not source any system or user files. To initialize the (module) environment properly, you need to set `export BASH_ENV=/etc/bashrc` in your zsh profile (`.zshrc`).
+
+### I modified my bashrc, but its not doing what I expect, how can I debug that bash script?
+The bashrc can be debugged as all other bash scripts, using 
+
+- `set -x` at the beginning of the script. This will print **all** commands executed on screen, including all subcommand also included in called scripts and tools
+- print statements, e.g. `echo "DEBUG: variable PATH=$PATH"`
+
+These should provide a good indication where the script diverge from your expectation. 
 
 ## Job issues
 ### Why is my job still pending?

@@ -114,18 +114,25 @@ HPC_WORKSPACE=A module load Workspace
 
 ### Reloading
 
-When you creating a new module there are cases where you need to reload a Workspace module, e.g. for a Python packages. This can be obtained using e.g. the following lua modulefile syntax:
+The Workspace modules are configured to "remember" the selected Workspace you once loaded in the current session, even after unload the Workspace module. Therefore, environment variables are set in the current session, `$HPC_WORKSPACE` for the `Workspace` module, and `$HPC_WORKSPACE_SW_ONLY` for the `Workspace_SW_only` module. 
+
+If you belong to multiple Workspaces and you want to list the available Workspaces you need to `unset HPC_WORKSPACE` before loading the `Workspace` module. If you already know the name, you can switch into another Workspace (here Workspace `foo`) by:
+
+```Bash
+module unload Workspace
+HPC_WORKSPACE=foo module load Workspace
+```
+
+When you are creating a new module, there are cases where you need to reload a Workspace module, e.g. for a Python packages. This can be obtained using e.g. the following lua modulefile syntax:
 
 ```lua
 if mode() == 'load' then
   if not ( isloaded("Python") ) then
     load("Python")
     if ( isloaded("Workspace") ) then
-        setenv("HPC_WORKSPACE",os.getenv("HPC_WORKSPACE_LOADED"))
         load("Workspace")
     end
     if ( isloaded("Workspace_SW_only") ) then
-        setenv("HPC_WORKSPACE",os.getenv("HPC_WORKSPACE_SW_ONLY"))
         load("Workspace_SW_only")
     end
     if ( isloaded("Workspace_HOME") ) then
@@ -134,3 +141,5 @@ if mode() == 'load' then
   end
 end
 ```
+
+Assuming we want to create a module for an additional Python package. In this example we not only verify that `Python` is loaded, but also that the Workspace Python settings (incl. `PYTHONPATH` and `PYTHONPACKAGEPATH`) are set properly by reloading the Workspace module. 

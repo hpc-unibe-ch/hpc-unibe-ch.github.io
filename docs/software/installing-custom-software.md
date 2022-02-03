@@ -94,7 +94,7 @@ Detailed documentation can be found on the [GNU make documentation page](http://
 
 ## Software Stacks with Modules
 
-The [Workspace module](../hpc-workspaces/environment.md) and the *CustomRepo* module provide a pre-defined setup where software stacks for the **different CPU architectures** as well as a **generic** one is accessible by default. 
+The [Workspace module](../hpc-workspaces/environment.md) module provide a pre-defined setup where software stacks for the **different CPU architectures** as well as a **generic** one is accessible by default. 
 After loading the module you will always see all the **generic** software stack and the software stack for the CPU architecture you are located on.
 
 If you install your packages into this structure, your modules (for the correct architecture) can be accessed without additional effort. 
@@ -102,23 +102,25 @@ If you install your packages into this structure, your modules (for the correct 
 In general you find a structure like:
 
 ```
-/path/to/workspace/Software
-+-- ivybridge.el7
-|   +-- ...
-+-- broadwell.el7
-|   +-- modulefiles
-|       +-- all         # place modulefiles here with structure Name/version
-|           +-- ProdXY
-|               +-- 0.1 # a modulefile example
-|   +-- easybuild       # the EasyBuild software directory, could be used OR
-|   +-- software        # you could install under this directory
-+-- generic.el7
-|   +-- modulefiles
-|       +-- all         # place modulefiles here with structure Name/version
-|           +-- ProdXY
-|               +-- 0.1 # a modulefile example
-|   +-- easybuild       # the EasyBuild software directory, could be used OR
-+-- sources
+/path/to/workspace/
++-- modulefiles          # e.g. for self defined Meta Modules
++-- Software
+   +-- epyc2.el7
+      +-- ...
+   +-- broadwell.el7
+      +-- modulefiles
+         +-- all         # place modulefiles here with structure Name/version
+            +-- ProdXY
+               +-- 0.1.lua # a modulefile example
+      +-- easybuild       # the EasyBuild software directory, could be used OR
+      +-- software        # you could install under this directory
+   +-- generic.el7
+      +-- modulefiles
+         +-- all         # place modulefiles here with structure Name/version
+            +-- ProdABC
+               +-- 15.1 # another modulefile example, also TCL modules are accepted
+      +-- easybuild       # the EasyBuild software directory, could be used OR
+   +-- sources
 ```
 
 The example shows detailed structure for Broadwell and generic software stack. But the same structure can be found also for the other stacks.
@@ -137,41 +139,43 @@ EASYBUILD_PREFIX=/storage/workspaces/hpc-group/project1/Software/broadwell.el7/e
 
 ### Modulefiles
 A modulefile describes location and environment setting for the targeted application, e.g. setting the `PATH`, `LD_LIBRARY_PATH` and other variables. 
-The present Lmod system searches these Modulefiles in subdirectories of all directories registered in `MODULEPATH`. The above described architectural software stacks as well as the generic one are registered in the **Workspace** and **CustomRepo** module by default. 
+The present Lmod system searches these Modulefiles in subdirectories of all directories registered in `MODULEPATH`. The above described architectural software stacks as well as the generic one are registered in the **Workspace** module by default. 
 
 There are, two types of modules, the default Linux modules, written in TCL (described below) and Lua modules (created by our EasyBuild). Lua modules are more powerful, but for simplicity we present TCL modules here. 
 
-Using the `Workspace` or `Workspace_Home` module, there are multiple locations for modules. On the one hand modules can be placed in `$WORKSPACE/modulefiles` or `$WORKSPACE/Software/generic.el7/modulefiles/`. Alternatively, there are architecture dependent software stacks located under `$WORKSPACE/Software/<architecture>/modulefiles/all/`, where `<architecture>` are directories for the different architectures.
+Using the `Workspace` or `Workspace_Home` module, there are multiple locations for modules:
 
-Assuming we want to provide an application `ProdXY`. We could create a TCL module file `$WORKSPACE/Software/generic.el7/modulefiles/ProdXY` as the following:
+- `$WORKSPACE/Software/<architecture>/modulefiles/all/` architecture dependent software stacks, where `<architecture>` are directories for the different architectures.
+- `$WORKSPACE/Software/generic.el7/modulefiles/` architecture independent modules, e.g. generic tools like p7zip, git or Python scripts, can be located at OR
+- `$WORKSPACE/modulefiles` for generic modules like Meta modules (environment definitions) can be placed
 
-```
-#%module
 
-conflict ProdABC               # conflicts with another application ProdABC
-module load Python/3.8.2-GCCcore-9.3.0 # load other additional modules
+Assuming an application `ProdXY`, build with `foss/2021a` and netCDF, a lua module file maybe created at `$WORKSPACE/Software/generic.el7/modulefiles/ProdABC` as the following:
 
-# provide a description
-whatis "The ProdXY for doing clever things."
-proc ModulesHelp { } {
- puts stderr "This module loads the ProdXY tool."
- puts stderr "\t the executable prodXY is provided."
-}
+```Lua
+-- comments start with "--"
+-- at least a short description, best with URL
+whatis([==[Description: ProdABC, a tool for something]==])
+-- conflicting modules, e.g. other versions of this package
+conflict("ProdABC")
+-- location of actual installation, for later reference
+local root = "/path/to/software/ProdABC/installation"
 
-# set the path to the software product (can be used later in the module)
-set PKG_PREFIX /path/to/software/package/ProdXY
-# add the location of binaries to PATH, such they are immediately accessible
-prepend-path PATH $PKG_PREFIX/bin
-# add to library path for dynamically linked applications
-prepend-path LD_LIBRARY_PATH $PKG_PREFIX/lib
-# add a location for Python packages
-prepend-path PYTHONPATH $PKG_PREFIX/lib/python3.8/site-packages/
-# for example, you can set environment variables for compiling
-setenv CFLAGS "-DNDEBUG"
+-- dependencies required to be loaded during runtime
+if not ( isloaded("foss/2021a") ) then
+    load("foss/2021a")
+end
+if not ( isloaded("netCDF/4.8.0-gompi-2021a") ) then
+    load("netCDF/4.8.0-gompi-2021a")
+end
+-- setting environment variables, e.g. PATH,...
+prepend_path("PATH", pathJoin(root, "bin"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
+setenv("PRODABC_DATA_DIR", pathJoin(root, "share"))
 ```
 
 In the first lines, we can set conflicts with other modules (here named ProdABC). Then we load some dependency modules and provide some description. The additional lines depend on your requirements for the application. With `set` you can define internal variables (within this modulefile). 
-The command `setenv` defines a environment variable, set in your environment after loading the module. And `prepend-path` and `append-path` extend an environment variable at the front or end.
+The command `setenv` defines a environment variable, set in your environment after loading the module. The commands `prepend-path` and `append-path` extend an environment variable at the front or end.
 
 There are common environment variables like:
 

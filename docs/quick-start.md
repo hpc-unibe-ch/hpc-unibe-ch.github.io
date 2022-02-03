@@ -12,7 +12,7 @@ Before we start: as everywhere where people come together, a **common sense** is
 
 Before you can start working on the HPCs, staff and students of the University of Bern must have their **Campus Account (CA)** registered for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
 
-## HPC Workspace 
+## HPC Workspace
 
 Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting. 
 Research group leaders need to apply for an workspace, see [Workspace Management](hpc-workspaces/management.md). 
@@ -36,12 +36,6 @@ You can reference your home directory by `~` or `$HOME`.
 
 Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. HOME directories have a daily snapshot and backup procedures.
 Disk space is managed by [quotas](file-system/quota.md). By default, each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
-
-[//]: <> (TODO remove old HOME location)
-!!! type info "migration change"
-    - **No backup** service for data in your home directory will be provided until the migration and Workspace introduction phase is finished. It is your own responsibility to backup important data to a private location. 
-    - Home directories created before 2021, may still be located at `/home/ubelix/<your_institute>/<your_campus_account>/`. 
-    - Previous extended HOME quota will be kept until the Workspace introduction phase is finished. 
 
 You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
@@ -107,6 +101,9 @@ You can also specify version numbers there.
 With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
 
 The [Software](software/hpc-modules.md) section is dedicated to this topic. More information can be found there.
+
+!!! type notes ""
+    Managing different working environments can be done with "Meta Modules" or user collections, see [Environment Definitions](software/hpc-modules.md#environment-definitions)
 
 ## Hello World
 
@@ -229,5 +226,5 @@ Further information on on job monitoring you find on page [Monitoring Jobs](slur
 
 ## Training Courses
 
-[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training/training_and_workshops).
+[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training).
 

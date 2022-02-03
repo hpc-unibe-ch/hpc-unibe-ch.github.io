@@ -1,15 +1,30 @@
 # Python
 
 ## Description
-there are multiple versions of Python available on our HPCs. 
-On the one hand there are `Python` modules for Python 2 and 3. Which already has a longer list of additional packages installed, including `pip` respectively `pip3`. 
+
+There are multiple versions of Python available on our HPCs. 
+On the one hand there are `Python` modules for Python 3 and 2. Which already has a longer list of additional packages installed, including `pip3` respectively `pip`. 
 On the other hand there is Anaconda installed, which brings an even longer list of packages with it. 
 
 For Anaconda see [Anaconda page](Anaconda.md)
 
 ## Additional Packages
-If you need additional packages we suggest to install them using `pip3` for Python 3 (use `pip` for Python 2). 
-You can install into your private HOME using the `pip3 install --user` option or share the packages with your colleges using the Workspace module, e.g. for installing a package `matplotlib`:
+
+There are additional modules which build on top of Python and provide additional Python packages. E.g. the `SciPy-bundle` provides:
+
+- numpy
+- scipy
+- mpi4py
+- numexpr
+- Bottleneck
+- pandas
+- mpmath and
+- deap
+
+Another provided Python package is `TensorFlow`.
+
+If you need additional packages we suggest to install them using either `pip` for Python2 and `pip3` for Python3. 
+You can install into your private HOME using the `(pip or pip3) install --user` option or share the packages with your colleges using the Workspace module, e.g. for installing a package `matplotlib`:
 
 ```Bash
 ## load Python first, this can also be `module load Anaconda3`
