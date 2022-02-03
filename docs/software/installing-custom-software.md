@@ -4,7 +4,7 @@
 
 UBELIX comes with a plethora of software pre-installed. 
 And there are tools provided installing additional packages in the user/group space. The present **CustomRepo** and **Workspace modules** provide easy access even for multiple versions of the same Software package. 
-In general, the module environment is described at [HPC software environment](pre-installed-software.md). 
+
 The command `module avail` lists the available packages and `module spider FFTW` searches for all modules which have FFTW in their name. 
 This article describes a procedure for installing custom software stacks in your user/group space. An EasyBuild and a manual approach is presented.
 
@@ -41,14 +41,16 @@ In general we consider:
 - Which software stack we want to build into, a specific CPU architecture, OR all CPU architectures, OR should it be a generic one (see [Software stacks](#software-stacks))
 
 ### Software stacks
-We provide for all **CPU architecture** a software stack, where applications are build on and for this specific architecture. 
-Therewith, application can use different optimizations, like instruction sets (e.g. using AVX2 on Broadwell) on the different architectures.
-Furthermore, we provide a **generic** software stack, where architecture independent applications are installed, e.g. Python packages. 
-Our generic software stack is build on Sandybridge nodes, which have the smallest instruction set, and thus we aim preventing conflicts. 
+![Software stacks](../images/UBELIX_SoftwareStack.png "UBELIX Software Stacks")
 
-For EasyBuild we provide tools which can automatically install in all architectural or the generic software stack, see below.
+On UBELIX a software stack for each **CPU architecture** is provided. Applications are build on and for this specific architecture. 
+Therewith, application can use different optimizations on different architectures, e.g. using AVX2 instruction set on Broadwell).
+Furthermore, a **generic** software stack is provided, where architecture independent applications are installed, e.g. Python scripts. 
+Our generic software stack is build on Ivybridge nodes, which have the lowest instruction set. Therewith runtime conflicts are prevented. 
 
-Additionally, we provide modules which provide access and assist building such software stacks in your user/group space.
+For EasyBuild additional tools are provided, which install automatically in all architectural or the generic software stack, see below.
+
+Additionally, with the `Workspace` and `Workspace_Home` module such software stacks can be created in your user/group space.
 
 
 ## EasyBuild
@@ -56,11 +58,15 @@ For detailed instructions read the [EasyBuild article](EasyBuild.md).
 
 If you are installing your own application you may want to consider to create an EasyConfig for it. Have a look in the [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), examples on the [EasyBuild github](https://github.com/easybuilders/easybuild-easyconfigs/tree/develop/easybuild/easyconfigs). And if necessary ask our support team for assistance. 
 
+## Python and R
+For many python and R packages EasyConfig exist. These can be used to install the package like all other EasyBuild packages. See [EasyBuild article](EasyBuild.md). 
+Alternatively, you can use the Python/R package manager and advice them to install into your HOME/Workspace directory. Please see the [Python](python.md) or [R](r.md) pages.
+
 ## Manually compiling
 There are very different ways of manually installing software packages, starting from just using a compiler, having a makefile, up to complex build systems. 
 A few considerations need to kept in mind while building for our systems:
 
-- Compilers: different compilers are available and can be loaded by modules. Toolchains bundle compiler with additionally libraries and tools, like MPI, FFTW, MKL, see [Toolchains](pre-installed-software.md#toolchains). Furthermore, complex algorithms are optimised differently in the compilers. It is worthwhile to try and compare multiple compilers. 
+- Compilers: different compilers are available and can be loaded by modules. Toolchains bundle compiler with additionally libraries and tools, like MPI, FFTW, MKL, see [Toolchains](hpc-modules.md#toolchains). Furthermore, complex algorithms are optimised differently in the compilers. It is worthwhile to try and compare multiple compilers. 
 - CPU architectures: since there are different CPU architectures available, applications should be build for the targeted architecture. Often significant performance improvements can be obtained compiling for the correct instruction sets. Therefore, launch your build processes on the targeted architecture.
 - Accessibility: On the one hand probably different versions, e.g. for compiler and CPU architecture should be provided. On the other hand the access to it should be as easy as possible for all users of that package. Therefore, modules provide a user-friendly. These modules can be organized e.g. in software stacks, one for each architecture. 
 
@@ -88,7 +94,7 @@ Detailed documentation can be found on the [GNU make documentation page](http://
 
 ## Software Stacks with Modules
 
-The [Workspace module](../hpc-workspaces/environment.md) and the *CustomRepo* module provide a pre-defined setup where software stacks for the **different CPU architectures** as well as a **generic** one is accessible by default. 
+The [Workspace module](../hpc-workspaces/environment.md) module provide a pre-defined setup where software stacks for the **different CPU architectures** as well as a **generic** one is accessible by default. 
 After loading the module you will always see all the **generic** software stack and the software stack for the CPU architecture you are located on.
 
 If you install your packages into this structure, your modules (for the correct architecture) can be accessed without additional effort. 
@@ -96,25 +102,25 @@ If you install your packages into this structure, your modules (for the correct 
 In general you find a structure like:
 
 ```
-/path/to/workspace/Software
-+-- sandybridge.el7
-|   +-- ...
-+-- ivybridge.el7
-|   +-- ...
-+-- broadwell.el7
-|   +-- modulefiles
-|       +-- all         # place modulefiles here with structure Name/version
-|           +-- ProdXY
-|               +-- 0.1 # a modulefile example
-|   +-- easybuild       # the EasyBuild software directory, could be used OR
-|   +-- software        # you could install under this directory
-+-- generic.el7
-|   +-- modulefiles
-|       +-- all         # place modulefiles here with structure Name/version
-|           +-- ProdXY
-|               +-- 0.1 # a modulefile example
-|   +-- easybuild       # the EasyBuild software directory, could be used OR
-+-- sources
+/path/to/workspace/
++-- modulefiles          # e.g. for self defined Meta Modules
++-- Software
+   +-- epyc2.el7
+      +-- ...
+   +-- broadwell.el7
+      +-- modulefiles
+         +-- all         # place modulefiles here with structure Name/version
+            +-- ProdXY
+               +-- 0.1.lua # a modulefile example
+      +-- easybuild       # the EasyBuild software directory, could be used OR
+      +-- software        # you could install under this directory
+   +-- generic.el7
+      +-- modulefiles
+         +-- all         # place modulefiles here with structure Name/version
+            +-- ProdABC
+               +-- 15.1 # another modulefile example, also TCL modules are accepted
+      +-- easybuild       # the EasyBuild software directory, could be used OR
+   +-- sources
 ```
 
 The example shows detailed structure for Broadwell and generic software stack. But the same structure can be found also for the other stacks.
@@ -133,39 +139,43 @@ EASYBUILD_PREFIX=/storage/workspaces/hpc-group/project1/Software/broadwell.el7/e
 
 ### Modulefiles
 A modulefile describes location and environment setting for the targeted application, e.g. setting the `PATH`, `LD_LIBRARY_PATH` and other variables. 
-The present Lmod system searches these Modulefiles in subdirectories of all directories registered in `MODULEPATH`. The above described architectural software stacks as well as the generic one are registered in the **Workspace** and **CustomRepo** module by default. 
+The present Lmod system searches these Modulefiles in subdirectories of all directories registered in `MODULEPATH`. The above described architectural software stacks as well as the generic one are registered in the **Workspace** module by default. 
 
 There are, two types of modules, the default Linux modules, written in TCL (described below) and Lua modules (created by our EasyBuild). Lua modules are more powerful, but for simplicity we present TCL modules here. 
 
-Assuming we want to provide an application `ProdXY`. We could create a TCL module file $WORKSPACE/Software/generic.el7/modulefiles/ProdXY as the following:
+Using the `Workspace` or `Workspace_Home` module, there are multiple locations for modules:
 
-```
-#%module
+- `$WORKSPACE/Software/<architecture>/modulefiles/all/` architecture dependent software stacks, where `<architecture>` are directories for the different architectures.
+- `$WORKSPACE/Software/generic.el7/modulefiles/` architecture independent modules, e.g. generic tools like p7zip, git or Python scripts, can be located at OR
+- `$WORKSPACE/modulefiles` for generic modules like Meta modules (environment definitions) can be placed
 
-conflict ProdABC               # conflicts with another application ProdABC
-module load Python/3.8.2-GCCcore-9.3.0 # load other additional modules
 
-# provide a description
-whatis "The ProdXY for doing clever things."
-proc ModulesHelp { } {
- puts stderr "This module loads the ProdXY tool."
- puts stderr "\t the executable prodXY is provided."
-}
+Assuming an application `ProdXY`, build with `foss/2021a` and netCDF, a lua module file maybe created at `$WORKSPACE/Software/generic.el7/modulefiles/ProdABC` as the following:
 
-# set the path to the software product (can be used later in the module)
-set PKG_PREFIX /path/to/software/package/ProdXY
-# add the location of binaries to PATH, such they are immediately accessible
-prepend-path PATH $PKG_PREFIX/bin
-# add to library path for dynamically linked applications
-prepend-path LD_LIBRARY_PATH $PKG_PREFIX/lib
-# add a location for Python packages
-prepend-path PYTHONPATH $PKG_PREFIX/lib/python3.8/site-packages/
-# for example, you can set environment variables for compiling
-setenv CFLAGS "-DNDEBUG"
+```Lua
+-- comments start with "--"
+-- at least a short description, best with URL
+whatis([==[Description: ProdABC, a tool for something]==])
+-- conflicting modules, e.g. other versions of this package
+conflict("ProdABC")
+-- location of actual installation, for later reference
+local root = "/path/to/software/ProdABC/installation"
+
+-- dependencies required to be loaded during runtime
+if not ( isloaded("foss/2021a") ) then
+    load("foss/2021a")
+end
+if not ( isloaded("netCDF/4.8.0-gompi-2021a") ) then
+    load("netCDF/4.8.0-gompi-2021a")
+end
+-- setting environment variables, e.g. PATH,...
+prepend_path("PATH", pathJoin(root, "bin"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
+setenv("PRODABC_DATA_DIR", pathJoin(root, "share"))
 ```
 
 In the first lines, we can set conflicts with other modules (here named ProdABC). Then we load some dependency modules and provide some description. The additional lines depend on your requirements for the application. With `set` you can define internal variables (within this modulefile). 
-The command `setenv` defines a environment variable, set in your environment after loading the module. And `prepend-path` and `append-path` extend an environment variable at the front or end.
+The command `setenv` defines a environment variable, set in your environment after loading the module. The commands `prepend-path` and `append-path` extend an environment variable at the front or end.
 
 There are common environment variables like:
 

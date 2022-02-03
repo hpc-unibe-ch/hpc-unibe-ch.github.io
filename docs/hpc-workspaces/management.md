@@ -15,7 +15,7 @@ Workspaces are group shared resources. This group could be for example:
 ### Ownership
 HPC Workspaces manage compute and storage resources. Especially the freely available resources are meant to be shared between participating research groups. Therefore, the Workspaces belong to a beforehand registered research group.
 
-A HPC Workspace can be only requested by a **research group leader**, who responsible and accountable, since costly extensions can be added to the Workspace. 
+An HPC Workspace can be only requested by a **research group leader**, who responsible and accountable, since costly extensions can be added to the Workspace. 
 Additionally, a **deputy** can be nominated, who also can manage the Workspace (see [Workspace Modification](#modification)). Owners and deputies are called **Workspace managers**. 
 
 !!! type note "Deputies"
@@ -64,7 +64,7 @@ Registration Form: [Service Portal -> Register Research Group](https://servicepo
     The request need to be verified manually. This may take some time. 
 
 ### Application Form
-A HPC Workspace can (only) be requested by a registered research group lead/manager using the ServicePortal application form:
+An HPC Workspace can (only) be requested by a registered research group lead/manager using the ServicePortal application form:
 
 [Service Portal -> Create HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=259743301b8bd05023a5dd318b4bcba5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
@@ -90,11 +90,6 @@ member lists can be selected one by one or as a comma separated list of Campus a
 !!! type attention "Workspace ID"
     The Workspace ID need to be a **unique** string. Please avoid duplications with user IDs, Research Group IDs and other Workspace names. 
 
-[//]: # (TODO remove when fixed)
-
-!!! type note "Notification"
-    After requesting the Workspace creation, a notification will be send. The content with "data point not found" may be confusing, but still your request is successfully submitted. 
-
 [//]: # (TODO remove note after changing to IAM-Tool)
 
 !!! type note "processing time"
@@ -118,7 +113,10 @@ Properties to change are:
     The Workspace itself (file storage and Slurm, etc.) will not be interrupted by a change. 
 
 ## Investor QoS
-Investors get elevated priviledges for specific queues. These are managed in so called Slurm QoS (Quality of Service). Where in the past the investors specified a list of users, who can use the QoS, now with Workspaces we are able to manage the QoS on Workspace level. Therefore, you need to open a request to add an existing QoS to a (list of) Workspace(s). The membership managment is done with the Workspace. 
+Investors get elevated priviledges for specific queues. These are managed in so called Slurm QoS (Quality of Service). Where in the past the investors specified a list of users, who can use the QoS, in future Workspaces are able to manage the QoS on Workspace level. Therefore, you need to open a request to add an existing QoS to a (list of) Workspace(s). The membership managment is done within the Workspace. 
+
+!!! type "Warning"
+    Investor QoS are bind to SLURM accounts. Since personal SLURM accounts get deactivated when joining an HPC Workspace, the investor QoS need to get transfered. This process is not done automatically, please request the transfer using our [ServicePortal](https://serviceportal.unibe.ch/hpc)
 
 ## Import Bulk Users
 

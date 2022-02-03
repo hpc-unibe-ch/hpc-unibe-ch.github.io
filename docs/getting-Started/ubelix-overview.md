@@ -2,18 +2,18 @@
 
 ## Description
 
-This page provides a high-level system overview of a HPC cluster such as UBELIX. It describes the different hardware components that constitute the cluster and gives a quantitative list of the different generations of compute nodes in UBELIX.
+This page provides a high-level system overview of an HPC cluster such as UBELIX. It describes the different hardware components that constitute the cluster and gives a quantitative list of the different generations of compute nodes in UBELIX.
 
-**UBELIX** (University of Bern Linux Cluster) is a HPC cluster that currently consists of about 340 compute nodes featuring almost 11'500 CPU cores and 136 GPUs and a software-defined storage infrastructure providing ~3 PB of disk storage net. UBELIX is a heterogeneous cluster, meaning UBELIX consists of different generations of compute nodes with different instruction sets. Compute nodes, front-end servers and the storage are interconnected through a high speed Infiniband network. The front-end servers also provide a link to the outside world. UBELIX is used by various institutes and research groups within chemistry, biology, physics, astronomy, computer science, geography, medical radiology and others for scientific research and by students working on their thesis.
+**UBELIX** (University of Bern Linux Cluster) is an HPC cluster that currently consists of about 340 compute nodes featuring almost 11'500 CPU cores and 136 GPUs and a software-defined storage infrastructure providing `~3` PB of disk storage net. UBELIX is a heterogeneous cluster, meaning UBELIX consists of different generations of compute nodes with different instruction sets. Compute nodes, front-end servers and the storage are interconnected through a high speed Infiniband network. The front-end servers also provide a link to the outside world. UBELIX is used by various institutes and research groups within chemistry, biology, physics, astronomy, computer science, geography, medical radiology and others for scientific research and by students working on their thesis.
 
 ## High-level system overview
 
-![System Overview Diagram](../images/system_overview.jpg "System Overview Diagram")
+![System Overview Diagram](../images/system_overview.png "System Overview Diagram")
 The HPCs can only be reached within the UniBE network. User landing point are the login nodes, where jobs can be prepared and submitted. Computational tasks are scheduled and managed on the compute nodes using SLURM. All compute nodes as well as the login nodes have access to the parallel file system.
 
 ### Login node aka. Submit node
 
-A user connects to the cluster by logging into the **submit** host via SSH. You can use this host for medium-performance tasks, e.g. to edit files or to compile smaller programs. Resource-demanding/high-performance tasks must be submitted to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks should be submitted as a job on a compute node instead of running it on the submit host. 
+A user connects to the cluster by logging into the **submit** host via SSH. You can use this host for medium-performance tasks, e.g. to edit files or to compile smaller programs. **Resource-demanding/high-performance tasks must be submitted** to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks should be submitted as a job on a compute node instead of running it on the submit host. 
 
 ### SLURM Batch-Queueing System
 
@@ -45,7 +45,7 @@ Without explicit changes, jobs are scheduled in the AMD Epyc2 partition, running
 
 Partitions group nodes into logical sets, which share the same limits. Furthermore, specific limits and privileges are managed using Quality Of Service (QOS), like high priorities or node limitations for long running jobs.
 
-Different partitions and QOS are listed in the [SLURM Partition/QOS article](../slurm/partitions.md)
+Different partitions and QOS are listed in the [SLURM Partition/QOS](../slurm/partitions.md) article.
 
 
 ### Storage Infrastructure

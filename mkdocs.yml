@@ -3,7 +3,6 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - News: general/news.md
-  - IMPORTANT..Home Migration: HOME_migration.md 
   - Quick Start: quick-start.md
   - Getting Started:
     - Code of Conduct: code-of-conduct.md
@@ -14,6 +13,8 @@ nav:
       #      - Port Forwarding:
     - Workspaces: getting-Started/workspaces.md
     - SSH customization: getting-Started/ssh-customization.md
+    - Shell customization: getting-Started/shell.md
+    - Parallelization: getting-Started/parallelization.md
   - Workspaces:
     - Overview: hpc-workspaces/workspaces.md
     - Workspace management: hpc-workspaces/management.md
@@ -26,6 +27,7 @@ nav:
     - Monitoring Jobs: slurm/monitoring-jobs.md
     - Deleting Jobs: slurm/deleting-jobs.md
     - Array Jobs with Slurm: slurm/array-jobs.md
+    - Job dependencies: slurm/dependencies.md
     - GPUs: slurm/gpus.md
     - Interactive Jobs: slurm/interactive-jobs.md
     - Investigating a Job Failure: slurm/investigating-job-failure.md
@@ -34,7 +36,6 @@ nav:
     #
   - Software:
     - HPC software environment: software/hpc-modules.md
-    - Pre-Installed Software: software/pre-installed-software.md
     - Installing Custom Software: software/installing-custom-software.md
     - EasyBuild: software/EasyBuild.md
     - Supported Applications:
@@ -54,25 +55,21 @@ nav:
     - Quota: file-system/quota.md
     - Moving files to and from the HPCs: file-system/file-transfer.md
     - Scratch: file-system/scratch.md
+  - Optimization:
+    - Scaling: optimization/scaling.md
   - Investment: general/investment.md
   - Support: general/support.md
   - FAQ: general/faq.md
   - Hall of Fame: halloffame.md
   - Code of Conduct: code-of-conduct.md
-      #
-      #
-      #  - Home: index.md
-      #  - User Guide:
-      #    - Getting Started: user-guide/getting-started.md
-      #    - File Transfer: user-guide/file-transfer.md
-      #    - Job Management with Slurm:
+
 
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'
-# Social links at botoom right
+# Link to repo
 repo_name: 'hpc-unibe-ch/hpc-docs'
 repo_url: 'https://github.com/hpc-unibe-ch/hpc-docs'
-edit_uri: ''
+edit_uri: 'edit/main/docs'
 
 # Configuration
 theme:
@@ -81,24 +78,31 @@ theme:
 extra_css:
  - 'stylesheets/unibe.css'
 
+plugins:
+  - git-revision-date
+
 # See https://python-markdown.github.io/extensions/ and
 # See https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions#Bundles
 #     https://facelessuser.github.io/pymdown-extensions/
 markdown_extensions:
   - abbr
+  - admonition
+  - attr_list
   - def_list
   - footnotes
-  - tables
-  - admonition
   - codehilite:
       guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - sane_lists
   - smarty
+  - tables
   - toc
-  - pymdownx.superfences
-  - attr_list
 
-
+# Social links bottom right
 extra:
   social:
     - icon: fontawesome/brands/github-alt

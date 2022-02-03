@@ -1,7 +1,7 @@
 # File Systems Overview
 
-## HOME: 
-`$HOME` directories are located under `/home/$USER`, where `$USER` is the campus account. `$HOME` is limited to maximum `1TB` and is meant for private and configuration data. There is no data sharing workflow considerred for `$HOME`. If you want to share data with collaborators please ask your research group leader to request a HPC Workspace. 
+## HOME:
+`$HOME` directories are located under `/home/$USER`, where `$USER` is the campus account. `$HOME` is limited to maximum `1TB` and is meant for private and configuration data. There is no data sharing workflow considerred for `$HOME`. If you want to share data with collaborators please ask your research group leader to request an HPC Workspace.
 Reqular Snapshots provide possibility to recover accidentally modified or deleted data. 
 Some application, by default, use the `$HOME` file system even for larger amount of data, e.g. user packages in Python or R. Often this can be redirected, e.g. using `--prefix ` option or in worse case using a symbolic link to a project directory. Get in touch with us if you need assistance.
 

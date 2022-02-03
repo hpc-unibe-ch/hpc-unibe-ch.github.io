@@ -8,7 +8,7 @@ We distinguish local and network scratch spaces.
 ## Network Scratch
 Network scratch spaces are located on the parallel file system and accessible to all nodes. In contrast to `HOME` or `WORKSPACEs`, scratch is meant for temporary data, especially with larger quota requirements. 
 Jobs creating a lot of temporary data, which may need or may not need to be post-processed should run in this space. As an example, a application creating a huge amount of temporary output, which need to be analysed, but only partly need to be stored for a longer term.
-Quota and file quota is less restrictive on scratch compared to `HOME` or permanent `WORKSPACE` directories. Every user can use up to **50TB** and **50M** files. There is **no snapshot** and **no backup** feature available. Furthermore, an **automatic deletion policy** is planned, deleting files which are older than **30 days**. 
+Quota and file quota is less restrictive on scratch compared to `HOME` or permanent `WORKSPACE` directories. Every user can use up to **30TB** and **10M** files. There is **no snapshot** and **no backup** feature available. Furthermore, an **automatic deletion policy** is planned, deleting files which are older than **30 days**. 
 
 Scratch file space can be accessed using the Workspace module and the `$SCRATCH` environment variable. 
 
@@ -26,7 +26,7 @@ Each Workspace has a `$SCRATCH` space with the same access permissions like the 
 
 Users without a Workspace can also use "personal" Scratch. This space does need to be created initially:
 ```BASH
-module load Workspace/home
+module load Workspace_Home
 mkdir $SCRATCH
 cd $SCRATCH
 ```
@@ -38,9 +38,37 @@ chmod 700 $SCRATCH
 ```
 
 ## Local Scratch
-In some cases files need to be read or written multiple times by an application during a computational job. 
-Instead of reading and writing the data multiple times on the network storage, it may be more efficient to initially copy the data to the compute node, run the computation and finally copy the resulting data back at the end. Thus, the application can access the data from the local storage, during the job run time.
 
+Cases:
+
+- temporary files are produced, which are not relevant after the computation
+- files need to be read or written multiple times within a job
+
+Local storage (`$TMPDIR`) should be used instead of network storage. 
+
+`$TMPDIR` is a node local storage which only exists during the job life time and cleaned automatically afterwards. The actual directory is `/scratch/local/<jobID>`, but it is highly recommended to use `$TMPDIR`. 
+If necessary data can be copied there initially at the beginning of the job, processes (multiple times) and necessary results copied back at the end. 
+
+!!! note "`$TMPDIR` instead of `/tmp`"
+    `$TMPDIR` is much larger than `/tmp` and cleaned automatically. Especially in case of job errors data in `/tmp` will persist and clog the nodes memory. 
+
+### Example: temporary files
+
+In the following example the `example.exe` will need a place to store temporary/intermediate files, not necessary after the computation. The location is provided using the `--builddir` option. And the local scratch (`$TMPDDIR`) is specified. 
+
+```Bash
+#!/bin/bash
+#SBATCH --job-name tmpdir
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 1
+
+srun example.exe --builddir=$TMPDIR input.dat
+```
+
+If you want to have the advantage of low latency file system (local) but you need to keep files, you still can use `$TMPDIR` and copy files to the network storage (e.g. `$WORKSPACE` or `$HOME`) at the end of your job. This is only efficient if a) more files are manipulated local (in `$TMPDIR`) than copied to the network storage or b) files are manipulated multiple times, before copying to the network storage.
+
+### Example: including data movement
 In the following example script, all files from the submitting directory are copied to the head compute node. At the end of the job all files from the compute node local directory is copied back. The compute node local `$TMPDIR` is used, which points to `/scratch/local/<jobid>`, a job specific directory in the nodes internal disc.
 
 ```Bash
@@ -99,7 +127,7 @@ function clean_up {
 # call "clean_up" function when this script exits, it is run even if SLURM cancels the job
 trap 'clean_up' EXIT
 
- 2. Execute [MODIFY COMPLETELY TO YOUR NEEDS]
+# 2. Execute [MODIFY COMPLETELY TO YOUR NEEDS]
 # ============================================
 # TODO add your computation here
 # simple example, hello world

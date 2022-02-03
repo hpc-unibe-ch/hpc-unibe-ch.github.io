@@ -2,29 +2,41 @@
 
 ## Description
 
-You want to submit multiple jobs that are identical or differ only in some arguments. Instead of submitting N jobs independently, you can submit one array job unifying N tasks.
+Array jobs are jobs where the job setup, including job size, memory, time etc. is constant, but the application input varies. One use case are parameter studies. 
+
+Instead of submitting N jobs independently, you can submit one array job unifying N tasks. These provide advantages in the job handling as well as for the SLURM scheduler.
 
 
-## Submitting an Array 
+## Submitting an Array
 
-To submit an array job, specify the number of tasks as a range of task ids using the --array option:
-
-```Bash
-#SBATCH --array=n[,k[,...]][-m[:s]]
-```
-
-The task id range specified in the option argument may be a single number, a simple range of the form n-m, a range with a step size s, a comma separated list of values, or a combination thereof. The task ids will be exported to the job tasks via the environment variable SLURM_ARRAY_TASK_ID. Other variables available in the context of the job describing the task range are: SLURM_ARRAY_TASK_MAX, SLURM_ARRAY_TASK_MIN, SLURM_ARRAY_TASK_STEP.
-
-!!! types danger ""
-    Specifying --array=10 will not submit an array job with 10 tasks, but an array job with a single task with task id 10. To run an array job with multiple tasks you must specify a range or a comma separated list of task ids.
-
-### Limit the Number of Concurrently Running Tasks
-
-You may want to limit the number of concurrently running tasks if the tasks are very resource demanding and too many of them running concurrently would lower the overall performance of the cluster. To limit the number of tasks that are allowed to run concurrently, use a "%" separator:
+To submit an array job, specify the number of tasks as a range of task IDs using the --array option:
 
 ```Bash
 #SBATCH --array=n[,k[,...]][-m[:s]]%<max_tasks>
 ```
+
+The task id range specified in the option argument may be: 
+
+- comma separated list of values: `#SBATCH --array=1,3,5` 
+- simple range of the form n-m: `#SBATCH --array=201-300` (201, 202, 203, ..., 300)
+- range with a step size s: `#SBATCH --array=100-200:2` (100, 102, 104, ... 200)
+- combination thereof: `#SBATCH --array=1,3,100-200` (1, 3, 100, 101, 102, ..., 200)
+
+Furthermore, the **amount of concurent** running jobs can **limited** using the `%` seperator, e.g. for max 100 concurrent jobs of 1-400: `#SBATCH --array=1-400%100`. Therewith you can prevent fully filling your available resources. 
+The task IDs will be exported to the job tasks via the environment variable `SLURM_ARRAY_TASK_ID`. Additionally, `SLURM_ARRAY_TASK_MAX`, `SLURM_ARRAY_TASK_MIN`, `SLURM_ARRAY_TASK_STEP` are available in job, describing the task range of the job.
+
+!!! types danger ""
+    Specifying `--array=10` will not submit an array job with 10 tasks, but an array job with a single task with task id 10. To run an array job with multiple tasks you must specify a range or a comma separated list of task ids.
+
+
+## Output files
+Per default the output files are named as `slurm-<jobid>_<taskid>.out`. When renaming the output/error files variables for the job ID (`%A`) and for the task ID (`%a`) can be used. For example:
+
+```Bash
+#SBATCH --output=array_example_%A_%a.out
+#SBATCH --error=array_example_%A_%a.err
+```
+Thus a file `array_example_6543212_12.out` will be written for the 12th task of job 6543212.
 
 ## Canceling Individual Tasks
 
@@ -40,7 +52,7 @@ $ squeue
           79265_47      test Simple H  foo  	R       0:10      1 fnode03
 ```
 
-Use the --array option to the squeue command to display one tasks per line:
+Use the `--array` option to the squeue command to display one tasks per line:
 
 ```Bash
 $ squeue --array
@@ -68,7 +80,7 @@ Instead of submitting 1000 individual jobs, submit a single array jobs with 1000
 #SBATCH --array=1-1000    	# Submit 1000 tasks with task ID 1,2,...,1000.
 
 # The name of the input files must reflect the task ID!
-./foo input_data_${SLURM_ARRAY_TASK_ID}.txt > output_${SLURM_ARRAY_TASK_ID}.txt
+srun ./foo input_data_${SLURM_ARRAY_TASK_ID}.txt > output_${SLURM_ARRAY_TASK_ID}.txt
 ```
 
 !!! types note ""
@@ -86,10 +98,10 @@ Submit an array job with 1000 tasks. Each task executes the program foo with dif
 ### Submit 1000 tasks with task ID 1,2,...,1000. Run max 20 tasks concurrently
 #SBATCH --array=1-1000%20  
 
-data_dir=$HOME/projects/example/input_data        
-result_dir=$HOME/projects/example/results
+data_dir=$WORKSPACE/projects/example/input_data        
+result_dir=$WORKSPACE/projects/example/results
 
-param_store=$HOME/projects/example/args.txt     
+param_store=$WORKSPACE/projects/example/args.txt     
 ### args.txt contains 1000 lines with 2 arguments per line.
 ###    Line <i> contains arguments for run <i>
 # Get first argument

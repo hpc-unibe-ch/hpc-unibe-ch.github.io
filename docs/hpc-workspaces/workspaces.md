@@ -7,7 +7,7 @@ A guideline for Workspace managers including **application** and modification ca
 
 If you want to **join an existing Workspace**, please ask the Workspace owner or manager to add your account.
 
-A HPC workspace consists of:
+An HPC workspace consists of:
 
 - 2 access groups, *read/write* and *read only*
 - permanent and temporary storage
@@ -23,7 +23,7 @@ A HPC workspace consists of:
 HPC data typically is shared data. This could be between students and supervisors, between researchers of a research group, or even between researchers of different institutes. These data needs to be accessible even if people leave the team. 
 Furthermore, these data is usually processed with a set of custom software tools, which need to be easy accessible, share, between the collaborators. 
 
-## Advantages:
+## Advantages
 - group based storage access (data and software)
 - enhanced collaborations between researchers, even across institutes
 - user-friendly access control by Workspace managers
@@ -56,23 +56,19 @@ Thus, the **Workspace** and **SCRATCH** space are accessible to all members of t
 
 Members can be anyone with an active UniBE Campus Account.
 
-The Workspace owner or its deputies can manage the lists using the Service Portal 
-
-[//]: # (TODO: add SNOW link)
+The Workspace owner or its deputies can manage the lists using the Service Portal Workspace edit Form: [Service Portal -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
 
 ## Backup
-All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups
+All data in the permanent space (`/storage/workspaces/`) is protected using daily snapshots and backups.
 
-[//]: # (TODO daily Snapshots? daily backups?)
-
-Scratch will not be protected. 
+Scratch will not be protected by snapshots or backups.
 
 ## Quota
 
 For default and actual **quota** information use `quota` tool. More details see [File System Quota](../file-system/quota.md).
 
 
-## SLURM: 
+## SLURM
 Computational work is accounted to a Workspace account. Every workspace belongs to a research group. The freely available resources are shared between research groups. 
 
 [//]: # (TODO link to fairshare description)

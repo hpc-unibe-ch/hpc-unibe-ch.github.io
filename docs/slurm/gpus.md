@@ -7,7 +7,9 @@ This page contains all information you need to submit GPU-jobs successfully on U
 ## Important Information on GPU Usage
 
 !!! types note ""
-    Code that runs on the CPU will not magically make use of GPUs by simply submitting a job to the 'gpu' partition! You have to explicitly adapt your code to run on the GPU. Also, code that runs on a GPU will not necessarily run faster than it runs on the CPU. For example, GPUs are not suited to handle tasks that are not highly parallelizable. In other words, you must understand the characteristics of your job, and make sure that you only submit jobs to the 'gpu' partition that can actually benefit from GPUs.
+    Code that runs on the CPU will **not** magically make use of GPUs by simply submitting a job to the 'gpu' partition! You have to explicitly adapt your code to run on the GPU, e.g. an CUDA or OpenACC implementation. Also, code that runs on a GPU will not necessarily run faster than it runs on the CPU. For example, GPUs require a huge amount of highly parallelizable tasks. In other words, you must understand the characteristics of your job, and make sure that you only submit jobs to the 'gpu' partition that can actually benefit from GPUs.
+
+When submitting to the GPU partition the GPU type specification is **required**. 
 
 ## GPU Type
 
@@ -18,7 +20,7 @@ Ubelix currently features four types of GPUs. You have to choose an architecture
 | Nvidia Geforce GTX 1080 Ti | `--gres=gpu:gtx1080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 2080 Ti | `--gres=gpu:rtx2080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 3090 | `--gres=gpu:rtx3090:<number_of_gpus>` |
-| Nvidia Tesla P100 | `--gres=gpu:teslaP100:<number_of_gpus>` |
+| Nvidia Tesla P100 | `--gres=gpu:teslap100:<number_of_gpus>` |
 
 
 ## Job Submission
@@ -48,9 +50,12 @@ Use the following option to ensure that the job, if preempted, won't be requeued
 #SBATCH --no-requeue
 ```
 
-## CUDA
+## Application adaptation
 
-CUDA versions are now managed through modules. Run _module avail_ to see which versions are available:
+Applications do only ran on GPUs if they are build specifically for GPUs. There are multiple ways to implement algorithms for GPU usage. The most common ones are low level languages like CUDA or pragma oriented implementations like OpenACC. 
+
+### CUDA
+To build and run CUDA applications, its compiler and libraries are provided managed via modules. Run _module avail_ to see which versions are available, for example:
 
 ```Bash
 module avail CUDA
@@ -66,14 +71,45 @@ module avail CUDA
    cuDNN/7.0.5-CUDA-9.1.85
 ```
 
-Run _module load <module>_ to load a specific version of CUDA:
+Run `module load <module>` to load a specific version of CUDA:
 
 ```Bash
 module load cuDNN/7.1.4-CUDA-9.2.88
 ```
 
 !!! types note ""
-    If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded as a dependency.
+    If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded automatically as a dependency.
+
+## GPU usage monitoring
+
+To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be utilized. The tool need to be launched on the related nodes. After the job started running, a new job step can be created using `srun` and call `nvidia-smi` to display the resource utilization. Here we attach the process to an job with the jobID `123456`. You need to replace the jobId with your gathered jobID, presented in the sbatch output. 
+
+```Bash
+$ sbatch job.sh
+Submitted batch job 123456
+$ squeue --me
+# verify that job gets started
+$ srun --ntasks-per-node=1 --jobid 123456 nvidia-smi
+Fri Nov 11 11:11:11 2021
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:04:00.0 Off |                  N/A |
+| 23%   25C    P8     8W / 250W |      1MiB / 11178MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  On   | 00000000:08:00.0 Off |                  N/A |
+| 23%   24C    P8     8W / 250W |      1MiB / 11178MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+```
+Therewith the GPU core utilization and memory usage can be displayed for all GPU cards belonging to that job. 
+
+Note that this is a one off presentation of the usage and the called `nvidia-smi` command runs within your allocation. The required resources for this job step should be minimal and should not noticably influence your job performance. 
 
 ## Further Information
 

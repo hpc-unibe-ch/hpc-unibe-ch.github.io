@@ -15,13 +15,14 @@ Syntax
 scancel [options] <jobid> ...
 ```
 
-Common options
+`scancel` can be restricted to a subset of jobs, using the following options with the related value, e.g:
 
 ```Bash
---account		Restrict the scancel operation to jobs under this charge account
---jobname		Restrict the scancel operation to jobs with this job name
---partition		Restrict the scancel operation to jobs in this partition
---state			Restrict the scancel operation to jobs in this state
+-u, --user $USER    jobs of current user
+-A, --account 		jobs under this charge account
+-n, --jobname		jobs with this job name
+-p, --partition		jobs in this partition
+-t, --state			jobs in this state
 ```
 
 ### Examples
@@ -38,3 +39,8 @@ Delete all running jobs:
 scancel --state=R
 ```
 
+Delete all of your jobs:
+
+```Bash
+scancel --user $USER
+```

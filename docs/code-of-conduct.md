@@ -34,7 +34,7 @@ while others help to reduce the amount of support time needed to allocate.
 
 ## General Communication with the Cluster Administrators
   
-  * Use the [Service Portal](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=1d137767db54141078ed3e48229619a7) 
+  * Use the [Service Portal](https://serviceportal.unibe.ch/hpc) 
   for questions, issues or comments regarding UBELIX. 
   * Do not use the personal email address of a cluster administrator. This
   is important because it keeps all administrators informed about the ongoing 

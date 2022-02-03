@@ -1,8 +1,10 @@
 # HPC Workspace Data and Software Tools
 
 ## Description
-HPC Workspace module provides support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
+HPC Workspace modules provides support for user-friendly file system access, custom software stacks in HPC Workspaces, and SLURM accounting. 
 The module can also be used to set up HOME for a custom software stack. 
+
+Furthermore, there are modules provided to load a working Workspace and additionally a software stacks from another Workspace, see [Additional software stacks](#additional-software-stacks)
 
 ## Workspace module
 The Workspace module adjust the environment to work in a specific HPC Workspace. 
@@ -13,21 +15,22 @@ sets the following environment variables ([Shortcuts](#shortcuts)) and [Software
 
 There are the following possibilities:
 
-- you belong to **no** Workspace: load `module load Workspace/home` to use your software stack in your HOME directory
+- you belong to **no** Workspace: load `module load Workspace_Home` to use your software stack in your HOME directory and set `$WORKSPACE` and `$SCRATCH` variables to your private directories.
 - you belong to **one** Workspace: this Workspace gets loaded when `module load Workspace`
-- you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. The module presents the possible options, e.g.:
+- you belong to multiple Workspaces: you need to specify the Workspace to load using the variable `$HPC_WORKSPACE`. If not specified, the module presents the possible options, e.g.:
     ```
     $ module load Workspace
     Workspaces are available:
         HPC_SW_test, hpc_training, 
     Please select and load ONE of the following:
-        export HPC_WORKSPACE=HPC_SW_test; module load Workspace
-        export HPC_WORKSPACE=hpc_training; module load Workspace
+        HPC_WORKSPACE=HPC_SW_test module load Workspace
+        HPC_WORKSPACE=hpc_training module load Workspace
     ```
     - Thus you load a specific Workspace using:
     ```
-    export HPC_WORKSPACE=<WorkspaceName>; module load Workspace
+    HPC_WORKSPACE=<WorkspaceName> module load Workspace
     ```
+There are also ways to load an additional Workspace for an additional software stack, see [Additional Software Stacks](#additional-software-stacks) below.
 
 ### Shortcuts
 The workspace module provides the following variables:
@@ -69,12 +72,12 @@ Please see [Python Additional Packages](../software/python.md#additional-package
     Python or Anaconda3 module need to be loaded before loading the Workspace module, since variables to be set depend on Python version.
     Workspace module can also be reloaded, e.g.:
     ```
-    export HPC_WORKSPACE=HPC_SW_test; module load Workspace
+    HPC_WORKSPACE=HPC_SW_test module load Workspace
     module load Python
     module load Workspace
     ```
 
-### Conda environments 
+### Conda environments
 The Workspace module provides support for creating and using conda environments in the shared Workspace. See [Anaconda Conda environments](../software/Anaconda.md#conda-environments).
 
 ### R packages
@@ -85,3 +88,58 @@ The Workspace module sets the umask to 002. Thus files and directories get group
 ```Bash
 -rw-rw-r-- 1 user group 0 Mar 15 15:15 /path/to/file
 ```
+
+### Additional Software Stacks
+
+The module `Workspace_SW_only` provide the access to a software stack of an HPC Workspace `B` while working in an HPC Workspace `A`. 
+
+This could be that a common software stack is provided for multiple (data) Workspaces or that you are trying software packages in your `HOME`
+
+As an example you could load:
+
+```Bash
+HPC_WORKSPACE=A module load Workspace
+HPC_WORKSPACE=B module load Workspace_SW_only
+```
+
+When you want to load packages from your `HOME` while working in `A`, you can 
+
+```Bash
+HPC_WORKSPACE=$HOME module load Workspace_SW_only
+HPC_WORKSPACE=A module load Workspace
+```
+
+!!! type note ""
+    Note that the variable `HPC_WORKSPACE` is cleared after each loading of a `Workspace*`module. The currently loaded Workspace names are stored in `$HPC_WORKSPACE_LOADED` for the Workspace module and `$HPC_WORKSPACE_SW_ONLY` for the Workspace_SW_only module. 
+
+### Reloading
+
+The Workspace modules are configured to "remember" the selected Workspace you once loaded in the current session, even after unload the Workspace module. Therefore, environment variables are set in the current session, `$HPC_WORKSPACE` for the `Workspace` module, and `$HPC_WORKSPACE_SW_ONLY` for the `Workspace_SW_only` module. 
+
+If you belong to multiple Workspaces and you want to list the available Workspaces you need to `unset HPC_WORKSPACE` before loading the `Workspace` module. If you already know the name, you can switch into another Workspace (here Workspace `foo`) by:
+
+```Bash
+module unload Workspace
+HPC_WORKSPACE=foo module load Workspace
+```
+
+When you are creating a new module, there are cases where you need to reload a Workspace module, e.g. for a Python packages. This can be obtained using e.g. the following lua modulefile syntax:
+
+```lua
+if mode() == 'load' then
+  if not ( isloaded("Python") ) then
+    load("Python")
+    if ( isloaded("Workspace") ) then
+        load("Workspace")
+    end
+    if ( isloaded("Workspace_SW_only") ) then
+        load("Workspace_SW_only")
+    end
+    if ( isloaded("Workspace_HOME") ) then
+        load("Workspace_HOME")
+    end
+  end
+end
+```
+
+Assuming we want to create a module for an additional Python package. In this example we not only verify that `Python` is loaded, but also that the Workspace Python settings (incl. `PYTHONPATH` and `PYTHONPACKAGEPATH`) are set properly by reloading the Workspace module. 

@@ -16,7 +16,7 @@ The following steps need are necessary:
 Depending if you want to install the package in user or a group space you need to load the related module and the `EasyBuild` module, e.g.:
 
 ```Bash
-module load Workspace  ### if you want to install into your HOME use Workspace/home
+module load Workspace  ### if you want to install into your HOME use Workspace_Home
 module load EasyBuild
 ```
 
@@ -51,7 +51,14 @@ eb --search gatk
 ```
 
 As shown above there are different versions of GATK and for different *toolchains* available (`foss`, `intel`, `GCCcore`). 
-**Select one** 
+
+**Select one**, here `GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb` is chosen.
+
+Alternatively, the packages can be listed or selected using the package name and target toolchain and version:
+
+```Bash
+eb --software-name=GATK --toolchain-name=GCC --toolchain-version=9.3.0
+```
 
 You can list all dependencies using:
 
@@ -72,9 +79,20 @@ Additional options, e.g. for selecting a specific software version can be found 
 
 ### Using EasyConfig files
 
-You can use the directy selected easyconfig or if necessary copy and adapt it.
-easyconfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
+You can use the directly selected EasyConfig or if necessary copy and adapt it.
+EasyConfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
 If you need more information see [EasyBuild documentation](https://easybuild.readthedocs.io/en/latest/), and if necessary ask our support team for assistance.
+
+## Meta module and Toolchains
+Modules specify related dependencies, which gets loaded with that module. These dependencies may have further dependencies.
+
+The chain of dependencies is called toolchain. For example:
+
+- `GCC` consists of `GCCcore` and `binutils`
+- `gompi` consists of `GCC` and `OpenMPI`
+- `foss` consists of `gompi`, `OpenBLAS`, `FFTW` and `ScaLAPACK`
+
+Within a toolchain the versions of the utilized libraries should be consistent. Thus, building a new package with `foss/2020b` and `PyTorch` should rely on a PyTorch version build with the same versions of the underlying libraries. Thus e.g. `PyTorch-1.9.0-foss-2020b.eb` is also build with `foss/2020b` as well as the `Python/3.8.6`. The latter one is build with `GCCcore/10.2.0` which is part of `foss/2020b`. 
 
 ## Selecting a software stack
 Depending on the package and its target usage one or more software stacks should be selected. Therefore, the installation command starts with one for the following command:
@@ -93,17 +111,17 @@ Additional SLURM arguments can be selected using the `--slurm-args` option, e.g.
 
 Few examples:
 
-- for **FFTW** in **all architectural** software stacks:
+- for a **selected** or **custom** EasyConfig and all missing dependencies in **all architectural** software stacks (here we go with the above selected GATK):
 ```Bash
-eb-install-all --robot --software-name=FFTW --toolchain-name=GCC
+eb-install-all --robot GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
 ```
-- for **git** in the **generic** software stack:
+- only in the **Broadwell and Login** software stack installing **FFTW** in GCC toolchain (newest version):
 ```Bash
-eb-install-generic --robot --software-name=git --toolchain-name=GCC
+eb-install-all --robot --archs='login broadwell' --software-name=FFTW --toolchain-name=GCC
 ```
-- for a custom EasyConfig **myApp.eb** only in the **Broadwell and Ivybridge** software stack:
+- for **git** in the **generic** software stack, with **GCC** toolchain of version 2021a:
 ```Bash
-eb-install-all --archs='ivy broadwell' --robot myApp.eb
+eb-install-generic --robot --software-name=git --toolchain-name=GCC --toolchain-version=2021a
 ```
 
 This will need time to get scheduled and processed. 
@@ -120,18 +138,13 @@ eb-install-all --robot --slurm-args='--time=05:00:00' ...
 
 When finished you (and your collaborators) should be able to use use the software, by just loading the user/workspace related module and the module for the installed package. 
 
-## Meta module and Toolchains
-On the one hand a module may load/depend on other modules, which are automatically loaded with that module. As an example the toolchain module `foss` loads: the `GCC` compiler, the MPI libary OpenMPI, math libaries OpenBLAS, FFTW and ScaLAPACK. These libraries often have further dependencies. 
-
-When building new packages, version consitencies need to be respected. Targeting a build with `foss/2020b` libraries should be utilized, build with the same version of foss or it underlying packages/libaries, e.g. `GCC/10.2.0`.
-
-## Adapting Easyconfigs
-in the following description and example we update an existing old easyconfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
+## Adapting EasyConfigs
+in the following description and example we update an existing old EasyConfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. 
 
 - setup EasyBuild environment
 ```
 module load EasyBuild
-module load Workspace   ### OR Workspace/home
+module load Workspace   ### OR Workspace_Home
 ```
 
 - find a suitable easyconfig
@@ -157,7 +170,7 @@ $ mv RELION-3.0.4-foss-2017b.eb RELION-3.1.2-foss-2020b.eb
 - update the versions settings in the file
     - package version, the toolchain version, and all related libraries
     - Keep in mind that toolchain versions need to match (see [toolchains](#meta-module-and-toolchains) above)
-```
+```Lua
 easyblock = 'CMakeMake'
 
 name = 'RELION'
@@ -199,11 +212,53 @@ moduleclass = 'bio'
 
 - update the checksum (if package version is changed)
 The downloaded source packages are typically checked with SHA256 checksums. When we change to a different source code versio, the checksum changes too. And need to be updated.
-```
+```Bash
 $ eb --force --inject-checksums sha256 RELION-3.1.2-foss-2020b.eb
 ```
 
 - build the new package as described in [Installation](#installation) above, e.g.
-```
+```Bash
 $ eb-install-all --robot RELION-3.1.2-foss-2020b.eb
 ```
+
+## Tips and tricks
+
+Even if EasyBuild tries to simplify the installation process, not always EasyConfigs are Build without issues. There can be several types of issues. Starting form issues in finding exiting packages up to compilation issues. 
+
+### More information
+
+In the EasyBuild output `eb_out.*` files are issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
+On the compute nodes they are deleted at the end of the job, but on the login node (ivy) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
+
+### Lock directories
+
+EasyBuild has a procedure to prevent building the same package (same version, same software stack) using lock files. If `eb-install-*` crashes **due to time limit**, the lock files are not removed properly. Therewith the next time you start `eb-install-*` for that package a message like will be presented at the end of the output:
+
+```Bash
+ERROR: Build of /path/to/easyconfig.eb failed (err: 'build failed (first 300 chars): Lock /path/to/.locks/packageVersion.lock already exists, aborting!')
+```
+In that moment the lock file should be already removed and the process can finally be started successfully again. 
+
+### Hidden Modules
+
+Sometimes packages are not defined consistently. On UBELIX many packages are provided as hidden modules. This keeps the list nice and tidy. Nevertheless, if a package (or worse one of its dependency) is looking for an existing packages, but it is not mentioned to be hidden, it will not find and need to rebuild again. 
+
+Hidden packages can be searched using `module --show-hidden avail <PackageXYZ>`. If existing as hidden and the target package or dependency does not define it as hidden, EasyBuild can be advised to treat it as hidden using the `--hide-deps` option. E.g. for binutils, gettext and Mesa, the command would look like:
+
+```Bash
+$ eb-install-all --hide-deps=binutils,gettext,Mesa <PackageXYZ>
+```
+
+### Directly on the compute node
+
+The eb-install-all tool builds the packages directly on a compute node. The node type can be limited/specified by using the option `--archs=<type>` (see `eb-install-all --help`). 
+
+If this fails, an investigation step may be running directly on the node, without more control of the setup, e.g. build directories. Therefore, EasyBuild can be started directly in a session on the compute node. First, an interactive session is established on the compute node. For example building Relion in the `$HOME` on an epyc2 node using a local copy of the EasyConfig file:
+
+```Bash
+$ srun --pty --partition epyc2 bash
+$ module load Workspace_Home EasyBuild
+$ eb --tmpdir=$TMPDIR --robot --hide-deps=binutils,gettext,Mesa RELION-3.1.3-fosscuda-2020b.eb
+```
+
+This may also be used when compiling **on** a specific GPU architecture. 

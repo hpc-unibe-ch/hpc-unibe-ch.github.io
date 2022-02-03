@@ -78,7 +78,7 @@ With the Workspace tools we provide short-cuts to install R packages in the shar
 module load Workspace
 mkdir $R_LIBS
 ```
-If you want to install into your $HOME
+If you get the error `mkdir: cannot create directory ...` verify that you just loaded one Workspace while installing the package.
 
 Then R packages can be installed using the `install.packages()` routine in an interactive R shell, e.g. for **doParallel**:
 
@@ -89,7 +89,7 @@ R
 > install.packages("doParallel")
 ```
 
-Then please follow the procedure as shown [below](#installation-routine).
+Please follow the procedure as shown below at [installation routine](#installation-routine).
 
 Then the installed packaged will be available to you and all other Workspace members by simply loading the `Workspace` module. 
 
@@ -104,7 +104,7 @@ Then the installed packaged will be available to you and all other Workspace mem
 #### B) Into your HOME
 
 !!! note "Note"
-    you can also use procedure A) and load `Workspace/home` to install into your HOME directory.
+    you can also use procedure A) and load `Workspace_Home` to install into your HOME directory.
 
 If you are not using a Workspace module and try to install a package, at the first time R tries to install the package into a global/generic location, which is not writeable by users. You can then select to install in a "personal library" into your HOME:
 
@@ -170,7 +170,6 @@ HTTP CRAN mirror
 99: Venezuela
 Selection: 71
 ```
-
 
 Finally, the package gets installed. After installing the package you can close the interactive session by typing q().
 

@@ -4,9 +4,6 @@
 
 This page contains information about quota limits on the parallel file system. Quotas are enabled to control the file system usage.
 
-!!! types info "migration change"
-    Previously HOME directories had limits of 3 TB per user, file quota limits of 2 million files. In some cases this was extended. The previous HOME quota will kept active until the Workspace introduction phase is finished. 
-
 !!! types warning " Job abortion"
     Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded 
 
@@ -14,14 +11,14 @@ This page contains information about quota limits on the parallel file system. Q
 
 | space | quota | file quota | backup | expiration |
 | ----- | ----- | ---------- | ------ | ---------- |
-| HOME | 1TB[^mig] | 1M[^mig] | yes[^mig] | - |
+| HOME | 1TB | 1M | yes | - |
 | WORKSPACE | free: up to 10TB per research group[^QpRG] | 1M per TB | yes | 1 year[^WSdur] |
-| SCRATCH | 50TB | 50M | no | 1 month |
+| SCRATCH | 30TB[^user] | 10M[^user] | no | 1 month[^pol] |
 
-[//]: # (TODO remove warning)
-[^mig]: ATTENTION: there is no Backup or snapshot on HOME directories until the Workspace introduction phase is finished. Previous extended quota keep active until then. 
 [^QpRG]: Each research group can use up to 10TB of free disk storage in multiple Workspaces free of charge. Quota increase can be purchased, see [Workspace Management](../hpc-workspaces/management.md#additional-storage). 
 [^WSdur]: Workspaces are meant to be active directories and no archive. Workspace are active by default for one year. The duration can every time be extended to "current date plus one year". 
+[^user]: Scratch quota is currently implemented per user
+[^pol]: There is a automatic removal policy planned, but not implemented yet
 
 
 ## Display quota information
@@ -45,18 +42,21 @@ UniBE Workspace Quota report
                     : free quota,  used (GB)(   %), quota (GB) |  files used(   %),      quota | start date(1), average quota(2)
 ================================================================================================================================
 HOME                :        all,        421( 41%),       1024 |      796058( 79%),    1000000 |              ,
+SCR_usr             :        all,        269(  0%),      30720 |          22(  0%),   10000000 |              ,
 Workspace1          :          5,        101(  1%),      10240 |           4(  0%),   10000000 |    2021-02-25,           7.5833
 
+(0) space names starting with "SCR_" refer to the personal (usr) or Workspace SCRATCH quota.
 (1) accounting period start date, The date from which the average usage is computed.
 (2) file space average quota (not files), calculated by the average of messured values in the actual accounting period.
 ```
 
 In the last example the workspace `Workspace1` has `5TB` of free quota, and a total of `10TB` of quota (`5TB` additional storage requested). The `start date` defines the start of the accounting period and the average quota is computed as average over all datapoints starting from `start date`. 
+Furthermore, the SCRATCH quota is presented starting with `SCR_`, where `SCR_usr` is your personal SCRATCH quota and `SCR_` plus Workspace name the group quota of the Workspace group in the scratch fileset. Workspace SCRATCH quota is only presented if a quota is set and the `quota -l` option selected.
 
 !!! types note "data gathering"
 
     - Workspaces: Workspace quota information is gathered twice a day. Thus the presented data may not completely represent the current state.
-    - HOME: values presented are actual values directly from the file system
+    - HOME and SCRATCH: values presented are actual values directly gathered from the file system
 
 Note: the coloring of the relative values is green (<70%), yellow (70% < x < 90%), red (>90%).
 
@@ -71,10 +71,6 @@ $ mmlsquota --block-size=G -u $USER rs_gpfs:svc_homefs
 Filesystem Fileset    type             KB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
 rs_gpfs    svc_homefs USR       444181792 1073741824 1073741824    6072144     none |   815985 1000000  1000000     2462     none
 ```
-
-!!! types attention "migration change"
-    If your HOME is not yet migrated, you can check your quota on the old file system using: `$mmlsquota  gpfs`. The quota limits for the institute directories can be gathered using: `mmlsquota -g id --block-size T`, for the institute `id`.
-
 
 The `--block-size` option specify the unit {K , M, G, T} in which the numbers of blocks are displayed:
 
