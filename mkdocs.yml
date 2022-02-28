@@ -1,5 +1,5 @@
 site_name: HPC Documentation
-#theme: mkdocs
+
 use_directory_urls: false
 nav:
   - News: general/news.md
@@ -80,6 +80,7 @@ extra_css:
 
 plugins:
   - git-revision-date
+  - search
 
 # See https://python-markdown.github.io/extensions/ and
 # See https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions#Bundles
