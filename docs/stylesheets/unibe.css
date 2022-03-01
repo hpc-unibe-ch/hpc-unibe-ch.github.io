@@ -2,7 +2,7 @@
     background-color: #d6002b;
 }
 
-@media only screen {
+@media only screen and (max-width:76.1875em) {
     html .md-nav--primary .md-nav__title[for=__drawer] {
         background-color: #d6002b;
     }
