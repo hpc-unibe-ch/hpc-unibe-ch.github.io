@@ -1,5 +1,9 @@
 # News
 
+11-08-2022:
+
+- added two additional login nodes to the cluster
+
 04-05-2021: 
 
 - major SLUM partition restructure, see [Slurm partitions](../slurm/partitions.md). Job scripts may need to be adapted.

@@ -18,20 +18,29 @@ This page contains information on how to configure your SSH environment for a si
 !!! types caution "Requirement"
     Login to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
 
+!!! types note "Login nodes"
+    There are four login nodes in UBELIX:
+
+    - submit01.unibe.ch
+    - submit02.unibe.ch
+    - submit03.unibe.ch
+    - submit04.unibe.ch
+
+    To log in to UBELIX, you can choose any one. If the load on a login node is high, you can log out and pick another one. When using a terminal multiplexer like tmux or screen, you can directly log in to the login node where your tmux/screen session is running.
 
 ### Mac/Linux/Unix
 
-Run the following commands in a terminal. Open an SSH connection to the submit host:
+Run the following commands in a terminal. Open an SSH connection to :
 
 ```Bash
-$ ssh <username>@submit.unibe.ch
+$ ssh <user>@submit03.unibe.ch
 OR
-$ ssh -l <username> submit.unibe.ch
+$ ssh -l <user> submit03.unibe.ch
 ```
 At the password prompt enter your Campus Account password:
 
 ```Bash
-$ ssh <username>@submit.unibe.ch
+$ ssh <user>@submit03.unibe.ch
 Password:
 ```
 
@@ -41,14 +50,16 @@ Password:
 After log in successfully you will see the welcome message and the command prompt:
 
 ```Bash
-Last login: Tue Apr 21 16:17:26 2020
+Last login: Mon Aug 15 10:22:09 2022 from 130.92.8.162
 
-CentOS 7.7.1908.x86_64
+CentOS 7.9.2009.x86_64
 
-FQDN:      submit01.ubelix.unibe.ch (10.1.129.21)
-Processor: 24x Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz
-Kernel:    3.10.0-1062.9.1.el7.x86_64
-Memory:    62.73 GiB
+FQDN:      submit03.ubelix.unibe.ch (10.1.129.23)
+Processor: 128x AMD EPYC 7742 64-Core Processor
+Kernel:    3.10.0-1160.62.1.el7.x86_64
+Memory:    125.67 GiB
+
+[user@submit03 ~]$
 ```
 
 !!! type note "Customize your SSH session"
@@ -65,7 +76,7 @@ After installing and starting MobaXterm, a SSH session need to be configured:
  * Click 'Session' in the top left corner:
  ![MobaXterm Start](../images/mobaXterm_01_start.png "MobaXterm Start")
  * In "SSH" tab:
-     - Set the remote host to submit.unibe.ch
+     - Set the remote host to a login node, e.g. submit01.unibe.ch
      -  Enable the "Specify username" option and put your Campus Account short name in the corresponding box (here user ms20e149 will be used)
  * In the "Advanced SSH settings"
      - Set SSH-browser type to 'SCP (enhanced speed)'

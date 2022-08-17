@@ -12,7 +12,7 @@ You can use different protocols/programs for transferring files from/to the clus
     The following commands are from on your local workstation as indicated by "local$"
 
 !!! types note ""
-    If you have customized your SSH environment as described here, you can substitute your host alias for <username>@submit.unibe.ch in the following commands
+    If you have customized your SSH environment as described here, you can substitute your host alias for <user>@submit03.unibe.ch in the following commands
 
 
 ## Secure Copy (SCP) - Mac/Linux
@@ -33,16 +33,16 @@ SCP performs a plain linear copy of the specified files, while replacing already
 Copy the file `~/dir/file01` to your remote home directory:
 
 ```Bash
-$ scp ~/dir/file01 <username>@submit.unibe.ch:
+$ scp ~/dir/file01 <user>@submit03.unibe.ch:
 ```
 
 Copy multiple files to the remote directory `~/bar`:
 
 !!! types note ""
-    The destination directory must already exist. You can create a directory from remote with: ssh <username>@submit.unibe.ch 'mkdir -p ~/bar'
+    The destination directory must already exist. You can create a directory from remote with: ssh <user>@submit03.unibe.ch 'mkdir -p ~/bar'
 
 ```Bash
-$ scp ~/dir/file01 ~/dir/file02 ~/dir/file03 <username>@submit.unibe.ch:bar
+$ scp ~/dir/file01 ~/dir/file02 ~/dir/file03 <user>@submit03.unibe.ch:bar
 ```
 
 Copy all files within directory `~/dir` to the remote directory `~/bar`:
@@ -51,7 +51,7 @@ Copy all files within directory `~/dir` to the remote directory `~/bar`:
     Add the -r option (recursive) to also copy all subdirectories of ~/dir
 
 ```Bash
-$ scp -r ~/dir/* <username>@submit.unibe.ch:bar
+$ scp -r ~/dir/* <user>@submit03.unibe.ch:bar
 ```
 
 Copy the directory `~/dir` to your remote home directory:
@@ -60,7 +60,7 @@ Copy the directory `~/dir` to your remote home directory:
     This will create a new directory ~/dir on the remote host. If the directory ~/dir already exists, the following command adds the content of the source directory to the destination directory
 
 ```Bash
-$ scp -r ~/dir <username>@submit.unibe.ch:
+$ scp -r ~/dir <user>@submit03.unibe.ch:
 ```
 
 ### Copying Files from UBELIX to Your Local Workstation
@@ -68,7 +68,7 @@ $ scp -r ~/dir <username>@submit.unibe.ch:
 Copy the remote file `~/bar/file01` to the current working directory on your local workstation:
 
 ```Bash
-$ scp <username>@submit.unibe.ch:bar/file01 .
+$ scp <user>@submit03.unibe.ch:bar/file01 .
 ```
 
 
@@ -78,13 +78,13 @@ Copy multiple remote files to the local directory `~/dir`:
     The local directory ~/dir will be automatically created if it does not already exist
 
 ```Bash
-$ scp <username>@submit.unibe.ch:bar/\{file02,file03,file04\} ~/dir
+$ scp <user>@submit03.unibe.ch:bar/\{file02,file03,file04\} ~/dir
 ```
 
 Copy the remote directory `~/bar` to the current working directory on your local workstation:
 
 ```Bash
-$ scp -r <username>@submit.unibe.ch:bar .
+$ scp -r <user>@submit03.unibe.ch:bar .
 ```
 
 ## Remote Sync (Rsync) - Mac/Linux
@@ -109,13 +109,13 @@ Among other things, Rsync also allows you to specify complex filter rules to exc
 Copy the file `~/dir/file01` to your remote home directory:
 
 ```Bash
-$ rsync ~/dir/file01 <username>@submit.unibe.ch:
+$ rsync ~/dir/file01 <user>@submit03.unibe.ch:
 ```
 
 Copy multiple files to your remote home directory:
 
 ```Bash
-$ rsync file01 file02 file03 <username>@submit.unibe.ch:
+$ rsync file01 file02 file03 <user>@submit03.unibe.ch:
 ```
 
 Copy the local directory ~/dir to the remote directory ~/bar:
@@ -124,7 +124,7 @@ Copy the local directory ~/dir to the remote directory ~/bar:
     With a trailing slash (/) after the source directory only the content of the source directory is copied to the destination directory. Without a trailing slash both the source directory and the content of the directory are copied to the destination directory
 
 ```Bash
-$ rsync -az ~/dir/ <username>@submit.unibe.ch:bar
+$ rsync -az ~/dir/ <user>@submit03.unibe.ch:bar
 ```
 
 ### Copying Files from UBELIX to Your Local Workstation
@@ -132,13 +132,13 @@ $ rsync -az ~/dir/ <username>@submit.unibe.ch:bar
 Copy the remote file `~/foo/file01` to your current working directory:
 
 ```Bash
-$ rsync <username>@submit.unibe.ch:foo/file01 .
+$ rsync <user>@submit03.unibe.ch:foo/file01 .
 ```
 
 Copy the remote files `~/foo/file01` and `~/bar/file02` to your the local directory `~/dir`:
 
 ```Bash
-$ rsync <username>@submit.unibe.ch:\{foo/file01,bar/file02\} ~/dir
+$ rsync <user>@submit03.unibe.ch:\{foo/file01,bar/file02\} ~/dir
 ```
 
 Copy the remote directory `~/foo` to the local directory `~/dir`:
@@ -147,7 +147,7 @@ Copy the remote directory `~/foo` to the local directory `~/dir`:
     With a trailing slash (/) after the source directory only the content of the source directory is copied to the destination directory. Without a trailing slash both the source directory and the content of the directory are copied to the destination directory.
 
 ```Bash
-$ rsync -az <username>@submit.unibe.ch:foo/ ~/dir
+$ rsync -az <user>@submit03.unibe.ch:foo/ ~/dir
 ```
 
 ### Including/Excluding Files
@@ -160,13 +160,13 @@ With the `--include`/`--exclude` options you can specify patterns, that describe
 Exclude a specific directory:
 
 ```Bash
-rsync -av --exclude "subdir1" ~/dir/ <username>@submit.unibe.ch:
+rsync -av --exclude "subdir1" ~/dir/ <user>@submit03.unibe.ch:
 ```
 
 Copy only files with suffix `.txt` and `.m`:
 
 ```Bash
-rsync -av --include "*.txt" --include "*.m" --exclude "*" ~/dir/ <username>@submit.unibe.ch:
+rsync -av --include "*.txt" --include "*.m" --exclude "*" ~/dir/ <user>@submit03.unibe.ch:
 ```
 
 Copy all files with suffix `.m` within the source directory `~/dir` (including matching files within subdirectories) to the remote destination directory `~/foo`:
@@ -175,7 +175,7 @@ Copy all files with suffix `.m` within the source directory `~/dir` (including m
     Use the `--prune-empty-dirs` option to omit copying empty directories
 
 ```Bash
-$ rsync -av --prune-empty-dirs --include "*/" --include "*.m" --exclude "*" ~/dir/ <username>@submit.unibe.ch:foo
+$ rsync -av --prune-empty-dirs --include "*/" --include "*.m" --exclude "*" ~/dir/ <user>@submit03.unibe.ch:foo
 ```
 
 
@@ -190,13 +190,13 @@ $ rsync -av --prune-empty-dirs --include "*/" --include "*.m" --exclude "*" ~/di
 Use the `--delete` option to delete files/directories from the destination directory that are not/no more present in the source directory:
 
 ```Bash
-$ rsync -av --delete ~/dir/ <username>@submit.unibe.ch:mfiles
+$ rsync -av --delete ~/dir/ <user>@submit03.unibe.ch:mfiles
 ```
 
 With the `--delete-excluded` option you can additionally delete files from the destination directory that are excluded from transferring/syncing (not in the generated file list):
 
 ```Bash
-$ rsync -av --prune-empty-dirs --delete-excluded --include "*/" --include "*.m" --exclude "*" ~/dir/ <username>@submit.unibe.ch:foo
+$ rsync -av --prune-empty-dirs --delete-excluded --include "*/" --include "*.m" --exclude "*" ~/dir/ <user>@submit03.unibe.ch:foo
 ```
 
 

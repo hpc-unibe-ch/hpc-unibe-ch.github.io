@@ -20,12 +20,13 @@ For an introduction to HPC Workspaces see [Workspace Overview](hpc-workspaces/wo
 
 ## Login
 
-To connect to the cluster, you must log in to the **submit host** from **inside the university network** (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a **VPN** connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) simply use a secure shell (SSH) to log in to the submit host:
+To connect to the cluster, you must log in to a **login node** from **inside the university network** (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a **VPN** connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) simply use a secure shell (SSH) to log in to a login node. There are four login nodes (submit[01-04].unibe.ch), you can pick any one:
 
 ```bash
-ssh <username>@submit.unibe.ch
+# here we choose submit03.unibe.ch as our login node
+ssh <username>@submit03.unibe.ch
 # the following is equivalent
-ssh -l <username> submit.unibe.ch
+ssh -l <username> submit03.unibe.ch
 ```
 
 ## Welcome `$HOME`
@@ -48,13 +49,13 @@ pwd
 At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file **from your local computer** running a UNIX-like OS use the secure copy command `scp` on your local workstation:
 
 ```bash
-scp /path/to/file <username>@submit.unibe.ch:/path/to/target_dir/
+scp /path/to/file <username>@submit03.unibe.ch:/path/to/target_dir/
 ```
 
 To copy a file from the cluster to your local computer running a UNIX-like OS also use the secure copy command `scp` on your local workstation:
 
 ```bash
-scp <username>@submit.unibe.ch:/path/to/file /path/to/target_dir/
+scp <username>@submit03.unibe.ch:/path/to/file /path/to/target_dir/
 ```
 
 More information about file transfer can be found on the page [File Transfer to/from UBELIX](file-system/file-transfer.md).
@@ -109,8 +110,8 @@ The [Software](software/hpc-modules.md) section is dedicated to this topic. More
 
 Doing useful computations consists of running commands that work on data and generate a result. These computations are resource-intensive. That is what
 the compute nodes are there for. These over 300 servers do the heavy lifting as soon as resources are free for you. Currently you are on a submit server
-also known as login server. This server is for preparing the computations, i.e. downloading data, writing a job script, prepare some data etc. But
-**you mustn't run computations on submit nodes** as the server is quite a weak machines that you are sharing with others. So, you have to bring the
+also known as login node. This server is for preparing the computations, i.e. downloading data, writing a job script, prepare some data etc. But
+**you are not allowed to run computations on login nodes** as those servers are quite a weak machines that you are sharing with others. So, you have to bring the
 computations to the compute nodes - by generating a job script and sending it to the cluster.
 
 !!! hint "Working interactively on a compute node"

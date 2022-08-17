@@ -13,8 +13,8 @@ To simplify the login procedure you can define an alias for the user-/hostname c
 **~/.ssh/config**
 ```Bash
 Host <alias>
-    Hostname submit.unibe.ch
-    User <username>
+    Hostname submit03.unibe.ch
+    User <user>
 ```
 
 From now on you can log in to the cluster by using the specified alias:
@@ -39,8 +39,8 @@ The host declaration may now look like this:
 **~/.ssh/config**
 ```Bash
 Host <alias>
-    Hostname submit.unibe.ch
-    User <username>
+    Hostname submit03.unibe.ch
+    User <user>
     ServerAliveInterval 60
 ```
 
@@ -95,8 +95,8 @@ Add the key to your host declaration in your local ssh configuration:
 **~/.ssh/config**
 ```Bash
 Host <alias>
-    Hostname submit.unibe.ch
-    User <username>
+    Hostname submit03.unibe.ch
+    User <user>
     ServerAliveInterval 60
     IdentityFile ~/.ssh/id_rsa_ubelix
 ```
@@ -138,7 +138,7 @@ Some application like JupyterLab require port forwarding, where a port on the re
 The ssh command need to be called with additional arguments:
 
 ```Bash
-ssh -Y -L 15051:localhost:15051 submit.unibe.ch
+ssh -Y -L 15051:localhost:15051 submit03.unibe.ch
 ```
 
 Here port 15051 is selected for both sides. Ports are numbers between 2000 and 65000, which needs to be unique on the present machine. The default port for JupyterLab is 8888, but only one user can use this port on the machine at a time.
