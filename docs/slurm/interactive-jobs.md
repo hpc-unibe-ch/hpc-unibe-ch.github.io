@@ -59,7 +59,7 @@ The command is blocking until the resources are granted. The session then is est
 
 Requirements:
 
-- You must login to UBELIX with X11 forwarding enabled: `ssh -Y <username>@submit.unibe.ch` . Make this the default with **ForwardX11 yes** in  `~/.ssh/config` .
+- You must login to UBELIX with X11 forwarding enabled: `ssh -Y <user>@submit03.unibe.ch` . Make this the default with **ForwardX11 yes** in  `~/.ssh/config` .
     * Password-less communication between all nodes within UBELIX. In order to make this possible, generate a new SSH key (without passphrase) on the login node (submit) and add the public key to `~/.ssh/authorized_keys` :  
     `ssh-keygen -t rsa -b 4096`
     `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys`

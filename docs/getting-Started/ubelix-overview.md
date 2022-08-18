@@ -13,7 +13,7 @@ The HPCs can only be reached within the UniBE network. User landing point are th
 
 ### Login node aka. Submit node
 
-A user connects to the cluster by logging into the **submit** host via SSH. You can use this host for medium-performance tasks, e.g. to edit files or to compile smaller programs. **Resource-demanding/high-performance tasks must be submitted** to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks should be submitted as a job on a compute node instead of running it on the submit host. 
+A user connects to the cluster by logging into a login node with his Campus Account username and password via SSH. You can use this node for medium-performance tasks, e.g. to edit files or to compile smaller programs. **Resource-demanding/high-performance tasks must be submitted** to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks should be submitted as a job on a compute node instead of running it directly on a login node. 
 
 ### SLURM Batch-Queueing System
 
