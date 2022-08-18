@@ -26,7 +26,7 @@ This page contains information on how to configure your SSH environment for a si
     - submit03.unibe.ch
     - submit04.unibe.ch
 
-    To log in to UBELIX, you can choose any one. If the load on a login node is high, you can log out and pick another one. When using a terminal multiplexer like tmux or screen, you can directly log in to the login node where your tmux/screen session is running.
+    To access UBELIX, **you can choose any one**. If the load on a login node is high, you can log out and pick another one. When using a terminal multiplexer like tmux or screen, you can directly log in to the login node where your tmux/screen session is running.
 
 ### Mac/Linux/Unix
 

@@ -24,9 +24,9 @@ To connect to the cluster, you must log in to a **login node** from **inside the
 
 ```bash
 # here we choose submit03.unibe.ch as our login node
-ssh <username>@submit03.unibe.ch
+ssh <user>@submit03.unibe.ch
 # the following is equivalent
-ssh -l <username> submit03.unibe.ch
+ssh -l <user> submit03.unibe.ch
 ```
 
 ## Welcome `$HOME`
@@ -41,7 +41,7 @@ Disk space is managed by [quotas](file-system/quota.md). By default, each user h
 You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
 pwd
-/storage/homefs/<username>
+/storage/homefs/<user>
 ```
 
 ## Copy Data
@@ -49,13 +49,13 @@ pwd
 At some point, you will probably need to copy files between your local computer and the cluster. There are different ways to achieve this, depending on your local operating system (OS). To copy a file **from your local computer** running a UNIX-like OS use the secure copy command `scp` on your local workstation:
 
 ```bash
-scp /path/to/file <username>@submit03.unibe.ch:/path/to/target_dir/
+scp /path/to/file <user>@submit03.unibe.ch:/path/to/target_dir/
 ```
 
 To copy a file from the cluster to your local computer running a UNIX-like OS also use the secure copy command `scp` on your local workstation:
 
 ```bash
-scp <username>@submit03.unibe.ch:/path/to/file /path/to/target_dir/
+scp <user>@submit03.unibe.ch:/path/to/file /path/to/target_dir/
 ```
 
 More information about file transfer can be found on the page [File Transfer to/from UBELIX](file-system/file-transfer.md).
@@ -145,7 +145,7 @@ cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt
 ```
 
-After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<your_username>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, Ubelix from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
+After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<user>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, Ubelix from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
 
 The complete job script looks like this:
 
