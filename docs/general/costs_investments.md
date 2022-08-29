@@ -36,12 +36,12 @@ privilege to preempt other user on provided number of GPUs you invested for.
 That means, whenever there are no free GPUs and you start your job, other
 user's jobs are terminated to have yours start almost immediately.
 
-The costs for GPUs are defined as follows (Price is per GPU and y)
+The costs for GPUs are defined as follows (Price is per GPU and year):
 
 GPU Model | Price
 ---|---
-Geforce 1080TI/2080TI | CHF 1'400.-
-Geforce 3090 | CHF 1'700.-
+GeForce 1080TI/2080TI | CHF 1'400.-
+GeForce 3090 | CHF 1'700.-
 Tesla P100 | CHF 2100.-
 
 As the number of GPUs is limited there may be none available but will be
@@ -53,14 +53,15 @@ until we can get new cards.
 
 ### Workspaces
 
-Every **research group** has **10TB** free of charge
-quota. This can be used within one or more Workspaces. The amount used per
-Workspace is>
+Every **research group** has **10TB** free of charge quota. This can be used
+within one or more Workspaces. The amount used per Workspace is set at
+application time and can be changed later within the limitation.
 
 Additional storage can be purchased for CHF 50 per TB and year. On the
 application or modification form an quota upper limit can be set.
-Accounted will be the actual usage. Therefore, the actual usage is monitored
-and twice a day. The average value of all data points is used for accounting.
+Accounted will be the actual usage only. Therefore, the actual usage is monitored
+twice a day. The average value of all data points is used for accounting and
+billed once a year
 
 ### Research Storage
 
@@ -77,7 +78,7 @@ currently.
 !!! tip "Statement of Cost for SNSF"
     On the official service page of the research storage service you can also
     find a statement of cost for the service that you can add to your SNF
-    propsal in order to budget money for storage costs in your project.
+    proposal in order to budget money for storage costs in your project.
 
 *[SMB]: Server Message Block aka Samba
 *[SNSF]: Swiss National Science Foundation
