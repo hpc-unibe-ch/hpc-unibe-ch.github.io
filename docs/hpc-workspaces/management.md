@@ -37,8 +37,8 @@ Members can be anyone with an UniBE Campus Account, but need to be registered fo
 Every **research group** has **10TB** free of charge quota. This can be used within one or more Workspaces. The amount used per Workspace is set at application time and can be changed later within the limitation. 
 
 ### Additional Storage
-Additional storage can be purchased for 50CHF per TB per year. 
-On the application or modification form an quota upper limit can be set. Accounted will be the actual usage. Therefore, the actual usage is monitored and twice a day. The average value of all data points is used for accounting. 
+
+See [costs page](../general/costs_investments.md#workspaces) for details.
 
 ### Availability
 Storage is a limited and expensive resource. Abandoned, unused workspaces should be prevented by design. Therefore, an HPC Workspace has a default live time of one year. A notification will be send before the Workspace expiry. The Workspace expiry date can be changed at any time to any date within the next 365 days by any Workspace manager. 
