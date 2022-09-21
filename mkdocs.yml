@@ -42,7 +42,7 @@ nav:
       - Anaconda: software/Anaconda.md
       - CUDA: software/CUDA.md
       - JupyterLab: software/JupyterLab.md
-      - Matlab: software/matlab.md
+      - MATLAB: software/matlab.md
       - Parallel BZIP2: software/bzip2.md
       - ParaView: software/ParaView.md
       - Python: software/python.md

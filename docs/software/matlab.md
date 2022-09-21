@@ -1,66 +1,18 @@
-# Matlab
+# MATLAB
 
 ## Description
 
-UBELIX is always featuring the latest two (b)-releases of Matlab.
+UBELIX is always featuring the latest two (b)-releases of MATLAB.
 
-## Facts about Matlab on UBELIX
+## Facts about MATLAB on UBELIX
 
 * It **can run in parallel on one node**, thanks to the Parallel Computing ToolBox
 * It **can take advantage of GPUs**
 * It cannot run on more than one node as we do not have the Distributed Computing Toolbox.
 
-!!! types caution ""
-    Matlab is NOT FREE to use! Every user using Matlab on UBELIX must have at least one valid license. You can buy licenses at our [software shop](https://softwareshop.unibe.ch/).
+## Running MATLAB on the Compute Nodes
 
-
-| MATLAB Version: 9.3.0.713579 (R2017b) contains: | MATLAB Version: 9.1.0.441655 (R2016b) contains: |
-|-------------------------------------------------|-------------------------------------------------|
-|Simulink Version 9.0 (R2017b)|Simulink Version 8.8 (R2016b)|
-|Bioinformatics Toolbox Version 4.9 (R2017b)|Communications System Toolbox Version 6.3 (R2016b)|
-|Communications System Toolbox Version 6.5 (R2017b)|Computer Vision System Toolbox Version 7.2 (R2016b)|
-|Computer Vision System Toolbox Version 8.0 (R2017b)|Computer Vision System Toolbox Version 7.2 (R2016b)
-|Control System Toolbox Version 10.3 (R2017b)|Curve Fitting Toolbox Version 3.5.4 (R2016b)|
-|Curve Fitting Toolbox Version 3.5.6 (R2017b)|DSP System Toolbox Version 9.3 (R2016b)|
-|DSP System Toolbox Version 9.5 (R2017b)|Database Toolbox Version 7.0 (R2016b)|
-|Database Toolbox Version 8.0 (R2017b)|Financial Toolbox Version 5.8 (R2016b)|
-|Financial Toolbox Version 5.10 (R2017b)|Fixed-Point Designer Version 5.3 (R2016b)|
-|Fixed-Point Designer Version 6.0 (R2017b)|Fuzzy Logic Toolbox Version 2.2.24 (R2016b)|
-|Fuzzy Logic Toolbox Version 2.3 (R2017b)|Image Acquisition Toolbox Version 5.1 (R2016b)|
-|Global Optimization Toolbox Version 3.4.3 (R2017b)|Image Processing Toolbox Version 9.5 (R2016b)|
-|Image Acquisition Toolbox Version 5.3 (R2017b)|MATLAB Coder Version 3.2 (R2016b)|
-|Image Processing Toolbox Version 10.1 (R2017b)|MATLAB Compiler Version 6.3 (R2016b)|
-|Instrument Control Toolbox Version 3.12 (R2017b)|MATLAB Compiler SDK Version 6.3 (R2016b)|
-|MATLAB Coder Version 3.4 (R2017b)|Mapping Toolbox Version 4.4 (R2016b)|Model Predictive Control Toolbox Version 5.2.1 (R2016b)|
-|MATLAB Compiler Version 6.5 (R2017b)|Neural Network Toolbox Version 9.1 (R2016b)|
-|MATLAB Compiler SDK Version 6.4 (R2017b)|Optimization Toolbox Version 7.5 (R2016b)|
-|Mapping Toolbox Version 4.5.1 (R2017b)|Parallel Computing Toolbox Version 6.9 (R2016b)|
-|Model Predictive Control Toolbox Version 6.0 (R2017b)|Partial Differential Equation Toolbox Version 2.3 (R2016b)|
-|Neural Network Toolbox Version 11.0 (R2017b)|Robust Control Toolbox Version 6.2 (R2016b)|
-|Optimization Toolbox Version 8.0 (R2017b)|Signal Processing Toolbox Version 7.3 (R2016b)|
-|Parallel Computing Toolbox Version 6.11 (R2017b)|Simscape Version 4.1 (R2016b)|
-|Partial Differential Equation Toolbox Version 2.5 (R2017b)|Simscape Multibody Version 4.9 (R2016b)|
-|Robust Control Toolbox Version 6.4 (R2017b)|Simscape Power Systems Version 6.6 (R2016b)|
-|Signal Processing Toolbox Version 7.5 (R2017b)|Simulink Coder Version 8.11 (R2016b)|
-|Simscape Version 4.3 (R2017b)|Simulink Control Design Version 4.4 (R2016b)|
-|Simscape Multibody Version 5.1 (R2017b)|Simulink Design Optimization Version 3.1 (R2016b)|
-|Simscape Power Systems Version 6.8 (R2017b)|Simulink Verification and Validation Version 3.12 (R2016b)|
-|Simulink Check Version 4.0 (R2017b)|Stateflow Version 8.8 (R2016b)|
-|Simulink Coder Version 8.13 (R2017b)|Statistics and Machine Learning Toolbox Version 11.0 (R2016b)|
-|Simulink Control Design Version 5.0 (R2017b)|Symbolic Math Toolbox Version 7.1 (R2016b)|
-|Simulink Coverage Version 4.0 (R2017b)|System Identification Toolbox Version 9.5 (R2016b)|
-|Simulink Design Optimization Version 3.3 (R2017b)|Wavelet Toolbox Version 4.17 (R2016b)|
-|Simulink Requirements Version 1.0 (R2017b)| |
-|Stateflow Version 9.0 (R2017b)| |
-|Statistics and Machine Learning Toolbox Version 11.2 (R2017b)| | 
-|Symbolic Math Toolbox Version 8.0 (R2017b)| |
-|System Identification Toolbox Version 9.7 (R2017b)| |
-|Wavelet Toolbox Version 4.19 (R2017b)| |
-
-
-## Running Matlab on the Compute Nodes
-
-Submitting a Matlab job to the cluster is very similar to submitting any other serial job. Lets try to run a simple Matlab script which we will put in a file _boxfilter.m_
+Submitting a MATLAB job to the cluster is very similar to submitting any other serial job. Lets try to run a simple MATLAB script which we will put in a file _boxfilter.m_
 
 boxfilter.m
 ```Bash
@@ -85,15 +37,15 @@ boxfilter.qsub
 #SBATCH --time=00:10:00
 #SBATCH --mem-per-cpu=2G
 
-# Load Matlab form the environment modules
-module load matlab/R2015b
-# Tell Matlab to run our box filter.m file and exit
+# Load MATLAB form the environment modules
+module load MATLAB
+# Tell MATLAB to run our box filter.m file and exit
 matlab -nodisplay -r "boxfilter, exit"
 ```
 
 ### Passing Arguments to a m-File
 
-There are several ways to provide input arguments in Matlab.
+There are several ways to provide input arguments in MATLAB.
 
 #### Define the Variables Before Running the Script
 
@@ -119,9 +71,9 @@ and then:
 ```Bash
 !#/bin/bash
 (...)
-# Load Matlab form the environment modules
-module load matlab/R2015b
-# Tell Matlab to run our box filter.m file and exit
+# Load MATLAB form the environment modules
+module load MATLAB
+# Tell MATLAB to run our box filter.m file and exit
 matlab -nodisplay -r "inputImg='girlface.png'; x=11; boxfilter, exit"
 ```
 
@@ -150,5 +102,113 @@ matlab -nodisplay -singleCompThread -r "boxfilter('girlface.png', 'comparison.pn
 
 Most of the time, running MATLAB in single-threaded mode will meet your needs. If you have mathematically intense computations that might benefit from multi-threading capabilities provided by MATLAB's BLAS implementation, then you should limit MATLAB to a well defined number of threads, so that you can allocate the correct number of slots for your job. Use the maxNumCompThreads(N) function to control the number of computational threads:
 
+## Infos about featured MATLAB
 
+```
+-----------------------------------------------------------------------------------------------------
+MATLAB Version: 9.11.0.1769968 (R2021b)
+MATLAB License Number: 40639324
+Operating System: Linux 3.10.0-1160.76.1.el7.x86_64 #1 SMP Wed Aug 10 16:21:17 UTC 2022 x86_64
+Java Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+-----------------------------------------------------------------------------------------------------
+MATLAB                                                Version 9.11        (R2021b)
+Simulink                                              Version 10.4        (R2021b)
+5G Toolbox                                            Version 2.3         (R2021b)
+AUTOSAR Blockset                                      Version 2.5         (R2021b)
+Aerospace Blockset                                    Version 5.1         (R2021b)
+Aerospace Toolbox                                     Version 4.1         (R2021b)
+Antenna Toolbox                                       Version 5.1         (R2021b)
+Audio Toolbox                                         Version 3.1         (R2021b)
+Automated Driving Toolbox                             Version 3.4         (R2021b)
+Bioinformatics Toolbox                                Version 4.15.2      (R2021b)
+Communications Toolbox                                Version 7.6         (R2021b)
+Computer Vision Toolbox                               Version 10.1        (R2021b)
+Control System Toolbox                                Version 10.11       (R2021b)
+Curve Fitting Toolbox                                 Version 3.6         (R2021b)
+DDS Blockset                                          Version 1.1         (R2021b)
+DSP System Toolbox                                    Version 9.13        (R2021b)
+Database Toolbox                                      Version 10.2        (R2021b)
+Datafeed Toolbox                                      Version 6.1         (R2021b)
+Deep Learning HDL Toolbox                             Version 1.2         (R2021b)
+Deep Learning Toolbox                                 Version 14.3        (R2021b)
+Econometrics Toolbox                                  Version 5.7         (R2021b)
+Embedded Coder                                        Version 7.7         (R2021b)
+Filter Design HDL Coder                               Version 3.1.10      (R2021b)
+Financial Instruments Toolbox                         Version 3.3         (R2021b)
+Financial Toolbox                                     Version 6.2         (R2021b)
+Fixed-Point Designer                                  Version 7.3         (R2021b)
+Fuzzy Logic Toolbox                                   Version 2.8.2       (R2021b)
+GPU Coder                                             Version 2.2         (R2021b)
+Global Optimization Toolbox                           Version 4.6         (R2021b)
+HDL Coder                                             Version 3.19        (R2021b)
+HDL Verifier                                          Version 6.4         (R2021b)
+Image Acquisition Toolbox                             Version 6.5         (R2021b)
+Image Processing Toolbox                              Version 11.4        (R2021b)
+Instrument Control Toolbox                            Version 4.5         (R2021b)
+LTE Toolbox                                           Version 3.6         (R2021b)
+Lidar Toolbox                                         Version 2.0         (R2021b)
+MATLAB Coder                                          Version 5.3         (R2021b)
+MATLAB Compiler                                       Version 8.3         (R2021b)
+MATLAB Compiler SDK                                   Version 6.11        (R2021b)
+MATLAB Report Generator                               Version 5.11        (R2021b)
+Mapping Toolbox                                       Version 5.2         (R2021b)
+Mixed-Signal Blockset                                 Version 2.1         (R2021b)
+Model Predictive Control Toolbox                      Version 7.2         (R2021b)
+Motor Control Blockset                                Version 1.3         (R2021b)
+Navigation Toolbox                                    Version 2.1         (R2021b)
+Optimization Toolbox                                  Version 9.2         (R2021b)
+Parallel Computing Toolbox                            Version 7.5         (R2021b)
+Partial Differential Equation Toolbox                 Version 3.7         (R2021b)
+Phased Array System Toolbox                           Version 4.6         (R2021b)
+Powertrain Blockset                                   Version 1.10        (R2021b)
+Predictive Maintenance Toolbox                        Version 2.4         (R2021b)
+RF Blockset                                           Version 8.2         (R2021b)
+RF PCB Toolbox                                        Version 1.0         (R2021b)
+RF Toolbox                                            Version 4.2         (R2021b)
+ROS Toolbox                                           Version 1.4         (R2021b)
+Radar Toolbox                                         Version 1.1         (R2021b)
+Reinforcement Learning Toolbox                        Version 2.1         (R2021b)
+Risk Management Toolbox                               Version 1.10        (R2021b)
+Robotics System Toolbox                               Version 3.4         (R2021b)
+Robust Control Toolbox                                Version 6.11        (R2021b)
+Satellite Communications Toolbox                      Version 1.1         (R2021b)
+Sensor Fusion and Tracking Toolbox                    Version 2.2         (R2021b)
+SerDes Toolbox                                        Version 2.2         (R2021b)
+Signal Integrity Toolbox                              Version 1.0         (R2021b)
+Signal Processing Toolbox                             Version 8.7         (R2021b)
+SimBiology                                            Version 6.2         (R2021b)
+SimEvents                                             Version 5.11        (R2021b)
+Simscape                                              Version 5.2         (R2021b)
+Simscape Driveline                                    Version 3.4         (R2021b)
+Simscape Electrical                                   Version 7.6         (R2021b)
+Simscape Fluids                                       Version 3.3         (R2021b)
+Simscape Multibody                                    Version 7.4         (R2021b)
+Simulink 3D Animation                                 Version 9.3         (R2021b)
+Simulink Check                                        Version 5.2         (R2021b)
+Simulink Code Inspector                               Version 4.0         (R2021b)
+Simulink Coder                                        Version 9.6         (R2021b)
+Simulink Compiler                                     Version 1.3         (R2021b)
+Simulink Control Design                               Version 6.0         (R2021b)
+Simulink Coverage                                     Version 5.3         (R2021b)
+Simulink Design Optimization                          Version 3.10        (R2021b)
+Simulink Design Verifier                              Version 4.6         (R2021b)
+Simulink PLC Coder                                    Version 3.5         (R2021b)
+Simulink Report Generator                             Version 5.11        (R2021b)
+Simulink Requirements                                 Version 1.8         (R2021b)
+Simulink Test                                         Version 3.5         (R2021b)
+SoC Blockset                                          Version 1.5         (R2021b)
+Stateflow                                             Version 10.5        (R2021b)
+Statistics and Machine Learning Toolbox               Version 12.2        (R2021b)
+Symbolic Math Toolbox                                 Version 9.0         (R2021b)
+System Composer                                       Version 2.1         (R2021b)
+System Identification Toolbox                         Version 9.15        (R2021b)
+Text Analytics Toolbox                                Version 1.8         (R2021b)
+UAV Toolbox                                           Version 1.2         (R2021b)
+Vehicle Dynamics Blockset                             Version 1.7         (R2021b)
+Vehicle Network Toolbox                               Version 5.1         (R2021b)
+Vision HDL Toolbox                                    Version 2.4         (R2021b)
+WLAN Toolbox                                          Version 3.3         (R2021b)
+Wavelet Toolbox                                       Version 6.0         (R2021b)
+Wireless HDL Toolbox                                  Version 2.3         (R2021b)
+```
 
