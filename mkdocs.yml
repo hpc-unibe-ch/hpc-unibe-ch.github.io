@@ -50,6 +50,7 @@ nav:
       - Relion: software/relion.md
       - Singularity: software/singularity.md
       - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
+    - LaTeX: software/latex.md
   - Storage:
     - Overview: file-system/filesystem-overview.md
     - Quota: file-system/quota.md
