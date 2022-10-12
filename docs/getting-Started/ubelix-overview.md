@@ -8,12 +8,22 @@ This page provides a high-level system overview of an HPC cluster such as UBELIX
 
 ## High-level system overview
 
-![System Overview Diagram](../images/system_overview.png "System Overview Diagram")
-The HPCs can only be reached within the UniBE network. User landing point are the login nodes, where jobs can be prepared and submitted. Computational tasks are scheduled and managed on the compute nodes using SLURM. All compute nodes as well as the login nodes have access to the parallel file system.
+![System Overview Diagram](../images/system_overview.jpg "System Overview Diagram")
+The HPCs can only be reached within the UniBE network. User landing point are
+the login nodes, where jobs can be prepared and submitted. Computational tasks
+are scheduled and managed on the compute nodes using SLURM, the workload
+manager. All compute nodes as well as the login nodes have access to the
+parallel file system.
 
-### Login node aka. Submit node
+### Login nodes aka. Submit nodes
 
-A user connects to the cluster by logging into a login node with his Campus Account username and password via SSH. You can use this node for medium-performance tasks, e.g. to edit files or to compile smaller programs. **Resource-demanding/high-performance tasks must be submitted** to the batch queuing system as jobs, and will finally run on one or multiple compute nodes. Even long running compile tasks should be submitted as a job on a compute node instead of running it directly on a login node. 
+A user connects to the cluster by logging into one of the **submit** hosts with
+his Campus Account's username and password via SSH. You can use these hosts for
+medium-performance tasks, e.g. to edit files or to compile smaller programs.
+**Resource-demanding/high-performance tasks must be submitted** to the batch
+queuing system as jobs, and will finally run on one or multiple compute nodes.
+Also long running compile tasks should be submitted as a job on a compute node
+instead of running it on the submit hosts.
 
 ### SLURM Batch-Queueing System
 
