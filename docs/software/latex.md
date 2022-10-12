@@ -1,7 +1,7 @@
 Occasionally we are asked if UBELIX is featuring any TeX flavor. UBELIX does not
-provide any form of TeX to our uses neither TeX packages from the host OS nor
+provide any form of TeX to our users, neither TeX packages from the host OS nor
 any custom installation through EasyBuild nor other custom installations. While
-the distribution packages are way to old, all other form's won't serve all
+the distribution packages are way to old, all other forms won't serve all
 researchers and installing TeX in your home directory is not that difficult.
 Therefore we think you should choose and install whatever serves you the most.
 
@@ -12,7 +12,7 @@ If in doubt, we recommend to install the [TeX Live system]
 Just follow the steps below. These are the same steps as in the [official
 installation instructions] but the installation is not unattended but
 interactive, so that you can change the installation directory. See there for
-all the details.
+all the additional details.
 
 1. `mkdir -p ~/temp; cd $_` # working directory of your choice
 1. `wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz`
