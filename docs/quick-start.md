@@ -145,7 +145,7 @@ cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt
 ```
 
-After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<user>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, Ubelix from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
+After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<user>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, UBELIX from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
 
 The complete job script looks like this:
 

@@ -2,18 +2,27 @@
 
 ## Description
 
-This page contains all information you need to submit GPU-jobs successfully on Ubelix.
+This page contains all information you need to successfully submit GPU-jobs on
+UBELIX.
 
 ## Important Information on GPU Usage
 
 !!! types note ""
-    Code that runs on the CPU will **not** magically make use of GPUs by simply submitting a job to the 'gpu' partition! You have to explicitly adapt your code to run on the GPU, e.g. an CUDA or OpenACC implementation. Also, code that runs on a GPU will not necessarily run faster than it runs on the CPU. For example, GPUs require a huge amount of highly parallelizable tasks. In other words, you must understand the characteristics of your job, and make sure that you only submit jobs to the 'gpu' partition that can actually benefit from GPUs.
+    Code that runs on the CPU will **not** auto-magically make
+    use of GPUs by simply submitting a job to the 'gpu' partition! You have to
+    explicitly adapt your code to run on the GPU, e.g. an CUDA or OpenACC
+    implementation. Also, code that runs on a GPU will not necessarily run faster
+    than it runs on the CPU. For example, GPUs require a huge amount of highly
+    parallelizable tasks. In other words, you must understand the characteristics
+    of your job, and make sure that you only submit jobs to the 'gpu' partition
+    that can actually benefit from GPUs.
 
 When submitting to the GPU partition the GPU type specification is **required**. 
 
-## GPU Type
+## GPU Types
 
-Ubelix currently features four types of GPUs. You have to choose an architecture and use the following `--gres` option to select it.
+UBELIX currently features four types of GPUs. You have to choose an
+architecture and use one of the following `--gres` option to select it.
 
 | Type | SLURM gres option |
 | ---- | ----------------- | 
@@ -25,7 +34,8 @@ Ubelix currently features four types of GPUs. You have to choose an architecture
 
 ## Job Submission
 
-Use the following options to submit a job to the gpu partition using the default job QoS:
+Use the following options to submit a job to the `gpu` partition using the
+default job QoS:
 
 ```Bash
 #SBATCH --partition=gpu
@@ -33,29 +43,39 @@ Use the following options to submit a job to the gpu partition using the default
 ```
 
 
-## job_gpu_preempt
-For investors we provides investor partitions with specific QoS for each investor, defining the purchased resources. In case of GPU we want/need to provide instant access to purchased GPU resources. Nevertheless, to efficiently use all resources, the `job_gpu_preemt` exists in the `gpu` partition. Jobs, submitted with this QoS, may interrupted if resources are required for investors. Short jobs, and jobs with checkpointing benefit from these additional resources. 
+## QoS `job_gpu_preempt`
 
-For example requesting 4 RTX2080Ti
+For investors we provide the `gpu-invest` investor partitions with a specific
+QoS per investor that guarantees instant access to the purchased resources.  
+Nevertheless, to efficiently use all resources, the QoS `job_gpu_preempt` exists
+in the `gpu` partition. Jobs, submitted with this QoS have access to all GPU
+resources, but  may be interrupted if resources are required for investor jobs.
+Short jobs, and jobs that make use of checkpointing will benefit from these
+additional resources.
+
+Example: Requesting any four RTX2080Ti from the resource pool in the `gpu`
+partition:
 ```Bash
 #SBATCH --partition=gpu
 #SBATCH --qos=job_gpu_preempt
 #SBATCH --gres=gpu:rtx2080ti:4
-```
-
-
-Use the following option to ensure that the job, if preempted, won't be requeued but canceled instead:
-
-```Bash
+## Use the following option to ensure that the job, if preempted,
+## won't be re-queued but canceled instead:
 #SBATCH --no-requeue
 ```
 
-## Application adaptation
+## Application Adaptation
 
-Applications do only ran on GPUs if they are build specifically for GPUs. There are multiple ways to implement algorithms for GPU usage. The most common ones are low level languages like CUDA or pragma oriented implementations like OpenACC. 
+Applications do only run on GPUs if they are built specifically to run on GPUs
+that means with GPU support. There are multiple ways to implement algorithms for
+GPU usage. The most common ones are low level languages like CUDA or pragma
+oriented implementations like OpenACC.
 
 ### CUDA
-To build and run CUDA applications, its compiler and libraries are provided managed via modules. Run _module avail_ to see which versions are available, for example:
+
+We provide compiler and library to build CUDA-based application. These are
+accessible using environment modules. Use `module avail` to see which versions
+are available:
 
 ```Bash
 module avail CUDA
@@ -78,11 +98,17 @@ module load cuDNN/7.1.4-CUDA-9.2.88
 ```
 
 !!! types note ""
-    If you need cuDNN you must load the cuDNN module. The appropriate CUDA version is then loaded automatically as a dependency.
+    If you need cuDNN you must **only** load the cuDNN module. The appropriate
+    CUDA version is then loaded automatically as a dependency.
 
-## GPU usage monitoring
+## GPU Usage Monitoring
 
-To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be utilized. The tool need to be launched on the related nodes. After the job started running, a new job step can be created using `srun` and call `nvidia-smi` to display the resource utilization. Here we attach the process to an job with the jobID `123456`. You need to replace the jobId with your gathered jobID, presented in the sbatch output. 
+To verify the **usage** of one or multiple GPUs the `nvidia-smi` tool can be
+utilized. The tool needs to be launched on the related node. After the job
+started running, a new job step can be created using `srun` and call
+`nvidia-smi` to display the resource utilization. Here we attach the process to
+an job with the jobID `123456`. You need to replace the jobId with your gathered
+jobID previously presented in the sbatch output.
 
 ```Bash
 $ sbatch job.sh
@@ -107,16 +133,20 @@ Fri Nov 11 11:11:11 2021
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 ```
-Therewith the GPU core utilization and memory usage can be displayed for all GPU cards belonging to that job. 
 
-Note that this is a one off presentation of the usage and the called `nvidia-smi` command runs within your allocation. The required resources for this job step should be minimal and should not noticably influence your job performance. 
+Therewith the GPU core utilization and memory usage can be displayed for all GPU
+cards belonging to that job.
+
+Note that this is a one-off presentation of the usage and the called
+`nvidia-smi` command runs within your allocation. The required resources for
+this job step should be minimal and should not noticeably influence your job
+performance.
 
 ## Further Information
 
 CUDA: [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone)  
 CUDA C/C++ Basics: [http://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf](http://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf)  
 Nvidia Geforce GTX 1080 Ti: [https://www.nvidia.com/en-us/geforce/products/10series/geforce-gtx-1080-ti](https://www.nvidia.com/en-us/geforce/products/10series/geforce-gtx-1080-ti/)  
-Nvidia Geforce RTX 2080 Ti: [https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/](https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/)
-Nvidia Geforce RTX 3090: [https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/](https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/)
+Nvidia Geforce RTX 2080 Ti: [https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/](https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/)  
+Nvidia Geforce RTX 3090: [https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/](https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/)  
 Nvidia Tesla P100: [http://www.nvidia.com/object/tesla-p100.html](http://www.nvidia.com/object/tesla-p100.html)
-
