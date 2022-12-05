@@ -10,6 +10,8 @@ you will find a text recommendation acknoowledging the use of our cluster.
 
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
+__2022__
+Gunter Stober et al. | Meteor radar vertical wind observation biases and mathematical debiasing strategies including the 3DVAR+DIV algorithm | Atmos. Meas. Tech., 15, 2022 | [Details](https://boris.unibe.ch/174423/) | [Direct LInk](https://doi.org/10.5194/amt-15-5769-2022) |
 __2021__
 Deng S., Zhu J., Aschauer U. | Critical Role of Sc Substitution in Modulating Ferroelectricity in Multiferroic LuFeO<sub>3</sub> | Nano Lett. 2021,21 | | [Direct Link](https://doi.org/10.1021/acs.nanolett.1c02123)
 Stober G., Weryk R. J. | Triple-frequency meteor radar full wave scattering - Measurements and comparison to theory | A&A 654 A108 | | [Direct Link](https://doi.org/10.1051/0004-6361/202141470)
