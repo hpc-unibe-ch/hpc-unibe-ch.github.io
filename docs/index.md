@@ -5,10 +5,10 @@
 Official documentation site of the high performance computing and the HPC
 cluster UBELIX.
 
-Currently, the UBELIX cluster runs about 330 compute nodes featuring almost
-6'300 CPU cores and about 300'000 GPU cores. The infrastructure is available
-to all University personnel for their scientific work. The cluster can also be
-used by students within a scope of a thesis or a course.
+Currently, the UBELIX cluster runs around 320 compute nodes featuring ~12k CPU
+cores and 160 GPUs with almost one million GPU cores. The infrastructure is
+available to all University personnel for their scientific work. The cluster can
+also be used by students within a scope of a thesis or a course.
 
 If your campus account is not yet activated for UBELIX, the [Getting Started Guide](quick-start.md)
 might be a good place to get you started.
