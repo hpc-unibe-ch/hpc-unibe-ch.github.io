@@ -55,7 +55,7 @@ First, the port forwarding needs to be enabled between your local machine and UB
 The ```ssh``` command from your **local machine** to the ubelix login node  needs to be called with following arguments:
 
 ```
-ssh -Y -L 15051:localhost:15051 <user>@submit03.unibe.ch
+ssh -L 15051:localhost:15051 <user>@submit03.unibe.ch
 ```
 If configured in your ```.ssh/config```, you can also use the alias instead of the full name for UBELIX. Where `<user>` is you Campus Account username.
 
