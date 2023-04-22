@@ -1,6 +1,6 @@
 # HPC documentation
 
-In this repository the offical end user documenttion of UBELIX and related topics
+In this repository the offical end user documentation of UBELIX and related topics
 is managed.
 
 This documentation project makes use of [MkDocs Material Design Theme](https://squidfunk.github.io/mkdocs-material)
