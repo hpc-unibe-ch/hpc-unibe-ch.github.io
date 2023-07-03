@@ -10,6 +10,8 @@ you will find a text recommendation acknoowledging the use of our cluster.
 
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
+__2023__
+Gunter Stober et al. | Identifying gravity waves launched by the Hunga Tonga–Hunga Ha′apai volcanic eruption in mesosphere/lower-thermosphere winds derived from CONDOR and the Nordic Meteor Radar Cluster | Annales geophysicae, 41(1), S. 197-208 | [Details](https://boris.unibe.ch/id/eprint/181826) | [Direct Link](http://dx.doi.org/10.5194/angeo-41-197-2023) |
 __2022__
 Gunter Stober et al. | Meteor radar vertical wind observation biases and mathematical debiasing strategies including the 3DVAR+DIV algorithm | Atmos. Meas. Tech., 15, 2022 | [Details](https://boris.unibe.ch/174423/) | [Direct LInk](https://doi.org/10.5194/amt-15-5769-2022) |
 __2021__
