@@ -77,6 +77,8 @@ Leichtle A, Fiedler G et al. | Pancreatic carcinoma, pancreatitis, and healthy c
 
 ## Posters
 
+![Poster J. T. Casanova et al, 2023](images/casanova_2023_iap.png "J. T. Casanova et al., Computational approach to anti-Kasha photochemistry of Pt-dithiolene complexes, 2023"){: style="max-width: 100%"}
+
 ![Poster Schwab et al, 2016](images/hof_schwab_2016_ncsml.png "Schwab et al., Computational neuroscience: Validation and reliability of directed dynamic networks of the brain, 2016"){: style="max-width: 100%"}
 
 ## Newspapers
