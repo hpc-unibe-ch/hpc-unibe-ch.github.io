@@ -11,14 +11,20 @@ you will find a text recommendation acknoowledging the use of our cluster.
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2023__
+Dominik Moser et al. | Within-network brain connectivity during a social optimism task is related to personal optimism and optimism for in-group members | Human brain mapping, 44(12), S. 4561-4571 | [Details](https://boris.unibe.ch/id/eprint/183628) | [Direct Link](http://dx.doi.org/10.1002/hbm.26400) |
 Gunter Stober et al. | Identifying gravity waves launched by the Hunga Tonga–Hunga Ha′apai volcanic eruption in mesosphere/lower-thermosphere winds derived from CONDOR and the Nordic Meteor Radar Cluster | Annales geophysicae, 41(1), S. 197-208 | [Details](https://boris.unibe.ch/id/eprint/181826) | [Direct Link](http://dx.doi.org/10.5194/angeo-41-197-2023) |
 __2022__
+Raviteja Kotikalapudi et al. | Brain structure and optimism bias: A voxel-based morphometry approach | Brain Sciences, 12(3), S. 315 | [Details](https://boris.unibe.ch/id/eprint/166129) | [Direct Link](http://dx.doi.org/10.3390/brainsci12030315) |
+Raviteja Kotikalapudi et al. | Whole-brain white matter correlates of personality profiles predictive of subjective well-being | Scientific reports, 12(1), S. 4558 | [Details](https://boris.unibe.ch/id/eprint/167607) | [Direct Link](http://dx.doi.org/10.1038/s41598-022-08686-z) |
 Gunter Stober et al. | Meteor radar vertical wind observation biases and mathematical debiasing strategies including the 3DVAR+DIV algorithm | Atmos. Meas. Tech., 15, 2022 | [Details](https://boris.unibe.ch/174423/) | [Direct LInk](https://doi.org/10.5194/amt-15-5769-2022) |
 __2021__
+Tatjana Aue et al. | Enhanced sensitivity to optimistic cues is manifested in brain structure: A voxel-based morphometry study | Social cognitive and affective neuroscience, 16(11), S. 1170-1181 | [Details](https://boris.unibe.ch/id/eprint/157209) | [Direct Link](http://dx.doi.org/10.1093/scan/nsab075) |
+Dominik Moser et al. | Reduced network integration in default mode and executive networks is associated with social and personal optimism biases | Human brain mapping, 42(9), S. 2893-2906 | [Details](https://boris.unibe.ch/id/eprint/154858) | [Direct Link](http://dx.doi.org/10.1002/hbm.25411) |
 Deng S., Zhu J., Aschauer U. | Critical Role of Sc Substitution in Modulating Ferroelectricity in Multiferroic LuFeO<sub>3</sub> | Nano Lett. 2021,21 | | [Direct Link](https://doi.org/10.1021/acs.nanolett.1c02123)
 Stober G., Weryk R. J. | Triple-frequency meteor radar full wave scattering - Measurements and comparison to theory | A&A 654 A108 | | [Direct Link](https://doi.org/10.1051/0004-6361/202141470)
 Bertone S, Jäggi A | Assessing reduced-dynamic parametrizations for GRAIL orbit determination and the recovery of independent lunar gravity field solutions | Earth and Space Science | | [Direct Link](https://doi.org/10.1029/2020EA001454) 
 __2020__
+Dominik Moser et al. | Social optimism biases are associated with cortical thickness | Social cognitive and affective neuroscience, 15(7), S. 745-754 | [Details](https://boris.unibe.ch/id/eprint/145271) | [Direct Link](http://dx.doi.org/10.1093/scan/nsaa095) |
 Riou J, Hauser A et al. | Estimation of SARS-CoV-2 mortality during the early stages of an epidemic: A modeling study in Hubei, China, and six regions in Europe | PLOS Medicine | | [Direct Link](https://doi.org/10.1371/journal.pmed.1003189)
 Ricca C, Aschauer U | Local polarization in oxygen-deficient LaMnO<sub>3</sub> induced by charge localization in the Jahn-Teller distorted structure |  Phys. Rev. Res. | [Details](http://dx.doi.org/10.1103/PhysRevResearch.2.042040) | [Direct Link](https://boris.unibe.ch/149523/) | 
 Burns E, Lippert T et al.| LaTiO<sub>2</sub>N crystallographic orientation control significantly increases visible-light induced charge extraction | J. Mat. Chem. A | [Details](http://dx.doi.org/10.1039/D0TA08117E) | [Direct Link](https://boris.unibe.ch/148602/)
