@@ -11,6 +11,7 @@ you will find a text recommendation acknoowledging the use of our cluster.
 Authors | Title | Journal | Boris | DOI
 --- | --- | --- | --- | ---
 __2023__
+C. Gontier et al. | Efficient sampling-based Bayesian Active Learning for synaptic characterization | PLOS Computational Biology | [Details](https://boris.unibe.ch/185630/)| [Direct Link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011342) |
 J. Sutter et al. | Climate intervention on a high-emissions pathway could delay but not prevent West Antarctic Ice Sheet demise | Nature climate change Nature Publishing Group | [Details](http://dx.doi.org/10.48350/185393) | [Direct Link](http://dx.doi.org/10.1038/s41558-023-01738-w) |
 Dominik Moser et al. | Within-network brain connectivity during a social optimism task is related to personal optimism and optimism for in-group members | Human brain mapping, 44(12), S. 4561-4571 | [Details](https://boris.unibe.ch/id/eprint/183628) | [Direct Link](http://dx.doi.org/10.1002/hbm.26400) |
 Gunter Stober et al. | Identifying gravity waves launched by the Hunga Tonga–Hunga Ha′apai volcanic eruption in mesosphere/lower-thermosphere winds derived from CONDOR and the Nordic Meteor Radar Cluster | Annales geophysicae, 41(1), S. 197-208 | [Details](https://boris.unibe.ch/id/eprint/181826) | [Direct Link](http://dx.doi.org/10.5194/angeo-41-197-2023) |
