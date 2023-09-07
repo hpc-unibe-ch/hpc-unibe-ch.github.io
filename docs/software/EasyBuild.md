@@ -16,7 +16,7 @@ The following steps need are necessary:
 Depending if you want to install the package in user or a group space you need to load the related module and the `EasyBuild` module, e.g.:
 
 ```Bash
-module load Workspace  ### if you want to install into your HOME use Workspace_Home
+module load Workspace  ### if you want to install into your HOME use module load Workspace_Home
 module load EasyBuild
 ```
 
@@ -105,7 +105,7 @@ Depending on the package and its target usage one or more software stacks should
 After selecting the package installation recipe and the target software stack, the installation process can be submitted. 
 With the following commands, SLURM job files will be created, and submitted to the desired compute nodes. There the packages are build and module files created. The general syntax is: 
 ```Bash
-eb_install_{all,generic} [options] [easybuild options] <easyconfig>.eb
+eb-install-{all,generic} [options] [easybuild options] <easyconfig>.eb
 ```
 Additional SLURM arguments can be selected using the `--slurm-args` option, e.g. `--slurm-args='--account=xyz --time=00:10:00 --cpus-per-task'`. If specific architectures should be selected use e.g. `--arch='broadwell ivy'`. After this options, EasyBuild arguments can be provided without prefix, e.g. `--robot`. 
 
