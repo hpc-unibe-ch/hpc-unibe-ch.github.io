@@ -6,8 +6,9 @@ This page provides a collection of frequently asked questions.
 
 ## File system
 
-## What if my HOME is full?
-If you reached your quota, you will get strange warning about not being able to write temporary files etc. You can check your quota using the 
+### What if my HOME is full?
+If you reached your quota, you will get strange warning about not being able to write temporary files etc. You can check your quota using the `quota` command. To resolve the situation you can follow these strategies:
+
 1. Decluttering: Check for unnecessary data. This could be:
 
 - unused application packages, e.g. Python(2) packages in `$HOME/.local/lib/python*/site-packages/*`
@@ -22,7 +23,8 @@ Ask your research group manager to add you to an existing Workspace or create a 
 There will be no quota increase for HOME directories. 
 
 ## Workspaces
-### I need access to a HPC Workspace, whome I need to ask?
+
+### I need access to a HPC Workspace. Who do I need to ask?
 
 HPC Workspaces are managed by the group manager/leader and if applicable a deputy. Therewith you need to ask them to add you to the primary or secondary group. See also [HPC Workspace members](../hpc-workspaces/workspaces.md#members).
 

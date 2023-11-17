@@ -25,8 +25,6 @@ To connect to the cluster, you must log in to a **login node** from **inside the
 ```bash
 # here we choose submit03.unibe.ch as our login node
 ssh <user>@submit03.unibe.ch
-# the following is equivalent
-ssh -l <user> submit03.unibe.ch
 ```
 
 ## Welcome `$HOME`
