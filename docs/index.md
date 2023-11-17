@@ -36,10 +36,5 @@ Whenever the UBELIX infrastructure has been used to produce results used in a
 publication or poster, we kindly request citing the service in the
 acknowledgements:
 
-    "Calculations were performed on UBELIX (http://www.id.unibe.ch/hpc), the HPC cluster at the University of Bern."
-
-## Press Kit
-Occasionally we are asked for images like diagrams illustrating the structure of UBELIX or even pictures of machines/storage or the like. Often this is due to the need to describe UBELIX within a research proposal. To support you with this, we provide a short text about UBELIX and some files to download. You can use all of this within your research proposal.
-
-COMING SOON
+    "Calculations were performed on UBELIX (https://www.id.unibe.ch/hpc), the HPC cluster at the University of Bern."
 

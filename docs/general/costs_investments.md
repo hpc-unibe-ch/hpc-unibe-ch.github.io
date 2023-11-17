@@ -36,14 +36,6 @@ privilege to preempt other user on provided number of GPUs you invested for.
 That means, whenever there are no free GPUs and you start your job, other
 user's jobs are terminated to have yours start almost immediately.
 
-The costs for GPUs are defined as follows (Price is per GPU and year):
-
-GPU Model | Price
----|---
-GeForce 1080TI/2080TI | CHF 1'400.-
-GeForce 3090 | CHF 1'700.-
-Tesla P100 | CHF 2100.-
-
 As the number of GPUs is limited there may be none available but will be
 ordered for you as soon as possible. Nevertheless, please try to plan ahead as
 much as possible as GPU availability is quite scarce and it may take months
