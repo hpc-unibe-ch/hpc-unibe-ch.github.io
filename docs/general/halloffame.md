@@ -3,7 +3,7 @@
 If you previously used UBELIX to do your computational work and you acknowledged this
 in your publication and want to your publication listed here, please drop us a note via [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc).  
 If you are wondering how you can acknowledge the usage of UBELIX in your
-publication, have a look at the [homepage](index.md) of this documentation, where
+publication, have a look at the [homepage](../index.md) of this documentation, where
 you will find a text recommendation acknoowledging the use of our cluster.
 
 ## Papers and Articles
@@ -79,9 +79,9 @@ Leichtle A, Fiedler G et al. | Pancreatic carcinoma, pancreatitis, and healthy c
 
 ## Posters
 
-![Poster J. T. Casanova et al, 2023](images/casanova_2023_iap.png "J. T. Casanova et al., Computational approach to anti-Kasha photochemistry of Pt-dithiolene complexes, 2023"){: style="max-width: 100%"}
+![Poster J. T. Casanova et al, 2023](../images/casanova_2023_iap.png "J. T. Casanova et al., Computational approach to anti-Kasha photochemistry of Pt-dithiolene complexes, 2023"){: style="max-width: 100%"}
 
-![Poster Schwab et al, 2016](images/hof_schwab_2016_ncsml.png "Schwab et al., Computational neuroscience: Validation and reliability of directed dynamic networks of the brain, 2016"){: style="max-width: 100%"}
+![Poster Schwab et al, 2016](../images/hof_schwab_2016_ncsml.png "Schwab et al., Computational neuroscience: Validation and reliability of directed dynamic networks of the brain, 2016"){: style="max-width: 100%"}
 
 ## Newspapers
 
@@ -92,10 +92,4 @@ Berner Forscher entdecken neue Klimazustände, in denen Leben möglich ist. | De
 ## Create an Entry
 
 If you used UBELIX for your publication please let your entry added to the list.
-Open a ticket or create a pull request, see [Documentation Update](general/support.md). 
-The format of the entry would be markdown:
-
-```
-<first author>, <last author> | <title> | [Details](<Boris link>) | [Direct Link](<DOI link>)
-```
-where the authors are lastname and first letter of first name. Subscripts can be created using `<sub>2</sub> `. 
+Please open a ticket with the details of your publication.

@@ -3,14 +3,14 @@
 ## Description
 EasyBuild can install software packages including the related modules. The location will be controlled using our modules, e.g. the `Workspace` module, see [Installing Custom Software](installing-custom-software.md).
 On top of the usual EasyBuild framework we added some extensions which allows you to build for specific architectures or a generic software stack in your user/group space. 
-Therefore, use the `eb` command to search and try and the `eb-install-all` or `eb-install-generic` command to install the package. 
+Therefore, use the `eb` command to search and try and the `eb-install-all` command to install the package. 
 
 The following steps need are necessary:
 
 - load modules
 - find the package specification
 - decide the desired software stack
-- run EasyBuild installation using `eb-install-all` or `eb-install-generic`
+- run EasyBuild installation using `eb-install-all`
 
 ## Modules
 Depending if you want to install the package in user or a group space you need to load the related module and the `EasyBuild` module, e.g.:
@@ -99,13 +99,12 @@ Depending on the package and its target usage one or more software stacks should
 
 - all architectural software stacks: `eb-install-all `
 - a specific architectural software stack (e.g. only targeting Broadwell nodes): `eb-install-all --archs='broadwell' ` OR
-- generic software stack: `eb-install-generic `, CPU architecture independent, like `git`
 
 ## Installation
 After selecting the package installation recipe and the target software stack, the installation process can be submitted. 
 With the following commands, SLURM job files will be created, and submitted to the desired compute nodes. There the packages are build and module files created. The general syntax is: 
 ```Bash
-eb-install-{all,generic} [options] [easybuild options] <easyconfig>.eb
+eb-install-all [options] [easybuild options] <easyconfig>.eb
 ```
 Additional SLURM arguments can be selected using the `--slurm-args` option, e.g. `--slurm-args='--account=xyz --time=00:10:00 --cpus-per-task'`. If specific architectures should be selected use e.g. `--arch='broadwell ivy'`. After this options, EasyBuild arguments can be provided without prefix, e.g. `--robot`. 
 
@@ -118,10 +117,6 @@ eb-install-all --robot GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
 - only in the **Broadwell and Login** software stack installing **FFTW** in GCC toolchain (newest version):
 ```Bash
 eb-install-all --robot --archs='login broadwell' --software-name=FFTW --toolchain-name=GCC
-```
-- for **git** in the **generic** software stack, with **GCC** toolchain of version 2021a:
-```Bash
-eb-install-generic --robot --software-name=git --toolchain-name=GCC --toolchain-version=2021a
 ```
 
 This will need time to get scheduled and processed. 
@@ -228,7 +223,7 @@ Even if EasyBuild tries to simplify the installation process, not always EasyCon
 ### More information
 
 In the EasyBuild output `eb_out.*` files are issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
-On the compute nodes they are deleted at the end of the job, but on the login node (ivy) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
+On the compute nodes they are deleted at the end of the job, but on the login node (epyc2) they are kept. The location is mentioned near the end of the output and typically is after `Results of the build can be found in the log file`.
 
 ### Lock directories
 

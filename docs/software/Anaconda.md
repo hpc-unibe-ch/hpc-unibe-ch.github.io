@@ -1,23 +1,19 @@
-# Anaconda
+# Anaconda / Python
 
-## Description
-Anaconda provides Python and a long list of packages as well as Jupyter and environment and package manager conda and pip.
+There are multiple versions of Python available on our HPCs. 
+On the one hand there are `Python` modules for Python 3. These already have a longer list of additional packages installed, including `pip3`. On the other hand there is Anaconda installed, which brings an even longer list of packages with it.
+We suggest using the `Anaconda3` modules whenever possible.
 
-Anaconda brings a long list of Python packages. You can list them using 
-```Bash
-conda list
-```
-
-## Availability
-On our systems we provide Anaconda3, which gets update regularly. 
-
-## Usage
 ``` Bash
 module load Anaconda3
 ```
 
-## Additional Packages
-to install additional packages please see [Additional Packages](python.md#additional-packages)
+Anaconda provides Python and a long list of packages as well as Jupyter and environment and package manager conda and pip.
+Anaconda brings a long list of Python packages. You can list them using 
+
+```Bash
+conda list
+```
 
 ## Jupyter
 For Jupyter information please see [JupyterLab](JupyterLab.md)

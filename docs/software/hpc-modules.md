@@ -3,41 +3,29 @@
 [//]: # (TODO HPC modules, Env Variables, Easybuild, ...)
 ## Description
 
-On UBELIX the default shell is Bash. With the operation system, a list of basic tools (mainly command line tools) are provided, including editors, file analyzing and manipulation tools, packing and transfer tools etc. This commands are accessible all the time. 
-
-Other software packages (libraries and applications) are available via the **LMOD** (lua modules) modules. By the help of this tool a lot of different packages even in different versions can be provided, without unwanted influences. 
-
-Furthermore, software stacks are provided one for each CPU architecture. These are loaded automatically on the related architecture, transparent to the user.
-
-Additionally to our software stack, **VITAL-IT** provides a software stack targeting mainly bioinformatics users, see [Bioinformatics Software](#BioinformaticsSoftware).
+With the operation system, a list of basic tools (mainly command line tools) are provided, including editors, file analyzing and manipulation tools, packing and transfer tools etc. These commands are accessible all the time. Other software packages (libraries and applications) are available through software modules. Using modules, a lot of different packages even in different versions can be provided, without unwanted influences.
 
 ## Basic concept
 
 Many Linux settings are in environment variables. These include search paths for applications (`$PATH`) and libraries (`$LD_LIBRARY_PATH`). Adding or removing a directory to these lists, provides access or remove access to additional software. 
 
-The **LMOD** modules are an user friendly way to search and manage software packages without dealing with complicated directory names.
+Our software modules are an user friendly way to search and manage software packages without dealing with complicated directory names.
 
 In general every software package has its related module. When loading the module the software package **and** its dependencies get accessible. 
 
 But let's do it step by step.
 
-## List available Modules
-There are various ways to search for a software package. You can list all currently available packages using:
+## Find available Modules
+You can search for an packages or module containing a specific string using `module spider`, e.g. to find all versions of GCC:
+```Bash
+module spider GCC
+```
+
+You can list all currently available packages using:
 ```Bash
 module avail
 ```
-
-You can search for an packages ***starting*** with a specific string, e.g. all version of GCC:
-```Bash
-module avail GCC
-```
-
-Furthermore, the following command lists you all the modules containing a certain sub-string in the name, even in other software stacks, e.g.:
-```Bash
-module spider Assembler
-```
-
-In the example above all modules with the sub-string *Assembler* will be listed, in this case the ones from the Vital-It software stack. 
+Beware, this list is very long! It may be more useful to use `module spider` instead.
 
 ## Load/Add a Modules
 
@@ -83,23 +71,23 @@ Currently Loaded Modules:
 When loading **multiple modules** it is strongly suggested to stay within **one toolchain version**.
 
 A toolchain is a set of modules all building on top of each other. The related packages and versions can be listed with the command above. 
-There are two basic toolchains which are build up on top of GCC and Intel:
+There are two basic toolchains families: 
 
 | Toolchain | packages |
 | --------- | --------- |
-| GCC       | GCC compiler |
-| gompi     | GCC, OpenMPI |
-| gompic    | GCC, OpenMPI, CUDA |
 | foss      | GCC, OpenMPI, OpenBLAS, FFTW, ScaLAPACK |
-| fosscuda  | GCC, OpenMPI, OpenBLAS, FFTW, ScaLAPACK, CUDA |
-| | |
 | intel     | Intel compiler, (GCC required), MKL, Intel MPI |
-| iompi     | Intel compiler, OpenMPI |
-| iomkl     | Intel compiler, OpenMPI, MKL |
 
 Furthermore, toolchains are provided in different versions and updated regularly.
 
-When loading multiple packages, they should be based on the **same toolchain** and the **same version**.
+The two main toolchains foss and intel are subdivided into sub-toolchains that belong to the same family:
+
+| Family | Subtoolchains |
+| --------- | --------- |
+| foss     | GCC, gompi |
+| intel     | iompi, iomkl |
+
+When loading multiple packages, they should be based on the **same toolchain** (or at least the same toolchain family) and the **same version**.
 
 In the following are two examples where `netCDF` and `FFTW` should be loaded, but the based toolchains and versions do not match. 
 
@@ -180,6 +168,32 @@ There are two ways of providing a user environment setups, e.g. for development,
 !!! type warning ""
     Adding module load into `.bashrc` may lead to issues. If you diverge from this "default" environment and additionally load conflicting modules, e.g. form another toolchain. 
 
+### Module User Collections
+
+Sets of modules can be stored and reloaded in LMOD using the "user collection" feature. 
+
+As an example, a set of module for development consiting of SciPy-bundle and netCDF should be stored under the name ***devel***. Further module lists can be managed in the same way (here lists for ***test*** and ***prod*** already exist). 
+
+```Bash
+$ module load SciPy-bundle netCDF
+$ module save devel
+Saved current collection of modules to: "devel"
+$ module savelist
+Named collection list :
+  1) devel  2) test  3) prod
+```
+Therewith the set of modules can be loaded using:
+
+```Bash
+$ module restore devel
+```
+
+This will unload **all** other previously loaded modules beforehand and then load the set specified in the collection. 
+
+!!! types note ""
+    This method is preferred against defining/loading a set of modules in Bash configuration like .bashrc.
+
+More information can be found in the [LMOD documentation](https://lmod.readthedocs.io/en/latest/010_user.html#user-collections)
 
 ### Custom Modules
 
@@ -209,63 +223,4 @@ The all workspace members can load this environment using:
 module purge   ### better start with a clean environment
 module load Workspace WS_devel
 ```
-
-### Module User Collections
-
-Sets of modules can be stored and reloaded in LMOD using the "user collection" feature. 
-
-As an example, a set of module for development consiting of SciPy-bundle and netCDF should be stored under the name ***devel***. Further module lists can be managed in the same way (here lists for ***test*** and ***prod*** already exist). 
-
-```Bash
-$ module load SciPy-bundle netCDF
-$ module save devel
-Saved current collection of modules to: "devel"
-$ module savelist
-Named collection list :
-  1) devel  2) test  3) prod
-```
-Therewith the set of modules can be loaded using:
-
-```Bash
-$ module restore devel
-```
-
-This will unload **all** other previously loaded modules beforehand and then load the set specified in the collection. 
-
-!!! types note ""
-    This method is preferred against defining/loading a set of modules in Bash configuration like .bashrc.
-
-More information can be found in the [LMOD documentation](https://lmod.readthedocs.io/en/latest/010_user.html#user-collections)
-
-## Bioinformatics Software
-
-In co-operation with the [Vital-IT Group](http://www.vital-it.ch/) of the [SIB Swiss Institute of Bioinformatics](http://www.isb-sib.ch/), a large set of [bioinformatics software tools and databases](https://www.vital-it.ch/services/software) is available to the life science community.
-
-To list all modulefiles provided by Vital-IT, you have to first load the `vital-it` module:
-
-!!! types note ""
-    Loading the vital-it modulefile automatically configures the environment to use specific versions of selected software, e.g. python v2.7.5, and gcc v4.9.1
-
-```Bash
- $ module load vital-it && module avail
-```
-
-## Modules background
-
-### Architectural software stacks
-
-On our HPCs we use LMOD (Lua modules) to provide access to different software packages and different versions. Beside different packages and versions, we provide software stacks build for the different CPU architectures. This enables us to have the packages build e.g. with AVX2 for Broadwell CPUs, but also a version with only SSE4 for Ivybridge CPUs. These software stacks are completely transparent to the user and will be used automatically when loading a module on the related architecture. 
-
-If you want to build your own software build for specific Hardware, we provide tools which help you, see [Installing Custom Software](installing-custom-software.md)
-
-### Scientific Software Management
-
-Our scientific software stack, available via module files are mainly build with EasyBuild. This tool helps us to install and maintain software packages and recycle existing installation procedures. There are plenty of install instructions available [EasyBuild/Easyconfigs](https://github.com/easybuilders/easybuild-easyconfigs), which can be installed also in the user space with low effort, see [Installing Custom Software](installing-custom-software.md)
-
-### Custom modules
-
-Modules are able to define the users environment. This includes accessibility to software packages, including settings for libraries and setting environment variables. 
-
-On UBELIX we use LMOD. Therewith, lua as well as TCL modules can be used. 
-
 
