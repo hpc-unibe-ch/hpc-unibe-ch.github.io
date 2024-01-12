@@ -10,13 +10,13 @@ Before we start: as everywhere where people come together, a **common sense** is
 
 ## Request an Account
 
-Before you can start working on the HPCs, staff and students of the University of Bern must have their **Campus Account (CA)** registered for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](getting-Started/account.md) for more information getting access to UBELIX.
+Before you can start working on the HPCs, staff and students of the University of Bern must have their **Campus Account (CA)** registered for the HPCs. External researchers that collaborate with an institute of the University of Bern must apply for a CA through that institute. See [Accounts and Activation](../getting-Started/account.md) for more information getting access to UBELIX.
 
 ## HPC Workspace
 
-Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting. 
-Research group leaders need to apply for an workspace, see [Workspace Management](hpc-workspaces/management.md). 
-For an introduction to HPC Workspaces see [Workspace Overview](hpc-workspaces/workspaces.md)
+Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting.
+Research group leaders need to apply for an workspace, see [Workspace Management](../hpc-workspaces/management.md). 
+For an introduction to HPC Workspaces see [Workspace Overview](../hpc-workspaces/workspaces.md)
 
 ## Login
 
@@ -34,7 +34,7 @@ This is your home directory and serves as the repository for your personal files
 You can reference your home directory by `~` or `$HOME`. 
 
 Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. HOME directories have a daily snapshot and backup procedures.
-Disk space is managed by [quotas](file-system/quota.md). By default, each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
+Disk space is managed by [quotas](../file-system/quota.md). By default, each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
 
 You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
@@ -56,7 +56,7 @@ To copy a file from the cluster to your local computer running a UNIX-like OS al
 scp <user>@submit03.unibe.ch:/path/to/file /path/to/target_dir/
 ```
 
-More information about file transfer can be found on the page [File Transfer to/from UBELIX](file-system/file-transfer.md).
+More information about file transfer can be found on the page [File Transfer to/from UBELIX](../file-system/file-transfer.md).
 
 ## Use Software
 
@@ -99,10 +99,10 @@ You can also specify version numbers there.
 
 With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
 
-The [Software](software/hpc-modules.md) section is dedicated to this topic. More information can be found there.
+The [Software](../software/hpc-modules.md) section is dedicated to this topic. More information can be found there.
 
 !!! type notes ""
-    Managing different working environments can be done with "Meta Modules" or user collections, see [Environment Definitions](software/hpc-modules.md#environment-definitions)
+    Managing different working environments can be done with "Meta Modules" or user collections, see [Environment Definitions](../software/hpc-modules.md#environment-definitions)
 
 ## Hello World
 
@@ -115,7 +115,7 @@ computations to the compute nodes - by generating a job script and sending it to
 !!! hint "Working interactively on a compute node"
     When developing stuff it's often useful to have short iterations of try-error. Therefore it's also possible to work
     interactively on a compute node for a certain amount of time without having to send jobs to the cluster and wait until
-    they finish just to see it didn't work. See [Interactive Jobs](slurm/interactive-jobs.md) for more information about this topic.
+    they finish just to see it didn't work. See [Interactive Jobs](../slurm/interactive-jobs.md) for more information about this topic.
 
 
 It's now time for your first job script. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
@@ -130,7 +130,7 @@ It's now time for your first job script. To do some work on the cluster, you req
 ...
 ```
 
-The first line makes sure that the file is executed using the bash shell. The remaining lines are option flags used by the `sbatch` command. The page [Jobs Submission](slurm/submission.md) outlines the most important options of `sbatch`.
+The first line makes sure that the file is executed using the bash shell. The remaining lines are option flags used by the `sbatch` command. The page [Jobs Submission](../slurm/submission.md) outlines the most important options of `sbatch`.
 
 Now, let's write a simple "hello, world"-task:
 
@@ -171,7 +171,7 @@ sbatch first.sh
 Submitted batch job 32490640
 ```
 If the job is submitted successfully, the command outputs a job-ID with which you can refer to your job later on.
-There are various options for different types of jobs provided in the scheduler. See sections [Array Jobs](slurm/array-jobs.md), [GPUs](slurm/gpus.md), and [Interactive Jobs](slurm/interactive-jobs.md) for more information
+There are various options for different types of jobs provided in the scheduler. See sections [Array Jobs](../slurm/array-jobs.md), [GPUs](../slurm/gpus.md), and [Interactive Jobs](../slurm/interactive-jobs.md) for more information
 
 ## Monitor Your Job
 
@@ -219,11 +219,11 @@ squeue --user=testuser
    32633556       bdw  fast.sh  testuser  R    4:36:10      1 anode08
 ```
 
-Further information on on job monitoring you find on page [Monitoring Jobs](slurm/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](slurm/investigating-job-failure.md) and [Check-pointing](slurm/checkpointing.md). 
+Further information on on job monitoring you find on page [Monitoring Jobs](../slurm/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](../slurm/investigating-job-failure.md) and [Check-pointing](../slurm/checkpointing.md). 
 
 
 
 ## Training Courses
 
-[Science IT Support (ScITS)](http://www.scits.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](http://www.scits.unibe.ch/training).
+[Data Science Lap (DSL))](https://www.dsl.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](https://www.dsl.unibe.ch)
 

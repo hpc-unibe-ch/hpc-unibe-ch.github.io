@@ -12,7 +12,7 @@ This page contains information on how to configure your SSH environment for a si
     * you have your Campus Account activated for UBELIX (see above)
     * you have a working SSH client
         * Linux/Mac: e.g ssh command in a terminal 
-        * Microsoft Windows: **MobaXterm**, Windows Subsytem Linux, or Putty. Alternatively, a flavor of Linux can be installed on Microsoft Windows using virtualization software (e.g VirtualBox). We strongly encourage you to familiarize with a Unix-based Terminal commands. 
+        * Microsoft Windows: **MobaXterm** or Windows Subsytem Linux. Alternatively, a flavor of Linux can be installed on Microsoft Windows using virtualization software (e.g VirtualBox). We strongly encourage you to familiarize with a Unix-based Terminal commands. 
     
 
 !!! types caution "Requirement"
@@ -90,7 +90,6 @@ After installing and starting MobaXterm, a SSH session need to be configured:
 
 After starting the session, you should see the UBELIX login message and prompt. 
 ![MobaXterm Sessions](../images/mobaXterm_03_established.png "MobaXterm Overview")
-Here we have a colored prompt, see [Shell Prompt](shell.md#shell-prompt). 
 On the left hand side a File browser is located. There the UBELIX file system can be browsed and files up or downloaded, e.g. using drag and drop or the context menue. 
 ![MobaXterm File Browser](../images/mobaXterm_04_scp.png "SCP pane")
 

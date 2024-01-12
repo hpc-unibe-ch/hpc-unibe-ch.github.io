@@ -1,18 +1,22 @@
 # Workspaces Introduction
 
 ## Description
-This article introduces HPC workspaces with the main aspects.
+The HPC Workspaces provide a group shared environment, including storage with user-defined access, SLURM accounting, and tools. 
 
-A guideline for Workspace managers including **application** and modification can be found at [Workspace Management](management.md). 
+An HPC Workspace belong to a research group and need to be requested by the research group leader, see [Workspace management](../hpc-workspaces/management.md). 
 
-If you want to **join an existing Workspace**, please ask the Workspace owner or manager to add your account.
+## Short Summary
+Workspaces provide a collaborative environment with user defined access groups:
 
-An HPC workspace consists of:
+- a primary group with **read/write** access and 
+- a secondary group with **read only** access
 
-- 2 access groups, *read/write* and *read only*
-- permanent and temporary storage
-- Slurm accounting
-- fair share on research group level
+Each Workspace provide:
+
+- permanent storage (`/storage/workspaces/<researchGroupID>/<workspaceID>`) 
+- temporary storage (`/storage/scratch/<researchGroupID>/<workspaceID>`)
+- user-friendly access to a custom software repositories and monitoring tools and
+- SLURM accounting to that Workspace. Fair share between research groups.
 
 !!! ATTENTION
     Please always load the `Workspace` module, even if only just copying files into it. The module corrects the `umask` and therewith the created file and directory permissions. 
@@ -30,7 +34,6 @@ Furthermore, these data is usually processed with a set of custom software tools
 - high bandwidth storage and backup
 - temporary space with less restricted quota
 - research group based compute resource sharing
-- in-line with other HPC centres
 
 ## Storage Access Permissions
 **HOME** is meant to be a private space, mainly for configurational data. 

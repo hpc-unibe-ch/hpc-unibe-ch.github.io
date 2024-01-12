@@ -3,67 +3,53 @@ site_name: HPC Documentation
 use_directory_urls: false
 nav:
   - News: general/news.md
-  - Quick Start: quick-start.md
-  - Getting Started:
-    - Code of Conduct: code-of-conduct.md
-    - UniBE HPC system "UBELIX": getting-Started/ubelix-overview.md
-    - Accounts and Activation: getting-Started/account.md
-    - Accessing the HPCs: getting-Started/login-ssh.md
-      #      - software for connecting to the HPCs:
-      #      - Port Forwarding:
-    - Workspaces: getting-Started/workspaces.md
-    - SSH customization: getting-Started/ssh-customization.md
-    - Shell customization: getting-Started/shell.md
-    - Parallelization: getting-Started/parallelization.md
+  - Quick Start: general/quick-start.md
+  - UBELIX: general/ubelix-overview.md
+  - Accounts and Access:
+      - Accounts and Activation: getting-Started/account.md
+      - Access: getting-Started/login-ssh.md
+      - SSH customization: getting-Started/ssh-customization.md
   - Workspaces:
-    - Overview: hpc-workspaces/workspaces.md
-    - Workspace management: hpc-workspaces/management.md
-    - Software environment: hpc-workspaces/environment.md
-    - Monitoring: hpc-workspaces/monitoring.md
+      - Overview: hpc-workspaces/workspaces.md
+      - Software environment: hpc-workspaces/environment.md
+      - Workspace management: hpc-workspaces/management.md
   - SLURM / Job handling:
-    - Partitions / QoS: slurm/partitions.md
-    - Submitting jobs: slurm/submission.md
-    #      - Parallel execution:
-    - Monitoring Jobs: slurm/monitoring-jobs.md
-    - Deleting Jobs: slurm/deleting-jobs.md
-    - Array Jobs with Slurm: slurm/array-jobs.md
-    - Job dependencies: slurm/dependencies.md
-    - GPUs: slurm/gpus.md
-    - Interactive Jobs: slurm/interactive-jobs.md
-    - Investigating a Job Failure: slurm/investigating-job-failure.md
-    - Checkpointing: slurm/checkpointing.md
-    - Fair Share: slurm/fair-share.md
-    #
+      - Partitions / QoS: slurm/partitions.md
+      - Submitting jobs: slurm/submission.md
+      - Monitoring Jobs: slurm/monitoring-jobs.md
+      - Deleting Jobs: slurm/deleting-jobs.md
+      - Array Jobs with Slurm: slurm/array-jobs.md
+      - Job dependencies: slurm/dependencies.md
+      - GPUs: slurm/gpus.md
+      - Interactive Jobs: slurm/interactive-jobs.md
+      - Investigating a Job Failure: slurm/investigating-job-failure.md
+      - Checkpointing: slurm/checkpointing.md
+      - Fair Share: slurm/fair-share.md
   - Software:
-    - HPC software environment: software/hpc-modules.md
-    - Installing Custom Software: software/installing-custom-software.md
-    - EasyBuild: software/EasyBuild.md
-    - Supported Applications:
-      - Anaconda: software/Anaconda.md
-      - CUDA: software/CUDA.md
-      - JupyterLab: software/JupyterLab.md
-      - MATLAB: software/matlab.md
-      - Parallel BZIP2: software/bzip2.md
-      - ParaView: software/ParaView.md
-      - Python: software/python.md
-      - R: software/r.md
-      - Relion: software/relion.md
-      - Singularity: software/singularity.md
-      - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
-    - LaTeX: software/latex.md
+      - HPC software environment: software/hpc-modules.md
+      - Installing Custom Software: software/installing-custom-software.md
+      - EasyBuild: software/EasyBuild.md
+      - Supported Applications:
+          - Anaconda / Python: software/Anaconda.md
+          - CUDA: software/CUDA.md
+          - JupyterLab: software/JupyterLab.md
+          - MATLAB: software/matlab.md
+          - Parallel BZIP2: software/bzip2.md
+          - ParaView: software/ParaView.md
+          - R: software/r.md
+          - Relion: software/relion.md
+          - Singularity: software/singularity.md
+          - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
   - Storage:
-    - Overview: file-system/filesystem-overview.md
-    - Quota: file-system/quota.md
-    - Moving files to and from the HPCs: file-system/file-transfer.md
-    - Scratch: file-system/scratch.md
-  - Optimization:
-    - Scaling: optimization/scaling.md
+      - Overview: file-system/filesystem-overview.md
+      - Quota: file-system/quota.md
+      - Moving files to and from the HPCs: file-system/file-transfer.md
+      - Scratch: file-system/scratch.md
   - Costs and Investments: general/costs_investments.md
   - Support: general/support.md
   - FAQ: general/faq.md
-  - Hall of Fame: halloffame.md
-  - Code of Conduct: code-of-conduct.md
-
+  - Hall of Fame: general/halloffame.md
+  - Code of Conduct: general/code-of-conduct.md
 
 # Copyright footer
 copyright: 'Copyright &copy; University of Bern, IT Service Office'
@@ -77,7 +63,7 @@ theme:
   name: material
 
 extra_css:
- - 'stylesheets/unibe.css'
+  - 'stylesheets/unibe.css'
 
 plugins:
   - git-revision-date
@@ -109,4 +95,3 @@ extra:
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/hpc-unibe-ch
-

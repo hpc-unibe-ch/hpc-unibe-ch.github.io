@@ -18,10 +18,3 @@ Please first collect all necessary details. In case of issues, this should inclu
 
 Please open a ticket via [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc)
 
-## Documentation
-If you found issues in this documentation or want to help improving it, open an issue or pull request on out Github repository:
-
-[https://github.com/hpc-unibe-ch/hpc-docs](https://github.com/hpc-unibe-ch/hpc-docs)
-
-## Documentation update
-If you find issues in the documentation, want to add your publication to the Hall Of Fame or want to contribute in improving this documentation please create a pull request to [UBELIX hpc-docs github repository](https://github.com/hpc-unibe-ch/hpc-docs). 

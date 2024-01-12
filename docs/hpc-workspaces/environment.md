@@ -67,13 +67,13 @@ As a result all users of the Workspace can use the software packages by loading 
 
 ### Python packages
 The Workspace module provides support to install and use Python packages in a shared manner, by installing them into the Workspace. 
-Please see [Python Additional Packages](../software/python.md#additional-packages)
+
 !!! note "First load Python/Anaconda3" 
     Python or Anaconda3 module need to be loaded before loading the Workspace module, since variables to be set depend on Python version.
     Workspace module can also be reloaded, e.g.:
     ```
     HPC_WORKSPACE=HPC_SW_test module load Workspace
-    module load Python
+    module load Anaconda3
     module load Workspace
     ```
 

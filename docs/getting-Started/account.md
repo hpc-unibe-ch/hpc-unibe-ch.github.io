@@ -4,7 +4,7 @@
 UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. 
 The cluster is meant to be used for research related to the University of Bern. 
 **Before you can use this service your CA need to be activated for UBELIX**. 
-**Please respect the [Code of Conduct](../code-of-conduct.md)**
+**Please respect the [Code of Conduct](../general/code-of-conduct.md)**
 On this page you will find useful information regarding the activation of your CA and the login procedure. 
 Furthermore, the provided service structure is outlined.
 
