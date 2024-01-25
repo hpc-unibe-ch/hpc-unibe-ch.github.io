@@ -122,7 +122,7 @@ Keep in mind your local operating system need to have a X server running. E.g. X
 
 ## Passwordless SSH within the HPCs
 Some application require passwordless SSH within the HPC machine, e.g. for establishing reverse port forwarding. 
-Please verify that you created and registered a SSH key within UBLEIX. If you can perform the following command without entering your password your are ready to go:
+Please verify that you created and registered a SSH key within UBELIX. If you can perform the following command without entering your password your are ready to go:
 ```Bash
 ssh localhost
 ```
