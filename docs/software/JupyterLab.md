@@ -35,7 +35,7 @@ The port needs to be specified while establishing the connection to UBELIX and w
 
 ### Passwordless SSH within the HPCs
 
-Please verify that you created and registered a SSH key within UBLEIX. If you can perform the following command without entering your password your are ready to go:
+Please verify that you created and registered a SSH key within UBELIX. If you can perform the following command without entering your password your are ready to go:
 ```Bash
 ssh localhost
 ```
