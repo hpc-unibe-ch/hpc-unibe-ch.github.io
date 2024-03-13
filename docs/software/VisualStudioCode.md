@@ -1,6 +1,6 @@
 # Interactive / Remote Computing with VS Code
 
-!!! tip Important
+!!! tip "Important"
     - This tutorial shows how to work interactively on a compute node! If you need to access the submit nodes, most of the steps below can be skipped!
     - Please keep in mind that these resources will be dedicated for you, thus an idle session will waste resources.
 
@@ -35,6 +35,20 @@ Host ubelix-code-tunnel
   ServerAliveCountMax 2
   User <name>
 ```
+
+!!! tip "Attention Windows users"
+    Due to different symbols escaping sequences between Linux and Windows, the
+    ProxyCommand in the ubelix-code-tunnel block needs to be changed on Windows.
+    Note the extra \\ !
+
+    ```
+    Host ubelix-code-tunnel
+      ProxyCommand ssh ubelix "nc \\$(squeue --me --name=code-tunnel --states=R -h -O NodeList,Comment)"
+      StrictHostKeyChecking no
+      ServerAliveInterval 240
+      ServerAliveCountMax 2
+      User <name>
+    ```
 
 You can also make these modifications from within Visual Studio Code using the command palette `> Remote-SSH: Open SSH Configuration File`.
 
