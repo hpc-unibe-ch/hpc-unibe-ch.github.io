@@ -1,0 +1,2014 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="installing-custom-software.html">
+      
+      
+        <link rel="next" href="Anaconda.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>EasyBuild - HPC Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/unibe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#easybuild" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HPC Documentation" class="md-header__button md-logo" aria-label="HPC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HPC Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EasyBuild
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hpc-unibe-ch/hpc-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HPC Documentation" class="md-nav__button md-logo" aria-label="HPC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    HPC Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hpc-unibe-ch/hpc-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/news.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    News
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/quick-start.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/ubelix-overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UBELIX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Accounts and Access
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Accounts and Access
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-Started/account.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accounts and Activation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-Started/login-ssh.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-Started/ssh-customization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Workspaces
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Workspaces
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hpc-workspaces/workspaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hpc-workspaces/environment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hpc-workspaces/management.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workspace management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SLURM / Job handling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SLURM / Job handling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/partitions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Partitions / QoS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/submission.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submitting jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/monitoring-jobs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/deleting-jobs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deleting Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/array-jobs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Array Jobs with Slurm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/dependencies.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job dependencies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/gpus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/interactive-jobs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/investigating-job-failure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Investigating a Job Failure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/checkpointing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checkpointing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/fair-share.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fair Share
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hpc-modules.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HPC software environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installing-custom-software.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Custom Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    EasyBuild
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="EasyBuild.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    EasyBuild
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Specification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-easyconfig-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using EasyConfig files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-module-and-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meta module and Toolchains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-a-software-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting a software stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adapting-easyconfigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapting EasyConfigs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips and tricks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      More information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lock directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hidden Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directly-on-the-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directly on the compute node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Supported Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Supported Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Anaconda.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaconda / Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CUDA.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JupyterLab.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterLab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="matlab.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MATLAB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bzip2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel BZIP2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ParaView.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ParaView
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="relion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="singularity.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Singularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="terminal-multiplexer-tmux.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terminal Multiplexer (tmux)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="VisualStudioCode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-system/filesystem-overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-system/quota.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-system/file-transfer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moving files to and from the HPCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-system/scratch.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scratch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/costs_investments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Costs and Investments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/support.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/faq.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/halloffame.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hall of Fame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/code-of-conduct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Specification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-easyconfig-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using EasyConfig files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-module-and-toolchains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meta module and Toolchains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-a-software-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting a software stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adapting-easyconfigs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapting EasyConfigs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips and tricks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      More information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lock directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hidden-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hidden Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directly-on-the-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directly on the compute node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="easybuild">EasyBuild</h1>
+<h2 id="description">Description</h2>
+<p>EasyBuild can install software packages including the related modules. The location will be controlled using our modules, e.g. the <code>Workspace</code> module, see <a href="installing-custom-software.html">Installing Custom Software</a>.
+On top of the usual EasyBuild framework we added some extensions which allows you to build for specific architectures or a generic software stack in your user/group space. 
+Therefore, use the <code>eb</code> command to search and try and the <code>eb-install-all</code> command to install the package. </p>
+<p>The following steps need are necessary:</p>
+<ul>
+<li>load modules</li>
+<li>find the package specification</li>
+<li>decide the desired software stack</li>
+<li>run EasyBuild installation using <code>eb-install-all</code></li>
+</ul>
+<h2 id="modules">Modules</h2>
+<p>Depending if you want to install the package in user or a group space you need to load the related module and the <code>EasyBuild</code> module, e.g.:</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>Workspace<span class="w">  </span><span class="c1">### if you want to install into your HOME use module load Workspace_Home</span>
+module<span class="w"> </span>load<span class="w"> </span>EasyBuild
+</code></pre></div>
+<p>Therewith, our EasyBuild tools and EasyBuild itself are available. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specify the WorkspaceID if necessary when loading the Workspace module. See module instructions</p>
+</div>
+<h2 id="package-specification">Package Specification</h2>
+<p>EasyBuild has a large repository of available packages in different versions. 
+You can use these specifications as is or copy/download and modify the EasyConfigs (see below).</p>
+<p>Available packages can be searched using the following command, here for the <strong>gatk</strong> package</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--search<span class="w"> </span>gatk
+<span class="o">[</span>...<span class="o">]</span>
+eb<span class="w"> </span>--search<span class="w"> </span><span class="nv">gatk</span>
+<span class="o">==</span><span class="w"> </span>found<span class="w"> </span>valid<span class="w"> </span>index<span class="w"> </span><span class="k">for</span><span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs,<span class="w"> </span>so<span class="w"> </span>using<span class="w"> </span>it...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-1.0.5083.eb
+...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.1.2-Java-1.8.eb
+...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.12.0-foss-2018b-Python-3.6.6.eb
+...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.4.0-intel-2018a-Python-3.6.4.eb
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.5.1-foss-2018a-Python-3.6.4.eb
+...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.0.8.1-foss-2018b-Python-2.7.15.eb
+...
+<span class="w"> </span>*<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
+</code></pre></div>
+<p>As shown above there are different versions of GATK and for different <em>toolchains</em> available (<code>foss</code>, <code>intel</code>, <code>GCCcore</code>). </p>
+<p><strong>Select one</strong>, here <code>GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb</code> is chosen.</p>
+<p>Alternatively, the packages can be listed or selected using the package name and target toolchain and version:</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>--software-name<span class="o">=</span>GATK<span class="w"> </span>--toolchain-name<span class="o">=</span>GCC<span class="w"> </span>--toolchain-version<span class="o">=</span><span class="m">9</span>.3.0
+</code></pre></div>
+<p>You can list all dependencies using:</p>
+<div class="highlight"><pre><span></span><code>eb<span class="w"> </span>-Dr<span class="w"> </span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
+...
+Dry<span class="w"> </span>run:<span class="w"> </span>printing<span class="w"> </span>build<span class="w"> </span>status<span class="w"> </span>of<span class="w"> </span>easyconfigs<span class="w"> </span>and<span class="w"> </span>dependencies
+<span class="nv">CFGS</span><span class="o">=</span>/storage/software/generic.el7/software/EasyBuild/4.3.3/easybuild/easyconfigs
+<span class="w"> </span>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/j/Java/Java-1.8.0_281.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Java/1.8.0_281<span class="o">)</span>
+...<span class="w"> </span>
+<span class="w"> </span>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/p/Python/Python-2.7.18-GCCcore-9.3.0.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Python/2.7.18-GCCcore-9.3.0<span class="o">)</span>
+<span class="w"> </span>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/g/GATK/GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>GATK/4.1.8.1-GCCcore-9.3.0-Java-1.8<span class="o">)</span>
+</code></pre></div>
+<p>Dependencies marked with <code>x</code> are already installed, the other dependencies will be installed if using the robot option.</p>
+<p>Additional options, e.g. for selecting a specific software version can be found using <code>eb --help</code>.</p>
+<h3 id="using-easyconfig-files">Using EasyConfig files</h3>
+<p>You can use the directly selected EasyConfig or if necessary copy and adapt it.
+EasyConfig files are text files specifying the software version, toolchain version, dependencies, compile arguments and more.
+If you need more information see <a href="https://easybuild.readthedocs.io/en/latest/">EasyBuild documentation</a>, and if necessary ask our support team for assistance.</p>
+<h2 id="meta-module-and-toolchains">Meta module and Toolchains</h2>
+<p>Modules specify related dependencies, which gets loaded with that module. These dependencies may have further dependencies.</p>
+<p>The chain of dependencies is called toolchain. For example:</p>
+<ul>
+<li><code>GCC</code> consists of <code>GCCcore</code> and <code>binutils</code></li>
+<li><code>gompi</code> consists of <code>GCC</code> and <code>OpenMPI</code></li>
+<li><code>foss</code> consists of <code>gompi</code>, <code>OpenBLAS</code>, <code>FFTW</code> and <code>ScaLAPACK</code></li>
+</ul>
+<p>Within a toolchain the versions of the utilized libraries should be consistent. Thus, building a new package with <code>foss/2020b</code> and <code>PyTorch</code> should rely on a PyTorch version build with the same versions of the underlying libraries. Thus e.g. <code>PyTorch-1.9.0-foss-2020b.eb</code> is also build with <code>foss/2020b</code> as well as the <code>Python/3.8.6</code>. The latter one is build with <code>GCCcore/10.2.0</code> which is part of <code>foss/2020b</code>. </p>
+<h2 id="selecting-a-software-stack">Selecting a software stack</h2>
+<p>Depending on the package and its target usage one or more software stacks should be selected. Therefore, the installation command starts with one for the following command:</p>
+<ul>
+<li>all architectural software stacks: <code>eb-install-all</code></li>
+<li>a specific architectural software stack (e.g. only targeting Broadwell nodes): <code>eb-install-all --archs='broadwell'</code> OR</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>After selecting the package installation recipe and the target software stack, the installation process can be submitted. 
+With the following commands, SLURM job files will be created, and submitted to the desired compute nodes. There the packages are build and module files created. The general syntax is: 
+<div class="highlight"><pre><span></span><code>eb-install-all<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>easybuild<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>&lt;easyconfig&gt;.eb
+</code></pre></div>
+Additional SLURM arguments can be selected using the <code>--slurm-args</code> option, e.g. <code>--slurm-args='--account=xyz --time=00:10:00 --cpus-per-task'</code>. If specific architectures should be selected use e.g. <code>--arch='broadwell ivy'</code>. After this options, EasyBuild arguments can be provided without prefix, e.g. <code>--robot</code>. </p>
+<p>Few examples:</p>
+<ul>
+<li>for a <strong>selected</strong> or <strong>custom</strong> EasyConfig and all missing dependencies in <strong>all architectural</strong> software stacks (here we go with the above selected GATK):
+<div class="highlight"><pre><span></span><code>eb-install-all<span class="w"> </span>--robot<span class="w"> </span>GATK-4.1.8.1-GCCcore-9.3.0-Java-1.8.eb
+</code></pre></div></li>
+<li>only in the <strong>Broadwell and Login</strong> software stack installing <strong>FFTW</strong> in GCC toolchain (newest version):
+<div class="highlight"><pre><span></span><code>eb-install-all<span class="w"> </span>--robot<span class="w"> </span>--archs<span class="o">=</span><span class="s1">&#39;login broadwell&#39;</span><span class="w"> </span>--software-name<span class="o">=</span>FFTW<span class="w"> </span>--toolchain-name<span class="o">=</span>GCC
+</code></pre></div></li>
+</ul>
+<p>This will need time to get scheduled and processed. 
+The job output is presented in the <code>eb_out.*</code> files, one for each architecture. </p>
+<p>If the build could not be finished in the default time of 1h, the walltime can be extended using:</p>
+<div class="highlight"><pre><span></span><code>eb-install-all<span class="w"> </span>--robot<span class="w"> </span>--slurm-args<span class="o">=</span><span class="s1">&#39;--time=05:00:00&#39;</span><span class="w"> </span>...
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please check the end of the out file for the <strong>COMPLETED: Installation ended successfully</strong> statement.</p>
+</div>
+<p>When finished you (and your collaborators) should be able to use use the software, by just loading the user/workspace related module and the module for the installed package. </p>
+<h2 id="adapting-easyconfigs">Adapting EasyConfigs</h2>
+<p>in the following description and example we update an existing old EasyConfig for newer versions. In our case we want to update the version of Relion, the toolchain, and dependent libraries it is build with. </p>
+<ul>
+<li>
+<p>setup EasyBuild environment
+<div class="highlight"><pre><span></span><code>module load EasyBuild
+module load Workspace   ### OR Workspace_Home
+</code></pre></div></p>
+</li>
+<li>
+<p>find a suitable easyconfig
+<div class="highlight"><pre><span></span><code>$ eb --search Relion 
+</code></pre></div>
+alternatively you may find easyconfigs online, e.g. <a href="https://github.com/easybuilders/easybuild-easyconfigs">https://github.com/easybuilders/easybuild-easyconfigs</a></p>
+</li>
+<li>
+<p>copy the easyconfig into a working directory (here <code>.</code>)
+<div class="highlight"><pre><span></span><code>$ cp $EBROOTEASYBUILD/easybuild/easyconfigs/r/RELION/RELION-3.0.4-foss-2017b.eb .
+</code></pre></div></p>
+</li>
+<li>
+<p>rename to the targeted versions (here newer relion, newer toolchain)
+<div class="highlight"><pre><span></span><code>$ mv RELION-3.0.4-foss-2017b.eb RELION-3.1.2-foss-2020b.eb
+</code></pre></div></p>
+</li>
+<li>
+<p>find the new versions of toolchain and libraries</p>
+<ul>
+<li>all installed version of a package can be listed using <code>module avail package</code>, e.g. <code>module avail foss</code></li>
+<li>available easyconfigs of non-installed packages can be listed using <code>eb --search package</code>. If there is a targeted version available, you can just define that dependency version in the above easyconfig and EasyBuild will find and use it. </li>
+</ul>
+</li>
+<li>
+<p>update the versions settings in the file</p>
+<ul>
+<li>package version, the toolchain version, and all related libraries</li>
+<li>Keep in mind that toolchain versions need to match (see <a href="#meta-module-and-toolchains">toolchains</a> above)
+<div class="highlight"><pre><span></span><code><span class="n">easyblock</span> <span class="o">=</span> <span class="s1">&#39;CMakeMake&#39;</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;RELION&#39;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;3.1.2&#39;</span>                            <span class="o">####</span> <span class="n">The</span> <span class="n">Relion</span> <span class="n">version</span> <span class="n">was</span> <span class="s1">&#39;3.0.4&#39;</span> <span class="n">before</span>
+
+<span class="n">homepage</span> <span class="o">=</span> <span class="s1">&#39;http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page&#39;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;RELION (for REgularised LIkelihood OptimisatioN, pronounce rely-on) is a stand-alone computer</span>
+<span class="s2"> program that employs an empirical Bayesian approach to refinement of (multiple) 3D reconstructions or 2D class</span>
+<span class="s2"> averages in electron cryo-microscopy (cryo-EM).&quot;&quot;&quot;</span>
+
+<span class="n">toolchain</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;foss&#39;</span><span class="p">,</span> <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;2020b&#39;</span><span class="p">}</span>   <span class="o">###</span> <span class="n">the</span> <span class="n">foss</span> <span class="n">toolchain</span> <span class="n">version</span> <span class="n">was</span> <span class="mi">2020</span><span class="n">b</span> <span class="n">before</span>
+<span class="n">toolchainopts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;openmp&#39;</span><span class="p">:</span> <span class="n">True</span><span class="p">}</span>
+
+<span class="n">source_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://github.com/3dem/relion/archive&#39;</span><span class="p">]</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;%(version)s.tar.gz&#39;</span><span class="p">]</span>
+<span class="n">checksums</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2580d66088923a644bc7d3b02efd154b775a3ec3d010426f382bb3be5db9c98b&#39;</span><span class="p">]</span>
+
+<span class="n">builddependencies</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;CMake&#39;</span><span class="p">,</span> <span class="s1">&#39;3.18.4&#39;</span><span class="p">)]</span>    <span class="o">###</span> <span class="n">was</span> <span class="mf">3.9.5</span>
+
+<span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;X11&#39;</span><span class="p">,</span> <span class="s1">&#39;20201008&#39;</span><span class="p">),</span>                     <span class="o">###</span> <span class="n">was</span> <span class="mi">20171023</span>
+    <span class="p">(</span><span class="s1">&#39;FLTK&#39;</span><span class="p">,</span> <span class="s1">&#39;1.3.5&#39;</span><span class="p">),</span>                       <span class="o">###</span> <span class="n">was</span> <span class="mf">1.3.4</span>
+    <span class="p">(</span><span class="s1">&#39;LibTIFF&#39;</span><span class="p">,</span> <span class="s1">&#39;4.1.0&#39;</span><span class="p">),</span>                    <span class="o">###</span> <span class="mf">4.0.9</span>
+    <span class="p">(</span><span class="s1">&#39;tbb&#39;</span><span class="p">,</span> <span class="s1">&#39;2020.3&#39;</span><span class="p">),</span>                       <span class="o">###</span> <span class="mi">2018</span><span class="n">_U5</span>
+<span class="p">]</span>
+
+<span class="n">configopts</span> <span class="o">=</span> <span class="s2">&quot;-DCMAKE_SHARED_LINKER_FLAGS=&#39;-lpthread&#39;  -DMPI_INCLUDE_PATH=$EBROOTOPENMPI/include &quot;</span>
+<span class="n">configopts</span> <span class="o">+=</span> <span class="s2">&quot;-DMPI_C_COMPILER=$EBROOTOPENMPI/bin/mpicc -DMPI_CXX_COMPILER=$EBROOTOPENMPI/bin/mpicxx &quot;</span>
+<span class="n">configopts</span> <span class="o">+=</span> <span class="s2">&quot;-DCUDA=OFF -DCudaTexture=OFF &quot;</span>
+<span class="n">configopts</span> <span class="o">+=</span> <span class="s2">&quot;-DALTCPU=ON -DFORCE_OWN_TBB=OFF &quot;</span>
+
+<span class="n">sanity_check_paths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bin/relion&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;dirs&#39;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="n">moduleclass</span> <span class="o">=</span> <span class="s1">&#39;bio&#39;</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>update the checksum (if package version is changed)
+The downloaded source packages are typically checked with SHA256 checksums. When we change to a different source code versio, the checksum changes too. And need to be updated.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>eb<span class="w"> </span>--force<span class="w"> </span>--inject-checksums<span class="w"> </span>sha256<span class="w"> </span>RELION-3.1.2-foss-2020b.eb
+</code></pre></div></p>
+</li>
+<li>
+<p>build the new package as described in <a href="#installation">Installation</a> above, e.g.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>eb-install-all<span class="w"> </span>--robot<span class="w"> </span>RELION-3.1.2-foss-2020b.eb
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="tips-and-tricks">Tips and tricks</h2>
+<p>Even if EasyBuild tries to simplify the installation process, not always EasyConfigs are Build without issues. There can be several types of issues. Starting form issues in finding exiting packages up to compilation issues. </p>
+<h3 id="more-information">More information</h3>
+<p>In the EasyBuild output <code>eb_out.*</code> files are issues summarized. Often more details are required. There are more detailed log files created in the temporary directory. 
+On the compute nodes they are deleted at the end of the job, but on the login node (epyc2) they are kept. The location is mentioned near the end of the output and typically is after <code>Results of the build can be found in the log file</code>.</p>
+<h3 id="lock-directories">Lock directories</h3>
+<p>EasyBuild has a procedure to prevent building the same package (same version, same software stack) using lock files. If <code>eb-install-*</code> crashes <strong>due to time limit</strong>, the lock files are not removed properly. Therewith the next time you start <code>eb-install-*</code> for that package a message like will be presented at the end of the output:</p>
+<p><div class="highlight"><pre><span></span><code>ERROR:<span class="w"> </span>Build<span class="w"> </span>of<span class="w"> </span>/path/to/easyconfig.eb<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>err:<span class="w"> </span><span class="s1">&#39;build failed (first 300 chars): Lock /path/to/.locks/packageVersion.lock already exists, aborting!&#39;</span><span class="o">)</span>
+</code></pre></div>
+In that moment the lock file should be already removed and the process can finally be started successfully again. </p>
+<h3 id="hidden-modules">Hidden Modules</h3>
+<p>Sometimes packages are not defined consistently. On UBELIX many packages are provided as hidden modules. This keeps the list nice and tidy. Nevertheless, if a package (or worse one of its dependency) is looking for an existing packages, but it is not mentioned to be hidden, it will not find and need to rebuild again. </p>
+<p>Hidden packages can be searched using <code>module --show-hidden avail &lt;PackageXYZ&gt;</code>. If existing as hidden and the target package or dependency does not define it as hidden, EasyBuild can be advised to treat it as hidden using the <code>--hide-deps</code> option. E.g. for binutils, gettext and Mesa, the command would look like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>eb-install-all<span class="w"> </span>--hide-deps<span class="o">=</span>binutils,gettext,Mesa<span class="w"> </span>&lt;PackageXYZ&gt;
+</code></pre></div>
+<h3 id="directly-on-the-compute-node">Directly on the compute node</h3>
+<p>The eb-install-all tool builds the packages directly on a compute node. The node type can be limited/specified by using the option <code>--archs=&lt;type&gt;</code> (see <code>eb-install-all --help</code>). </p>
+<p>If this fails, an investigation step may be running directly on the node, without more control of the setup, e.g. build directories. Therefore, EasyBuild can be started directly in a session on the compute node. First, an interactive session is established on the compute node. For example building Relion in the <code>$HOME</code> on an epyc2 node using a local copy of the EasyConfig file:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="w"> </span>epyc2<span class="w"> </span>bash
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Workspace_Home<span class="w"> </span>EasyBuild
+$<span class="w"> </span>eb<span class="w"> </span>--tmpdir<span class="o">=</span><span class="nv">$TMPDIR</span><span class="w"> </span>--robot<span class="w"> </span>--hide-deps<span class="o">=</span>binutils,gettext,Mesa<span class="w"> </span>RELION-3.1.3-fosscuda-2020b.eb
+</code></pre></div>
+<p>This may also be used when compiling <strong>on</strong> a specific GPU architecture. </p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    2024-03-13
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; University of Bern, IT Service Office
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hpc-unibe-ch" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  </body>
+</html>
