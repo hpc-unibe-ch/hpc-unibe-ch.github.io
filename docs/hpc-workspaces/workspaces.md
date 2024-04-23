@@ -1,4 +1,9 @@
-# Workspaces Introduction
+
+
+!!! Attention
+    <span style="color:red"><b>HPC Workspaces are discontinued and replaced by Research Storage shares. Registering new research groups is no longer possible. Existing HPC Workspaces can still be used.</b></span>
+
+    To apply for a Research Storage share please use the following [link](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/dienstleistungen___ressourcen/research_storage/index_ger.html)
 
 ## Description
 The HPC Workspaces provide a group shared environment, including storage with user-defined access, SLURM accounting, and tools. 
