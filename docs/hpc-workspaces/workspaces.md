@@ -1,4 +1,4 @@
-
+# Workspaces Introduction
 
 !!! Attention
     <span style="color:red"><b>HPC Workspaces are discontinued and replaced by Research Storage shares. Registering new research groups is no longer possible. Existing HPC Workspaces can still be used.</b></span>
