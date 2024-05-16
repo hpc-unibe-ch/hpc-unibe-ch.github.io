@@ -1,10 +1,6 @@
 # Login
 
-## Description
-
-UBELIX is available to everybody with a valid Campus Account (CA) of the University of Bern. The cluster is meant to be used for research related to the University of Bern. 
-**Before you can use this service we have to activate your CA for UBELIX**, see [Accounts and Activation](account.md). 
-This page contains information on how to configure your SSH environment for a simplified login procedure and information regarding the application of a CA for external researchers.
+This page contains information on how to access the UBELIX cluster via SSH (Secure Shell).
 
 ## Log in to UBELIX
 
@@ -12,8 +8,8 @@ This page contains information on how to configure your SSH environment for a si
     * you have your Campus Account activated for UBELIX (see above)
     * you have a working SSH client
         * Linux/Mac: e.g ssh command in a terminal 
-        * Microsoft Windows: **MobaXterm** or Windows Subsytem Linux. Alternatively, a flavor of Linux can be installed on Microsoft Windows using virtualization software (e.g VirtualBox). We strongly encourage you to familiarize with a Unix-based Terminal commands. 
-    
+        * Microsoft Windows: **MobaXterm** or Windows Subsytem Linux. 
+    * you have familiarized yourself with basic Unix-based terminal commands.
 
 !!! types caution "Requirement"
     Login to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
@@ -26,7 +22,7 @@ This page contains information on how to configure your SSH environment for a si
     - submit03.unibe.ch
     - submit04.unibe.ch
 
-    To access UBELIX, **you can choose any one**. If the load on a login node is high, you can log out and pick another one. When using a terminal multiplexer like tmux or screen, you can directly log in to the login node where your tmux/screen session is running.
+    To access UBELIX, **you can choose any one**. If the load on a login node is high, you can log out and pick another one.
 
 ### Mac/Linux/Unix
 
@@ -34,8 +30,6 @@ Run the following commands in a terminal. Open an SSH connection to :
 
 ```Bash
 $ ssh <user>@submit03.unibe.ch
-OR
-$ ssh -l <user> submit03.unibe.ch
 ```
 At the password prompt enter your Campus Account password:
 
@@ -50,26 +44,22 @@ Password:
 After log in successfully you will see the welcome message and the command prompt:
 
 ```Bash
-Last login: Mon Aug 15 10:22:09 2022 from 130.92.8.162
+Rocky 9.3 Blue Onyx
 
-CentOS 7.9.2009.x86_64
-
-FQDN:      submit03.ubelix.unibe.ch (10.1.129.23)
+FQDN:      submit03.ubelix.unibe.ch
 Processor: 128x AMD EPYC 7742 64-Core Processor
-Kernel:    3.10.0-1160.62.1.el7.x86_64
-Memory:    125.67 GiB
+Kernel:    5.14.0-362.13.1.el9_3.x86_64
+Memory:    128.223 GB
 
 [user@submit03 ~]$
 ```
 
 !!! type note "Customize your SSH session"
-    Useful feartures like SSH alias, X and port forwarding are described on our page [SSH customization](ssh-customization.md). 
+    Useful features like SSH alias, X and port forwarding are described on our page [SSH customization](ssh-customization.md). 
 
-### MobaXterm at Microsoft Windows
+### MobaXterm for Windows
 
-Here we present the configuration and first steps using MobaXterm. This tool combines Terminal sessions with file transfer (scp/ftp) and X Window Server. There are many more features which are not described here. For a productive work environment you should get familiar with the tools, configuration and features. 
-
-MobaXterm can be downloaded on the [MobaXterm Website](https://mobaxterm.mobatek.net/). There are two versions, portable and installation, you can choose one.
+MobaXterm combines Terminal sessions with file transfer (scp/ftp) and X Window Server. There are many more features which are not described here. MobaXterm can be downloaded on the [MobaXterm Website](https://mobaxterm.mobatek.net/). There are two versions, portable and installation. You can choose either one.
 
 After installing and starting MobaXterm, a SSH session need to be configured:
 
