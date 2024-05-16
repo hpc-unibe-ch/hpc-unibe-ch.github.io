@@ -1,22 +1,17 @@
-# Workspace management
+# Legacy Workspace management
 
-## Description
-This article targets Workspace managers. It covers applications, Workspace properties, up to modifications and suggested usage of Workspaces.
+!!! Attention
+    <span style="color:red"><b>Legacy Workspaces (/storage/workspaces/) are discontinued and replaced by Research Storage shares (/storage/research). Existing Legacy Workspaces can still be used.</b></span>
 
-## Workspace Intention
-Workspaces are group shared resources. This group could be for example:
+    To apply for a Research Storage share please use the following [link](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/dienstleistungen___ressourcen/research_storage/index_ger.html)
 
-- whole research group working together on shared data and software packages
-- student(s) an their supervisor
-- collaborating researchers from different research groups/institutes
-- sub-group within the research group, which requires data separation
+This article targets Legacy Workspace managers. It covers legacy workspace properties and modifications.
 
 ## Workspace Properties
 ### Ownership
-HPC Workspaces manage compute and storage resources. Especially the freely available resources are meant to be shared between participating research groups. Therefore, the Workspaces belong to a beforehand registered research group.
 
-An HPC Workspace can be only requested by a **research group leader**, who responsible and accountable, since costly extensions can be added to the Workspace. 
-Additionally, a **deputy** can be nominated, who also can manage the Workspace (see [Workspace Modification](#modification)). Owners and deputies are called **Workspace managers**. 
+An HPC Workspace can be only requested by a **research group leader**, who is responsible and accountable, since costly extensions can be added to the Workspace. 
+Additionally, a **deputy** can be nominated, who also can manage the Workspace. Owners and deputies are called **Workspace managers**. 
 
 !!! type note "Deputies"
     Deputies have the same privileges than the owner, up to purchasing costly resources without additional notification. 
@@ -33,67 +28,13 @@ Only members of the primary group can create and modify data, belonging to the W
 
 Members can be anyone with an UniBE Campus Account, but need to be registered for UBELIX usage, see [Account Activation](../getting-Started/account.md#account-activation).
 
-### Free Of Charge Quota
-Every **research group** has **10TB** free of charge quota. This can be used within one or more Workspaces. The amount used per Workspace is set at application time and can be changed later within the limitation. 
-
-### Additional Storage
-
+### Quota
+The quota per workspace is set at application time and additional storage can be added later.
 See [costs page](../general/costs_investments.md#workspaces) for details.
 
 ### Availability
-Storage is a limited and expensive resource. Abandoned, unused workspaces should be prevented by design. Therefore, an HPC Workspace has a default live time of one year. A notification will be send before the Workspace expiry. The Workspace expiry date can be changed at any time to any date within the next 365 days by any Workspace manager. 
-[ServicePortal -> Shop -> HPC -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76) -> Workspace Duratio
-
-## Application
-### Prerequisite
-Since we are sharing the HPC resources on basis of research groups, a registration of these is required. Only official University of Bern research groups can register. These need to be officially represented within the unibe.ch sites. Since research group definition are vague. In unclear situation please specify the responsible **professor**.
-
-Required information:
-
-- research group **name**
-- research group **responsible**, in best case responsible **professor** 
-    - A long term responsible person, e.g. for data in case actual research group lead leaves university. Research group or topic need to be at least stated on the UniBE webpage.
-- **cost center** for location in organizational tree (a UniBE cost center)
-    - for determining the proper cost center, please ask YOUR UniBE secretary
-- official unibe.ch research group **URL**, where the research group name and research group head is mentioned
-- research **group ID** which is merged with the institute ID. This code is used in the UBELIX file system tree
-
-Registration Form: [Service Portal -> Register Research Group](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=3dd760551b0f145023a5dd318b4bcbe5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
-
-!!! note ""
-    The request need to be verified manually. This may take some time. 
-
-### Application Form
-An HPC Workspace can (only) be requested by a registered research group lead/manager using the ServicePortal application form:
-
-[Service Portal -> Create HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=259743301b8bd05023a5dd318b4bcba5&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76)
-
-The following information are required:
-
-- Workspace ID (max. 20 characters), please choose a unique name
-- Workspace Name
-- Workspace Description
-- registered research group (see prerequisites)
-- Deputy (permissions for managing the Workspace) (optional)
-- Free Quota (see above)
-- additional Storage (optional): an upper limit of quota, where the actual quota will be charged. When selected this requires a valid cost center for accounting. 
-- Cost Center (necessary when requesting Additional Storage)
-- primary group members (all accounts need UBELIX activation beforehand)
-- secondary group members (optional) (all accounts need UBELIX activation beforehand)
-member lists can be selected one by one or as a comma separated list of Campus accounts (see [Import Bulk User](#import-bulk-user))
-
-!!! attention ""
-    All members need to have their account activated for UBELIX, otherwise the process will fail and need manual intervention. See [Account Activation](../getting-Started/account.md#account-activation)
-
-    If the requester only want to hold the managing position without UBELIX, the requester can remove his/her account from the primary member list. This can be changed any time.
-
-!!! type attention "Workspace ID"
-    The Workspace ID need to be a **unique** string. Please avoid duplications with user IDs, Research Group IDs and other Workspace names. 
-
-[//]: # (TODO remove note after changing to IAM-Tool)
-
-!!! type note "processing time"
-    The Workspace creation for now relies on a temporary automatic process which is running only once a day at 20:00. In future the process will be much faster. 
+Abandoned, unused workspaces should be prevented by design. Therefore, an HPC Workspace has a default live time of one year. A notification will be send before the Workspace expiry. The Workspace expiry date can be changed at any time to any date within the next 365 days by any Workspace manager. 
+[ServicePortal -> Shop -> HPC -> Edit HPC Workspace](https://serviceportal.unibe.ch/sp?id=sc_cat_item&sys_id=da846d3c1b9f9810f32fdc6a9b4bcbbd&sysparm_category=6c6ba9631b88ac5023a5dd318b4bcb76) -> Workspace Duration
 
 ## Workspace modifications
 

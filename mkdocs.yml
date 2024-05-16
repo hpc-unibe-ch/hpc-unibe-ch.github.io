@@ -11,7 +11,6 @@ nav:
       - SSH customization: getting-Started/ssh-customization.md
   - Workspaces:
       - Overview: hpc-workspaces/workspaces.md
-      - Software environment: hpc-workspaces/environment.md
       - Workspace management: hpc-workspaces/management.md
   - SLURM / Job handling:
       - Partitions / QoS: slurm/partitions.md
