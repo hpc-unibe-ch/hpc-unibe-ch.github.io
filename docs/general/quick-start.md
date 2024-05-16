@@ -14,13 +14,11 @@ Before you can start working on the HPCs, staff and students of the University o
 
 ## HPC Workspace
 
-Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting.
-Research group leaders need to apply for an workspace, see [Workspace Management](../hpc-workspaces/management.md). 
-For an introduction to HPC Workspaces see [Workspace Overview](../hpc-workspaces/workspaces.md)
+Workspaces provide are a collaborative environment, including group based access to permanent and temporary storage, as well as group based compute resource accounting. Research group leaders need to apply for an workspace.
 
 ## Login
 
-To connect to the cluster, you must log in to a **login node** from **inside the university network** (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a **VPN** connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) simply use a secure shell (SSH) to log in to a login node. There are four login nodes (submit[01-04].unibe.ch), you can pick any one:
+To connect to the cluster, you must log in to a **login node** from **inside the university network** (e.g. from a workstation on the campus). If you want to connect from a remote location (e.g. from your computer at home) you must first establish a **VPN** connection to get access to the university network. To connect from a UNIX-like system (Linux, Mac OS X, MobaXterm on Windows) use a secure shell (SSH) to log in to a login node. There are four login nodes (submit[01-04].unibe.ch), you can pick any one:
 
 ```bash
 # here we choose submit03.unibe.ch as our login node
@@ -34,7 +32,7 @@ This is your home directory and serves as the repository for your personal files
 You can reference your home directory by `~` or `$HOME`. 
 
 Your home directory is located on a shared file system. Therefore, all files and directories are always available on all cluster nodes and must hence not be copied between those nodes. HOME directories have a daily snapshot and backup procedures.
-Disk space is managed by [quotas](../file-system/quota.md). By default, each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
+Disk space is managed by [quotas](../file-system/quota.md). Each user has 1TB of disk space available. Keep your home directory clean by regularly deleting old data or by moving data to a private storage.
 
 You can always print the current working directory using the `pwd` (present working directory) command:
 ```bash
@@ -66,38 +64,43 @@ On our HPCs you can make use of already pre-installed software or you can compil
 module avail
 ```
 
-A package name can be added to list all packages containing that string. 
-
-The `module spider` command encountering also results from the VitalIT software stack. 
-
 !!! type info "Workspace software stacks"
     `module spider` or `module avail` will only find packages in a Workspace software stack if the `Workspace` module for that workspace is loaded
 
-Furthermore, we are suggesting to work with so called toolchains. These are collections of modules build on top of each other. 
-E.g. setting the environment for compiling an scientific application with math. libraries, OpenMPI and GCC, load:
+Furthermore, we suggest to work with so called toolchains. These are collections of modules build on top of each other. 
+
+To set the environment for a scientific application with Python, load:
+
+```bash
+$ module load Anaconda3
+$ eval "$(conda shell.bash hook)"
+```
+
+To set the environment for compiling a scientific application with math libraries, OpenMPI and GCC, load:
 
 ```bash
 $ module load foss
-$ module list 
-module list
+$ module list
 
 Currently Loaded Modules:
-  1) GCCcore/9.3.0                      4) GCC/9.3.0                          7) libxml2/.2.9.10-GCCcore-9.3.0    (H)  10) UCX/1.8.0-GCCcore-9.3.0   13) gompi/2020a                  16) foss/2020a
-  2) zlib/.1.2.11-GCCcore-9.3.0   (H)   5) numactl/2.0.13-GCCcore-9.3.0       8) libpciaccess/.0.16-GCCcore-9.3.0 (H)  11) OpenMPI/4.0.3-GCC-9.3.0   14) FFTW/3.3.8-gompi-2020a
-  3) binutils/.2.34-GCCcore-9.3.0 (H)   6) XZ/.5.2.5-GCCcore-9.3.0      (H)   9) hwloc/2.2.0-GCCcore-9.3.0             12) OpenBLAS/0.3.9-GCC-9.3.0  15) ScaLAPACK/2.1.0-gompi-2020a
+  1) GCCcore/12.3.0                          9) OpenSSL/1.1                      17) OpenBLAS/0.3.23-GCC-12.3.0
+  2) binutils/.2.40-GCCcore-12.3.0     (H)  10) UCX/1.14.1-GCCcore-12.3.0        18) FlexiBLAS/3.3.1-GCC-12.3.0
+  3) GCC/12.3.0                             11) libfabric/1.18.0-GCCcore-12.3.0  19) FFTW/3.3.10-GCC-12.3.0
+  4) numactl/2.0.16-GCCcore-12.3.0          12) zlib/1.2.13-GCCcore-12.3.0       20) gompi/2023a
+  5) XZ/.5.4.2-GCCcore-12.3.0          (H)  13) libevent/2.1.12-GCCcore-12.3.0   21) FFTW.MPI/3.3.10-gompi-2023a
+  6) libxml2/.2.11.4-GCCcore-12.3.0    (H)  14) PMIx/4.2.4-GCCcore-12.3.0        22) ScaLAPACK/2.2.0-gompi-2023a-fb
+  7) libpciaccess/.0.17-GCCcore-12.3.0 (H)  15) UCC/1.2.0-GCCcore-12.3.0         23) foss/2023a
+  8) hwloc/2.9.1-GCCcore-12.3.0             16) OpenMPI/4.1.5-GCC-12.3.0
 
   Where:
    H:  Hidden Module
-```
 
-You can also specify version numbers there. 
+```
 
 !!! attention "Scope"
     The loaded version of a software is only active in your current session. If you open a new shell you are again using the default version of the software. Therefore, it is crucial to load the required modules from within your job script.
 
     But also keep in mind that the current environment will get forwarded into a job submitted from it. This may lead to conflicting versions of loaded modules and modules loaded in the script. 
-
-With the module environment you can also easily install, maintain and provide software packages in your workspaces and share with your collaborators. 
 
 The [Software](../software/hpc-modules.md) section is dedicated to this topic. More information can be found there.
 
@@ -106,19 +109,14 @@ The [Software](../software/hpc-modules.md) section is dedicated to this topic. M
 
 ## Hello World
 
-Doing useful computations consists of running commands that work on data and generate a result. These computations are resource-intensive. That is what
-the compute nodes are there for. These over 300 servers do the heavy lifting as soon as resources are free for you. Currently you are on a submit server
-also known as login node. This server is for preparing the computations, i.e. downloading data, writing a job script, prepare some data etc. But
-**you are not allowed to run computations on login nodes** as those servers are quite a weak machines that you are sharing with others. So, you have to bring the
-computations to the compute nodes - by generating a job script and sending it to the cluster.
+Currently you are on a submit server also known as login node. This server is for preparing the computations, i.e. downloading data, writing a job script, prepare some data etc. But **you are not allowed to run computations on login nodes**! So, you have to bring the computations to the compute nodes - by generating a job script and sending it to the cluster.
 
 !!! hint "Working interactively on a compute node"
     When developing stuff it's often useful to have short iterations of try-error. Therefore it's also possible to work
-    interactively on a compute node for a certain amount of time without having to send jobs to the cluster and wait until
+    interactively on a compute node without having to send jobs to the cluster and wait until
     they finish just to see it didn't work. See [Interactive Jobs](../slurm/interactive-jobs.md) for more information about this topic.
 
-
-It's now time for your first job script. To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
+To do some work on the cluster, you require certain resources (e.g. CPUs and memory) and a description of the computations to be done. A job consists of instructions to the scheduler in the form of option flags, and statements that describe the actual tasks. Let's start with the instructions to the scheduler:
 
 ```Bash
 #!/bin/bash
@@ -138,12 +136,10 @@ Now, let's write a simple "hello, world"-task:
 ...
 # Put your code below this line
 module load Workspace_Home
-mkdir -p $SCRATCH/my_first_job
-cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt
 ```
 
-After loading the Workspace module, we create a new directory 'my_first_job' within our "personal" SCRATCH directory. The variable **`$SCRATCH`** expands to `/storage/scratch/users/<user>`. Then, we change directory to the newly created directory. In the third line we print the line `Hello, UBELIX from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command hostname and put its output here. Save the content to a file named `first.sh`.
+After loading the Workspace module, we print the line `Hello, UBELIX from node <hostname_of_the_executing_node>` and redirect the output to a file named `hello.txt`. The expression `$(hostname)` means, run the command `hostname` and put its output here. Save the content to a file named `first.sh`.
 
 The complete job script looks like this:
 
@@ -155,8 +151,6 @@ The complete job script looks like this:
 
 # Put your code below this line
 module load Workspace_Home
-mkdir -p $SCRATCH/my_first_job
-cd $SCRATCH/my_first_job
 echo "Hello, UBELIX from node $(hostname)" > hello.txt
 ```
 
@@ -200,12 +194,12 @@ squeue --job=32490640
 ```
 
 Here you can see that the job is in state PENDING (PD) and a reason why the job
-is pending. In this example, the job has to wait for at least one other job with higher priority. See here for a list of other reasons why a job might be pending.
+is pending. In this example, the job has to wait for at least one other job with higher priority. 
 
 You can always list all your active (pending or running) jobs with squeue:
 
 ```bash
-squeue --user=testuser
+squeue --me
 ```
 ```no-highlight
       JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -220,10 +214,3 @@ squeue --user=testuser
 ```
 
 Further information on on job monitoring you find on page [Monitoring Jobs](../slurm/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](../slurm/investigating-job-failure.md) and [Check-pointing](../slurm/checkpointing.md). 
-
-
-
-## Training Courses
-
-[Data Science Lap (DSL))](https://www.dsl.unibe.ch) regularly conducts introductory and advanced courses on Linux, UBELIX and other topics. Details outlined on [their pages](https://www.dsl.unibe.ch)
-
