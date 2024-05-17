@@ -1,24 +1,19 @@
 # HPC software environment
 
 [//]: # (TODO HPC modules, Env Variables, Easybuild, ...)
-## Description
 
-With the operation system, a list of basic tools (mainly command line tools) are provided, including editors, file analyzing and manipulation tools, packing and transfer tools etc. These commands are accessible all the time. Other software packages (libraries and applications) are available through software modules. Using modules, a lot of different packages even in different versions can be provided, without unwanted influences.
+With the operation system, a list of basic tools (mainly command line tools) are provided, including editors, file analyzing and manipulation tools, packing and transfer tools etc. These commands are accessible all the time. Other software packages (libraries and applications) are available through software modules. Using modules, a lot of different packages even in different versions can be provided.
 
 ## Basic concept
 
-Many Linux settings are in environment variables. These include search paths for applications (`$PATH`) and libraries (`$LD_LIBRARY_PATH`). Adding or removing a directory to these lists, provides access or remove access to additional software. 
+Many Linux settings are in environment variables. These include search paths for applications (`$PATH`) and libraries (`$LD_LIBRARY_PATH`). Adding or removing a directory to these lists, provides access or remove access to additional software.
 
-Our software modules are an user friendly way to search and manage software packages without dealing with complicated directory names.
-
-In general every software package has its related module. When loading the module the software package **and** its dependencies get accessible. 
-
-But let's do it step by step.
+Our software modules are an user friendly way to search and manage software packages without dealing with complicated directory names. When loading a module the software package **and** its dependencies become accessible.
 
 ## Find available Modules
 You can search for an packages or module containing a specific string using `module spider`, e.g. to find all versions of GCC:
 ```Bash
-module spider GCC
+module spider CUDA
 ```
 
 You can list all currently available packages using:

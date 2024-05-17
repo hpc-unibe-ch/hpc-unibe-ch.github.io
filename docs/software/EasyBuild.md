@@ -20,11 +20,6 @@ module load Workspace  ### if you want to install into your HOME use module load
 module load EasyBuild
 ```
 
-Therewith, our EasyBuild tools and EasyBuild itself are available. 
-
-!!! Note "Note"
-    Specify the WorkspaceID if necessary when loading the Workspace module. See module instructions
-
 ## Package Specification
 EasyBuild has a large repository of available packages in different versions. 
 You can use these specifications as is or copy/download and modify the EasyConfigs (see below).
