@@ -1,12 +1,6 @@
 # Job Dependencies
 
-## Description
-
-This pages describes the SLURM depencency feature.
-
-## Use cases
-
-This feature is used when you need to chain jobs, due to dependencies. For example: 
+This pages describes the SLURM depencency feature. This feature is used when you need to chain jobs, due to dependencies. For example: 
 
 - a preprocessing job with 1 core should be followed by a simulation with 40 cores. Results should be post processed with a single core job. 
 - a post processing job should be submitted after all tasks of a job array are finished

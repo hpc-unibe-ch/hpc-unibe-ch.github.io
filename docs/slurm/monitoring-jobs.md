@@ -1,21 +1,16 @@
 # Monitoring Jobs
 
-## Description
-
 This page provides information about monitoring user jobs.
 
-Different Slurm commands provide information about jobs/job steps on different levels. The command _squeue_ provides high-level information about jobs in the Slurm scheduling queue (state information, allocated resources, runtime, ...). The command _sstat_ provides detailed usage information about running jobs, and sacct provides accounting information about active and completed (past) jobs. The command _scontrol_ provides even more detailed information about jobs and job steps.
+Different Slurm commands provide information about jobs/job steps on different levels. The command `squeue` provides high-level information about jobs in the Slurm scheduling queue (state information, allocated resources, runtime, ...). The command `sstat` provides detailed usage information about running jobs, and `sacct` provides accounting information about active and completed (past) jobs. The command `scontrol` provides even more detailed information about jobs and job steps.
 
-!!! types note ""
+!!! tip "Configuration"
     The output format of most commands is highly configurable to your needs. Look for the _--format_ or _--Format_ options.
-
-!!! types note ""
-    Most command options support a short form as well as a long form (e.g. -u <username>, and --user=<username>). Because few options only support the long form, we will consistently use the long form throughout this documentation.
 
 ## squeue
 
-!!! types note ""
-    Use the _squeue_ command to get a high-level overview of all active (running and pending) jobs in the cluster.
+!!! tip note "Monitoring your jobs"
+    Use the `squeue --me` command to get a high-level overview of all your active (running and pending) jobs in the cluster.
 
 
 Syntax
@@ -56,12 +51,11 @@ NODELIST(REASON)   For pending jobs: Reason why pending. For failed jobs: Reason
                    common reason codes
 ```
 
-!!! types note ""
-    You can easily tailor the output format of squeue to your own needs. Use the _--format (-o)_ or _--Format (-O)_ options to request a comma separated list of job information to be displayed. See the man page for more information: _man squeue_
+See the man page for more information: `man squeue`
 
 ### Job States
 
-During its lifetime, a job passes through several states. The most common states are PENDING, RUNNING, SUSPENDED, COMPLETING, and COMPLETED.
+During its lifetime, a job passes through several states:
 
 ```Bash
 PD                 Pending. Job is waiting for resource allocation
@@ -75,8 +69,8 @@ F                  Failed. Job has terminated with non-zero exit code or other f
 
 ### Why is my job still pending?
 
-!!! types note ""
-    The REASON column of the _squeue_ output gives you a hint why your job is not running.
+!!! tip "Finding a REASON"
+    The REASON column of the `squeue --me` output gives you a hint why your job is not running.
 
 **(Resources)**
 
@@ -108,13 +102,14 @@ The job is not allowed to start because you have reached the maximum of allowed 
 
 **(ReqNodeNotAvail, UnavailableNodes:...)**
 
-Some node required by the job is currently not available. The node may currently be in use, reserved for another job, in an advanced reservation, DOWN, DRAINED, or not responding. **Most probably there is an active reservation for all nodes due to an upcoming maintenance downtime and your job is not able to finish before the start of the downtime. Another reason why you should specify the duration of a job (--time) as accurately as possible. Your job will start after the downtime has finished.** You can list all active reservations using _scontrol show reservation_.
+Some node required by the job is currently not available. The node may currently be in use, reserved for another job, in an advanced reservation, DOWN, DRAINED, or not responding. **Most probably there is an active reservation for all nodes due to an upcoming maintenance downtime and your job is not able to finish before the start of the downtime. Another reason why you should specify the duration of a job (--time) as accurately as possible. Your job will start after the downtime has finished.** You can list all active reservations using `scontrol show reservation`.
 
 ### Why can't I submit further jobs?
 
-!!! types note ""
-    _sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)_  
-    ... means that you have reached the maximum of allowed jobs to be submitted to a specific partition.
+
+    _sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
+
+... indicates that you have reached the maximum of allowed jobs to be submitted to a specific partition.
 
 ### Examples
 
@@ -132,9 +127,7 @@ squeue --user=foo --partition=bar --states=R
 
 ## scontrol
 
-!!! types note ""
-    Use the _scontrol_ command to show more detailed information about a job
-
+Use the `scontrol` command to show more detailed information about a job
 
 Syntax
 
@@ -158,8 +151,7 @@ scontrol -dd show jobid 500
 
 ## sacct
 
-!!! types note ""
-    Use the _sacct_ command to query information about past jobs
+Use the `sacct` command to query information about past jobs
 
 Syntax
 

@@ -1,8 +1,6 @@
 # Investigating a Job Failure
 
-## Description
-
-Not always jobs execute successfully. There are a list of reasons jobs or applications stop or crash. 
+Not all jobs execute successfully. There are a list of reasons jobs or applications stop or crash. 
 The most common causes are:
 
 - exceeding resource limits and 
@@ -10,7 +8,7 @@ The most common causes are:
 
 Here, discussed are ways to gather information, aspects of avoiding misleading information and aspects of common issues. 
 
-!!! types caution ""
+!!! tip
     It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the `--error`/`--output` option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
 
 
@@ -22,20 +20,17 @@ For better scheduling, the job requirements should be estimated and the limits s
 Furthermore, the less resource overhead is specified the less resources are wasted, e.g. for memory. 
 
 If a job exceeds the runtime or memory limit, it will get killed by SLURM. 
-
-## Error Information
-
 In both cases, the error file provides appropriate information:
 
-Time limit:
+### Time limit
 
 ```Bash
 (...)
 slurmstepd: error: *** JOB 41239 ON fnode01 CANCELLED AT 2016-11-30T11:22:57 DUE TO TIME LIMIT ***
 (...)
-``````
+```
 
-Memory limit:
+### Memory limit
 
 ```Bash
 (...)
@@ -47,9 +42,14 @@ slurmstepd: error: *** JOB 41176 ON fnode01 CANCELLED AT 2016-11-30T10:21:37 ***
 
 ## Software Errors
 
-The exit code of a job is captured by Slurm and saved as part of the job record. For sbatch jobs the exit code of the batch script is captured. For srun, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of FAILED. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).
+The exit code of a job is captured by SLURM and saved as part of the job record. For `sbatch` jobs the exit code of the batch script is captured. For `srun`, the exit code will be the return value of the executed command. Any non-zero exit code is considered a job failure, and results in job state of `FAILED`. When a signal was responsible for a job/step termination, the signal number will also be captured, and displayed after the exit code (separated by a colon).
 
-Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success. Consider the following simplified example:
+!!! tip
+    Always check application-specifc output files for error messages.
+
+### Job state COMPLETED but should be FAILED
+
+Depending on the execution order of the commands in the batch script, it is possible that a specific command fails but the batch script will return zero indicating success. Consider the following simplified R example:
 
 
 **fail.R**
@@ -126,7 +126,5 @@ $ sacct -j 41925
 41925.batch       batch                    id          1     FAILED     91:0
 ```
 
-!!! types note ""
-    Always check application-specifc output files for error messages.
 
 

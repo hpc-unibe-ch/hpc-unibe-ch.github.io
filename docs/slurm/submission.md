@@ -1,57 +1,42 @@
 # Job Submission
 
-## Description
-This section describes the interaction with the resource manager. The subchapters contain information about submitting jobs to the cluster, monitoring active jobs and retrieving useful information about resource usage.
+This section describes the interaction with the resource manager. In particular the job submission process with SLURM is described.
 
-A cluster is a set of connected computers that work together to solve computational tasks (user jobs) and presents itself to the user as a single system. For the resources of a cluster (e.g. CPUs, GPUs, memory) to be used efficiently, a resource manager (also called workload manager or batch-queuing system) is vital. While there are many different resource managers available, the resource manager of choice on UBELIX is [SLURM](https://slurm.schedmd.com). After submitting a job to the cluster, SLURM will try to fulfill the job's resource request by allocating resources to the job. If the requested resources are already available, the job can start immediately. Otherwise, the start of the job is delayed (pending) until enough resources are available. SLURM allows you to monitor active (pending, running) jobs and to retrieve statistics about finished jobs e.g. (peak CPU usage). The subchapters describe individual aspects of SLURM.
+A cluster is a set of connected computers that work together to solve computational tasks (user jobs) and presents itself to the user as a single system. For the resources of a cluster (e.g. CPUs, GPUs, memory) to be used efficiently, a resource manager (also called workload manager or batch-queuing system) is vital. The resource manager of choice on UBELIX is [SLURM](https://slurm.schedmd.com). After submitting a job to the cluster, SLURM will schedule the job's resource request by allocating resources to the job. If the requested resources are already available, the job can start immediately. Otherwise, the start of the job is delayed (pending) until enough resources are available. SLURM allows you to monitor active (pending, running) jobs and to retrieve statistics about finished jobs e.g. (peak CPU usage).
 
-This page describes the job submission process with Slurm.
 
-!!! types caution "keep output"
-    It is important to collect error/output messages either by writing such information to the default location or by specifying specific locations using the `--error`/`-–output` option. Do not redirect the error/output stream to /dev/null unless you know what you are doing. Error and output messages are the starting point for investigating a job failure.
+!!! example "Sneak Peek: A simple Python example"
 
-!!! types caution "job series"
-    Submit series of jobs (collection of similar jobs) as *array jobs* instead of one by one. This is crucial for backfilling performance and hence job throughput. instead of submitting the same job repeatedly. See [Array jobs](array-jobs.md)
+    Create sbmission script, `python_job.sh` allocating 8CPUs, 8GB memory for 1hour:
+    ```Bash
+    #!/bin/bash
+    #SBATCH --job-name="Simple Python example"
+    #SBATCH --time=01:00:00
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --cpus-per-task=8
 
-### Simple Example
+    # Your code below this line
+    module load Anaconda3
+    eval "$(conda shell.bash hook)"
+    python3 script.py
+    ```
 
-Batch sbmission script, `jobs.sh`:
-```Bash
-#!/bin/bash
-#SBATCH --job-name="First example"
-#SBATCH --time=00:10:00
-#SBATCH --mem-per-cpu=1G
+    Submit the job script:
 
-# Your code below this line
-module load Python
-srun python3 script.py
-```
+    ```Batch
+    sbatch python_job.sh
+    Submitted batch job 30215045
+    ```
 
-Submit the job script:
+    See below for more detailed examples and background information.
 
-```Batch
-sbatch job.sh
-Submitted batch job 30215045
-```
-
-!!! types note ""
-    See below for more examples
 
 
 ## Resource Allocation
 
 Every job submission starts with a resources allocation (nodes, cores, memory). An allocation is valid for a specific amount of time, and can be created using the `salloc`, `sbatch` or `srun` commands. Whereas `salloc` and `sbatch` only create resource allocations, `srun` launches parallel tasks within such a resource allocation, or implicitly creates an allocation if not started within one. **The usual procedure is to combine resource requests and task execution (job steps) in a single batch script (job script) and then submit the script using the `sbatch` command.**
 
-!!! types note ""
-    Most command options support a short form as well as a long form (e.g. `-u <username>`, and `--user=<username>`). Because few options only support the long form, we will consistently use the long form throughout this documentation.
-
-!!! types note ""
-    Some options have default values if not specified: The `--time` option has partition-specific default values (see `scontrol show partition <partname>`). The `--mem-per-cpu` option has a global default value of 2048MB.
-
-!!! types note ""
-    The default partition is *epyc2*. To select another partition one must use the `--partition` option, e.g. `--partition=gpu`.
-
-###sbatch
+### sbatch
 The `sbatch` command is used to submit a job script for later execution. It is the most common way to submit a job to the cluster due to its reusability. Slurm options are usually embedded in a job script prefixed by `#SBATCH` directives. Slurm options specified as command line options overwrite corresponding options embedded in the job script
 
 Syntax
@@ -62,15 +47,16 @@ sbatch [options] script [args...]
 
 #### Job Script
 
-Usually a job script consists of two parts. The first part is optional but highly recommended:
+Usually a job script consists of two parts.
 
 * Slurm-specific options used by the scheduler to manage the resources (e.g. memory) and configure the job environment
-* Job-specific shell commands
+* Job-specific commands
 
 The job script acts as a wrapper for your actual job. Command-line options can still be used to overwrite embedded options.
+Although you can specify all Slurm options on the command-line, we encourage you, for clarity and reusability, to embed Slurm options in the job script
 
-!!! types note ""
-    Although you can specify all Slurm options on the command-line, we encourage you, for clarity and reusability, to embed Slurm options in the job script
+!!! tip "Default values"
+    Some options have default values if not specified,e.g. the `--mem-per-cpu` option has a global default value of 2048MB. Pleasesee the table below for other default values.
 
 #### Options
 
@@ -124,8 +110,8 @@ salloc: Relinquishing job allocation 247
 The `srun` command creates job steps. One or multiple `srun` invocations are usually used from within an existing resource allocation. Thereby, a job step can utilize all resources allocated to the job, or utilize only a subset of the resource allocation. Multiple job steps can run sequentially in the order defined in the batch script or run in parallel, but can together never utilize more resources than provided by the allocation.
 
 
-!!! types danger ""
-    Do not submit a job script using `srun`. Embedded Slurm options (`#SBATCH`) are not parsed by `srun`.
+!!! danger "Warning"
+    Do not submit a job script using `srun` directly. Always create an allocation with `salloc` or embed it in a script submitted with `sbatch`.
 
 
 Syntax
@@ -180,7 +166,8 @@ Per default jobs are submitted to the `epyc2` partition and the default QoS `job
 The partition option can be used to request different hardware, e.b. `gpu` partition. And the QoS can be used to run in a specific queue, e.g. `job_gpu_debug`:
 
 ```Bash
-#SBATCH --partition=gpu --qos=job_gpu_debug
+#SBATCH --partition=gpu
+#SBATCH --qos=job_gpu_debug
 ```
 
 See [Partitions / QoS](partitions.md) for a list of available partitions and QoS and its specifications.
@@ -188,8 +175,8 @@ See [Partitions / QoS](partitions.md) for a list of available partitions and QoS
 
 ## Accounts
 
-By default a user has a "private" account. When belonging to a Workspace your private account gets deactivated and you can submit with the Workspace account. We strongly suggest to use the Workspace module (`module load Workspace`), which automatically sets the Workspace account for you. 
-If really necessary, the can be selected by the `--account` option. 
+By default a user has a personal account. When belonging to a Workspace you can also submit with the Workspace account. 
+If necessary, the account to use can be selected by the `--account` option. For now this is usually not required.
 
 If a wrong account/partition combination is requested, you will experience the following error message:
 
@@ -197,9 +184,7 @@ If a wrong account/partition combination is requested, you will experience the f
 sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
 ```
 
-If you did not specified `--account`, and belong to a Workspace, please load the Workspace module fist.
-
-##Parallel Jobs
+## Parallel Jobs
 
 A parallel job requires multiple compute cores. These could be within one node or across the machine in multiple nodes. We distinguish following types:
 
@@ -222,14 +207,14 @@ A parallel job requires multiple compute cores. These could be within one node o
 #SBATCH --cpus-per-task=4
 ```
 
-!!! type danger ""
+!!! warning "Warning"
     The requested node,task, and CPU resources must match! For example, you cannot request one node (`--nodes=1`) and more tasks (`--ntasks-per-node`) than CPU cores are available on a single node in the partition. In such a case you will experience an error message: 
     ```Bash
     sbatch: error: Batch job submission failed: Requested node configuration is not available.
     ```
 
-!!! note "parallel launcher"
-    Parallel applications, esp. MPI, need a launcher to setup the environment. We strongly suggest to use `srun` instead of mpirun. 
+!!! tip "mpiexec vs mpirun vs srun"
+    Parallel MPI applications need a launcher to setup the environment. We strongly suggest to use `srun` instead of `mpirun` or `mpiexec`.
 
 ## Environment Variables
 
@@ -260,10 +245,10 @@ Running a serial job with email notification in case of error (1 task is default
 
 ```Bash
 #!/bin/bash
-#SBATCH --mail-user=foo.bar@baz.unibe.ch
+#SBATCH --mail-user=foo.bar@unibe.ch
 #SBATCH --mail-type=end,fail
 #SBATCH --job-name="Serial Job"
-#SBATCH --time=04:00:00
+#SBATCH --time=00:10:00
 
 # Your code below this line
 echo "I'm on host: $HOSTNAME"
@@ -277,12 +262,12 @@ SMP parallelization is based upon dynamically created threads (fork and join) th
 
 ```Bash
 #!/bin/bash
-#SBATCH --mail-user=foo.bar@baz.unibe.ch
+#SBATCH --mail-user=foo.bar@unibe.ch
 #SBATCH --mail-type=end,fail
 #SBATCH --job-name="SMP Job"
 #SBATCH --mem-per-cpu=2G
 #SBATCH --cpus-per-task=16
-#SBATCH --time=04:00:00
+#SBATCH --time=01:00:00
 
 # Your code below this line
 srun ./my_binary
@@ -295,7 +280,7 @@ Use the option `--ntasks` to request a certain number of tasks (processes) that 
 
 ```Bash
 #!/bin/bash
-#SBATCH --mail-user=foo.bar@baz.unibe.ch
+#SBATCH --mail-user=foo.bar@unibe.ch
 #SBATCH --mail-type=end
 #SBATCH --job-name="MPI Job"
 #SBATCH --mem-per-cpu=2G
@@ -329,6 +314,9 @@ srun ./my_binary
 ## Performance considerations
 
 ### Job Throughput
+
+!!! tip "Job series"
+    Submit series of jobs (collection of similar jobs) as *array jobs* instead of one by one. This is crucial for backfilling performance and hence job throughput. instead of submitting the same job repeatedly. See [Array jobs](array-jobs.md)
 
 **It is crucial to specify a more or less accurate runtime for your job.**  
 Requesting too little will result in job abortion, while requesting too much will have a negative impact on job start time and job throughput: Firstly, jobs with a shorter runtime have a greater chance to benefit from being backfilled between long running jobs and may therefore start earlier if resources are scarce. Secondly, a short running job may still start when a scheduled downtime is getting closer while long running jobs won't start because they are not guaranteed to finish before the start of the downtime.
