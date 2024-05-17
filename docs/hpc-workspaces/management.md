@@ -1,6 +1,6 @@
 # Legacy Workspace management
 
-!!! Attention
+!!! failure "Attention"
     <span style="color:red"><b>Legacy Workspaces (/storage/workspaces/) are discontinued and replaced by Research Storage shares (/storage/research). Existing Legacy Workspaces can still be used.</b></span>
 
     To apply for a Research Storage share please use the following [link](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/dienstleistungen___ressourcen/research_storage/index_ger.html)

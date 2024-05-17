@@ -3,6 +3,11 @@
 HPC data typically is shared data. This could be between students and supervisors, between researchers of a research group, or even between researchers of different institutes. These data needs to be accessible even if people leave the team. 
 Furthermore, these data is usually processed with a set of custom software tools, which need to be easy accessible, share, between the collaborators.
 
+!!! tip "Register new HPC Workspace"
+
+    Primary Investigators (PIs) can apply for a HPC Worksspace by requesting a new Research Storage share using the following [link](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/dienstleistungen___ressourcen/research_storage/index_ger.html). Indicate that you will need "Access from UBELIX" and decide if you need addtional "Access via SMB".
+
+
 Workspaces provide a group shared environment, including storage with user-defined access, SLURM accounting, and tools. 
 They provide a collaborative environment with user defined access groups:
 
