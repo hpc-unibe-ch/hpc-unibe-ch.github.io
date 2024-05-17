@@ -9,9 +9,9 @@ If you reached your quota, you will get strange warning about not being able to 
 
 1. Decluttering: Check for unnecessary data. This could be:
 
-  - unused application packages, e.g. Python(2) packages in `$HOME/.local/lib/python*/site-packages/*`
   - temporary computational data, like already post processed output files
   - duplicated data
+  - unused application packages, e.g. Python packages in `$HOME/.local/lib/python*/site-packages/*`
 
 2. Pack and archive: The HPC storage is a high performance parallel storage and not meant to be an archive. Data not used in the short to midterm should be packed and moved to an archive storage. 
 
@@ -23,43 +23,22 @@ There will be no quota increase for HOME directories.
 
 ### I need access to a HPC Workspace. Who do I need to ask?
 
-HPC Workspaces are managed by the group manager/leader and if applicable a deputy. Therewith you need to ask them to add you to the primary or secondary group. See also [HPC Workspace members](../hpc-workspaces/workspaces.md#members).
+HPC Workspaces are managed by the group manager/leader. Therewith you need to ask them to add you to the primary or secondary group.
 
 ### I need to share data with my colleges. What can I do?
 HPC Workspaces are meant to host shared data. See [HPC Workspaces](../hpc-workspaces/workspaces.md)
 
 ## Software issues
 
-### Why the system is complaining abount not finding an existing module?
+### Why the system is complaining about not finding an existing module?
 
-There are cases modules could not be found. This could be that the modules is not exiting in the target software stack, it could be hidden, or a version inconsitency. 
+There are cases modules could not be found. This could be that the modules is not exiting in the target software stack, it could be hidden, or a version inconsistency.
 
 #### hidden modules
 Some modules are provided as hidden modules to keep the presented software stack nice and clean. Hidden modules can be listed using `module --show-hidden avail`.
 
-#### software stacks
-On UBELIX there are multiple software stacks. There are software stacks for each architecture. There are custom software stacks in Workspaces (again architectural software stacks included) and the VitalIT software stack. 
-The targeted software stack need to be available. The different architectural software stacks are available on the related architecture, e.g. epyc2 in a job on the epyc2 partion. The Workspace and VitalIT software stack can be loaded using `module load Workspace` or module load vital-it. 
-
 #### software stack inconstency
-It is strongly suggested to not mix different toolchains like foss or intel. Additionally, it is advised to stay with one version of a toolchain, e.g. foss/2021a and its dependency versions, e.g. GCC/10.3.0 etc. 
-Further, LMOD has a confusing effect when loading inconsitent module combinations, e.g.
-
-```Bash
-$ module load foss/2021a
-$ module load intel/2020b
-Lmod has detected the following error:  The following module(s) are unknown: "zlib/.1.2.11-GCCcore-10.2.0"
-
-Please check the spelling or version number. Also try "module spider ..."
-It is also possible your cache file is out-of-date; it may help to try:
-  $ module --ignore-cache load "zlib/.1.2.11-GCCcore-10.2.0"
-
-Also make sure that all modulefiles written in TCL start with the string #%Module
-```
-The mentioned module `zlib/.1.2.11-GCCcore-10.2.0` is available in general. 
-When loading `foss/2021a`, the `zlib/.1.2.11-GCCcore-10.3.0` should get loaded, but LMOD will not swap its version, but report the mentioned error. 
-
-Please take this as an indication that you accidentality mix different toolchains, and rethink your procedure, and stay within the same toolchain and toolchain version. 
+It is strongly suggested to not mix different toolchains like foss or intel. Additionally, it is advised to stay with one version of a toolchain, e.g. foss/2023a and its dependency versions, e.g. GCC/12.3.0.
 
 ## Environment issues
 
@@ -74,58 +53,38 @@ These should provide a good indication where the script diverge from your expect
 ## Job issues
 ### Why is my job still pending?
 
-!!! types note ""
-    The REASON column of the _squeue_ output gives you a hint why your job is not running.
+!!! tip
+    The REASON column of the `squeue` output gives you a hint why your job is not running.
 
-**(Resources)**  
+**(Resources)**
 The job is waiting for resources to become available so that the jobs resource request can be fulfilled.
 
-**(Priority)**  
+**(Priority)**
 The job is not allowed to run because at least one higher prioritized job is waiting for resources.
 
-**(Dependency)**  
-The job is waiting for another job to finish first (--dependency=... option).
+**(Dependency)**
+The job is waiting for another job to finish first (`--dependency=... option`).
 
-**(DependencyNeverSatisfied)**  
+**(DependencyNeverSatisfied)**
 The job is waiting for a dependency that can never be satisfied. Such a job will remain pending forever. Please cancel such jobs.
 
-**(QOSMaxCpuPerUserLimit)**  
+**(QOSMaxCpuPerUserLimit)**
 The job is not allowed to start because your currently running jobs consume all allowed CPU resources for your user in a specific partition. Wait for jobs to finish.
 
-**(AssocGrpCpuLimit)**  
+**(AssocGrpCpuLimit)**
 dito.
 
-**(AssocGrpJobsLimit)**  
+**(AssocGrpJobsLimit)**
 The job is not allowed to start because you have reached the maximum of allowed running jobs for your user in a specific partition. Wait for jobs to finish.
 
 **(ReqNodeNotAvail, UnavailableNodes:...)**  
 Some node required by the job is currently not available. The node may currently be in use, reserved for another job, in an advanced reservation, `DOWN`, `DRAINED`, or not responding.**Most probably there is an active reservation for all nodes due to an upcoming maintenance downtime (see output of** `scontrol show reservation`) **and your job is not able to finish before the start of the downtime. Another reason why you should specify the duration of a job (--time) as accurately as possible. Your job will start after the downtime has finished.** You can list all active reservations using `scontrol show reservation`.
 
-### Why can I not submit jobs anymore?
-After joining an HPC Workspace the private SLURM account gets deactivated and a Workspace account need to be specified. 
-This can be done by loading the Workspace module, see [Workspace environment](../hpc-workspaces/environment.md):
-
-```Bash 
-module load Workspace
-```
-
-Otherwise Slurm will present the following error message:
-```Bash
-sbatch: error: AssocGrpSubmitJobsLimit
-sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
-```
-
-With this method we aim to distribute our resources in a more fair manner. HPC resources including compute power should be distriuted between registered research groups. We can only relate users with research groups by utilizing Workspace information. 
-
-
-
 ### Why can't I submit further jobs?
 
-!!! types note ""
-    _sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)_
+`sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)`
 
-
-... means that you have reached the maximum of allowed jobs to be submitted to a specific partition.
+... indicates that you have reached the maximum of allowed jobs to be submitted to a specific partition.
 
 ### Job in state FAILED although job completed successfully
 

@@ -1,12 +1,6 @@
 # Support
 
-## Mailing List
-The official channel for getting information about upcoming UBELIX events (e.g. maintenance) and other important news is our mailing list. **Sign up to receive information on what's going on on the cluster:**
-
-[https://listserv.unibe.ch/mailman/listinfo/hpc-users](https://listserv.unibe.ch/mailman/listinfo/hpc-users) 
-
-## UniBE HPC support
-In case of questions, comments or issues get in touch with us. 
+In case of questions, comments or issues get in touch with us.
 Please first collect all necessary details. In case of issues, this should include:
 
 * JobID

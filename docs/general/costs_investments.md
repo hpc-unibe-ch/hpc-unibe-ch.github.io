@@ -21,37 +21,13 @@ the additional budget.
     touch with us by starting a service request at the [Service
     Portal](https://serviceportal.unibe.ch/sp).
 
-## Disk Storage Costs
-
-### Workspaces
-
-Every **research group** has **10TB** free of charge quota. This can be used
-within one or more Workspaces. The amount used per Workspace is set at
-application time and can be changed later within the limitation.
-
-Additional storage can be purchased. On the
-application or modification form an quota upper limit can be set.
-Accounted will be the actual usage only. Therefore, the actual usage is monitored
-twice a day. The average value of all data points is used for accounting and
-billed once a year
-
-### Research Storage
-
-If you need a storage space for research data that can be used independent from
-the HPC cluster, that can be mounted using SMB protocol on your desktop, then
-the research storage opportunity get you covered. Price and service details can
-be found at Nevertheless, the data on such a research storage share can be
-directly in our HPC cluster.
+## Workspace Storage Costs
 
 Price and service details can be found at [the official service
-page](https://bit.ly/3AwciHA). Beware that the documents are in German only
-currently.
+page](https://bit.ly/3AwciHA).
 
 !!! tip "Statement of Cost for SNSF"
     On the official service page of the research storage service you can also
     find a statement of cost for the service that you can add to your SNF
     proposal in order to budget money for storage costs in your project.
-
-*[SMB]: Server Message Block aka Samba
-*[SNSF]: Swiss National Science Foundation
 

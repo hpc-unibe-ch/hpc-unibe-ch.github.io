@@ -1,10 +1,8 @@
 # Array Jobs with Slurm
 
-## Description
-
 Array jobs are jobs where the job setup, including job size, memory, time etc. is constant, but the application input varies. One use case are parameter studies. 
 
-Instead of submitting N jobs independently, you can submit one array job unifying N tasks. These provide advantages in the job handling as well as for the SLURM scheduler.
+Instead of submitting N jobs independently, you can submit one array job unifying N jobs. These provide advantages in the job handling as well as for the SLURM scheduler.
 
 
 ## Submitting an Array
@@ -25,7 +23,7 @@ The task id range specified in the option argument may be:
 Furthermore, the **amount of concurent** running jobs can **limited** using the `%` seperator, e.g. for max 100 concurrent jobs of 1-400: `#SBATCH --array=1-400%100`. Therewith you can prevent fully filling your available resources. 
 The task IDs will be exported to the job tasks via the environment variable `SLURM_ARRAY_TASK_ID`. Additionally, `SLURM_ARRAY_TASK_MAX`, `SLURM_ARRAY_TASK_MIN`, `SLURM_ARRAY_TASK_STEP` are available in job, describing the task range of the job.
 
-!!! types danger ""
+!!! warning
     Specifying `--array=10` will not submit an array job with 10 tasks, but an array job with a single task with task id 10. To run an array job with multiple tasks you must specify a range or a comma separated list of task ids.
 
 
@@ -43,7 +41,7 @@ Thus a file `array_example_6543212_12.out` will be written for the 12th task of 
 You can cancel individual tasks of an array job by indicating tasks ids to the scancel command:
 
 ```Bash
-$ squeue
+$ squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 79265_[49-99:2%20]      test Simple H  foo 		PD      0:00      1 (QOSMaxCpuPerUserLimit)
           79265_41      test Simple H  foo  	R       0:10      1 fnode03
@@ -55,7 +53,7 @@ $ squeue
 Use the `--array` option to the squeue command to display one tasks per line:
 
 ```Bash
-$ squeue --array
+$ squeue --me --array
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           79265_65      test Simple H  foo		PD      0:00      1 (QOSMaxCpuPerUserLimit)
           79265_67      test Simple H  foo		PD      0:00      1 (QOSMaxCpuPerUserLimit)
@@ -83,9 +81,8 @@ Instead of submitting 1000 individual jobs, submit a single array jobs with 1000
 srun ./foo input_data_${SLURM_ARRAY_TASK_ID}.txt > output_${SLURM_ARRAY_TASK_ID}.txt
 ```
 
-!!! types note ""
-    Task with ID 20 will run the program foo with the following arguments:  
-    ./foo input_data_20.txt > output_20.txt
+!!! example
+    Task with ID 20 will run the program foo with the following arguments: `./foo input_data_20.txt > output_20.txt`
 
 ### Use case 2: Read arguments from file
 

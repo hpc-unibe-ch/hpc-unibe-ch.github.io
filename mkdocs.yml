@@ -11,7 +11,6 @@ nav:
       - SSH customization: getting-Started/ssh-customization.md
   - Workspaces:
       - Overview: hpc-workspaces/workspaces.md
-      - Software environment: hpc-workspaces/environment.md
       - Workspace management: hpc-workspaces/management.md
   - SLURM / Job handling:
       - Partitions / QoS: slurm/partitions.md
@@ -31,15 +30,12 @@ nav:
       - EasyBuild: software/EasyBuild.md
       - Supported Applications:
           - Anaconda / Python: software/Anaconda.md
-          - CUDA: software/CUDA.md
+          - Apptainer: software/apptainer.md
           - JupyterLab: software/JupyterLab.md
           - MATLAB: software/matlab.md
           - Parallel BZIP2: software/bzip2.md
           - ParaView: software/ParaView.md
           - R: software/r.md
-          - Relion: software/relion.md
-          - Singularity: software/singularity.md
-          - Terminal Multiplexer (tmux): software/terminal-multiplexer-tmux.md
           - Visual Studio Code: software/VisualStudioCode.md
   - Storage:
       - Overview: file-system/filesystem-overview.md

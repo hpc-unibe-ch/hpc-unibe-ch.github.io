@@ -1,13 +1,10 @@
 # Deleting Jobs
 
-## Description
-
 This page provides information on how to delete jobs.
 
 ## scancel
 
-!!! types note ""
-    Use the scancel command to delete active jobs
+Use the `scancel` command to delete active jobs
 
 Syntax
 
@@ -42,5 +39,5 @@ scancel --state=R
 Delete all of your jobs:
 
 ```Bash
-scancel --user $USER
+scancel --me
 ```

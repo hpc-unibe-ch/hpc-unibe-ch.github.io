@@ -1,23 +1,16 @@
 # GPUs
 
-## Description
-
 This page contains all information you need to successfully submit GPU-jobs on
 UBELIX.
 
-## Important Information on GPU Usage
+!!! danger "Important Information on GPU Usage"
 
-!!! types note ""
     Code that runs on the CPU will **not** auto-magically make
-    use of GPUs by simply submitting a job to the 'gpu' partition! You have to
-    explicitly adapt your code to run on the GPU, e.g. an CUDA or OpenACC
-    implementation. Also, code that runs on a GPU will not necessarily run faster
-    than it runs on the CPU. For example, GPUs require a huge amount of highly
-    parallelizable tasks. In other words, you must understand the characteristics
-    of your job, and make sure that you only submit jobs to the 'gpu' partition
-    that can actually benefit from GPUs.
+    use of GPUs by simply submitting a job to the GPU partition! You have to
+    explicitly ensure that your code is able to run on the GPUs, e.g. an CUDA or OpenACC
+    implementation is used.
 
-When submitting to the GPU partition the GPU type specification is **required**. 
+When submitting to the GPU partition the GPU type specification is **required**.
 
 ## GPU Types
 
@@ -25,11 +18,12 @@ UBELIX currently features four types of GPUs. You have to choose an
 architecture and use one of the following `--gres` option to select it.
 
 | Type | SLURM gres option |
-| ---- | ----------------- | 
+| ---- | ----------------- |
 | Nvidia Geforce GTX 1080 Ti | `--gres=gpu:gtx1080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 2080 Ti | `--gres=gpu:rtx2080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 3090 | `--gres=gpu:rtx3090:<number_of_gpus>` |
 | Nvidia Tesla P100 | `--gres=gpu:teslap100:<number_of_gpus>` |
+| Nvidia A100 | `--gres=gpu:a100:<number_of_gpus>` |
 
 
 ## Job Submission
@@ -46,19 +40,19 @@ default job QoS:
 ## QoS `job_gpu_preempt`
 
 For investors we provide the `gpu-invest` investor partitions with a specific
-QoS per investor that guarantees instant access to the purchased resources.  
+QoS per investor that guarantees instant access to the purchased resources.
 Nevertheless, to efficiently use all resources, the QoS `job_gpu_preempt` exists
 in the `gpu` partition. Jobs, submitted with this QoS have access to all GPU
 resources, but  may be interrupted if resources are required for investor jobs.
 Short jobs, and jobs that make use of checkpointing will benefit from these
 additional resources.
 
-Example: Requesting any four RTX2080Ti from the resource pool in the `gpu`
+Example: Requesting any four RTX3090 from the resource pool in the `gpu`
 partition:
 ```Bash
 #SBATCH --partition=gpu
 #SBATCH --qos=job_gpu_preempt
-#SBATCH --gres=gpu:rtx2080ti:4
+#SBATCH --gres=gpu:rtx3090:4
 ## Use the following option to ensure that the job, if preempted,
 ## won't be re-queued but canceled instead:
 #SBATCH --no-requeue
@@ -74,30 +68,32 @@ oriented implementations like OpenACC.
 ### CUDA
 
 We provide compiler and library to build CUDA-based application. These are
-accessible using environment modules. Use `module avail` to see which versions
+accessible using environment modules. Use `module spider CUDA` to see which versions
 are available:
 
 ```Bash
-module avail CUDA
----- /software.el7/modulefiles/all ----
-   CUDA/8.0.61                           cuDNN/7.1.4-CUDA-9.2.88
-   CUDA/9.0.176                          cuDNN/7.6.0.64-gcccuda-2019a (D)
-   CUDA/9.1.85                           fosscuda/2019a
-   CUDA/9.2.88                           fosscuda/2019b               (D)
-   CUDA/10.1.105-GCC-8.2.0-2.31.1        gcccuda/2019a
-   CUDA/10.1.243                  (D)    gcccuda/2019b                (D)
-   cuDNN/6.0-CUDA-8.0.61                 OpenMPI/3.1.3-gcccuda-2019a
-   cuDNN/7.0.5-CUDA-9.0.176              OpenMPI/3.1.4-gcccuda-2019b
-   cuDNN/7.0.5-CUDA-9.1.85
+module spider CUDA
+------------------------------------------------------------------------------------------------------------------------------------
+  CUDA:
+------------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      CUDA (formerly Compute Unified Device Architecture) is a parallel computing platform and programming model created by NVIDIA
+      and implemented by the graphics processing units (GPUs) that they produce. CUDA gives developers access to the virtual
+      instruction set and memory of the parallel computational elements in CUDA GPUs.
+
+     Versions:
+        CUDA/11.8.0
+        CUDA/12.1.1
+        CUDA/12.2.0
 ```
 
 Run `module load <module>` to load a specific version of CUDA:
 
 ```Bash
-module load cuDNN/7.1.4-CUDA-9.2.88
+module load CUDA/12.2.0
 ```
 
-!!! types note ""
+!!! tip "cuDNN"
     If you need cuDNN you must **only** load the cuDNN module. The appropriate
     CUDA version is then loaded automatically as a dependency.
 

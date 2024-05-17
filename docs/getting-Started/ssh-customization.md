@@ -112,14 +112,6 @@ Add the key to ssh-agent:
 $ ssh-add ~/.ssh/id_rsa_ubelix
 ```
 
-## X11 - forwarding
-For applications with graphical interfaces X11-forwarding is sometimes necessary. You can enable X11-forwarding by using `-Y` option during your login process:
-```Bash 
-ssh -Y <alias>
-```
-The success can be tested e.g. by calling `xterm` on the login node, which should open a new window. 
-Keep in mind your local operating system need to have a X server running. E.g. Xming on Windows or XQuartz for Mac.
-
 ## Passwordless SSH within the HPCs
 Some application require passwordless SSH within the HPC machine, e.g. for establishing reverse port forwarding. 
 Please verify that you created and registered a SSH key within UBELIX. If you can perform the following command without entering your password your are ready to go:
@@ -143,4 +135,4 @@ ssh -Y -L 15051:localhost:15051 submit03.unibe.ch
 ```
 
 Here port 15051 is selected for both sides. Ports are numbers between 2000 and 65000, which needs to be unique on the present machine. The default port for JupyterLab is 8888, but only one user can use this port on the machine at a time.
-To avoid the need for modifying your workflow again and again, we suggest to (once) select a unique number (between 2000 and 65000), which hopfully and most likely will not be used by another user. 
+To avoid the need for modifying your workflow again and again, we suggest to (once) select a unique number (between 2000 and 65000), which hopefully and most likely will not be used by another user.
