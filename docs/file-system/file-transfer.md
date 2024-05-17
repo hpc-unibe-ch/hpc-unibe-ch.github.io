@@ -1,63 +1,59 @@
 # File Transfer from/to UBELIX
 
-## Description
-
 This page contains some basic information about moving files between your local workstation and the cluster.
-
-## Mac/Linux/Windows
 
 You can use different protocols/programs for transferring files from/to the cluster, depending on your need: Sftp, SCP, Rsync, Wget, and others.
 
-!!! types caution ""
+!!! note
     The following commands are from on your local workstation as indicated by "local$"
-
-!!! types note ""
-    If you have customized your SSH environment as described here, you can substitute your host alias for <user>@submit03.unibe.ch in the following commands
-
 
 ## Secure Copy (SCP) - Mac/Linux
 Secure Copy is a program (also a protocol) that allows you to securely transfer files between local and remote hosts. SCP uses SSH for transferring data and managing authentication.
 SCP performs a plain linear copy of the specified files, while replacing already existing files with the same name. If you need more sophisticated control over your copy process, consider [Rsync](file-transfer.md#remote-sync-rsync-maclinux).
 
-!!! types note "Syntax"
-    scp [options] source destination
+Syntax
 
-!!! types note "Some common options"
-    * `-r`: copy directories recursively (Note that SCP follows symbolic links encountered in the tree traversal)
-    * `-p`: preserve modification time, access time, and modes from the original file
-    * `-v`: verbose mode
+```bash
+scp [options] source destination
+```
+
+Some common options:
+
+```bash
+-r copy directories recursively (Note that SCP follows symbolic links encountered in the tree traversal)
+-p preserve modification time, access time, and modes from the original file
+-v verbose mode
+```
 
 
 ### Copying Files from Your Local Workstation to UBELIX
 
-Copy the file `~/dir/file01` to your remote home directory:
+**Copy the file `~/dir/file01` to your remote home directory:**
 
 ```Bash
 $ scp ~/dir/file01 <user>@submit03.unibe.ch:
 ```
 
-Copy multiple files to the remote directory `~/bar`:
+**Copy multiple files to the remote directory `~/bar`:**
 
-!!! types note ""
-    The destination directory must already exist. You can create a directory from remote with: ssh <user>@submit03.unibe.ch 'mkdir -p ~/bar'
+!!! note
+    The destination directory must already exist. You can create a directory from remote with: `ssh <user>@submit03.unibe.ch 'mkdir -p ~/bar'`
 
 ```Bash
 $ scp ~/dir/file01 ~/dir/file02 ~/dir/file03 <user>@submit03.unibe.ch:bar
 ```
 
-Copy all files within directory `~/dir` to the remote directory `~/bar`:
+**Copy all files within directory `~/dir` to the remote directory `~/bar`:**
 
-!!! types note ""
-    Add the -r option (recursive) to also copy all subdirectories of ~/dir
+Add the -r option (recursive) to also copy all subdirectories of ~/dir
 
 ```Bash
 $ scp -r ~/dir/* <user>@submit03.unibe.ch:bar
 ```
 
-Copy the directory `~/dir` to your remote home directory:
+**Copy the directory `~/dir` to your remote home directory:**
 
-!!! types note ""
-    This will create a new directory ~/dir on the remote host. If the directory ~/dir already exists, the following command adds the content of the source directory to the destination directory
+This will create a new directory `~/dir` on the remote host. If the directory `~/dir` already exists, the following command adds the content of the source directory to the destination directory
 
 ```Bash
 $ scp -r ~/dir <user>@submit03.unibe.ch:
@@ -65,23 +61,21 @@ $ scp -r ~/dir <user>@submit03.unibe.ch:
 
 ### Copying Files from UBELIX to Your Local Workstation
 
-Copy the remote file `~/bar/file01` to the current working directory on your local workstation:
+**Copy the remote file `~/bar/file01` to the current working directory on your local workstation:**
 
 ```Bash
 $ scp <user>@submit03.unibe.ch:bar/file01 .
 ```
 
+**Copy multiple remote files to the local directory `~/dir`:**
 
-Copy multiple remote files to the local directory `~/dir`:
-
-!!! types note ""
-    The local directory ~/dir will be automatically created if it does not already exist
+The local directory `~/dir` will be automatically created if it does not already exist
 
 ```Bash
 $ scp <user>@submit03.unibe.ch:bar/\{file02,file03,file04\} ~/dir
 ```
 
-Copy the remote directory `~/bar` to the current working directory on your local workstation:
+**Copy the remote directory `~/bar` to the current working directory on your local workstation:**
 
 ```Bash
 $ scp -r <user>@submit03.unibe.ch:bar .
@@ -92,10 +86,13 @@ Rsync implements a sophisticated algorithm that allows to transfer only missing/
 Among other things, Rsync also allows you to specify complex filter rules to exclude certain files or directories located inside a directory that you want to sync.
 
 
-!!! types note "Syntax"
-    rsync [options] source destination 
+Syntax
 
-!!! types note "Some common options"
+```bash
+rsync [options] source destination
+```
+
+Common options:
     * `-r`: copy directories recursively (does not preserve timestamps and permissions)
     * `-a`: archive mode (like -r, but also preserves timestamps, permissions, ownership, and copies symlinks as symlinks)
     * `-z`: compress data
@@ -106,21 +103,21 @@ Among other things, Rsync also allows you to specify complex filter rules to exc
 
 ### Copying Files from Your Local Workstation to UBELIX
 
-Copy the file `~/dir/file01` to your remote home directory:
+**Copy the file `~/dir/file01` to your remote home directory:**
 
 ```Bash
 $ rsync ~/dir/file01 <user>@submit03.unibe.ch:
 ```
 
-Copy multiple files to your remote home directory:
+**Copy multiple files to your remote home directory:**
 
 ```Bash
 $ rsync file01 file02 file03 <user>@submit03.unibe.ch:
 ```
 
-Copy the local directory ~/dir to the remote directory ~/bar:
+**Copy the local directory ~/dir to the remote directory ~/bar:**
 
-!!! types note ""
+!!! note
     With a trailing slash (/) after the source directory only the content of the source directory is copied to the destination directory. Without a trailing slash both the source directory and the content of the directory are copied to the destination directory
 
 ```Bash
@@ -129,19 +126,19 @@ $ rsync -az ~/dir/ <user>@submit03.unibe.ch:bar
 
 ### Copying Files from UBELIX to Your Local Workstation
 
-Copy the remote file `~/foo/file01` to your current working directory:
+**Copy the remote file `~/foo/file01` to your current working directory:**
 
 ```Bash
 $ rsync <user>@submit03.unibe.ch:foo/file01 .
 ```
 
-Copy the remote files `~/foo/file01` and `~/bar/file02` to your the local directory `~/dir`:
+**Copy the remote files `~/foo/file01` and `~/bar/file02` to your the local directory `~/dir`:**
 
 ```Bash
 $ rsync <user>@submit03.unibe.ch:\{foo/file01,bar/file02\} ~/dir
 ```
 
-Copy the remote directory `~/foo` to the local directory `~/dir`:
+**Copy the remote directory `~/foo` to the local directory `~/dir`:**
 
 !!! types note ""
     With a trailing slash (/) after the source directory only the content of the source directory is copied to the destination directory. Without a trailing slash both the source directory and the content of the directory are copied to the destination directory.
@@ -157,19 +154,19 @@ With the `--include`/`--exclude` options you can specify patterns, that describe
 !!! type note ""
     Use the `-n` option with the `-v` option to perform a dry-run while listing the files that would be copied
 
-Exclude a specific directory:
+**Exclude a specific directory:**
 
 ```Bash
 rsync -av --exclude "subdir1" ~/dir/ <user>@submit03.unibe.ch:
 ```
 
-Copy only files with suffix `.txt` and `.m`:
+**Copy only files with suffix `.txt` and `.m`:**
 
 ```Bash
 rsync -av --include "*.txt" --include "*.m" --exclude "*" ~/dir/ <user>@submit03.unibe.ch:
 ```
 
-Copy all files with suffix `.m` within the source directory `~/dir` (including matching files within subdirectories) to the remote destination directory `~/foo`:
+**Copy all files with suffix `.m` within the source directory `~/dir` (including matching files within subdirectories) to the remote destination directory `~/foo`:**
 
 !!! type note ""
     Use the `--prune-empty-dirs` option to omit copying empty directories
@@ -202,8 +199,10 @@ $ rsync -av --prune-empty-dirs --delete-excluded --include "*/" --include "*.m" 
 
 ## MobaXterm - Windows
 
+### Drag&Drop
 In MobaXterm there are multiple ways to transfer files. After initializing/starting a session to UBELIX copied by "drag and drop" in the File browser on the left hand side. ![MobaXterm File Browser](../images/mobaXterm_04_scp.png "SCP pane")
 
+### Local Terminal with scp
 Further the local terminal can be used to transfer files using commands described above. 
 ![MobaXterm local Terminal](../images/mobaXterm_05_local.png "local terminal")
 ![MobaXterm SCP local](../images/mobaXterm_05a_scp_local.png "local terminal scp")

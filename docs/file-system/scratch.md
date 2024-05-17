@@ -1,10 +1,8 @@
-Scratch - temporary file space
+# Scratch - temporary file space
 
 !!! warning
     Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed.
     Files are subject to automatic removal if they are not accessed within a timeframe of 30 days.
-
-## Description
 
 Scratch file space are meant for temporary data storage. Interim computational data should be located there. 
 We distinguish local and network scratch spaces. 
@@ -35,11 +33,12 @@ mkdir $SCRATCH
 cd $SCRATCH
 ```
 
-Please note that this space is per default **no** private space. If you want to restrict access you can change permissions using:
+!!! tip "Private Scratch"
+    Please note that this space is per default **no** private space. If you want to restrict access you can change permissions using:
 
-```
-chmod 700 $SCRATCH
-```
+    ```
+    chmod 700 $SCRATCH
+    ```
 
 ## Local Scratch
 

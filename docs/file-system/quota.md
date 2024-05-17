@@ -1,25 +1,19 @@
 # File System Quota
 
-## Description
-
 This page contains information about quota limits on the parallel file system. Quotas are enabled to control the file system usage.
 
 !!! types warning " Job abortion"
-    Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded 
+    Jobs will fail if no more disk space can be allocated, or if no more files can be created because the respective quota hard limit is exceeded
 
 ## Quotas
 
 | space | quota | file quota | backup | expiration |
 | ----- | ----- | ---------- | ------ | ---------- |
 | HOME | 1TB | 1M | yes | - |
-| WORKSPACE | free: up to 10TB per research group[^QpRG] | 1M per TB | yes | 1 year[^WSdur] |
-| SCRATCH | 30TB[^user] | 10M[^user] | no | 1 month[^pol] |
+| WORKSPACE | at least 5TB | 1M per TB | yes | - |
+| SCRATCH | 30TB[^user] | 10M[^user] | no | 1 month |
 
-[^QpRG]: Each research group can use up to 10TB of free disk storage in multiple Workspaces free of charge. Quota increase can be purchased, see [Workspace Management](../hpc-workspaces/management.md#additional-storage). 
-[^WSdur]: Workspaces are meant to be active directories and no archive. Workspace are active by default for one year. The duration can every time be extended to "current date plus one year". 
 [^user]: Scratch quota is currently implemented per user
-[^pol]: There is a automatic removal policy planned, but not implemented yet
-
 
 ## Display quota information
 
@@ -53,9 +47,7 @@ Workspace1          :          5,        101(  1%),      10240 |           4(  0
 In the last example the workspace `Workspace1` has `5TB` of free quota, and a total of `10TB` of quota (`5TB` additional storage requested). The `start date` defines the start of the accounting period and the average quota is computed as average over all datapoints starting from `start date`. 
 Furthermore, the SCRATCH quota is presented starting with `SCR_`, where `SCR_usr` is your personal SCRATCH quota and `SCR_` plus Workspace name the group quota of the Workspace group in the scratch fileset. Workspace SCRATCH quota is only presented if a quota is set and the `quota -l` option selected.
 
-!!! types note "data gathering"
+!!! info "Data updates"
 
     - Workspaces: Workspace quota information is gathered twice a day. Thus the presented data may not completely represent the current state.
     - HOME and SCRATCH: values presented are actual values directly gathered from the file system
-
-Note: the coloring of the relative values is green (<70%), yellow (70% < x < 90%), red (>90%).
