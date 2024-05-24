@@ -45,6 +45,6 @@ module load Workspace         # use the Workspace account
 sbatch --partition=gpu-invest job.sh
 ```
 
-!!! note "Preempt"
+!!! note "Preemptable"
     The resources dedicated to investors can be used by non-investing users too.
-    A certain amount of CPUs/GPUs are "reserved" in the investor partitions. But if not used, jobs with the QOS `job_gpu_preempt` can run on these resources. But beware that preemptable jobs may be terminated by investor jobs at any time! Therefore use the qos `job_gpu_preempt` only if your job supports checkpointing or restarts.
+    A certain amount of CPUs/GPUs are "reserved" in the investor partitions. But if not used, jobs with the QOS `job_gpu_preemptable` can run on these resources. But beware that preemptable jobs may be terminated by investor jobs at any time! Therefore use the qos `job_gpu_preemptable` only if your job supports checkpointing or restarts.

@@ -37,11 +37,11 @@ default job QoS:
 ```
 
 
-## QoS `job_gpu_preempt`
+## QoS `job_gpu_preemptable`
 
 For investors we provide the `gpu-invest` investor partitions with a specific
 QoS per investor that guarantees instant access to the purchased resources.
-Nevertheless, to efficiently use all resources, the QoS `job_gpu_preempt` exists
+Nevertheless, to efficiently use all resources, the QoS `job_gpu_preemptable` exists
 in the `gpu` partition. Jobs, submitted with this QoS have access to all GPU
 resources, but  may be interrupted if resources are required for investor jobs.
 Short jobs, and jobs that make use of checkpointing will benefit from these
@@ -51,7 +51,7 @@ Example: Requesting any four RTX3090 from the resource pool in the `gpu`
 partition:
 ```Bash
 #SBATCH --partition=gpu
-#SBATCH --qos=job_gpu_preempt
+#SBATCH --qos=job_gpu_preemptable
 #SBATCH --gres=gpu:rtx3090:4
 ## Use the following option to ensure that the job, if preempted,
 ## won't be re-queued but canceled instead:
