@@ -28,9 +28,9 @@ UBELIX is a heterogeneous machine, consisting of different architectures. There 
 and GPU nodes with:
 
 - Nvidia Geforce GTX 1080 Ti 
-- Nvidia Geforce RTX 2080 Ti
-- Nvidia Geforce RTX 3090 
+- Nvidia Geforce RTX 3090
 - Nvidia Tesla P100
+- Nvidia A100
 
 Partitions group nodes into logical sets, which share the same limits. Furthermore, specific limits and privileges are managed using Quality Of Service (QOS), like high priorities or node limitations for long running jobs.
 

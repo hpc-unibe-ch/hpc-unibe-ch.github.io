@@ -9,7 +9,7 @@ There are the currently 3 partitions:
 | --------- | -------- | ---------- | ---------------- | ------------- |
 |**epyc2 (default)** | single and multi-core |AMD Epyc2 2x64 cores | 1TB | 1TB |
 | bdw | full nodes only (x*20cores) | Intel Broadwell 2x10 cores | 156GB | 1TB |
-| gpu | GPU <br> (8 GPUs per node, <br> varying CPUs) | Nvidia GTX 1080 Ti <br> Nvidia RTX 2080 Ti <br> Nvidia RTX 3090 <br> Nvidia Tesla P100 <br> Nvidia A100 | 11GB <br> 11GB <br> 24GB <br> 12GB <br> 80GB | 800GB <br> 2x960GB <br> 1.92TB <br> 800GB <br> 1.92TB |
+| gpu | GPU <br> (8 GPUs per node, <br> varying CPUs) | Nvidia GTX 1080 Ti <br> Nvidia RTX 3090 <br> Nvidia Tesla P100 <br> Nvidia A100 | 11GB <br> 24GB <br> 12GB <br> 80GB | 800GB <br> 1.92TB <br> 800GB <br> 1.92TB |
 
 The **current usage** can be listed on the [UBELIX status page](https://www.ubelix.hpc.unibe.ch)
 

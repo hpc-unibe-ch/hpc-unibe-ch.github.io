@@ -20,7 +20,6 @@ architecture and use one of the following `--gres` option to select it.
 | Type | SLURM gres option |
 | ---- | ----------------- |
 | Nvidia Geforce GTX 1080 Ti | `--gres=gpu:gtx1080ti:<number_of_gpus>` |
-| Nvidia Geforce RTX 2080 Ti | `--gres=gpu:rtx2080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 3090 | `--gres=gpu:rtx3090:<number_of_gpus>` |
 | Nvidia Tesla P100 | `--gres=gpu:teslap100:<number_of_gpus>` |
 | Nvidia A100 | `--gres=gpu:a100:<number_of_gpus>` |
@@ -143,6 +142,5 @@ performance.
 CUDA: [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone)  
 CUDA C/C++ Basics: [http://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf](http://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf)  
 Nvidia Geforce GTX 1080 Ti: [https://www.nvidia.com/en-us/geforce/products/10series/geforce-gtx-1080-ti](https://www.nvidia.com/en-us/geforce/products/10series/geforce-gtx-1080-ti/)  
-Nvidia Geforce RTX 2080 Ti: [https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/](https://www.nvidia.com/de-de/geforce/graphics-cards/rtx-2080-ti/)  
 Nvidia Geforce RTX 3090: [https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/](https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3090/)  
 Nvidia Tesla P100: [http://www.nvidia.com/object/tesla-p100.html](http://www.nvidia.com/object/tesla-p100.html)
