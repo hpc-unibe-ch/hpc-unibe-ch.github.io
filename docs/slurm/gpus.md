@@ -36,6 +36,21 @@ default job QoS:
 #SBATCH --gres=gpu:<type>:<number_of_gpus>
 ```
 
+### Requesting CPU and memory resources with GPUs
+
+To ensure fair GPU allocations a restriction on the CPU and memory resources that can be requested per GPU is implemented.
+
+In the past, we observed that GPU resources were often left unused because some jobs requested disproportionately large amounts of CPU or memory per GPU. To address this issue, we have implemented a restriction on the CPU and memory resources that can be requested per GPU:
+
+| Type | CPUs per GPU | Memory per GPU |
+| ---- | -------------| -------------- |
+| Nvidia GTX 1080 Ti | 3 | 30GB |
+| Nvidia RTX 3090 | 4 | 60GB |
+| Nvidia RTX 4090 | 16 | 90GB |
+| Nvidia P100 | 3 | 30GB |
+| Nvidia A100 | 20 | 80GB |
+
+If you submit a GPU job that requests more resources than are available per GPU, your job will be rejected. If your job requires more CPU and memory resources, you may choose to allocate additional GPUs even if these additional GPUs remain unused by your application.
 
 ## QoS `job_gpu_preemptable`
 
