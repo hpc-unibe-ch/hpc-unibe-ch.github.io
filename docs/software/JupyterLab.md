@@ -133,17 +133,23 @@ jupyter-compute 15051 --ntasks 1 --time=01:00:00 --partition=gpu --gres=gpu:gtx1
 
 ## Kernels
 
-The following JupyterLab kernel are installed:
+### Python
 
-* Python3
-* R
+By default the Python3 kernel from the Anaconda3 environment is installed. You
+can create further kernels by creating new conda environments as well.
 
 ### R
 
-verify that the module *IRkernel* is loaded
+To use R with Jupyterlab you can either install use R from the UBELIX software modules or a
+custom Anaconda3 environment.
+
+To use R from the UBELIX software modules ensure that the R module is loaded and
+the `IRkernel` package is installed before starting `jupyter-compute`
 
 ```
-module load IRkernel
+module load R
+R
+> install.packages('IRkernel')
 ```
 
 ## Packages
