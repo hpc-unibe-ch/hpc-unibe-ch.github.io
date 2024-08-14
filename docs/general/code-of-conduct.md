@@ -21,12 +21,6 @@ while others help to reduce the amount of support time needed to allocate.
   migrate all your user data to the new account and deactivate your student account
   for UBELIX.
 
-## Mailing List
-
-  * We communicate upcoming events (e.g. maintenance downtimes) on our mailing list. 
-  Make sure that you are subscribed to this list, otherwise you will miss important
-  announcements.
-
 ## Security
 
   * Do not share your account
