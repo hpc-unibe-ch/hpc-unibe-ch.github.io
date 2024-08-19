@@ -126,7 +126,7 @@ $ sbatch job.sh
 Submitted batch job 123456
 $ squeue --me
 # verify that job gets started
-$ srun --ntasks-per-node=1 --jobid 123456 nvidia-smi
+$ srun --overlap --jobid 123456 nvidia-smi
 Fri Nov 11 11:11:11 2021
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
