@@ -1,7 +1,7 @@
 # Parallel BZIP2
 
 ## Description
-Data need to be packed and compressed for archiveing or transfer. There are multiple tools available like tar and gzip, bzip. Pbzip2 is a paeallel implementation of bzip2. For general information see [bzip2](https://sourceware.org/bzip2/) and [pbzip2](http://compression.ca/pbzip2/)
+Data need to be packed and compressed for archiving or transfer. There are multiple tools available like tar and gzip, bzip. Pbzip2 is a parallel implementation of bzip2. For general information see [bzip2](https://sourceware.org/bzip2/) and [pbzip2](http://compression.ca/pbzip2/)
 
 ## Availability
 The tool is available on all nodes without loading any module. 
