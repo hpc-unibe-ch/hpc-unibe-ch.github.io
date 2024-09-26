@@ -61,7 +61,7 @@ Vonrüti N, Aschauer U, et al. | Elucidation of Li<sub>x</sub>Ni<sub>0.8</sub>Co
 Ouhbi H, Aschauer U | Water oxidation chemistry of oxynitrides and oxides: Comparing NaTaO<sub>3</sub>&nbsp;and SrTaO<sub>2</sub>N | Surface Science | [Details](http://dx.doi.org/10.7892/boris.119149) | [Direct Link](https://doi.org/10.1016/j.susc.2018.07.013)
 Aschauer U | Surface and Defect Chemistry of Oxide Material | CHIMIA | [Details](http://dx.doi.org/10.7892/boris.117098) | [Direct Link](https://doi.org/10.2533/chimia.2018.286)
 Kasper, C, Hebert, F, Aubin-Horth N, Taborsky B | Divergent brain gene expression profiles between alternative behavioural helper types in a cooperative breeder | Wiley Molecular Ecology | <br> | [Direct Link](https://doi.org/10.1111/mec.14837)
-<p>Panyasantisuk J,<br>Dall'Ara E,<br>Pretterklieber M,<br>Pahr D.H.,<br>Zysset P.K.</p> | Mapping anisotropy improves QCT-based finite element estimation of hip strength in pooled stance and side-fall load configurations | <p>Medical Engineering &amp; Physics,<br><span style="letter-spacing: 0.0px;">Elsevier</span></p> | <br> | [Direct Link](https://doi.org/10.1016/j.medengphy.2018.06.004)
+Panyasantisuk, J. et al. | Mapping anisotropy improves QCT-based finite element estimation of hip strength in pooled stance and side-fall load configurations | Medical Engineering &amp; Physics | <br> | [Direct Link](https://doi.org/10.1016/j.medengphy.2018.06.004)
 Vonrüti, N, Aschauer U | Anion Order and Spontaneous Polarization in LaTiO<sub>2</sub>N Oxynitride Thin Films | American Physical Society | [Details](http://dx.doi.org/10.7892/boris.110425) | [Direct Link](https://doi.org/10.1103/PhysRevLett.120.046001)
 Bouri M, Aschauer U | Bulk and surface properties of the Ruddlesden-Popper oxynitride Sr<sub>2</sub>TaO<sub>3</sub>N | Physical Chemistry Chemical Physics | <a rel="nofollow" href="https://idos-wiki.unibe.ch/10.7892/boris.110062">Details</a> | [Direct Link](https://doi.org/10.1021/acs.jpcc.7b09674)
 __2017__
@@ -78,6 +78,7 @@ __2013__
 Leichtle A, Fiedler G et al. | Pancreatic carcinoma, pancreatitis, and healthy controls: metabolite models in a three-class diagnostic dilemma | Metabolomics, Springer | [Details](http://dx.doi.org/10.7892/boris.16556) | [Direct Link](https://dx.doi.org/10.1007%2Fs11306-012-0476-7)
 
 ## Posters
+[Poster J. T. Casanova et al, 2024](../files/casanova_2024_iap.pdf "J. T. Casanova et al., Anti-Kasha dynamics investigated with quantum-mechanically derived force-fields and non-adiabatic molecular dynamic, 2024")
 
 ![Poster J. T. Casanova et al, 2023](../images/casanova_2023_iap.png "J. T. Casanova et al., Computational approach to anti-Kasha photochemistry of Pt-dithiolene complexes, 2023"){: style="max-width: 100%"}
 
