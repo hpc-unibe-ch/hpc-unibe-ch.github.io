@@ -28,10 +28,10 @@ imwrite([original, filtered],'comparison.png');
 
 Now we need a submission script
 
-boxfilter.qsub
+boxfilter.sh
 ```Bash
-!#/bin/bash
-#SBATCH -mail-user=foo@bar.unibe.ch
+#!/bin/bash
+#SBATCH --mail-user=foo@bar.unibe.ch
 #SBATCH --mail-type=end,fail
 #SBATCH --job-name=boxfilter
 #SBATCH --time=00:10:00
@@ -69,7 +69,7 @@ and then:
 **boxfilter.qsub**
 
 ```Bash
-!#/bin/bash
+#!/bin/bash
 (...)
 # Load MATLAB form the environment modules
 module load MATLAB
