@@ -1,61 +1,84 @@
-site_name: HPC Documentation
-
-use_directory_urls: false
-nav:
-  - News: general/news.md
-  - Quick Start: general/quick-start.md
-  - UBELIX: general/ubelix-overview.md
-  - Accounts and Access:
-      - Accounts and Activation: getting-Started/account.md
-      - Access: getting-Started/login-ssh.md
-      - SSH customization: getting-Started/ssh-customization.md
-  - Workspaces:
-      - Overview: hpc-workspaces/workspaces.md
-      - Workspace management: hpc-workspaces/management.md
-  - SLURM / Job handling:
-      - Partitions / QoS: slurm/partitions.md
-      - Submitting jobs: slurm/submission.md
-      - Monitoring Jobs: slurm/monitoring-jobs.md
-      - Deleting Jobs: slurm/deleting-jobs.md
-      - Array Jobs with Slurm: slurm/array-jobs.md
-      - Job dependencies: slurm/dependencies.md
-      - GPUs: slurm/gpus.md
-      - Interactive Jobs: slurm/interactive-jobs.md
-      - Investigating a Job Failure: slurm/investigating-job-failure.md
-      - Checkpointing: slurm/checkpointing.md
-      - Fair Share: slurm/fair-share.md
-  - Software:
-      - HPC software environment: software/hpc-modules.md
-      - Installing Custom Software: software/installing-custom-software.md
-      - EasyBuild: software/EasyBuild.md
-      - Supported Applications:
-          - Anaconda / Python: software/Anaconda.md
-          - Apptainer: software/apptainer.md
-          - JupyterLab: software/JupyterLab.md
-          - MATLAB: software/matlab.md
-          - Parallel BZIP2: software/bzip2.md
-          - ParaView: software/ParaView.md
-          - R: software/r.md
-          - Visual Studio Code: software/VisualStudioCode.md
-  - Storage:
-      - Overview: file-system/filesystem-overview.md
-      - Quota: file-system/quota.md
-      - Moving files to and from the HPCs: file-system/file-transfer.md
-      - Scratch: file-system/scratch.md
-  - Costs and Investments: general/costs_investments.md
-  - Support: general/support.md
-  - FAQ: general/faq.md
-  - Hall of Fame: general/halloffame.md
-  - Code of Conduct: general/code-of-conduct.md
-
-# Copyright footer
-copyright: 'Copyright &copy; University of Bern, IT Service Office'
-# Link to repo
-repo_name: 'hpc-unibe-ch/hpc-docs'
+site_name: UBELIX User Guide
+repo_name: 'hpc-unibe-ch/hpc-unibe-ch.github.io'
 repo_url: 'https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io'
 edit_uri: 'edit/main/docs'
+site_description: >-
+  Instructions, user guides and tutorials for the use of UBELIX, the HPC cluster of the University of Bern.
+copyright: The "UBELIX User Guide" is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by University of Bern, IT Service Office.<br> It is adapted from the <a href="https://github.com/Lumi-supercomputer/lumi-userguide">LUMI Documentation</a>, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+nav:
+  - First steps:
+      - Get Started: firststeps/index.md
+      - Access to UBELIX: firststeps/accessUBELIX.md
+      - Logging in (with SSH client): firststeps/loggingin.md
+      - Logging in (with web interface): firststeps/loggingin-webui.md
+      - Setting up SSH key pair: firststeps/SSH-keys.md
+      - Moving data to/from UBELIX: firststeps/movingdata.md
+      - Next steps: firststeps/nextsteps.md
+  - Hardware:
+      - Overview: hardware/index.md
+      - CPU nodes: hardware/cpu.md
+      - GPU nodes: hardware/gpu.md
+      - Network and interconnect: hardware/network.md
+  - Running jobs:
+      - Overview: runjobs/index.md
+      - Partitions / QoS: runjobs/partitions.md
+      - Web interface:
+          - Introduction: runjobs/ondemand/index.md
+          - Interactive applications:
+              - Jupyter: runjobs/ondemand/jupyter.md
+              - RStudio: runjobs/ondemand/rstudio.md
+              - Visual Studio Code: runjobs/ondemand/code-server.md
+          - Troubleshooting: runjobs/ondemand/troubleshooting.md
+      - Basic batch jobs:
+          - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
+          - Submitting Jobs: runjobs/scheduled-jobs/submission.md
+          - Monitoring Jobs: runjobs/scheduled-jobs/monitoring-jobs.md
+          - Deleting Jobs: runjobs/scheduled-jobs/deleting-jobs.md
+          - GPU Jobs: runjobs/scheduled-jobs/gpus.md
+          - Interactive jobs: runjobs/scheduled-jobs/interactive.md
+          - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+      - Advanced topics:
+          - Job array: runjobs/scheduled-jobs/throughput.md
+          - Job dependencies: runjobs/scheduled-jobs/dependencies.md
+          - Investigating a Job Failure: runjobs/scheduled-jobs/investigating-job-failure.md
+          - Checkpointing: runjobs/scheduled-jobs/checkpointing.md
+          - Fair Share: runjobs/scheduled-jobs/fair-share.md
+          - Preemption: runjobs/scheduled-jobs/preemption.md
+  - Software:
+      - Overview: software/index.md
+      - Software environment: software/Lmod_modules.md
+      - Compiling:
+          - GNU compilers: software/compiling/gnu.md
+          - Intel compilers: software/compiling/intel.md
+      - Installing software:
+          - Python packages: software/installing/python.md
+          - R packages: software/installing/r.md
+          - EasyBuild: software/installing/easybuild.md
+          - Containers: software/containers/apptainer.md
+      - Software guides:
+          - JupyterLab: software/packages/JupyterLab.md
+          - MATLAB: software/packages/matlab.md
+          - Parallel BZIP2: software/packages/bzip2.md
+          - ParaView: software/packages/ParaView.md
+          - PyTorch: software/packages/pytorch.md
+          - R: software/packages/r.md
+          - TensorFlow: software/packages/tensorflow.md
+          - Visual Studio Code: software/packages/VisualStudioCode.md
+  - Storage:
+      - Overview: storage/index.md
+      - Quota: storage/quota.md
+      - Scratch: storage/scratch.md
+  - Costs and Investments: costs_investments.md
+  - Teaching with UBELIX: teaching.md
+  - Support:
+      - Support: support/index.md
+      - Data Science Lab: support/dsl.md
+      - Known issues: support/issues.md
+      - FAQ: support/faq.md
+      - UBELIX service status: https://ubelix.hpc.unibe.ch
+  - Code of Conduct: code-of-conduct.md
 
-# Configuration
+
 theme:
   name: material
 

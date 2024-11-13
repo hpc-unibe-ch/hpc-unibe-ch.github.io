@@ -5,24 +5,17 @@
 Official documentation site of the high performance computing and the HPC
 cluster UBELIX.
 
-Currently, the UBELIX cluster runs around 320 compute nodes featuring ~12k CPU
-cores and 160 GPUs with almost one million GPU cores. The infrastructure is
+Currently, the UBELIX cluster runs around 280 compute nodes featuring ~15k CPU
+cores and ~180 GPUs with almost one million GPU cores. The infrastructure is
 available to all University personnel for their scientific work. The cluster can
 also be used by students within a scope of a thesis or a course.
-
-If your campus account is not yet activated for UBELIX, the [Getting Started Guide](general/quick-start.md)
-might be a good place to get you started.
-
-UBELIX features a plethora of software and applications, which is outlined on
-the page Software, but the users are free to compile and install their own
-software within their home directories.
 
 If you are wondering... UBELIX is an acronym and stands for **U**niversity of
 **Be**rn **Li**nu**x** Cluster (Naming similarities to known Gauls are purely
 coincidental and not intended in any way).
 
-!!! note "Job Monitoroing"
-    See what is currently running on UBELIX on the [Job Monitoring](https://www.ubelix.unibe.ch/xmlqstat/) pages.
+!!! note "Job Monitoring"
+    See what is currently running on UBELIX on the [Job Monitoring](https://www.ubelix.unibe.ch/) pages.
 
 ## Acknowledging UBELIX
 
