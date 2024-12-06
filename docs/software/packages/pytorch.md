@@ -13,7 +13,7 @@ If you install pre-built binaries (using either pip or conda) then you do not ne
 To install any version of PyTorch request an interactive job on a GPU node:
 
 ```bash
-salloc --time=01:00:00 --partition=gpu --gres=gpu/rtx4090:1 --cpus-per-task=16 --mem-per-cpu=4G
+salloc --time=01:00:00 --partition=gpu --gres=gpu:rtx4090:1 --cpus-per-task=16 --mem-per-cpu=4G
 srun --pty bash
 ```
 This will result in a shell directly on a GPU node.
