@@ -52,3 +52,17 @@ This is why you have to answer **yes** to this *"Would you like to use a persona
   If you have an idea on how to make this happen, get in touch!
 - you need to properly stop your R session from within RStudio Server before you exit or you will receive Warnings after the next login
 - RStudio Server doesn't know about any SLURM environment variables. Use `system('nproc')` is a reliable way to determine how many cores are actually available to you. Please avoid using `parallel::detectCores()` in your code as it does not return the number of "allowed" cores correctly.
+
+## Common problems
+
+### R is taking longer to start than usual
+
+Two of the most common session startup problems are (1) oversized global R environments, which take a long time to load into memory when the session is resumed, and (2) problematic code in `.Rprofile` which takes too long to run or throws errors during startup.
+
+In order to help eliminate these variables as the cause of session startup issues, RStudio Server can start sessions in Safe Mode. This mode starts the session without running `.Rprofile` or restoring the global environment. If a session takes too long to start, the user will be given the option to restart a session in Safe Mode.
+
+In some cases using safe mode shows the same issue. In this case the issue may
+be linked to a previous R session and may be fixed by removing the previously
+active session: `rm -r ~/.local/share/rstudio/sessions/active`.
+
+
