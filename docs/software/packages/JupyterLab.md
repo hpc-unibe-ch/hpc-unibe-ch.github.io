@@ -121,7 +121,7 @@ Furthermore, if you use libraries, which implement threading: align the numbers 
 
 OR requesting GPU resources on a node with a NVIDIA graphics card:
 ```
-jupyter-compute 15051 --ntasks 1 --time=01:00:00 --partition=gpu --gres=gpu:gtx1080ti:1
+jupyter-compute 15051 --ntasks 1 --time=01:00:00 --partition=gpu --gres=gpu:rtx3090:1
 ```
 
 ## Kernels

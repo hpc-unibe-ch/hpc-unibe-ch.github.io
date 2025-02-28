@@ -9,7 +9,7 @@ We are currently operating the following partitions:
 | --------- | -------- | ---------- | ---------------- | ------------- |
 |**epyc2 (default)** | single and multi-core |AMD Epyc2 2x64 cores <br> AMD Epyc4 2x96 cores | 1TB <br> 1.5TB | 1TB |
 | bdw | full nodes only (x*20cores) | Intel Broadwell 2x10 cores | 156GB | 1TB |
-| gpu | GPU <br> (8 GPUs per node, <br> varying CPUs) | Nvidia GTX 1080 Ti <br> Nvidia RTX 3090 <br> Nvidia RTX 4090 <br> Nvidia Tesla P100 <br> Nvidia A100 <br> Nvidia H100 | 11GB <br> 24GB <br> 24GB <br> 12GB <br> 80GB <br> 96GB | 800GB <br> 1.92TB <br> 1.92TB <br> 800GB <br> 1.92TB <br> 1.92TB |
+| gpu | GPU <br> (8 GPUs per node, <br> varying CPUs) | Nvidia RTX 3090 <br> Nvidia RTX 4090 <br> Nvidia A100 <br> Nvidia H100 | 24GB <br> 24GB <br> 80GB <br> 96GB |  1.92TB <br> 1.92TB <br> 1.92TB <br> 1.92TB |
 | gpu-invest | GPU | *see gpu partition* |  | |
 | icpu-*investor* | single and multi-core | *see epyc2 partition* |  | |
 
