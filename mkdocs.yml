@@ -1,6 +1,6 @@
 site_name: UBELIX User Guide
-repo_name: 'hpc-unibe-ch/ubelix-billing-docs.github.io'
-repo_url: 'https://github.com/hpc-unibe-ch/ubelix-billing-docs.github.io'
+repo_name: 'hpc-unibe-ch/hpc-unibe-ch.github.io'
+repo_url: 'https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io'
 edit_uri: 'edit/main/docs'
 site_description: >-
   Instructions, user guides and tutorials for the use of UBELIX, the HPC cluster of the University of Bern.
