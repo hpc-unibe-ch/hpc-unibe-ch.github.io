@@ -1,6 +1,6 @@
 site_name: UBELIX User Guide
-repo_name: 'hpc-unibe-ch/hpc-unibe-ch.github.io'
-repo_url: 'https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io'
+repo_name: 'hpc-unibe-ch/ubelix-billing-docs.github.io'
+repo_url: 'https://github.com/hpc-unibe-ch/ubelix-billing-docs.github.io'
 edit_uri: 'edit/main/docs'
 site_description: >-
   Instructions, user guides and tutorials for the use of UBELIX, the HPC cluster of the University of Bern.
@@ -69,7 +69,10 @@ nav:
       - Overview: storage/index.md
       - Quota: storage/quota.md
       - Scratch: storage/scratch.md
-  - Costs and Investments: costs_investments.md
+  - Costs and Billing:
+      - Investments: costs/investments.md
+      - Pay-as-you-go: costs/payg.md
+      - FAQ: costs/faq.md
   - Teaching with UBELIX: teaching.md
   - Support:
       - Support: support/index.md
