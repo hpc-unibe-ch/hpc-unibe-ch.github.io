@@ -55,7 +55,7 @@ Here is an overview of some of the most commonly used Slurm options.
 | `--output`     | Redirect **standard output**. *All directories specified in the path must exist before the job starts!* By default stderr and stdout are merged into a file `slurm-%j.out`, where `%j` is the job allocation number. Example: `--output=myCal_%j.out` |
 |`--error`      | Redirect **standard error**. *All directories specified in the path must exist before the job starts!* By default stderr and stdout are merged into a file `slurm-%j.out`, where `%j` is the job allocation number. Example: `--output=myCal_%j.err` |
 | `--mail-user`  | Mail address to contact job owner. **Must be a valid unibe email address, if used!** Example:`--mail-user=foo.bar@unibe.ch` |
-| `--mail-type`  | When to notify a job owner: `none`, `all`, `begin`, `end`, `fail`, `requeue`, `array_tasks`. Eaxample: `--mail-type=end,fail` |
+| `--mail-type`  | When to notify a job owner: `none`, `all`, `begin`, `end`, `fail`, `requeue`, `array_tasks`. Example: `--mail-type=end,fail` |
 
 
 ### Request CPU cores
