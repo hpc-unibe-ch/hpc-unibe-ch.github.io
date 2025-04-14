@@ -101,7 +101,7 @@ env | awk -F= '$1~/^SLURM_/{print "export "$0}' > ~/.code-tunnel-env.bash
 
 # start sshd server on the available port
 echo "Starting sshd on port $PORT"
-/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_ubelix_rsa &
+/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_ed25519_ubelix_internal &
 wait
 ```
 
