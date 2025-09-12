@@ -12,6 +12,7 @@ The UBELIX GPU-based hardware partition currently consists of about 20 compute n
 | 8  | 8x NVIDIA RTX4090 | 128 (2x64) | 24 GB  | 100Gb/s |
 | 1  | 6x NVIDIA A100 | 128 (2x64) | 80 GB | 100Gb/s |
 | 5  | 8x NVIDIA H100 | 128 (2x64) | 96 GB  | 100Gb/s |
+| 2  | 8x NVIDIA H200 | 128 (2x64) | 141 GB  | 100Gb/s |
 
 See the [Slurm partitions page][slurm-partitions] for an overview of options
 for allocating these nodes.
@@ -43,6 +44,7 @@ follows:
 | Nvidia RTX 4090 | 16 | 90GB |
 | Nvidia A100 | 20 | 80GB |
 | Nvidia H100 | 16 | 90GB |
+| Nvidia H200 | 16 | 90GB |
 
 ## Network
 
