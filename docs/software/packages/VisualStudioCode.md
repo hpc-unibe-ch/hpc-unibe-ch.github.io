@@ -97,7 +97,7 @@ PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.get
 scontrol update JobId="$SLURM_JOB_ID" Comment="$PORT"
 
 # store SLURM variables to file
-env | awk -F= '$1~/^SLURM_/{print "export "$0}' > ~/.code-tunnel-env.bash
+env | awk -F= '$1~/^SLURM_/ || $1=="TMPDIR" {print "export "$0}' > ~/.code-tunnel-env.bash
 
 # start sshd server on the available port
 echo "Starting sshd on port $PORT"
