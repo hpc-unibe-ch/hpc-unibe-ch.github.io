@@ -19,12 +19,12 @@ the additional budget.
 !!! tip "Get in touch with us!"
     If you are interested in our investment opportunities, get in
     touch with us by starting a service request at the [Service
-    Portal](https://serviceportal.unibe.ch/sp).
+    Portal](https://serviceportal.unibe.ch/hpc).
 
 ## Workspace Storage Costs
 
 Price and service details can be found at [the official service
-page](https://bit.ly/3AwciHA).
+page](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/uebersicht_der_angebote/index_ger.html).
 
 !!! tip "Statement of Cost for SNSF"
     On the official service page of the research storage service you can also
