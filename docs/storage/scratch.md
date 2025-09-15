@@ -1,7 +1,7 @@
 # Scratch - temporary file space
 
 !!! warning
-    Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed.
+    Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed up. Do not put data here that is crucial for your research!
     Files are subject to automatic removal if they are not accessed within a timeframe of 30 days.
 
 Scratch file space are meant for temporary data storage. Interim computational data should be located there. 
