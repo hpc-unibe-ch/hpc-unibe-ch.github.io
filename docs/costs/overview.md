@@ -5,7 +5,7 @@
 
 The HPC cluster is run and maintained by the IT office of the University of Bern. It is financed by our users and IT-budget of the directors office. 
 
-Please note that as of November 2025 there has been a change to the usage-model of our cluster. It is possible to use our resources for free, you can [investments][invest] or use the [pay-as-you-go][payg]-model.
+Please note that as of November 2025 there has been a change to the usage-model of our cluster. It is possible to use our resources for free; you can make [investments][invest] or use the [pay-as-you-go][payg]-model.
 
 ## Workspace Storage Costs
 
