@@ -30,7 +30,7 @@ A: Most likely, yes. We know from experience that projects already have been fun
 A: Prices for Hardware - especially GPUs - tend to be quite volatile. In order to keep our offer stable, we will ask for new prices twice a year. We reserve the right to adjust more frequently. 
 
 **Q: Is the F2-Freetier dependent on group-size?**
-A: No, The calculation is done per cost-center. Please note that if this gets abused, we might have to stop providing that free-tier.
+A: No, The calculation is done per project. Please note that if this gets abused, we might have to stop providing that free-tier.
 
 **Q: How does UBELIX compare to cloud providers?**  
 A: As of 2025, UBELIX is 5–10x cheaper and includes management, energy, software, storage, staff etc.

@@ -7,7 +7,7 @@ The following resources are always available free of charge:
 - 2 GPUs (RTX 4090) – 16 cards in pool
 - 1 GPU (H100) – 8 cards in pool
 
-# F2 - Research Group
+# F2 - Research Group / Project
 Each research group receives a credit of CHF 1000 per year. The deduction is applied at the end of the fiscal year. We will refund up to CHF 1000.- via internal transfer ("Umbuchung").
 
 # F3 - Preemptable
