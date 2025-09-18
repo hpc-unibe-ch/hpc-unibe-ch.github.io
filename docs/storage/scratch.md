@@ -1,7 +1,7 @@
 # Scratch - temporary file space
 
 !!! warning
-    Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed.
+    Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed up. Do not put data here that is crucial for your research!
     Files are subject to automatic removal if they are not accessed within a timeframe of 30 days.
 
 Scratch file space are meant for temporary data storage. Interim computational data should be located there. 
@@ -10,7 +10,7 @@ We distinguish local and network scratch spaces.
 ## Network Scratch
 Network scratch spaces are located on the parallel file system and accessible to all nodes. In contrast to `HOME` or `WORKSPACEs`, scratch is meant for temporary data, especially with larger quota requirements. 
 Jobs creating a lot of temporary data, which may need or may not need to be post-processed should run in this space. As an example, a application creating a huge amount of temporary output, which need to be analysed, but only partly need to be stored for a longer term.
-Block and file quota is less restrictive on scratch compared to `HOME` or permanent `WORKSPACE` directories. Every user can use up to **30TB** and **10M** files. There is **no snapshot** and **no backup** feature available. Furthermore, an **automatic deletion policy** is implemented, deleting files which are older than **30 days**. Files are subject to automatic removal only if they are not accessed within a timeframe of 30 days. Any file with an access timestamp within the last 30 days remains exempt from the policy, ensuring that actively utilized files are not inadvertently affected.
+Block and file quota is less restrictive on scratch compared to `HOME` or permanent `WORKSPACE` directories. Every user can use up to **15TB** and **10M** files. There is **no snapshot** and **no backup** feature available. Furthermore, an **automatic deletion policy** is implemented, deleting files which are older than **30 days**. Files are subject to automatic removal only if they are not accessed within a timeframe of 30 days. Any file with an access timestamp within the last 30 days remains exempt from the policy, ensuring that actively utilized files are not inadvertently affected.
 
 Scratch file space can be accessed using the Workspace module and the `$SCRATCH` environment variable. 
 

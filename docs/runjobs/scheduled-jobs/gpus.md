@@ -15,12 +15,11 @@ architecture and use one of the following `--gres` option to select it.
 
 | Type | SLURM gres option |
 | ---- | ----------------- |
-| Nvidia Geforce GTX 1080 Ti | `--gres=gpu:gtx1080ti:<number_of_gpus>` |
 | Nvidia Geforce RTX 3090 | `--gres=gpu:rtx3090:<number_of_gpus>` |
 | Nvidia Geforce RTX 4090 | `--gres=gpu:rtx4090:<number_of_gpus>` |
-| Nvidia Tesla P100 | `--gres=gpu:teslap100:<number_of_gpus>` |
 | Nvidia A100 | `--gres=gpu:a100:<number_of_gpus>` |
 | Nvidia H100 | `--gres=gpu:h100:<number_of_gpus>` |
+| Nvidia H200 | `--gres=gpu:h200:<number_of_gpus>` |
 
 Alternatively, you may use the `--gpus`, `--gpus-per-node` and
 `--gpus-per-tasks` otions. Note that the GPU type still needs to be specified
@@ -46,12 +45,11 @@ In the past, we observed that GPU resources were often left unused because some 
 
 | Type | CPUs per GPU | Memory per GPU |
 | ---- | -------------| -------------- |
-| Nvidia GTX 1080 Ti | 3 | 30GB |
 | Nvidia RTX 3090 | 4 | 60GB |
 | Nvidia RTX 4090 | 16 | 90GB |
-| Nvidia P100 | 3 | 30GB |
 | Nvidia A100 | 20 | 80GB |
 | Nvidia H100 | 16 | 90GB |
+| Nvidia H200 | 16 | 90GB |
 
 If you submit a GPU job that requests more resources than are available per GPU, your job will be rejected. If your job requires more CPU and memory resources, you may choose to allocate additional GPUs even if these additional GPUs remain unused by your application.
 

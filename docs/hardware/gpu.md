@@ -4,16 +4,15 @@
 [interconnect]: network.md
 [slurm-partitions]: ../runjobs/partitions.md
 
-The UBELIX GPU-based hardware partition currently consists of about 30 compute nodes. Due to their different architectures, their specifications differ as shown in the table below.
+The UBELIX GPU-based hardware partition currently consists of about 20 compute nodes. Due to their different architectures, their specifications differ as shown in the table below.
 
 | Nodes | GPUs                                               | CPU cores     | GPU Memory   | Network     |
 | :---: | :------------------------------------------------: | :-----------: | :------: | :---------: |
-| 7  | 8x NVIDIA GTX1080Ti | 24 (2x12) | 12 GB  | 40Gb/s |
-| 7  | 8x NVIDIA RTX3090 | 32 (2x16) | 24 GB  | 40Gb/s or 100Gb/s |
+| 6  | 8x NVIDIA RTX3090 | 32 (2x16) | 24 GB  | 40Gb/s or 100Gb/s |
 | 8  | 8x NVIDIA RTX4090 | 128 (2x64) | 24 GB  | 100Gb/s |
-| 2  | 8x NVIDIA P100 | 24 (2x12) | 12 GB  | 40Gb/s |
 | 1  | 6x NVIDIA A100 | 128 (2x64) | 80 GB | 100Gb/s |
-| 4  | 8x NVIDIA H100 | 128 (2x64) | 96 GB  | 100Gb/s |
+| 5  | 8x NVIDIA H100 | 128 (2x64) | 96 GB  | 100Gb/s |
+| 2  | 8x NVIDIA H200 | 128 (2x64) | 141 GB  | 100Gb/s |
 
 See the [Slurm partitions page][slurm-partitions] for an overview of options
 for allocating these nodes.
@@ -41,12 +40,11 @@ follows:
 
 | GPU Type | CPUs per GPU | Memory per GPU |
 | ---- | -------------| -------------- |
-| Nvidia GTX 1080 Ti | 3 | 30GB |
 | Nvidia RTX 3090 | 4 | 60GB |
 | Nvidia RTX 4090 | 16 | 90GB |
-| Nvidia P100 | 3 | 30GB |
 | Nvidia A100 | 20 | 80GB |
 | Nvidia H100 | 16 | 90GB |
+| Nvidia H200 | 16 | 90GB |
 
 ## Network
 
