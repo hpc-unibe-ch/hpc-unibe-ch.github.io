@@ -1,7 +1,9 @@
 # Billing FAQ
 
+You can also find more information on the internal page of [UBELIX](https://intern.unibe.ch/dienstleistungen/informatik/dienstleistungen_der_informatikdienste/dienstleistungen___ressourcen/high_performance_computing___hpc___grid/index_ger.html#e1682633)
+
 **Q: Will there be a possibility to cap my bill?**
-A: Yes. We will provide a possibility top set-up a price-limit per project. This limit will be evaluated before starting a job. Also, cost-intensive jobs will print a warning-message on submit.
+A: Yes. We will provide a possibility top set-up a price-limit per project. This limit will be evaluated before starting a job. Also, cost-intensive jobs will print a warning-message on submit. Please note that the cost ceiling cannot be guaranteed in all cases, as simultaneous job submissions may cause one job to start before the other is recorded, potentially exceeding the limit.
 
 **Q: How often will we receive a bill?**
 A: We will send out bills **monthly**.
