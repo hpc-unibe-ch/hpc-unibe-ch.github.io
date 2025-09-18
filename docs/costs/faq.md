@@ -24,7 +24,7 @@ A: No, courses will remain for free. Please get in touch at least 14 days ahead 
 A: **Yes**. Prices for both storage-products as well as computing on UBELIX have been reviewed and accepted by SNSF.
 
 **Q: Does the pricing scheme also comply with other funders like innosuisse or SBFI**
-A: Most likely, yes. We know from experience that projects already have been funded sucessfully. Please refer to the grants-office for further discussion.
+A: Most likely, yes. We know from experience that projects already have been funded successfully. Please refer to the grants-office for further discussion.
 
 **Q: How volatile will the published prices be?**
 A: Prices for Hardware - especially GPUs - tend to be quite volatile. In order to keep our offer stable, we will ask for new prices twice a year. We reserve the right to adjust more frequently. 
