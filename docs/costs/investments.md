@@ -13,7 +13,7 @@ All other costs to run and maintain the invested hardware, including power, cool
 - Funds reinvested in hardware upgrades.
 
 ## Limits
-- Investmens are limited to resource-types which are already available. If we do not provide a certain type of hardware, please get in touch
+- Investments are limited to resource-types which are already available. If we do not provide a certain type of hardware, please get in touch
 - Investing does not come with a SLA or an extended support-contract.
 - There is an upper and lower limit on investments. Use the calculator and/or contact us if unsure.
 
