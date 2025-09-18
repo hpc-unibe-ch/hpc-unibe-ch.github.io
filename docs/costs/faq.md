@@ -18,7 +18,7 @@ A: Yes, costs can be queried by everybody.
 A: Exactly the same as with cli-jobs: The chosen resources and walltimes are billed on the selected WCKey
 
 **Q: What can I do if I plan a course? Will this be billed?**
-A: No, cources will remain for free. Please get in touch at least 14 days ahead of the course.
+A: No, courses will remain for free. Please get in touch at least 14 days ahead of the course.
 
 **Q: Is the pricing-model SNSF-compatible?**
 A: **Yes**. Prices for both storage-products as well as computing on UBELIX have been reviewed and accepted by SNSF.
