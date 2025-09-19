@@ -27,10 +27,10 @@ A: **Yes**. Prices for both storage-products as well as computing on UBELIX have
 A: Most likely, yes. We know from experience that projects already have been funded successfully. Please refer to the grants-office for further discussion.
 
 **Q: How volatile will the published prices be?**
-A: Prices for Hardware - especially GPUs - tend to be quite volatile. In order to keep our offer stable, we will ask for new prices twice a year. We reserve the right to adjust more frequently. 
+A: Prices for Hardware - especially GPUs - tend to be quite volatile. In order to keep our offer stable, we will ask for new prices twice a year. We reserve the right to adjust more frequently.
 
 **Q: Is the F2-Freetier dependent on group-size?**
 A: No, The calculation is done per project. Please note that if this gets abused, we might have to stop providing that free-tier.
 
-**Q: How does UBELIX compare to cloud providers?**  
+**Q: How does UBELIX compare to cloud providers?**
 A: As of 2025, UBELIX is 5–10x cheaper and includes management, energy, software, storage, staff etc.
