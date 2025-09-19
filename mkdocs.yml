@@ -69,7 +69,12 @@ nav:
       - Overview: storage/index.md
       - Quota: storage/quota.md
       - Scratch: storage/scratch.md
-  - Costs and Investments: costs_investments.md
+  - Costs and Billing:
+      - Overview: costs/overview.md
+      - Investments: costs/investments.md
+      - Pay-as-you-go: costs/payg.md
+      - FAQ: costs/faq.md
+      - Free tiers: costs/freetier.md
   - Teaching with UBELIX: teaching.md
   - Support:
       - Support: support/index.md
