@@ -54,7 +54,7 @@ Examples:
 
 
 ### Investor QoS
-Investors get pseudo-exclusive access to their invested resources. The membership to these investor qos is managed by the investor or their deputy. Membership changes need to be communicated to the HPC team. For details on investing in UBELIX see [Costs and Investments](../costs_investments.md).
+Investors get pseudo-exclusive access to their invested resources. The membership to these investor qos is managed by the investor or their deputy. Membership changes need to be communicated to the HPC team. For details on investing in UBELIX see [Costs and Investments](../costs/overview.md).
 
 
 ### Preemptable QoS

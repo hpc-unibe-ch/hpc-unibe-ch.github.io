@@ -73,8 +73,9 @@ nav:
       - Overview: costs/overview.md
       - Investments: costs/investments.md
       - Pay-as-you-go: costs/payg.md
-      - FAQ: costs/faq.md
       - Free tiers: costs/freetier.md
+      - FAQ: costs/faq.md
+      - Storage costs: costs/storage.md
   - Teaching with UBELIX: teaching.md
   - Support:
       - Support: support/index.md
