@@ -3,6 +3,10 @@
 
 # Teaching with UBELIX
 
+!!! warning "Reserving resources for courses (Updated: 16.11.2025)"
+
+    Currently we are not able to reserve resources for courses. We are working on the issue and hope to have it resolve by December 2025.
+
 If you plan to use UBELIX for teaching in scheduled courses, we highly recommend that reach out to us for the following reasons:
 
 - When possible, we can plan our maintenance sessions outside of your planned teaching / training dates.
