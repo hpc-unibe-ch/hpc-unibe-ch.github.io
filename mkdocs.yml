@@ -95,6 +95,7 @@ extra_css:
 plugins:
   - git-revision-date
   - search
+  - live-edit
 
 # See https://python-markdown.github.io/extensions/ and
 # See https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions#Bundles
