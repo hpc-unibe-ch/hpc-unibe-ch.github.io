@@ -48,21 +48,87 @@ A batch script is summarized by the following steps:
 
 As an example, let's look at this batch job script:
 
-```bash
-#!/bin/bash
-#SBATCH --job-name="Simple Python example"
-#SBATCH --time=02:00:00
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=1G
-#SBATCH --partition=epyc2
+=== "gratis account"
+    ```bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --job-name="Simple Python example"
+    #SBATCH --time=02:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --partition=epyc2
+    
+    # Your code below this line
+    module load Anaconda3
+    eval "$(conda shell.bash hook)"
+    
+    python3 script.py
+    ```
 
-# Your code below this line
-module load Anaconda3
-eval "$(conda shell.bash hook)"
+=== "paygo account"
+    ```bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --job-name="Simple Python example"
+    #SBATCH --time=02:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --partition=epyc2
+    
+    # Your code below this line
+    module load Anaconda3
+    eval "$(conda shell.bash hook)"
+    
+    python3 script.py
+    ```
 
-python3 script.py
-```
+=== "invest account"
+    ```bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=job_icpu-<investor>
+    #------------------------
+    #SBATCH --job-name="Simple Python example"
+    #SBATCH --time=02:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --partition=epyc2
+    
+    # Your code below this line
+    module load Anaconda3
+    eval "$(conda shell.bash hook)"
+    
+    python3 script.py
+    ```
+=== "teaching account"
+    ```bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --job-name="Simple Python example"
+    #SBATCH --time=02:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=1G
+    #SBATCH --partition=epyc2
+    
+    # Your code below this line
+    module load Anaconda3
+    eval "$(conda shell.bash hook)"
+    
+    python3 script.py
+    ```
 
 In the previous example, the first line `#!/bin/bash` specifies that the script
 should be interpreted as a bash script.
@@ -76,6 +142,20 @@ These have the general syntax
 
 Now that we have introduced this syntax, we can go through the directives one
 by one. The first directive is
+
+```bash
+#SBATCH --account=gratis
+```
+
+This sets the Slurm account to be used. The `gratis` account is the default account for all users.
+It is free to use and restricted in resources. Every user has access to the gratis account, which never incurs costs.
+For details on other accounts please refer to the [Accounts / Partitions / QoS
+section](../partitions.md).
+
+Depending on the selected account, there might be additional required
+directives. Since someone must have given you access to
+an account with extra directives, we assume that person has told you about the
+significance of the extra directives. So the next directive we'll cover here is:
 
 ```bash
 #SBATCH --job-name=exampleJob

@@ -15,7 +15,7 @@ To start using UBELIX, please follow these steps:
 
 1. Get [a user account][regular-access]
 
-2. Set up an [SSH key pair][SSH-keys] (Needed, if you are using UBELIX from a terminal)
+2. Set up an [SSH key pair][SSH-keys] (Recommended if you are using UBELIX from a terminal)
 
 3. Log in to UBELIX [with SSH client][logging-in] or [with the web interface][logging-in-webui]
 
@@ -27,5 +27,5 @@ To start using UBELIX, please follow these steps:
 
 If you need help getting started on UBELIX, please contact your local IT manager
 or supervisor if applicable.
-In case they are not able to provide the support you need, you can always contact the [UBELIX support
+In case they are not able to provide the support you need, you can contact the [UBELIX support
 ][support].

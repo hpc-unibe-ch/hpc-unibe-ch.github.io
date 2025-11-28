@@ -1,9 +1,6 @@
 # Welcome to UBELIX OnDemand
 
-!!! warning
-    This is a pre-release version of the UBELIX OnDemand portal. There will be bugs. Please report them at [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc).
-
-UBELIX OnDemand is an exciting new service providing easy access to the HPC system at Unibe, designed with user-friendliness in mind.
+UBELIX OnDemand is a service providing easy access to the HPC system at Unibe, designed with user-friendliness in mind.
 
 With the new OnDemand portal available at [https://ondemand.hpc.unibe.ch](https://ondemand.hpc.unibe.ch), you can:
 

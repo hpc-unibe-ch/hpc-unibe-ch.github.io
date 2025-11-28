@@ -5,20 +5,81 @@ When a job array script is submitted, a specified number of array tasks are
 created from the batch script. A batch script for such an array job may look
 like this:
 
-``` bash
-#!/bin/bash
-#SBATCH --array=1-16
-#SBATCH --output=array_%A_%a.out
-#SBATCH --error=array_%A_%a.err
-#SBATCH --time=01:00:00
-#SBATCH --ntasks=1
-#SBATCH --mem=4G
-
-# Print the task index.
-echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
-
-srun ./myapp --input input_data_${SLURM_ARRAY_TASK_ID}.inp
-```
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --array=1-16
+    #SBATCH --output=array_%A_%a.out
+    #SBATCH --error=array_%A_%a.err
+    #SBATCH --time=01:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --mem=4G
+    
+    # Print the task index.
+    echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+    
+    srun ./myapp --input input_data_${SLURM_ARRAY_TASK_ID}.inp
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --array=1-16
+    #SBATCH --output=array_%A_%a.out
+    #SBATCH --error=array_%A_%a.err
+    #SBATCH --time=01:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --mem=4G
+    
+    # Print the task index.
+    echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+    
+    srun ./myapp --input input_data_${SLURM_ARRAY_TASK_ID}.inp
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --array=1-16
+    #SBATCH --output=array_%A_%a.out
+    #SBATCH --error=array_%A_%a.err
+    #SBATCH --time=01:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --mem=4G
+    
+    # Print the task index.
+    echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+    
+    srun ./myapp --input input_data_${SLURM_ARRAY_TASK_ID}.inp
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --array=1-16
+    #SBATCH --output=array_%A_%a.out
+    #SBATCH --error=array_%A_%a.err
+    #SBATCH --time=01:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --mem=4G
+    
+    # Print the task index.
+    echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+    
+    srun ./myapp --input input_data_${SLURM_ARRAY_TASK_ID}.inp
+    ```
 
 In this example 16 array tasks will be launched (`--array=1-16`). These tasks
 will be copies of the batch script: in our example, each array task will be
@@ -156,20 +217,99 @@ tasks that uses 2 cores and 2 GB of memory per core (4 GB/task).
 
 ```bash
 #!/bin/bash
-#SBATCH --time=00:30:00
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem-per-cpu=2G
-#SBATCH --array=1-1000
-
-# Get first argument
-param_a=$(cat args.txt | \
-awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
-
-# Get second argument
-param_b=$(cat args.txt | \
-awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
-
-./myapp -a $param_a -b $param_b \
-        -o output_dir/output_${SLURM_ARRAY_TASK_ID}.out
 ```
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --time=00:30:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --array=1-1000
+    
+    # Get first argument
+    param_a=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
+    
+    # Get second argument
+    param_b=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
+    
+    ./myapp -a $param_a -b $param_b \
+            -o output_dir/output_${SLURM_ARRAY_TASK_ID}.out
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --time=00:30:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --array=1-1000
+    
+    # Get first argument
+    param_a=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
+    
+    # Get second argument
+    param_b=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
+    
+    ./myapp -a $param_a -b $param_b \
+            -o output_dir/output_${SLURM_ARRAY_TASK_ID}.out
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --time=00:30:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --array=1-1000
+    
+    # Get first argument
+    param_a=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
+    
+    # Get second argument
+    param_b=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
+    
+    ./myapp -a $param_a -b $param_b \
+            -o output_dir/output_${SLURM_ARRAY_TASK_ID}.out
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --time=00:30:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=2
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --array=1-1000
+    
+    # Get first argument
+    param_a=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $1}')
+    
+    # Get second argument
+    param_b=$(cat args.txt | \
+    awk -v var=$SLURM_ARRAY_TASK_ID 'NR==var {print $2}')
+    
+    ./myapp -a $param_a -b $param_b \
+            -o output_dir/output_${SLURM_ARRAY_TASK_ID}.out
+    ```

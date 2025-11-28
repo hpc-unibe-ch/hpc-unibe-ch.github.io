@@ -6,7 +6,15 @@ browser.
 1. Select the Jupyter Notebook app under Interactive Apps
        ![ood jupyter](../../assets/images/ood-jupyter.png)
 2. Provide the job specification you want for the Jupyter Server
+
+    !!! tip "Choosing different accounts"
+        If you are associated with a cost-enabled `paygo` project or
+        have access to the `invest` account, you may choose this here as well.
+        Make sure to select the appropriate combination of [partition and
+        qos](../partitions.md)!
    ![form-jupyter](../../assets/images/form-jupyter.png)
+
+
 3. Once your server is ready, click `Connect to Jupyter` to access it.
    ![connect-jupyter](../../assets/images/connect-jupyter.png)
 
