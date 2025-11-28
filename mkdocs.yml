@@ -21,7 +21,7 @@ nav:
       - Network and interconnect: hardware/network.md
   - Running jobs:
       - Overview: runjobs/index.md
-      - Partitions / QoS: runjobs/partitions.md
+      - Accounts / Partitions / QoS: runjobs/partitions.md
       - Web interface:
           - Introduction: runjobs/ondemand/index.md
           - Interactive applications:

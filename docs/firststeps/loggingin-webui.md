@@ -1,9 +1,5 @@
 # Logging in (with web interface)
 
-!!! warning
-	The UBELIX OnDemand portal is still under development. There will be bugs. 
-    Please report them at [https://serviceportal.unibe.ch/hpc](https://serviceportal.unibe.ch/hpc).
-
 We provide interactive HPC access including various interactive apps through the browser-based UBELIX OnDemand service available at [https://ondemand.hpc.unibe.ch](https://ondemand.hpc.unibe.ch).
 
 !!! tip

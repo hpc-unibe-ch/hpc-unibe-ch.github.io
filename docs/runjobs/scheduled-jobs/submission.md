@@ -39,6 +39,37 @@ characteristics of your application:
 !!! tip "Job arrays"
     Submit series of jobs (collection of similar jobs) as *array jobs* instead of one by one. This is crucial for backfilling performance and hence job throughput. Instead of submitting the same job repeatedly. See [Array jobs](../scheduled-jobs/throughput.md).
 
+## Required Slurm options
+
+The following Slurm options are required for any job:
+
+=== "gratis account"
+
+    | <div style="width:120px">Option</div> | Description |
+    | --------------|----------------------------------------------------------|
+    | `--account`   | Slurm account to be used by this job, i.e. `gratis` |
+
+=== "paygo account"
+
+    | <div style="width:120px">Option</div> | Description |
+    | --------------|----------------------------------------------------------|
+    | `--account`   | Slurm account to be used by this job, i.e. `paygo` |
+    | `--wckey`     | A valid project identifier ("wckey") is required to use the paygo account|
+
+=== "invest account"
+
+    | <div style="width:120px">Option</div> | Description |
+    | --------------|----------------------------------------------------------|
+    | `--account`   | Slurm account to be used by this job, i.e. `invest` |
+    | `--qos`       | An investor qos needs to be supplied to run jobs in the invest account |
+
+=== "teaching account"
+
+    | <div style="width:120px">Option</div> | Description |
+    | ---------------------|----------------------------------------------------------|
+    | `--account`       | Slurm account to be used by this job, i.e. `teaching` |
+    | `--reservation`   | A valid reservation is required to use the teaching account |
+
 ## Common Slurm options
 
 Here is an overview of some of the most commonly used Slurm options.
@@ -48,7 +79,6 @@ Here is an overview of some of the most commonly used Slurm options.
 | <div style="width:120px">Option</div> | Description |
 | --------------|----------------------------------------------------------|
 | `--time`      | Set a limit on the total run time of the job allocation. Format: `dd-hh:mm:ss` |
-| `--account`   | Charge resources used by this job to specified project   |
 | `--partition` | Request a specific partition for the resource allocation |
 | `--qos`        | Specify "Quality of Service". This can be used to change job limits, e.g. for long jobs or short jobs with large resources. See [Partition/QoS page](../partitions.md) |
 | `--job-name`   | Specify a job name. Example: `--job-name="Simple Matlab"` | |
@@ -106,18 +136,73 @@ sbatch [options] script [args...]
 !!! example "Sneak Peek: A simple Python example"
 
     Create sbmission script, `python_job.sh` allocating 8CPUs, 8GB memory for 1hour:
-    ```Bash
-    #!/bin/bash
-    #SBATCH --job-name="Simple Python example"
-    #SBATCH --time=01:00:00
-    #SBATCH --mem-per-cpu=1G
-    #SBATCH --cpus-per-task=8
+    === "gratis account"
+        ```Bash
+        #!/bin/bash
+        #------------------------
+        #SBATCH --account=gratis
+        #------------------------
+        #SBATCH --job-name="Simple Python example"
+        #SBATCH --time=01:00:00
+        #SBATCH --mem-per-cpu=1G
+        #SBATCH --cpus-per-task=8
 
-    # Your code below this line
-    module load Anaconda3
-    eval "$(conda shell.bash hook)"
-    python3 script.py
-    ```
+        # Your code below this line
+        module load Anaconda3
+        eval "$(conda shell.bash hook)"
+        python3 script.py
+        ```
+    === "paygo account"
+        ```Bash
+        #!/bin/bash
+        #------------------------
+        #SBATCH --account=paygo
+        #SBATCH --wckey=<wckey>
+        #------------------------
+        #SBATCH --job-name="Simple Python example"
+        #SBATCH --time=01:00:00
+        #SBATCH --mem-per-cpu=1G
+        #SBATCH --cpus-per-task=8
+
+        # Your code below this line
+        module load Anaconda3
+        eval "$(conda shell.bash hook)"
+        python3 script.py
+        ```
+    === "invest account"
+        ```Bash
+        #!/bin/bash
+        #------------------------
+        #SBATCH --account=invest
+        #SBATCH --qos=<investor_qos>
+        #------------------------
+        #SBATCH --job-name="Simple Python example"
+        #SBATCH --time=01:00:00
+        #SBATCH --mem-per-cpu=1G
+        #SBATCH --cpus-per-task=8
+
+        # Your code below this line
+        module load Anaconda3
+        eval "$(conda shell.bash hook)"
+        python3 script.py
+        ```
+    === "teaching account"
+        ```Bash
+        #!/bin/bash
+        #------------------------
+        #SBATCH --account=teaching
+        #SBATCH --reservation=<reservation>
+        #------------------------
+        #SBATCH --job-name="Simple Python example"
+        #SBATCH --time=01:00:00
+        #SBATCH --mem-per-cpu=1G
+        #SBATCH --cpus-per-task=8
+
+        # Your code below this line
+        module load Anaconda3
+        eval "$(conda shell.bash hook)"
+        python3 script.py
+        ```
 
     Submit the job script:
 
@@ -244,16 +329,65 @@ See [Partitions / QoS](../partitions.md) for a list of available partitions and 
 
 Running a serial job with email notification in case of error (1 task is default value):
 
-```Bash
-#!/bin/bash
-#SBATCH --mail-user=foo.bar@unibe.ch
-#SBATCH --mail-type=end,fail
-#SBATCH --job-name="Serial Job"
-#SBATCH --time=00:10:00
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="Serial Job"
+    #SBATCH --time=00:10:00
 
-# Your code below this line
-echo "I'm on host: $HOSTNAME"
-```
+    # Your code below this line
+    echo "I'm on host: $HOSTNAME"
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="Serial Job"
+    #SBATCH --time=00:10:00
+
+    # Your code below this line
+    echo "I'm on host: $HOSTNAME"
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="Serial Job"
+    #SBATCH --time=00:10:00
+
+    # Your code below this line
+    echo "I'm on host: $HOSTNAME"
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="Serial Job"
+    #SBATCH --time=00:10:00
+
+    # Your code below this line
+    echo "I'm on host: $HOSTNAME"
+    ```
 
 ### Parallel Jobs
 
@@ -261,55 +395,233 @@ echo "I'm on host: $HOSTNAME"
 
 SMP parallelization is based upon dynamically created threads (fork and join) that share memory on a single node. The key request is `--cpus-per-task`. To run N threads in parallel, we request N CPUs on the node (`--cpus-per-task=N`). 
 
-```Bash
-#!/bin/bash
-#SBATCH --mail-user=foo.bar@unibe.ch
-#SBATCH --mail-type=end,fail
-#SBATCH --job-name="SMP Job"
-#SBATCH --mem-per-cpu=2G
-#SBATCH --cpus-per-task=16
-#SBATCH --time=01:00:00
-
-# Your code below this line
-srun ./my_binary
-```
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="SMP Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --cpus-per-task=16
+    #SBATCH --time=01:00:00
+    
+    # Your code below this line
+    srun ./my_binary
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="SMP Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --cpus-per-task=16
+    #SBATCH --time=01:00:00
+    
+    # Your code below this line
+    srun ./my_binary
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="SMP Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --cpus-per-task=16
+    #SBATCH --time=01:00:00
+    
+    # Your code below this line
+    srun ./my_binary
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="SMP Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --cpus-per-task=16
+    #SBATCH --time=01:00:00
+    
+    # Your code below this line
+    srun ./my_binary
+    ```
 
 **MPI Jobs (e.g. Open MPI)**
 
 MPI parallelization is based upon processes (local or distributed) that communicate by passing messages. Since they don't rely on shared memory those processes can be distributed among several compute nodes.
 Use the option `--ntasks` to request a certain number of tasks (processes) that can be distributed over multiple nodes:
 
-```Bash
-#!/bin/bash
-#SBATCH --mail-user=foo.bar@unibe.ch
-#SBATCH --mail-type=end
-#SBATCH --job-name="MPI Job"
-#SBATCH --mem-per-cpu=2G
-#SBATCH --ntasks=8
-#SBATCH --time=04:00:00
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --ntasks=8
+    #SBATCH --time=04:00:00
+    
+    # Your code below this line
+    # First set the environment for using Open MPI
+    module load foss
+    srun ./my_binary
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --ntasks=8
+    #SBATCH --time=04:00:00
+    
+    # Your code below this line
+    # First set the environment for using Open MPI
+    module load foss
+    srun ./my_binary
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --ntasks=8
+    #SBATCH --time=04:00:00
+    
+    # Your code below this line
+    # First set the environment for using Open MPI
+    module load foss
+    srun ./my_binary
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@unibe.ch
+    #SBATCH --mail-type=end
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --ntasks=8
+    #SBATCH --time=04:00:00
+    
+    # Your code below this line
+    # First set the environment for using Open MPI
+    module load foss
+    srun ./my_binary
+    ```
 
-# Your code below this line
-# First set the environment for using Open MPI
-module load foss
-srun ./my_binary
-```
 
 On the 'bdw' partition you must use all CPUs provided by a node (20 CPUs). For example to run an OMPI job on 80 CPUs, do:
 
-```Bash
-#!/bin/bash
-#SBATCH --mail-user=foo.bar@baz.unibe.ch
-#SBATCH --mail-type=end,fail
-#SBATCH --job-name="MPI Job"
-#SBATCH --mem-per-cpu=2G
-#SBATCH --nodes=4     ## or --ntasks=80
-#SBATCH --ntasks-per-node=20
-#SBATCH --time=12:00:00
-
-# Your code below this line
-module load foss
-srun ./my_binary
-```
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --mail-user=foo.bar@baz.unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --nodes=4     ## or --ntasks=80
+    #SBATCH --ntasks-per-node=20
+    #SBATCH --time=12:00:00
+    
+    # Your code below this line
+    module load foss
+    srun ./my_binary
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@baz.unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --nodes=4     ## or --ntasks=80
+    #SBATCH --ntasks-per-node=20
+    #SBATCH --time=12:00:00
+    
+    # Your code below this line
+    module load foss
+    srun ./my_binary
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@baz.unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --nodes=4     ## or --ntasks=80
+    #SBATCH --ntasks-per-node=20
+    #SBATCH --time=12:00:00
+    
+    # Your code below this line
+    module load foss
+    srun ./my_binary
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --mail-user=foo.bar@baz.unibe.ch
+    #SBATCH --mail-type=end,fail
+    #SBATCH --job-name="MPI Job"
+    #SBATCH --mem-per-cpu=2G
+    #SBATCH --nodes=4     ## or --ntasks=80
+    #SBATCH --ntasks-per-node=20
+    #SBATCH --time=12:00:00
+    
+    # Your code below this line
+    module load foss
+    srun ./my_binary
+    ```
 
 ### GPU Jobs
 

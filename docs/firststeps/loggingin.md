@@ -39,11 +39,11 @@
     After log in successfully you will see the welcome message and the command prompt:
     
     ```Bash
-    Rocky 9.3 Blue Onyx
+    Rocky 9.6 Blue Onyx
     
     FQDN:      submit03.ubelix.unibe.ch
     Processor: 128x AMD EPYC 7742 64-Core Processor
-    Kernel:    5.14.0-362.13.1.el9_3.x86_64
+    Kernel:    5.14.0-570.49.1.el9_6.x86_64
     Memory:    128.223 GB
     
     [user@submit03 ~]$

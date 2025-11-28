@@ -27,9 +27,22 @@ Singularity commands, e.g., to get the version of Ubuntu running in a container
 stored as "ubuntu_22.04.sif", we may use `srun` to execute the `apptainer`
 container
 
-```bash
-$ srun --partition=<partition> --account=<account> apptainer exec ubuntu_22.04.sif cat /etc/os-release
-```
+=== "gratis account"
+    ```Bash
+    srun --account=gratis --partition=<partition> apptainer exec ubuntu_22.04.sif cat /etc/os-release
+    ```
+=== "paygo account"
+    ```Bash
+    srun --account=paygo --wckey=<wckey> --partition=<partition> apptainer exec ubuntu_22.04.sif cat /etc/os-release
+    ```
+=== "invest account"
+    ```Bash
+    srun --account=invest --qos=<investor_qos> --partition=<partition> apptainer exec ubuntu_22.04.sif cat /etc/os-release
+    ```
+=== "teaching account"
+    ```Bash
+    srun --account=teaching --reservation=<reservation> --partition=<partition> apptainer exec ubuntu_22.04.sif cat /etc/os-release
+    ```
 
 which prints something along the lines of
 
@@ -55,9 +68,22 @@ By default, the [network file system partitions][data-storage-options], such as
 make them available, they need to be explicitly bound by passing the
 `-B/--bind` command line option to `apptainer exec/run`. For instance
 
-```bash
-$ srun --partition=<partition> --account=<project_name> apptainer exec -B /scratch/<path_to_project> ubuntu_21.04.sif ls /scratch/<path_to_project>
-```
+=== "gratis account"
+    ```Bash
+    srun --account=gratis --partition=<partition> apptainer exec -B /scratch/<path_to_project> ubuntu_21.04.sif ls /scratch/<path_to_project>
+    ```
+=== "paygo account"
+    ```Bash
+    srun --account=paygo --wckey=<wckey> --partition=<partition> apptainer exec -B /scratch/<path_to_project> ubuntu_21.04.sif ls /scratch/<path_to_project>
+    ```
+=== "invest account"
+    ```Bash
+    srun --account=invest --qos=<investor_qos> --partition=<partition> apptainer exec -B /scratch/<path_to_project> ubuntu_21.04.sif ls /scratch/<path_to_project>
+    ```
+=== "teaching account"
+    ```Bash
+    srun --account=teaching --reservation=<reservation> --partition=<partition> apptainer exec -B /scratch/<path_to_project> ubuntu_21.04.sif ls /scratch/<path_to_project>
+    ```
 
 !!! warning
     Since project folder paths like `/scratch/`
@@ -85,9 +111,22 @@ MPI applications can also be run using an MPI stack installed in the container.
 To do so, Slurm needs to be instructed to use the PMI-2 process management
 interface by passing `--mpi=pmi2` to `srun`, e.g.
 
-```bash
-$ srun --partition=<partition> --mpi=pmi2 --nodes=2 apptainer run mpi_osu.sif
-```
+=== "gratis account"
+    ```Bash
+    srun --account=gratis --partition=<partition> --mpi=pmi2 --nodes=2 apptainer run mpi_osu.sif
+    ```
+=== "paygo account"
+    ```Bash
+    srun --account=paygo --wckey=<wckey> --partition=<partition> --mpi=pmi2 --nodes=2 apptainer run mpi_osu.sif
+    ```
+=== "invest account"
+    ```Bash
+    srun --account=invest --qos=<investor_qos> --partition=<partition> --mpi=pmi2 --nodes=2 apptainer run mpi_osu.sif
+    ```
+=== "teaching account"
+    ```Bash
+    srun --account=teaching --reservation=<reservation> --partition=<partition> --mpi=pmi2 --nodes=2 apptainer run mpi_osu.sif
+    ```
 
 which produces an output along the lines of
 

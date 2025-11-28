@@ -32,10 +32,45 @@ our [GPU Hardware page](../../hardware/gpu.md).
 
 GPU jobs must be submitted to the `gpu` or `gpu-invest` partitions.
 
-```Bash
-#SBATCH --partition=gpu #or gpu-invest
-#SBATCH --gres=gpu:<type>:<number_of_gpus>
-```
+=== "gratis account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=gratis
+    #------------------------
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:<type>:<number_of_gpus>
+    ```
+=== "paygo account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=paygo
+    #SBATCH --wckey=<wckey>
+    #------------------------
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:<type>:<number_of_gpus>
+    ```
+=== "invest account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=invest
+    #SBATCH --qos=<investor_qos>
+    #------------------------
+    #SBATCH --partition=gpu-invest
+    #SBATCH --gres=gpu:<type>:<number_of_gpus>
+    ```
+=== "teaching account"
+    ```Bash
+    #!/bin/bash
+    #------------------------
+    #SBATCH --account=teaching
+    #SBATCH --reservation=<reservation>
+    #------------------------
+    #SBATCH --partition=teaching
+    #SBATCH --gres=gpu:<type>:<number_of_gpus>
+    ```
 
 ### Requesting CPU and memory resources with GPUs
 
@@ -52,29 +87,6 @@ In the past, we observed that GPU resources were often left unused because some 
 | Nvidia H200 | 16 | 90GB |
 
 If you submit a GPU job that requests more resources than are available per GPU, your job will be rejected. If your job requires more CPU and memory resources, you may choose to allocate additional GPUs even if these additional GPUs remain unused by your application.
-
-## QoS `job_gpu_preemptable`
-
-For investors we provide the `gpu-invest` investor partitions with a specific
-QoS per investor that guarantees instant access to the purchased resources.
-Nevertheless, to efficiently use all resources, the QoS `job_gpu_preemptable` exists
-in the `gpu` partition. Jobs, submitted with this QoS have access to all GPU
-resources, but  may be interrupted if resources are required for investor jobs.
-Short jobs, and jobs that make use of checkpointing will benefit from these
-additional resources.
-
-Example: Requesting any four RTX3090 from the resource pool in the `gpu-invest`
-partition:
-```Bash
-#SBATCH --partition=gpu-invest
-#SBATCH --qos=job_gpu_preemptable
-#SBATCH --gres=gpu:rtx3090:4
-
-## By default, jobs that are preempted are resubmitted automatically.
-## If this is undesirable for you, use the following option to enable that the job, if preempted,
-## won't be re-queued but canceled instead:
-#SBATCH --no-requeue
-```
 
 ## CUDA
 

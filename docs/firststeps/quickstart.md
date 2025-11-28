@@ -75,6 +75,8 @@ To do some work on the cluster, you require certain resources (e.g. CPUs and mem
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=1GB
+#SBATCH --account=gratis
+#SBATCH --qos=job_gratis
 
 # Put your code below this line
 ...
@@ -100,6 +102,8 @@ The complete job script looks like this:
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=1GB
+#SBATCH --account=gratis
+#SBATCH --qos=job_gratis
 
 # Put your code below this line
 module load Workspace_Home

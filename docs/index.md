@@ -1,7 +1,7 @@
 # Welcome to the High Performance Computing (HPC) documentation of the University of Bern
 
 !!! warning "Changes to UBELIX usage model in December 2025"
-    The University of Bern is introducing a **pricing scheme** for its High Performance Computing (HPC) cluster UBELIX.
+    The University of Bern has introduced a **pricing scheme** for its High Performance Computing (HPC) cluster UBELIX.
     This change aims to make the system fair, sustainable, and transparent — ensuring that resources are used efficiently, while keeping UBELIX accessible to all members of the University of Bern. [Read more.](costs/overview.md)
 
 ## Introduction
@@ -24,14 +24,7 @@ coincidental and not intended in any way).
 ## Acknowledging UBELIX
 
 When you present results generated using our cluster UBELIX, we kindly ask you
-to acknowledge the usage of the cluster. We would also highly appreciate if you
-could send us a copy of your papers, posters and presentations mentioning the
-UBELIX cluster. Public visibility of our cluster and documenting results are
-important for us to ensure long-term funding of UBELIX.
-
-Whenever the UBELIX infrastructure has been used to produce results used in a
-publication or poster, we kindly request citing the service in the
-acknowledgements:
-
+to acknowledge the usage of the cluster. Public visibility of our cluster and documenting results are
+important for us to ensure long-term funding of UBELIX: 
     "Calculations were performed on UBELIX (https://www.id.unibe.ch/hpc), the HPC cluster at the University of Bern."
 

@@ -52,6 +52,9 @@ There are three types of accounts, each with different resource access and cost 
 - **invest Account**
   The investor account distinguishes between free resources (gratis) and resources funded by investment. This account is available to users associated with a UBELIX investment. Jobs submitted under this account do not generate costs at submission; all costs are prepaid through the investment.
 
+- **teaching Account**
+	This account is used for reservations that are created for teaching. When submitting jobs with this accounts, users must specify a valid reservation for scheduling. No costs are generated when using the teaching account.
+
 ### Cost-enabled Research Projects
 
 - Projects are created and managed in the IAM portal by technical managers. Managers can appoint additional project administrators (“delegates”) to manage project members.

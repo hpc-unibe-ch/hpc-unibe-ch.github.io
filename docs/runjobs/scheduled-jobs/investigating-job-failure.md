@@ -61,7 +61,7 @@ var<-sq(1,1000000000)
 ```Bash
 #!/bin/bash
 # Slurm options
-#SBATCH --mail-user=mustermann@unibe.ch
+#SBATCH --mail-user=foo.bar@unibe.ch
 #SBATCH --mail-type=begin,end,fail
 #SBATCH --job-name="Simple Example"
 #SBATCH --time=00:05:00
@@ -97,12 +97,12 @@ Execution halted
 
 You can bypass this problem by exiting with a proper exit code as soon as the command failed:
 
-**jobsbatch**
+**job.sbatch**
 
 ```Bash
 #!/bin/bash
 # Slurm options
-#SBATCH --mail-user=nico.faerber@id.unibe.ch
+#SBATCH --mail-user=foo.bar@id.unibe.ch
 #SBATCH --mail-type=begin,end,fail
 #SBATCH --job-name="Simple Example"
 #SBATCH --time=00:05:00

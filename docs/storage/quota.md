@@ -6,7 +6,7 @@ This page contains information about quota limits on UBELIX file systems.
 |---------------------------|-------|-----------|-----------------------| -----------------|-----------------|
 | **User home**          | 1TB | 1M      | No                    | User lifetime    | Yes              |
 | **Workspace<br>(Research Storage)** | min 5TB | 1M per TB      | Yes | Project lifetime | Yes              |
-| **Capacity Storage** | min 75TB | 100K per TB      | Yes | Project lifetime | No              |
+| **Capacity Storage** | min 50TB | 100K per TB      | Yes | Project lifetime | No              |
 | **Network Scratch**       |  30 TB[^user] | 10M[^user]     | No | 30 days          | No             |
 | **Local Scratch**       |  < 1 TB | -     | No  | Job lifetime         | No              |
 
