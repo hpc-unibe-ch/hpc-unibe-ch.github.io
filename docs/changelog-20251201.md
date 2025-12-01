@@ -40,6 +40,8 @@ If you do **not** belong to a project (which can be requested via the **Technikâ
 #SBATCH --wckey=<wckey>
 ```
 
+> **Tip:** Use the **swckeys** tool to check what wc_keys are available for you.
+
 * Available through the **`paygo`** account.  
 * Visible only if you have been added to a **costâ€‘enabled research project** by a project owner.  
 * Jobs submitted to `paygo` receive a notification with:
