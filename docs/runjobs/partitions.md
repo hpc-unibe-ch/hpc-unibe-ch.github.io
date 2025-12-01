@@ -15,7 +15,6 @@ There are four types of accounts, each with different resource access and cost i
 
 - **paygo Account**
   The "pay as you go" account is available to users who are members of cost-enabled research projects. When submitting jobs with this account, users must specify a valid project identifier ("wckey") for accounting. Costs are generated at job submission based on actual resource usage.
-  
   **Note:** You may use the `swckeys`-tool to see a list of all available wckeys
 
       ```bash
