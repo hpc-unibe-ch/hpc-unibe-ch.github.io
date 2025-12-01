@@ -5,6 +5,12 @@ The RStudio server allows you to use RStudio on UBELIX.
 1. Select the RStudio Server app under Interactive Apps
    ![ood rstudio](../../assets/images/ood-rstudio.png)
 2. Provide the job specification you want for the RStudio server
+
+    !!! tip "Choosing different accounts"
+        If you are associated with a cost-enabled `paygo` project or
+        have access to the `invest` account, you may choose this here as well.
+        Make sure to select the appropriate combination of [partition and
+        qos](../partitions.md)!
    ![form-rstudio](../../assets/images/form-rstudio.png)
 3. Once RStudio is ready, click `Connect to RStudio Server` to access RStudio.
    ![connect-rstudio](../../assets/images/connect-rstudio.png)

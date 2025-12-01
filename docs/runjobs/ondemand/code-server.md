@@ -6,6 +6,12 @@ browser.
 1. Select the (VS)Code Server app under Interactive Apps
    ![ood codeserver](../../assets/images/ood-codeserver.png)
 2. Provide the job specification you want for the (VS)Code Server
+
+    !!! tip "Choosing different accounts"
+        If you are associated with a cost-enabled `paygo` project or
+        have access to the `invest` account, you may choose this here as well.
+        Make sure to select the appropriate combination of [partition and
+        qos](../partitions.md)!
    ![form-codeserver](../../assets/images/form-codeserver.png)
 3. Once your server is ready, click `Connect to VS Code ` to access it.
    ![connect-codeserver](../../assets/images/connect-codeserver.png)

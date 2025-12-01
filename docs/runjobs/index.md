@@ -9,7 +9,7 @@
 
 ---
 
-Here you find general descriptions of how to run jobs on UBELIX, i.e. how to run your scientific software using the job scheduler, general information about the UBELIX environment, as well as the new UBELIX web interface that you can use instead of the traditional approaxh using a terminal.
+Here you find general descriptions of how to run jobs on UBELIX, i.e. how to run your scientific software using the job scheduler, general information about the UBELIX environment, as well as the new UBELIX web interface that you can use instead of the traditional approach using a terminal.
 If you are looking for ways to install your software on UBELIX or advice for a specific application, consult the [software section][software-overview] instead.
 
 ---

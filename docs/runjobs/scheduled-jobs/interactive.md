@@ -16,11 +16,30 @@ Using `salloc`, you allocate resources and spawn a shell used to
 execute parallel tasks launched with `srun`. For example, you can allocate 1
 nodes with 20 CPU cores for 30 minutes with the command
 
-```bash
-$ salloc --nodes=1 --cpus-per-task=20 --partition=<partition> --time=00:30:00
-salloc: Granted job allocation 123456
-salloc: Waiting for resource configuration
-```
+=== "gratis account"
+    ```Bash
+    salloc --account=gratis --nodes=1 --cpus-per-task=20 --partition=<partition> --time=00:30:00
+    salloc: Granted job allocation 123456
+    salloc: Waiting for resource configuration
+    ```
+=== "paygo account"
+    ```Bash
+    salloc --account=paygo --wckey=<wckey> --nodes=1 --cpus-per-task=20 --partition=<partition> --time=00:30:00
+    salloc: Granted job allocation 123456
+    salloc: Waiting for resource configuration
+    ```
+=== "invest account"
+    ```Bash
+    salloc --account=invest --qos=<investor_qos> --nodes=1 --cpus-per-task=20 --partition=<partition> --time=00:30:00
+    salloc: Granted job allocation 123456
+    salloc: Waiting for resource configuration
+    ```
+=== "teaching account"
+    ```Bash
+    salloc --account=teaching --reservation=<reservation> --nodes=1 --cpus-per-task=20 --partition=<partition> --time=00:30:00
+    salloc: Granted job allocation 123456
+    salloc: Waiting for resource configuration
+    ```
 
 Once the allocation is made, this command will start a shell **on the login
 node**. You can start parallel execution on the allocated nodes with `srun`.
@@ -48,9 +67,22 @@ For simple interactive session, you can use `srun` with no prior allocation. In
 this scenario, `srun` will first create a resource allocation in which to run
 the job. For example, to allocate 1 node and 20 CPU cores for 30 minutes and spawn a shell
 
-```bash
-$ srun --partition=<partition> --time=00:30:00 --nodes=1 --cpus-per-task=20 --pty bash
-```
+=== "gratis account"
+    ```Bash
+    srun --account=gratis --partition=<partition> --time=00:30:00 --nodes=1 --cpus-per-task=20 --pty bash
+    ```
+=== "paygo account"
+    ```Bash
+    srun --account=paygo --wckey=<wckey> --partition=<partition> --time=00:30:00 --nodes=1 --cpus-per-task=20 --pty bash
+    ```
+=== "invest account"
+    ```Bash
+    srun --account=invest --qos=<investor_qos> --partition=<partition> --time=00:30:00 --nodes=1 --cpus-per-task=20 --pty bash
+    ```
+=== "teaching account"
+    ```Bash
+    srun --account=teaching --reservation=<reservation> --partition=<partition> --time=00:30:00 --nodes=1 --cpus-per-task=20 --pty bash
+    ```
 
 ## Using `srun` to check running jobs
 
