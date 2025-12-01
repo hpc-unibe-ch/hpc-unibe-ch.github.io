@@ -72,8 +72,8 @@ UBELIX maximizes hardware utilization by making unused investor resources availa
   - Jobs running in preemptable slots can be interrupted ("preempted") at any time if the resource owner submits new jobs that require those resources.
   - This model allows opportunistic computing: you get free access to powerful hardware, but with the risk of interruption.
 
-  !!! warning "Recommendation"
-      Use **checkpointing** when running preemptable jobs to avoid losing progress or data if your job is interrupted.
+!!! warning "Recommendation"
+    Use **checkpointing** when running preemptable jobs to avoid losing progress or data if your job is interrupted.
 
 - **Use Cases:**
   - Suitable for non-urgent jobs, exploratory work, large parameter sweeps, or workloads designed to restart from checkpoints.
