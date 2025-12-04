@@ -6,7 +6,7 @@
 ## Billing System  
 
 This maintenance introduces a **new billing system** for UBELIX.  
-If you do **not** belong to a project (which can be requested via the **Technik‑Verantwortliche** of your institute) you will only have access to the free‑tier resources. Billing starts **1 January 2025**.
+If you do **not** belong to a project (which can be requested via the **Technik‑Verantwortliche** of your institute) you will only have access to the free‑tier resources. Billing starts **1 January 2026**.
 
 > **Important:** If you have used UBELIX before, you will need to update your existing job‑submission scripts.
 
