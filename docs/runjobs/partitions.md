@@ -70,7 +70,7 @@ Depending on the account, the following QoS are defined on UBELIX:
 | job_cpu             | paygo       | bdw,epyc2      | 96 hours       |This is the default CPU qos. It's used for all general computing. |
 | job_cpu_long        | paygo       | bdw,epyc2      | 16 days        |This CPU qos is used for very long jobs. *Note:* Checkpointing is recommended! |
 | job_gpu             | paygo       | gpu            | 24 hours       |This is the default GPU qos. It's used for general GPU computing. |
-| job_interactive     | paygo       | bdw,epyc2,gpu  | 8 hours        |This qos is used for interactive CPU/GPU jobs (i.e, OnDemand). Jobs are assigned higher priority to start quickly. |
+| job_interactive     | paygo       | bdw,epyc2,gpu  | 12 hours        |This qos is used for interactive CPU/GPU jobs (i.e, OnDemand). Jobs are assigned higher priority to start quickly. |
 
 ### invest
 | **QOS**             | **Account** | **Partition**  | **Time limit** | **Description**|
