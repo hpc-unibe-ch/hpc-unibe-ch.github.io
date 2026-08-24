@@ -143,8 +143,8 @@ individual entries with their job IDs taking the form `<jobid>_<arrayindex>`.
 $ squeue --me
   JOBID   PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
 123456_[3-16] small  example user_tes  PD       0:00      1 (Resources)
-123456_1      small  example user_tes   R       0:17      1 anode124
-123456_2      small  example user_tes   R       0:23      1 anode125
+123456_1      small  example user_tes   R       0:17      1 bnode024
+123456_2      small  example user_tes   R       0:23      1 bnode025
 ```
 
 If you wish to cancel some of the array tasks of a job array, you can use the

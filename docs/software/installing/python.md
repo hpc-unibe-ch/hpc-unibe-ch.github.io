@@ -129,11 +129,11 @@ to ensure that it does not interfere with any other operations. In contrast to [
 Since all computationally heavy operations must be performed in compute nodes, Conda environments are also used in jobs submitted to the queuing system. Returning to the pandas example, a submission script running a single core pandas job can use the `pandas` environment as follows:
 ```
 #SBATCH --job-name pandas-test-job
-#SBATCH --nodes 1
-#SBATCH --ntasks-per-node 1
-#SBATCH --cpus-per-task 1
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
 #SBATCH --time=0-02:00:00
-#SBATCH --partition epyc2,bdw
+#SBATCH --account=gratis
 
 echo "Launched at $(date)"
 echo "Job ID: ${SLURM_JOBID}"

@@ -8,9 +8,8 @@ The UBELIX CPU-based hardware partition currently consists of about 250 compute 
 
 | Nodes | CPUs                                               | CPU cores     | Memory   | Disk | Network     |
 | :---: | :------------------------------------------------: | :-----------: | :------: | :--: | :---------: |
-| 12  | 2x AMD EPYC 9654<br>(2.4 GHz base, 3.55 GHz boost) | 192<br>(2x96) | 1.5 TiB  | 1.92TiB | 100Gb/s |
+| 24  | 2x AMD EPYC 9654<br>(2.4 GHz base, 3.55 GHz boost) | 192<br>(2x96) | 1.5 TiB  | 1.92TiB | 100Gb/s |
 | 68  | 2x AMD EPYC 7742<br>(2.25 GHz base, 3.4 GHz boost) | 128<br>(2x64) | 1 TiB  | 240GiB  | 100Gb/s |
-| 170   | 2x Intel Xeon E5-2630 <br>(2.2 GHz base, 3.1 GHz boost) | 20<br>(2x10) | 128 GiB  | 1TiB (HDD) | 40 Gb/s |
 
 See the [Slurm partitions page][slurm-partitions] for an overview of options
 for allocating these nodes.
@@ -34,11 +33,11 @@ depending on the node type.
 ## Memory
 
 The CPU compute nodes are equipped with roughly 8GB of DDR memory per CPU core
-on the AMD EPYC nodes and about 6GB per CPU core on the Intel Xeon nodes.
+on the AMD EPYC nodes.
 
 ## Network
 
-Depending on their generation, the UBELIX CPU compute nodes each have a single 40Gb/s or 100 Gb/s interface to the [Infiniband
+Depending on their generation, the UBELIX CPU compute nodes each have a single 100 Gb/s interface to the [Infiniband
 interconnect][interconnect].
 
 ## Disk storage

@@ -43,7 +43,6 @@ We are currently operating the following partitions:
 | Partition | job type | CPU / GPU | node / GPU memory | local Scratch |
 | --------- | -------- | ---------- | ---------------- | ------------- |
 |**epyc2 (default)** | single and multi-core |AMD Epyc2 2x64 cores <br> AMD Epyc4 2x96 cores | 1TB <br> 1.5TB | 1TB |
-| bdw | full nodes only (x*20cores) | Intel Broadwell 2x10 cores | 156GB | 1TB |
 | gpu | GPU <br> (8 GPUs per node, <br> varying CPUs) | Nvidia RTX 3090 <br> Nvidia RTX 4090 <br> Nvidia A100 <br> Nvidia H100 <br> Nvidia H200 | 24GB <br> 24GB <br> 80GB <br> 96GB <br> 141GB |  1.92TB <br> 1.92TB <br> 1.92TB <br> 1.92TB <br> 1.92TB|
 | gpu-invest | GPU | *see gpu partition* |  | |
 | cpu-invest | single and multi-core | *see epyc2 partition* |  | |
@@ -59,18 +58,18 @@ Depending on the account, the following QoS are defined on UBELIX:
 ### gratis
 | **QOS**             | **Account** | **Partition**  | **Time limit** | **Description**|
 | ------------------- | ----------- | ---------------| -------------- | --------------------------------------------------------|
-| job_gratis          | gratis      | bdw,epyc2,gpu  | 96 hours       | This is the default qos on the gratis account. It is avialable for CPU and GPU jobs.
-| job_debug           | gratis      | bdw,epyc2,gpu  | 20 min         | This CPU/GPU qos is used for quick debug jobs. |
+| job_gratis          | gratis      | epyc2,gpu  | 96 hours       | This is the default qos on the gratis account. It is avialable for CPU and GPU jobs.
+| job_debug           | gratis      | epyc2,gpu  | 20 min         | This CPU/GPU qos is used for quick debug jobs. |
 | job_gpu_preemptable | gratis      | gpu-invest     | 24 hours       | This GPU qos is used to request idle investor GPU resources for free. See the note below for details! |
 | job_cpu_preemptable | gratis      | cpu-invest     | 24 hours       | This CPU qos is used to request idle investor GPU resources for free. See the note below for details! |
 
 ### paygo
 | **QOS**             | **Account** | **Partition**  | **Time limit** | **Description**|
 | ------------------- | ----------- | ---------------| -------------- | --------------------------------------------------------|
-| job_cpu             | paygo       | bdw,epyc2      | 96 hours       |This is the default CPU qos. It's used for all general computing. |
-| job_cpu_long        | paygo       | bdw,epyc2      | 16 days        |This CPU qos is used for very long jobs. *Note:* Checkpointing is recommended! |
+| job_cpu             | paygo       | epyc2      | 96 hours       |This is the default CPU qos. It's used for all general computing. |
+| job_cpu_long        | paygo       | epyc2      | 16 days        |This CPU qos is used for very long jobs. *Note:* Checkpointing is recommended! |
 | job_gpu             | paygo       | gpu            | 24 hours       |This is the default GPU qos. It's used for general GPU computing. |
-| job_interactive     | paygo       | bdw,epyc2,gpu  | 12 hours        |This qos is used for interactive CPU/GPU jobs (i.e, OnDemand). Jobs are assigned higher priority to start quickly. |
+| job_interactive     | paygo       | epyc2,gpu  | 12 hours        |This qos is used for interactive CPU/GPU jobs (i.e, OnDemand). Jobs are assigned higher priority to start quickly. |
 
 ### invest
 | **QOS**             | **Account** | **Partition**  | **Time limit** | **Description**|

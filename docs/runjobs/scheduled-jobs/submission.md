@@ -545,7 +545,7 @@ Use the option `--ntasks` to request a certain number of tasks (processes) that 
     ```
 
 
-On the 'bdw' partition you must use all CPUs provided by a node (20 CPUs). For example to run an OMPI job on 80 CPUs, do:
+On the partition you must use all CPUs provided by a node (20 CPUs). For example to run an OMPI job on 80 CPUs, do:
 
 === "gratis account"
     ```Bash

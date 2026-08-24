@@ -162,11 +162,9 @@ squeue --me
    34651451     epyc2 slurm.sh  testuser PD       0:00      2 (Priority)
    34651453     epyc2 slurm.sh  testuser PD       0:00      2 (Priority)
    29143227     epyc2     Rjob  testuser PD       0:00      4 (JobHeldUser)
-   37856328       bdw   mpi.sh  testuser  R       4:38      2 anode[012-014]
-   32634559       bdw  fast.sh  testuser  R    2:52:37      1 anode12
-   32634558       bdw  fast.sh  testuser  R    3:00:54      1 anode14
-   32634554       bdw  fast.sh  testuser  R    4:11:26      1 anode08
-   32633556       bdw  fast.sh  testuser  R    4:36:10      1 anode08
+   37856328     epyc2   mpi.sh  testuser  R       4:38      2 bnode[012-014]
+   32634559     epyc2  fast.sh  testuser  R    2:52:37      1 bnode12
+   32634558     epyc2  fast.sh  testuser  R    3:00:54      1 bnode14
 ```
 
 Further information on on job monitoring you find on page [Monitoring Jobs](../runjobs/scheduled-jobs/monitoring-jobs.md). Furthermore, in the *Job handling* section you find additional information about [Investigating a Job Failure](../runjobs/scheduled-jobs/investigating-job-failure.md) and [Check-pointing](../runjobs/scheduled-jobs/checkpointing.md). 

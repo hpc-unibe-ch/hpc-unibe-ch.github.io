@@ -6,7 +6,7 @@ hide:
 [infiniband-wiki]: https://en.wikipedia.org/wiki/InfiniBand
 
 All UBELIX compute nodes use the [Infiniband interconnect][infiniband-wiki]
-40 Gbps or 100 Gbps network interconnect (NIC).
+100 Gbps network interconnect (NIC).
 
 ## Topology
 
@@ -20,7 +20,7 @@ consists of two layers of switches:
 
 Each node connects to a leaf switch, and each leaf switch is connected to every top switch. This creates **multiple paths** for data to travel between nodes. The multiple paths between individual components of the cluster prevent bottlenecks, allowing smooth data flow. Additionally this topology includes redundancy at the switch level, allowing to reroute traffic should a path fail.
 
-The network is designed to handle many simultaneous data transfers with little to no delay, providing high performance under load.This is represented by a low blocking factor. **Blocking** refers to how much the network might limit data transfers when many nodes are communicating at once. For most nodes, UBELIX operates a **fully non-blocking** fat-tree, so that no bottlenecks due to network congestion exist.
+The network is designed to handle many simultaneous data transfers with little to no delay, providing high performance under load.This is represented by a low blocking factor. **Blocking** refers to how much the network might limit data transfers when many nodes are communicating at once. For most nodes, UBELIX operates a low blocking-factor fat-tree, with very limited chances for bottlenecks due to network congestion.
 
 
 <figure>

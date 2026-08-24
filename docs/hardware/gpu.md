@@ -8,8 +8,9 @@ The UBELIX GPU-based hardware partition currently consists of about 20 compute n
 
 | Nodes | GPUs                                               | CPU cores     | GPU Memory   | Network     |
 | :---: | :------------------------------------------------: | :-----------: | :------: | :---------: |
-| 6  | 8x NVIDIA RTX3090 | 32 (2x16) | 24 GB  | 40Gb/s or 100Gb/s |
-| 8  | 8x NVIDIA RTX4090 | 128 (2x64) | 24 GB  | 100Gb/s |
+| 2  | 8x NVIDIA RTX3090 | 32 (2x16) | 24 GB  | 100Gb/s |
+| 10  | 8x NVIDIA RTX4090 | 128 (2x64) | 24 GB  | 100Gb/s |
+| 1  | 8x NVIDIA RTX6000 | 128 (2x64) | 96 GB  | 100Gb/s |
 | 1  | 6x NVIDIA A100 | 128 (2x64) | 80 GB | 100Gb/s |
 | 5  | 8x NVIDIA H100 | 128 (2x64) | 96 GB  | 100Gb/s |
 | 2  | 8x NVIDIA H200 | 128 (2x64) | 141 GB  | 100Gb/s |
@@ -48,7 +49,7 @@ follows:
 
 ## Network
 
-Depending on their generation, the UBELIX CPU compute nodes each have a single 40Gb/s or 100 Gb/s interface to the [Infiniband
+UBELIX GPU compute nodes each have a single 100 Gb/s interface to the [Infiniband
 interconnect][interconnect].
 
 ## Disk storage
