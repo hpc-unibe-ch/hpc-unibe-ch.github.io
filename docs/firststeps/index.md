@@ -1,6 +1,6 @@
 [support]: ../support/index.md
 [SSH-keys]: ../firststeps/SSH-keys.md
-[logging-in]: ../firststeps/loggingin.md
+[logging-in]: ../firststeps/loggingin-ssh.md
 [logging-in-webui]: ../firststeps/loggingin-webui.md
 [move-data]: ../firststeps/movingdata.md
 [nextsteps]: ../firststeps/nextsteps.md
