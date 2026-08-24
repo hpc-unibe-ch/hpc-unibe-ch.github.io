@@ -15,7 +15,7 @@ If you are wondering... UBELIX is an acronym and stands for **U**niversity of
 coincidental and not intended in any way).
 
 !!! note "Job Monitoring"
-    See what is currently running on UBELIX on the [Job Monitoring](https://www.ubelix.unibe.ch/) pages.
+    See what is currently running on UBELIX on the [Job Monitoring](https://www.ubelix.hpc.unibe.ch/) pages.
 
 ## Acknowledging UBELIX
 

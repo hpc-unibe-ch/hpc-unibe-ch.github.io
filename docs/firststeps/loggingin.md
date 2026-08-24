@@ -41,7 +41,7 @@
     ```Bash
     Rocky 9.6 Blue Onyx
     
-    FQDN:      submit03.ubelix.unibe.ch
+    FQDN:      submit03.hpc.unibe.ch
     Processor: 128x AMD EPYC 7742 64-Core Processor
     Kernel:    5.14.0-570.49.1.el9_6.x86_64
     Memory:    128.223 GB

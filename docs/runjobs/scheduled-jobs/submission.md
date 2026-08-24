@@ -252,8 +252,8 @@ bash$ salloc -N 2 -t 10
 salloc: Granted job allocation 247
 bash$ module load foss
 bash$ srun ./mpi_hello_world
-Hello, World.  I am 1 of 2 running on knlnode03.ubelix.unibe.ch
-Hello, World.  I am 0 of 2 running on knlnode02.ubelix.unibe.ch
+Hello, World.  I am 1 of 2 running on cnode03.hpc.unibe.ch
+Hello, World.  I am 0 of 2 running on cnode02.hpc.unibe.ch
 bash$ exit
 salloc: Relinquishing job allocation 247
 ```
