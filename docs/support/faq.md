@@ -128,7 +128,7 @@ Although the job finished successfully...
 **slurm-104.out**
 
 ```Bash
-knlnode02.ubelix.unibe.ch says: Hello World.
+cnode02.hpc.unibe.ch says: Hello World.
 ```
 
 ...Slurm reports job FAILED:

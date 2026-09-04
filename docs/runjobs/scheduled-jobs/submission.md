@@ -252,8 +252,8 @@ bash$ salloc -N 2 -t 10
 salloc: Granted job allocation 247
 bash$ module load foss
 bash$ srun ./mpi_hello_world
-Hello, World.  I am 1 of 2 running on knlnode03.ubelix.unibe.ch
-Hello, World.  I am 0 of 2 running on knlnode02.ubelix.unibe.ch
+Hello, World.  I am 1 of 2 running on cnode03.hpc.unibe.ch
+Hello, World.  I am 0 of 2 running on cnode02.hpc.unibe.ch
 bash$ exit
 salloc: Relinquishing job allocation 247
 ```
@@ -545,7 +545,7 @@ Use the option `--ntasks` to request a certain number of tasks (processes) that 
     ```
 
 
-On the 'bdw' partition you must use all CPUs provided by a node (20 CPUs). For example to run an OMPI job on 80 CPUs, do:
+On the partition you must use all CPUs provided by a node (20 CPUs). For example to run an OMPI job on 80 CPUs, do:
 
 === "gratis account"
     ```Bash

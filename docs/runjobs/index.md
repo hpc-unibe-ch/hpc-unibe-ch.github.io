@@ -1,7 +1,6 @@
 # Overview
 
 [software-overview]: ../software/index.md
-[firststeps-loggingin]: ../firststeps/loggingin.md
 [slurm-quickstart]: ../runjobs/scheduled-jobs/slurm-quickstart.md
 [module-environment]: ../software/Lmod_modules.md
 [data-storage-options]: ../storage/index.md

@@ -77,7 +77,7 @@ After general output, JupyterLab prints a URL with a unique key and the network 
     To access the notebook, open this file in a browser:
         file:///gpfs/homefs/id/ms20e149/.local/share/jupyter/runtime/nbserver-30194-open.html
     Or copy and paste one of these URLs:
-        http://anode001:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
+        http://bnode001:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
      or http://127.0.0.1:15051/?token=69ba5d24acab5915f2520c008a57df51f3cc38b7050ea073
 ```
 

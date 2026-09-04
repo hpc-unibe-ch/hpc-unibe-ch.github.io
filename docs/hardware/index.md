@@ -19,7 +19,7 @@ are scheduled and managed on the compute nodes using [SLURM][slurm], the workloa
 manager. All compute nodes as well as the login nodes have access to the
 parallel file system.
 
-UBELIX is a heterogeneous machine, consisting of different architectures. The majority of the CPU compute power in UBELIX is found in the [AMD (epyc)][cpu-node] hardware partition that features AMD EPYC CPUs and a smaller [Intel Broadwell (bdw)][cpu-node] partition with Intel Xeon processors. In addition to this, there is a [GPU][gpu-node] partition which features GPU accelerated nodes with a variety of GPUs.
+UBELIX is a heterogeneous machine, consisting of different architectures. The majority of the CPU compute power in UBELIX is found in the [AMD (epyc)][cpu-node] hardware partition that features AMD EPYC CPUs. In addition to this, there is a [GPU][gpu-node] partition which features GPU accelerated nodes with a variety of GPUs.
 
 
 

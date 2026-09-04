@@ -2,13 +2,17 @@
 [helpdesk]: ../support/index.md
 [setup-ssh-key]: ../firststeps/SSH-keys.md
 
-
 # Logging in (with an SSH client)
-
-!!! caution "Requirement"
+!!! caution Requirement
     Login to UBELIX is only possible from within the UniBE network. If you want to connect from outside, you must first establish a VPN connection. For VPN profiles and instructions see [the official tutorial](http://www.unibe.ch/university/campus_and_infrastructure/rund_um_computer/internetzugang/access_to_internal_resources_via_vpn/index_eng.html).
 
 
+## First time login:
+!!! info
+    For first-time login, you must create your account by visiting the Web UI at least once. SSH login will only be available after you have done this. Please see [logging in to the webui](./loggingin-webui.md) for a full guide.
+
+    Once you have created your account, come back to this guide.
+## Connect using ssh:
 === "From a terminal (all OS)"
 
     Connecting to UBELIX via the command line is possible from all major OS. Once you
@@ -41,7 +45,7 @@
     ```Bash
     Rocky 9.6 Blue Onyx
     
-    FQDN:      submit03.ubelix.unibe.ch
+    FQDN:      submit03.hpc.unibe.ch
     Processor: 128x AMD EPYC 7742 64-Core Processor
     Kernel:    5.14.0-570.49.1.el9_6.x86_64
     Memory:    128.223 GB

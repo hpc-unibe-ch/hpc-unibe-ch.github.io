@@ -137,7 +137,7 @@ With the following commands, SLURM job files will be created, and submitted to t
 ```Bash
 eb-install-all [options] [easybuild options] <easyconfig>.eb
 ```
-Additional SLURM arguments can be selected using the `--slurm-args` option, e.g. `--slurm-args='--account=xyz --time=00:10:00 --cpus-per-task'`. If specific architectures should be selected use e.g. `--arch='broadwell epyc2'`. After this options, EasyBuild arguments can be provided without prefix, e.g. `--robot`. 
+Additional SLURM arguments can be selected using the `--slurm-args` option, e.g. `--slurm-args='--account=xyz --time=00:10:00 --cpus-per-task'`. After these options, EasyBuild arguments can be provided without prefix, e.g. `--robot`. 
 
 For our example we can use the following command to generate the module on all
 architectures:
