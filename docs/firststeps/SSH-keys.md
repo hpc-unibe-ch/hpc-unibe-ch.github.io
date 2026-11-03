@@ -114,7 +114,7 @@ If the previous steps were successful you can now login to UBELIX using your SSH
 keypair using 
 
 ```bash
-ssh -i ~/.ssh/id_ed25519_ubelix <user>@submit01.unibe.ch
+ssh -i ~/.ssh/id_ed25519_ubelix <user>@submit01.hpc.unibe.ch
 ```
 Note that you will be prompted for the passphrase of your SSH-key instead of your
 Campus Account password.
@@ -127,7 +127,7 @@ To simplify the login procedure you can tweak the local SSH configuration by add
 ~/.ssh/config
 
 Host ubelix
-    Hostname submit02.unibe.ch
+    Hostname submit02.hpc.unibe.ch
     User <user>
     IdentityFile ~/.ssh/id_ed25519_ubelix
     ServerAliveInterval 60
