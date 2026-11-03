@@ -19,7 +19,7 @@
     have [activated your account for UBELIX][access] you can connect using an ssh client:
     
     ```Bash
-    $ ssh <user>@submit02.unibe.ch
+    $ ssh <user>@submit02.hpc.unibe.ch
     ```
     
     where you need to replace `<username>` with your own Campus Account username.
@@ -33,7 +33,7 @@
     At the password prompt enter your Campus Account password:
     
     ```Bash
-    $ ssh <user>@submit03.unibe.ch
+    $ ssh <user>@submit03.hpc.unibe.ch
     Password:
     ```
     
@@ -62,7 +62,7 @@
      * Click 'Session' in the top left corner:
      ![MobaXterm Start](../assets/images/mobaXterm_01_start.png "MobaXterm Start")
      * In "SSH" tab:
-         - Set the remote host to a login node, e.g. submit01.unibe.ch
+         - Set the remote host to a login node, e.g. submit01.hpc.unibe.ch
          -  Enable the "Specify username" option and put your Campus Account short name in the corresponding box (here user ms20e149 will be used)
      * In the "Advanced SSH settings"
          - Set SSH-browser type to 'SCP (enhanced speed)'
@@ -83,10 +83,10 @@
 
        There are four login nodes in UBELIX:
 
-       - submit01.unibe.ch
-       - submit02.unibe.ch
-       - submit03.unibe.ch
-       - submit04.unibe.ch
+       - submit01.hpc.unibe.ch
+       - submit02.hpc.unibe.ch
+       - submit03.hpc.unibe.ch
+       - submit04.hpc.unibe.ch
 
        To access UBELIX, **you can choose any one**. If the load on a login node is high, you can log out and pick another one.
 
@@ -95,10 +95,10 @@
 
 | Host | Fingerprint                                              |
 |--------- --|----------------------------------------------------------|
-| submit01.unibe.ch | SHA256:ScUNCxSnHzfxeLIVB8WY98EvKoVhBujbz6RXaSOw1VA (RSA)<br> SHA256:qmMfIbwyosfLUsY8BMCTgj6HjQ3Im6bAdhCWK9nSiDs (ED25519) |
-| submit02.unibe.ch | SHA256:eRTZGWp2bvlEbl8O1pigcONsFZAVKT+hp+5lSQ8lq/A (ED25519)<br> SHA256:Q4M+Tv3XsAuFLPdv2t/x3X3QY3IDsKMbNBwFcLoQeS8 (RSA) |
-| submit03.unibe.ch | SHA256:IYp6P61TybgGdbBd4w9+bQpIk8Yc3XfYLHG0CslCs6Y (RSA)<br> SHA256:PUkldwWf86h26PSFHCkEGKsrYlXv668LeSnbHBrMoCQ (ED25519) |
-| submit04.unibe.ch | SHA256:+maM19oNjmc6wyHyQSq1eqNtFKPPrEs+fdQm5maZyN8 (RSA)<br> SHA256:D3cmfXkb40P7W935J2Un8sBUd4Sv2MNLkvz9isJOnu0 (ED25519) |
+| submit01.hpc.unibe.ch | SHA256:ScUNCxSnHzfxeLIVB8WY98EvKoVhBujbz6RXaSOw1VA (RSA)<br> SHA256:qmMfIbwyosfLUsY8BMCTgj6HjQ3Im6bAdhCWK9nSiDs (ED25519) |
+| submit02.hpc.unibe.ch | SHA256:eRTZGWp2bvlEbl8O1pigcONsFZAVKT+hp+5lSQ8lq/A (ED25519)<br> SHA256:Q4M+Tv3XsAuFLPdv2t/x3X3QY3IDsKMbNBwFcLoQeS8 (RSA) |
+| submit03.hpc.unibe.ch | SHA256:IYp6P61TybgGdbBd4w9+bQpIk8Yc3XfYLHG0CslCs6Y (RSA)<br> SHA256:PUkldwWf86h26PSFHCkEGKsrYlXv668LeSnbHBrMoCQ (ED25519) |
+| submit04.hpc.unibe.ch | SHA256:+maM19oNjmc6wyHyQSq1eqNtFKPPrEs+fdQm5maZyN8 (RSA)<br> SHA256:D3cmfXkb40P7W935J2Un8sBUd4Sv2MNLkvz9isJOnu0 (ED25519) |
 
 
 ## Troubleshooting
@@ -107,7 +107,7 @@ If you have trouble connecting to UBELIX, you can run the SSH client with verbos
 output enabled to get more information about what happens when you try to connect:
 
 ```bash
-ssh -vvv <username>@submit02.unibe.ch
+ssh -vvv <username>@submit02.hpc.unibe.ch
 ```
 
 If you are unable to connect, and you contact the [UBELIX support ][helpdesk],

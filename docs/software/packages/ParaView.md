@@ -11,7 +11,7 @@ The local (on your local machine) ParaView version need to match the version loa
 First, as mentioned, establish a SSH session with *Port forwarding*, another port in the range [2000-65000] should be selected: 
 
 ```Bash
-ssh -Y -L 15051:localhost:15051 submit03.unibe.ch
+ssh -Y -L 15051:localhost:15051 submit03.hpc.unibe.ch
 ```
 
 Then load the modules:

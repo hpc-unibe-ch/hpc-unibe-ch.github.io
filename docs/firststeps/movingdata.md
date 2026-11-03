@@ -38,24 +38,24 @@ Some common `scp` options:
 Copy the file `~/dir/file01` to your remote home directory:
 
 ```Bash
-$ scp ~/dir/file01 <user>@submit03.unibe.ch:
+$ scp ~/dir/file01 <user>@submit03.hpc.unibe.ch:
 ```
 
 Copy multiple files to the remote directory `~/bar`:
 
 !!! note
 
-    The destination directory must already exist. You can create a directory from remote with: `ssh <user>@submit03.unibe.ch 'mkdir -p ~/bar'`
+    The destination directory must already exist. You can create a directory from remote with: `ssh <user>@submit03.hpc.unibe.ch 'mkdir -p ~/bar'`
 
 ```Bash
-$ scp ~/dir/file01 ~/dir/file02 ~/dir/file03 <user>@submit03.unibe.ch:bar
+$ scp ~/dir/file01 ~/dir/file02 ~/dir/file03 <user>@submit03.hpc.unibe.ch:bar
 ```
 
 Copy the directory `~/dir` to the remote directory `~/bar` using
 the `-r` (recursive) option:
 
 ```Bash
-$ scp -r ~/dir <user>@submit03.unibe.ch:~/bar/
+$ scp -r ~/dir <user>@submit03.hpc.unibe.ch:~/bar/
 ```
 
 ### Copying Files from UBELIX
@@ -63,13 +63,13 @@ $ scp -r ~/dir <user>@submit03.unibe.ch:~/bar/
 Copy the remote file `~/bar/file01` to the current working directory on your local workstation:
 
 ```Bash
-$ scp <user>@submit03.unibe.ch:bar/file01 .
+$ scp <user>@submit03.hpc.unibe.ch:bar/file01 .
 ```
 
 Copy multiple remote files to the local directory `~/dir`:
 
 ```Bash
-$ scp <user>@submit03.unibe.ch:bar/\{file02,file03,file04\} ~/dir
+$ scp <user>@submit03.hpc.unibe.ch:bar/\{file02,file03,file04\} ~/dir
 ```
 
 The local directory `~/dir` will be automatically created if it does not already exist
@@ -77,7 +77,7 @@ The local directory `~/dir` will be automatically created if it does not already
 Copy the remote directory `~/bar` to the current working directory on your local workstation:
 
 ```Bash
-$ scp -r <user>@submit03.unibe.ch:bar .
+$ scp -r <user>@submit03.hpc.unibe.ch:bar .
 ```
 
 ## Copying files with `rsync`
@@ -113,7 +113,7 @@ Common options:
 To copy the contents of remote directory `~/foo/` to the local directory `~/dir`:
 
 ```Bash
-$ rsync -az <user>@submit03.unibe.ch:foo/ ~/dir
+$ rsync -az <user>@submit03.hpc.unibe.ch:foo/ ~/dir
 ```
 
 !!! note 
