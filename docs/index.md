@@ -14,8 +14,8 @@ If you are wondering... UBELIX is an acronym and stands for **U**niversity of
 **Be**rn **Li**nu**x** Cluster (Naming similarities to known Gauls are purely
 coincidental and not intended in any way).
 
-!!! note "Job Monitoring"
-    See what is currently running on UBELIX on the [Job Monitoring](https://ubelix.hpc.unibe.ch/) pages.
+!!! note "HPC Cluster Status und Job Monitoring"
+    See the current cluster status at the [HPC Service status page](https://ubelix.hpc.unibe.ch/) and see what is currently running on UBELIX on the [OnDemand Job Monitoring](https://ondemand.hpc.unibe.ch/pun/sys/dashboard/activejobs?jobcluster=all&jobfilter=all) pages.
 
 ## Acknowledging UBELIX
 
