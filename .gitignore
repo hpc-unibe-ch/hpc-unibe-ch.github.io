@@ -2,3 +2,5 @@ gh-pages/
 mkdocs-material/
 site/
 **/.DS_Store
+.venv/
+.cache/
