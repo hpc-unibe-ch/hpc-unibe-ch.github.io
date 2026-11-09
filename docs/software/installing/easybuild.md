@@ -237,7 +237,7 @@ $ mv RELION-3.0.4-foss-2017b.eb RELION-3.1.2-foss-2023a.eb
 
 - update the versions settings in the file
     - package version, the toolchain version, and all related libraries
-    - Keep in mind that toolchain versions need to match (see [toolchains](#meta-module-and-toolchains) above)
+    - Keep in mind that toolchain versions need to match (see [toolchains](#step-2-find-a-package-and-selecting-the-toolchain) above)
 ```Lua
 easyblock = 'CMakeMake'
 
@@ -284,7 +284,7 @@ The downloaded source packages are typically checked with SHA256 checksums. When
 $ eb --force --inject-checksums sha256 RELION-3.1.2-foss-2023a.eb
 ```
 
-- build the new package as described in [Installation](#installation) above, e.g.
+- build the new package as described in [Installation](#step-3-install-the-package) above, e.g.
 ```Bash
 $ eb-install-all --robot RELION-3.1.2-foss-2023a.eb
 ```

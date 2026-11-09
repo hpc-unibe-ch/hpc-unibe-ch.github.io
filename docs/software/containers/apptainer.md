@@ -14,7 +14,6 @@
 [tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
 
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
-[container-wrapper]: ../installing/container-wrapper.md
 [copying-files]: ../../firststeps/movingdata.md
 [easybuild]: ../../software/installing/easybuild.md
 [interconnect]: ../../hardware/network.md
