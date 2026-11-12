@@ -19,7 +19,7 @@ module load Workspace
 cd $SCRATCH
 ```
 
-For personal Scratch see [below](scratch.md#peronal-scratch)
+For personal Scratch see [below](scratch.md#personal-scratch)
 
 ### Workspace Scratch
 Each Workspace has a `$SCRATCH` space with the same access permissions like the permanent Workspace directory (using primary and secondary groups). The Workspace can be accessed using `$SCRATCH` variable (after loading the Workspace module). It will point to `/storage/scratch/<researchGroupID>/<WorkspaceID>`. Please use `$SCRATCH` to access it. 

@@ -5,7 +5,6 @@
 [easybuild]: ./installing/easybuild.md
 [singularity-jobs]: ../runjobs/scheduled-jobs/container-jobs.md
 [software-env]: ./Lmod_modules.md
-[install-policy]: ./policy.md
 [workspace]: ../storage/index.md
 
 ---

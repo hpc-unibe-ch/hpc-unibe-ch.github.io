@@ -47,7 +47,7 @@ This tier is ideal for:
 
 ## F2 - Research Group / Project Free Tier
 
-PAYGO projects are supported by central IT Services with an [annual support credit](../paygo/#research-group-project-free-tier).
+PAYGO projects are supported by central IT Services with an [annual support credit](paygo.md#research-group-project-free-tier).
 
 ## F3 - Preemptable Tier
 

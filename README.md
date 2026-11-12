@@ -3,7 +3,7 @@
 In this repository the offical end user documenttion of UBELIX and related topics
 is managed.
 
-This documentation project makes use of [MkDocs Material Design Theme](https://squidfunk.github.io/mkdocs-material)
+This documentation project is built with [Zensical](https://zensical.org).
 
 ## Contributing
 
@@ -17,29 +17,24 @@ You can make our life easier when you ship logically selfcontained pull requests
   * one logical change per pull reuqest (typos or a new paragraph on topic X, another for topic Y)
   * squash multiple commits before starting the pull request
 
-To make changes and test it locally, you have to setup mkdocs-material and all
-other dependencies. We are delivering a conda environemnt file right within
-this repo. A possible installation scenario for macOS using Homebrew might look
-like:
+To make changes and test it locally, you have to setup Zensical and all
+other dependencies. A possible installation scenario using a Python virtual
+environment might look like:
 
 ```
-# Install miniconda using Homebrew
-brew install miniconda
-
-# Setup conda
-conda init "$(basename "${SHELL}")"
-# --> For changes to take effect, close and re-open your current shell <--
-
 # Fetch the documentation repository
-git clone https://github.com/hpc-unibe-ch/hpc-docs.git
-cd hpc-docs
+git clone https://github.com/hpc-unibe-ch/hpc-unibe-ch.github.io.git
+cd hpc-unibe-ch.github.io
 
-# Create and activate the environment
-conda create
-conda activate hpcdocs
+# Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
 
-# Start the local mkdocs webserver that renders and displays all change instantly
-mkdocs serve
+# Install Zensical
+pip install zensical
+
+# Start the local webserver that renders and displays all changes instantly
+zensical serve
 ```
 
 Thank you!
